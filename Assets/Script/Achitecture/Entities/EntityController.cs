@@ -7,6 +7,10 @@ namespace Achitecture.Entities
     {
         [SerializeField] private List<EntityComponent> entityComponents;
 
+        protected virtual void Awake()
+        {
+            this.InitializationComponent();
+        }
         public T GetEntityComponent<T>() where T : EntityComponent
         {
             foreach(var component in entityComponents)
