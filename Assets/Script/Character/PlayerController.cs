@@ -1,5 +1,5 @@
 ﻿using Achitecture.Entities;
-namespace Player
+namespace Character
 {
     internal class PlayerController : EntityController
     {
