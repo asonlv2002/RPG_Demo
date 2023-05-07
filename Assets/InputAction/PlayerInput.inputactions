@@ -24,13 +24,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Mouse",
-                    "type": "Value",
-                    "id": "59572680-d9ac-4adb-9733-a87aeb17d9ec",
-                    "expectedControlType": "Vector2",
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "ee034fbc-6b09-4c48-838a-b951f5c32104",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -102,12 +102,12 @@
                 },
                 {
                     "name": "",
-                    "id": "972ee7a1-f5c7-4eb9-97c0-40e8d6af4327",
-                    "path": "<Mouse>/position",
+                    "id": "e9ff6693-61dd-441d-8b8b-4004b6e8fdc7",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Mouse",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

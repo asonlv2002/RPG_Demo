@@ -46,13 +46,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Mouse"",
-                    ""type"": ""Value"",
-                    ""id"": ""59572680-d9ac-4adb-9733-a87aeb17d9ec"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""JumpRise"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee034fbc-6b09-4c48-838a-b951f5c32104"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -124,12 +124,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""972ee7a1-f5c7-4eb9-97c0-40e8d6af4327"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""e9ff6693-61dd-441d-8b8b-4004b6e8fdc7"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Mouse"",
+                    ""action"": ""JumpRise"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -142,7 +142,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControl = asset.FindActionMap("CharacterControl", throwIfNotFound: true);
         m_CharacterControl_Move = m_CharacterControl.FindAction("Move", throwIfNotFound: true);
         m_CharacterControl_Run = m_CharacterControl.FindAction("Run", throwIfNotFound: true);
-        m_CharacterControl_Mouse = m_CharacterControl.FindAction("Mouse", throwIfNotFound: true);
+        m_CharacterControl_Jump = m_CharacterControl.FindAction("JumpRise", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,14 +204,14 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
     private readonly InputAction m_CharacterControl_Move;
     private readonly InputAction m_CharacterControl_Run;
-    private readonly InputAction m_CharacterControl_Mouse;
+    private readonly InputAction m_CharacterControl_Jump;
     public struct CharacterControlActions
     {
         private @PlayerInput m_Wrapper;
         public CharacterControlActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_CharacterControl_Move;
         public InputAction @Run => m_Wrapper.m_CharacterControl_Run;
-        public InputAction @Mouse => m_Wrapper.m_CharacterControl_Mouse;
+        public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -227,9 +227,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Run.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRun;
-                @Mouse.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMouse;
-                @Mouse.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMouse;
-                @Mouse.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMouse;
+                @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -240,9 +240,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
-                @Mouse.started += instance.OnMouse;
-                @Mouse.performed += instance.OnMouse;
-                @Mouse.canceled += instance.OnMouse;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -251,6 +251,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnMouse(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

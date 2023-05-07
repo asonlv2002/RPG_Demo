@@ -1,0 +1,40 @@
+﻿using UnityEngine;
+
+namespace Achitecture
+{
+    internal class AnimationHashContain
+    {
+        const string _isGround = "isGround";
+        const string _isIdle = "isIdle";
+        const string _isRun = "isRun";
+        const string _isSprint = "isSprint";
+        const string _isAirborne = "isAirBorne";
+        const string _isFall = "isFall";
+        const string _isJumpRise = "isJumpRise";
+        const string _isJumpFall = "isJumpFall";
+
+        public int IsGroundHash { get; }
+        public int IsIdleHash { get; }
+        public int IsRunHash { get; }
+        public int IsSprintHash { get; }
+
+        public int IsAirborneHash { get; }
+        public int IsJumpRiseHash { get; }
+        public int IsJumpFallHash { get; }
+        public int IsFallHash { get; }
+
+        public AnimationHashContain()
+        {
+            IsGroundHash = Animator.StringToHash(_isGround);
+            IsIdleHash = Animator.StringToHash(_isIdle);
+            IsRunHash = Animator.StringToHash(_isRun);
+            IsSprintHash = Animator.StringToHash(_isSprint);
+
+            IsAirborneHash = Animator.StringToHash(_isAirborne);
+            IsJumpRiseHash = Animator.StringToHash(_isJumpRise);
+            IsJumpFallHash = Animator.StringToHash(_isJumpFall);
+            IsFallHash = Animator.StringToHash(_isFall);
+
+        }
+    }
+}

@@ -6,17 +6,43 @@ namespace Achitecture
     {
         PlayerInput _playerInput;
         private Vector2 _currentInputMovement;
-        private Vector3 _currentMovement;
-        private Vector3 _currentRunMovement;
-        [SerializeField] float _rotationFactorFerFrame = 20f;
+        public Vector3 _currentMovement;
+        public Vector3 _currentRunMovement;
+        public Vector3 _applyMovement;
+        //[SerializeField] float _rotationFactorFerFrame = 20f;
         bool _isMovementPresesd;
-        bool _isSpintingPressed;
-        [SerializeField] private Animator _animator;
+        bool _isSpintingPressed = false;
+
+        private AnimationHashContain _animationHashContain;
+        [SerializeField] Animator _animator;
         [SerializeField] private CharacterController _chaController;
         [SerializeField] private float _forceMoverment;
+        [SerializeField] Transform _groundPosition;
 
-        int isRunningHash;
-        int isSpintingHash;
+
+        private float _gravity = -9.8f;
+        private float _groundedGravity = -0.05f;
+        private bool _isJumpPressed = false;
+        private float _heightGroundBeginJump;
+        private float _maxTimeJump = 0.75f;
+        private float _maxJumpHeight = 2f;
+        private float _initialJumpVelocity;
+
+        public float Gravity { get => _gravity; set => _gravity = value; }
+        public float GroundedGravity { get => _groundedGravity; set => _groundedGravity = value; }
+        public float MaxTimeJump => _maxTimeJump;
+        public float MaxJumpHeight => _maxJumpHeight;
+        public float InitialJumpVelocity { get => _initialJumpVelocity; set => _initialJumpVelocity = value; }
+        public float HeightGroundBeginJump { get => _heightGroundBeginJump; set => _heightGroundBeginJump = value; }
+        public Vector3 GroundPos => _groundPosition.position;
+        public float CharacterHeight => _chaController.height;
+        public bool IsRunPressed => _isMovementPresesd;
+        public bool IsJumpPressed => _isJumpPressed;
+        public bool IsGrounded => _chaController.isGrounded;
+        public bool IsSpintPressed => _isSpintingPressed;
+
+        public Animator AnimationControl => _animator;
+        public AnimationHashContain AnimationHashs => _animationHashContain;
         private void Awake()
         {
             _playerInput = new PlayerInput();
@@ -25,94 +51,29 @@ namespace Achitecture
             _playerInput.CharacterControl.Move.canceled += OnHandleInputMovement;
             _playerInput.CharacterControl.Run.started += OnHandleInputRun;
             _playerInput.CharacterControl.Run.canceled += OnHandleInputRun;
+            _playerInput.CharacterControl.Jump.started += OnHandleInputJump;
+            _playerInput.CharacterControl.Jump.canceled += OnHandleInputJump;
 
-            isRunningHash = Animator.StringToHash("Running");
-            isSpintingHash = Animator.StringToHash("Spinting");
-
+            _animationHashContain = new AnimationHashContain();
         }
+
+        private void Start()
+        {
+            _stateFactory = new PlayerStateFactory(this);
+            _currentState = _stateFactory.Movement();
+            _currentState.EnterState();
+        }
+
+
         private void Update()
         {
+            _currentState.UpdateState();
+            _chaController.Move(_applyMovement*Time.deltaTime);
 
-            OnHandleMove();
-            OnRotation();
-            OnHandleAniamtion();
-        }
-
-        private void OnEnable()
-        {
-            _playerInput.CharacterControl.Enable();
-        }
-
-        private void OnDisable()
-        {
-            _playerInput.CharacterControl.Disable();
         }
 
 
 
-        private void OnHandleMove()
-        {
-            if(_isSpintingPressed && _isMovementPresesd)
-            {
-                _chaController.Move(_currentRunMovement * Time.deltaTime);
-            }
-            else if(_isMovementPresesd)
-            _chaController.Move(_currentMovement * Time.deltaTime);
-        }
-
-        private void OnRotation()
-        {
-            Vector3 postionToLookAt;
-
-            postionToLookAt.x = _currentMovement.x;
-            postionToLookAt.y = 0f;
-            postionToLookAt.z = _currentMovement.z;
-
-            Quaternion currentRotation = transform.rotation;
-
-            if (_isMovementPresesd)
-            {
-                Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
-                transform.rotation = Quaternion.Slerp(currentRotation, targetRoation, _rotationFactorFerFrame*Time.deltaTime);
-            }
-        }
-        private void OnHandleAniamtion()
-        {
-            bool isRuning = _animator.GetBool(isRunningHash);
-            bool isSpinting = _animator.GetBool(isSpintingHash);
-            
-            if(_isMovementPresesd && !isRuning)
-            {
-                _animator.SetBool(isRunningHash, true);
-            }
-            else if(!_isMovementPresesd && isRuning)
-            {
-                _animator.SetBool(isRunningHash, false);
-            }
-            else if((_isMovementPresesd && _isSpintingPressed) && !isSpinting)
-            {
-                _animator.SetBool(isSpintingHash, true);
-            }
-            else if((!_isMovementPresesd || !_isSpintingPressed) && isSpinting)
-            {
-                _animator.SetBool(isSpintingHash, false);
-            }
-            //if(_isMovementPresesd && !_isSpintingPressed)
-            //{
-            //    _animator.SetBool("Walk", true);
-            //    _animator.SetBool("Run", false);
-            //}
-            //else if(_isSpintingPressed)
-            //{
-            //    _animator.SetBool("Run", true);
-            //    _animator.SetBool("Walk", true);
-            //}
-            //else if(!_isSpintingPressed && !_isMovementPresesd)
-            //{
-            //    _animator.SetBool("Walk", false);
-            //    _animator.SetBool("Run", false);
-            //}
-        }
 
         #region On Read Input
         private void OnHandleInputMovement(InputAction.CallbackContext context)
@@ -128,6 +89,33 @@ namespace Achitecture
         {
             _isSpintingPressed = context.ReadValueAsButton();
         }
+
+        private void OnHandleInputJump(InputAction.CallbackContext context)
+        {
+            _isJumpPressed = context.ReadValueAsButton();
+        }
         #endregion
+
+
+        private void OnEnable()
+        {
+            _playerInput.CharacterControl.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _playerInput.CharacterControl.Disable();
+        }
+
+        #region PlayerStateMachine's Context
+
+        private PlayerStateFactory _stateFactory;
+        public PlayerStateFactory StateFactory => _stateFactory;
+
+        private PlayerBaseState _currentState;
+        public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+
+        #endregion
+
     }
 }
