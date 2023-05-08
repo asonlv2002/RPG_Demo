@@ -68,6 +68,7 @@ namespace Achitecture
         private void Update()
         {
             _currentState.UpdateState();
+            Debug.Log(_currentState.ToString());
             _chaController.Move(_applyMovement*Time.deltaTime);
 
         }

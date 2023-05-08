@@ -10,7 +10,6 @@ namespace Achitecture
     {
         public PlayerIdleState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _isRootState = false;
             _animtionHash = _context.AnimationHashs.IsIdleHash;
         }
 

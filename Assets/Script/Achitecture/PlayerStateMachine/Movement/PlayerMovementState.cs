@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 namespace Achitecture
 {
-    internal class PlayerMovementState : PlayerBaseState
+    internal class PlayerMovementState : PlayerBaseState, IRootState
     {
         public PlayerMovementState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) :
             base(playerStateMachine, playerStateFactory)
         {
-            _isRootState = true;
         }
 
         public override void CheckUpdateState()
@@ -18,7 +17,7 @@ namespace Achitecture
         {
             SetJumpVariabes();
             UnityEngine.Debug.Log("Movement");
-            InitializationSubState();
+            InitialaztionSubState();
         }
 
         public override void UpdateState()
@@ -27,16 +26,16 @@ namespace Achitecture
             base.UpdateState();
         }
 
-        protected override void InitializationSubState()
+        public void InitialaztionSubState()
         {
             if(_context.IsGrounded)
             {
-                SetSubState(_factory.Grounded());
+                SetChildState(_factory.Grounded());
             }else
             {
-                SetSubState(_factory.Airborne());
+                SetChildState(_factory.Airborne());
             }
-            _currentSubState?.EnterState();
+            _childState.EnterState();
         }
 
         private void SetJumpVariabes()

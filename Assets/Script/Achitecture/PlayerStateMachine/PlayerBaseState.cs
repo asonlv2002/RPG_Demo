@@ -3,11 +3,10 @@ namespace Achitecture
 {
     internal abstract class PlayerBaseState
     {
-        protected bool _isRootState = false;
         protected PlayerStateMachine _context;
         protected PlayerStateFactory _factory;
-        protected PlayerBaseState _currentSuperState;
-        protected PlayerBaseState _currentSubState;
+        protected PlayerBaseState _childState;
+        protected PlayerBaseState _parentState;
         protected int _animtionHash;
 
         public PlayerBaseState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory)
@@ -17,44 +16,42 @@ namespace Achitecture
         }
         public virtual void EnterState()
         {
+            _context.CurrentState = this;
             EnableAnimationState();
         }
 
         public virtual void ExitState()
         {
-            _currentSubState?.ExitState();
+            if(this is IRootState)
+            {
+                _childState.ExitState();
+                _childState = null;
+            }    
             DisableAnimationState();
         }
 
         public virtual void UpdateState()
         {
-            _currentSubState?.UpdateState();
+            _parentState?.UpdateState();
         }
         public abstract void CheckUpdateState();
 
         protected virtual void SwitchState(PlayerBaseState newState)
         {
             ExitState();
-
+            newState.SetParenForChildState(_parentState);
             newState.EnterState();
-
-            if (_isRootState) _context.CurrentState = newState;
-            _currentSuperState?.SetSubState(newState);
         }
 
-        protected virtual void SetSuperState(PlayerBaseState newState)
+        protected virtual void SetParenForChildState(PlayerBaseState parentState)
         {
-            _currentSuperState = newState;
+            _parentState = parentState;
         }
 
-        protected virtual void SetSubState(PlayerBaseState newState)
+        protected virtual void SetChildState(PlayerBaseState childState)
         {
-            _currentSubState = newState;
-            newState.SetSuperState(this);
-        }
-        protected virtual void InitializationSubState()
-        {
-
+            _childState = childState;
+            _childState.SetParenForChildState(this);
         }
 
         protected void EnableAnimationState()

@@ -1,11 +1,10 @@
 ﻿
 namespace Achitecture
 {
-    internal class PlayerAirborneState : PlayerBaseState
+    internal class PlayerAirborneState : PlayerBaseState, IRootState
     {
         public PlayerAirborneState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _isRootState = false;
             _animtionHash = _context.AnimationHashs.IsAirborneHash;
         }
 
@@ -24,23 +23,28 @@ namespace Achitecture
             InitializationSubState();
         }
 
-        protected override void InitializationSubState()
+        public void InitializationSubState()
         {
             if(_context.IsJumpPressed)
             {
-                SetSubState(_factory.JumpRise());
+                SetChildState(_factory.JumpRise());
             }
             else if(!_context.IsGrounded)
             {
-                SetSubState(_factory.Fall());
+                SetChildState(_factory.Fall());
             }
-            _currentSubState?.EnterState();
+            _childState.EnterState();
         }
         public override void UpdateState()
         {
             base.UpdateState();
             CheckUpdateState();
 
+        }
+
+        public void InitialaztionSubState()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

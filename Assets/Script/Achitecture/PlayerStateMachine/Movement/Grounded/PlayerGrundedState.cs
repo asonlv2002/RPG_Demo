@@ -4,16 +4,16 @@ namespace Achitecture
 {
     internal class PlayerGrundedState : PlayerBaseState
     {
+        float _timeExitGrounded;
         public PlayerGrundedState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) 
             : base(playerStateMachine, playerStateFactory)
         {
-            _isRootState = false;
             _animtionHash = _context.AnimationHashs.IsGroundHash;
         }
 
         public override void CheckUpdateState()
         {
-            if(_context.IsJumpPressed || !_context.IsGrounded)
+            if (_context.IsJumpPressed || !_context.IsGrounded)
             {
                 SwitchState(_factory.Airborne());
             }
@@ -23,7 +23,7 @@ namespace Achitecture
         {
             base.EnterState();
             Debug.Log("Grounded");
-            InitializationSubState();
+            InitialaztionSubState();
         }
         public override void UpdateState()
         {
@@ -31,16 +31,16 @@ namespace Achitecture
             base.UpdateState();
             CheckUpdateState();
         }
-        protected override void InitializationSubState()
+        public void InitialaztionSubState()
         {
             if(_context.IsRunPressed)
             {
-                SetSubState(_factory.Run());
+                SetChildState(_factory.Run());
             }else 
             {
-                SetSubState(_factory.Idle());
+                SetChildState(_factory.Idle());
             }
-            _currentSubState.EnterState();
+            _childState.EnterState();
         }
 
         private void GravityEffect()
@@ -48,5 +48,6 @@ namespace Achitecture
             _context._currentMovement.y = _context.GroundedGravity;
             _context._applyMovement.y = _context.GroundedGravity;
         }
+
     }
 }
