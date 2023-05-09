@@ -17,7 +17,7 @@ namespace Achitecture
             }
             else if(!_context.IsRunPressed)
             {
-                SwitchState(_factory.Idle());
+                SwitchState(_factory.StopOnGround());
             }
         }
 

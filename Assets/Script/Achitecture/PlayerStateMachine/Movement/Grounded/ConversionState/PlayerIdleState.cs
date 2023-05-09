@@ -9,16 +9,11 @@
 
         public override void CheckUpdateState()
         {
-            if (_context.IsRunPressed)
-            {
-                SwitchState(_factory.Run());
-            }
         }
 
         public override void EnterState()
         {
             base.EnterState();
-            Idle();
             UnityEngine.Debug.Log("Idle");
         }
 
@@ -27,10 +22,6 @@
             base.UpdateState();
             CheckUpdateState();
         }
-        private void Idle()
-        {
-            _context._applyMovement.x = 0;
-            _context._applyMovement.z = 0;
-        }
+
     }
 }

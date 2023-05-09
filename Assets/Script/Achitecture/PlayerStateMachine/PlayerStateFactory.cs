@@ -23,7 +23,10 @@ namespace Achitecture
             _states["JumpRise"] = new PlayerJumpRiseState(_context, this);
             _states["JumpFall"] = new PlayerJumpFallState(_context, this);
             _states["Spint"] = new PlayerSpintState(_context, this);
-            _states["Fall"] = new PlayerFallState(_context, this); 
+            _states["Fall"] = new PlayerFallState(_context, this);
+
+            _states["StopOnGround"] = new PlayerStopOnGroundState(_context, this);
+            _states["SprintToIdle"] = new PlayerSprintToIdleState(_context, this);
 
         }
 
@@ -36,6 +39,8 @@ namespace Achitecture
         public PlayerBaseState JumpRise() => _states["JumpRise"];
         public PlayerBaseState JumpFall() => _states["JumpFall"];
         public PlayerBaseState Fall() => _states["Fall"];
+        public PlayerBaseState SprintToIdle() => _states["SprintToIdle"];
+        public PlayerBaseState StopOnGround() => _states["StopOnGround"];
 
     }
 }

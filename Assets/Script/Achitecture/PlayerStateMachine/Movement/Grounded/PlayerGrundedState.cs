@@ -37,7 +37,7 @@ namespace Achitecture
                 SetChildState(_factory.Run());
             }else 
             {
-                SetChildState(_factory.Idle());
+                SetChildState(_factory.StopOnGround());
             }
             _childState.EnterState();
         }

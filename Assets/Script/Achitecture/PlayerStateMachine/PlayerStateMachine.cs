@@ -123,7 +123,9 @@ namespace Achitecture
         public PlayerStateFactory StateFactory => _stateFactory;
 
         private PlayerBaseState _currentState;
+        private PlayerBaseState _lastState;
         public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
+        public PlayerBaseState LastState { get => _lastState; set { _lastState = value; } }
 
         #endregion
 
