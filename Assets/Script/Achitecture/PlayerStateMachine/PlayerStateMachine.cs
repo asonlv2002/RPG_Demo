@@ -18,6 +18,7 @@ namespace Achitecture
         [SerializeField] private CharacterController _chaController;
         [SerializeField] private float _forceMoverment;
         [SerializeField] Transform _groundPosition;
+        [SerializeField] PlayerPhysics _playerPhysics;
 
 
         private float _gravity = -9.8f;
@@ -35,14 +36,15 @@ namespace Achitecture
         public float InitialJumpVelocity { get => _initialJumpVelocity; set => _initialJumpVelocity = value; }
         public float HeightGroundBeginJump { get => _heightGroundBeginJump; set => _heightGroundBeginJump = value; }
         public Vector3 GroundPos => _groundPosition.position;
-        public float CharacterHeight => _chaController.height;
+        public float CharacterHeight => _playerPhysics.Body.height;
         public bool IsRunPressed => _isMovementPresesd;
         public bool IsJumpPressed => _isJumpPressed;
-        public bool IsGrounded => _chaController.isGrounded;
+        public bool IsGrounded => _playerPhysics.IsGrounded;
         public bool IsSpintPressed => _isSpintingPressed;
 
         public Animator AnimationControl => _animator;
         public AnimationHashContain AnimationHashs => _animationHashContain;
+        public PlayerPhysics PlayerPhysic => _playerPhysics;
         private void Awake()
         {
             _playerInput = new PlayerInput();
@@ -69,9 +71,15 @@ namespace Achitecture
         {
             _currentState.UpdateState();
             Debug.Log(_currentState.ToString());
-            _chaController.Move(_applyMovement*Time.deltaTime);
+            //_chaController.Move(_applyMovement*Time.deltaTime);
+            _playerPhysics.Physics.velocity = _applyMovement * Time.deltaTime;
 
         }
+
+        //private void FixedUpdate()
+        //{
+        //    _playerPhysics.Physics.velocity = _applyMovement * Time.deltaTime;
+        //}
 
 
 
