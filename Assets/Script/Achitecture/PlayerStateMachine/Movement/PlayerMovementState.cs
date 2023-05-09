@@ -29,7 +29,7 @@ namespace Achitecture
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            _context.PlayerPhysic.Physics.velocity =_context._applyMovement;
+            Movemen();
             Rotation();
         }
 
@@ -58,9 +58,9 @@ namespace Achitecture
         {
             Vector3 postionToLookAt;
 
-            postionToLookAt.x = _context._currentMovement.x;
+            postionToLookAt.x = _context._cameraRelativeMovement.normalized.x;
             postionToLookAt.y = 0f;
-            postionToLookAt.z = _context._currentMovement.z;
+            postionToLookAt.z = _context._cameraRelativeMovement.normalized.z;
 
             Quaternion currentRotation = _context.transform.rotation;
 
@@ -69,6 +69,12 @@ namespace Achitecture
                 Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
                 _context.transform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.deltaTime);
             }
+        }
+
+        private void Movemen()
+        {
+            _context._cameraRelativeMovement = _context.ConvertToCameraSpace(_context._applyMovement);
+            _context.PlayerPhysic.Physics.velocity = _context._cameraRelativeMovement;
         }
     }
 }

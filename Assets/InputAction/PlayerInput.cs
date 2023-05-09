@@ -46,7 +46,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""JumpRise"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""ee034fbc-6b09-4c48-838a-b951f5c32104"",
                     ""expectedControlType"": ""Button"",
@@ -129,7 +129,35 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JumpRise"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""CameraControl"",
+            ""id"": ""bf54fac5-f35c-4956-be9e-09036f433662"",
+            ""actions"": [
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""c650b566-5c51-4be0-b719-62693cf6861c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2997d03d-a248-4228-ba19-09ebc4b4ec81"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -142,7 +170,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControl = asset.FindActionMap("CharacterControl", throwIfNotFound: true);
         m_CharacterControl_Move = m_CharacterControl.FindAction("Move", throwIfNotFound: true);
         m_CharacterControl_Run = m_CharacterControl.FindAction("Run", throwIfNotFound: true);
-        m_CharacterControl_Jump = m_CharacterControl.FindAction("JumpRise", throwIfNotFound: true);
+        m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
+        // CameraControl
+        m_CameraControl = asset.FindActionMap("CameraControl", throwIfNotFound: true);
+        m_CameraControl_Look = m_CameraControl.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -247,10 +278,47 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public CharacterControlActions @CharacterControl => new CharacterControlActions(this);
+
+    // CameraControl
+    private readonly InputActionMap m_CameraControl;
+    private ICameraControlActions m_CameraControlActionsCallbackInterface;
+    private readonly InputAction m_CameraControl_Look;
+    public struct CameraControlActions
+    {
+        private @PlayerInput m_Wrapper;
+        public CameraControlActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Look => m_Wrapper.m_CameraControl_Look;
+        public InputActionMap Get() { return m_Wrapper.m_CameraControl; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraControlActions set) { return set.Get(); }
+        public void SetCallbacks(ICameraControlActions instance)
+        {
+            if (m_Wrapper.m_CameraControlActionsCallbackInterface != null)
+            {
+                @Look.started -= m_Wrapper.m_CameraControlActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_CameraControlActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_CameraControlActionsCallbackInterface.OnLook;
+            }
+            m_Wrapper.m_CameraControlActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+            }
+        }
+    }
+    public CameraControlActions @CameraControl => new CameraControlActions(this);
     public interface ICharacterControlActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface ICameraControlActions
+    {
+        void OnLook(InputAction.CallbackContext context);
     }
 }

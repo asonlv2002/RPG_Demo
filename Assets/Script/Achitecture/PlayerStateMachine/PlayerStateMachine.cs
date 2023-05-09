@@ -9,6 +9,7 @@ namespace Achitecture
         public Vector3 _currentMovement;
         public Vector3 _currentRunMovement;
         public Vector3 _applyMovement;
+        public Vector3 _cameraRelativeMovement;
         //[SerializeField] float _rotationFactorFerFrame = 20f;
         bool _isMovementPresesd;
         bool _isSpintingPressed = false;
@@ -82,8 +83,26 @@ namespace Achitecture
 
         }
 
+        public Vector3 ConvertToCameraSpace(Vector3 vectorToRotate)
+        {
+            Vector3 cameraForward = Camera.main.transform.forward;
+            Vector3 cameraRight = Camera.main.transform.right;
 
+            cameraForward.y = 0;
+            cameraRight.y = 0;
 
+            cameraForward.Normalize();
+            cameraRight.Normalize();
+
+            var cameraForwradZProduc = vectorToRotate.z * cameraForward;
+            var cameraRightXProduct = vectorToRotate.x * cameraRight;
+
+            Vector3 result = cameraForwradZProduc + cameraRightXProduct;
+
+            result.y = vectorToRotate.y;
+
+            return result;
+        }
 
         #region On Read Input
         private void OnHandleInputMovement(InputAction.CallbackContext context)
