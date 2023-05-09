@@ -19,7 +19,6 @@ namespace Achitecture
 
         public override void EnterState()
         {
-
             base.EnterState();
             GetPositionBeginJump();
             Jump();
@@ -36,9 +35,15 @@ namespace Achitecture
 
         private void Jump()
         {
+            _context.IsJumping = true;
             _context._currentMovement.y = _context.InitialJumpVelocity;
             _context._applyMovement.y = _context.InitialJumpVelocity;
+        }
 
+        public override void ExitState()
+        {
+            _context.IsJumping = false;
+            base.ExitState();
         }
 
         private void GravityEffect()

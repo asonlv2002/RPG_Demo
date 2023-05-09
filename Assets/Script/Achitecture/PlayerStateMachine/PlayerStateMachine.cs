@@ -12,6 +12,7 @@ namespace Achitecture
         //[SerializeField] float _rotationFactorFerFrame = 20f;
         bool _isMovementPresesd;
         bool _isSpintingPressed = false;
+        bool _isJumping = false;
 
         private AnimationHashContain _animationHashContain;
         [SerializeField] Animator _animator;
@@ -41,6 +42,8 @@ namespace Achitecture
         public bool IsJumpPressed => _isJumpPressed;
         public bool IsGrounded => _playerPhysics.IsGrounded;
         public bool IsSpintPressed => _isSpintingPressed;
+
+        public bool IsJumping { get => _isJumping; set => _isJumping = value; }
 
         public Animator AnimationControl => _animator;
         public AnimationHashContain AnimationHashs => _animationHashContain;

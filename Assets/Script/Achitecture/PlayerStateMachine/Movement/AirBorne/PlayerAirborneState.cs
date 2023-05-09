@@ -10,9 +10,8 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if(_context.IsGrounded)
+            if(_context.IsGrounded && !_context.IsJumping)
             {
-                UnityEngine.Debug.Log(_childState);
                 SwitchState(_factory.Grounded());
             }
         }
