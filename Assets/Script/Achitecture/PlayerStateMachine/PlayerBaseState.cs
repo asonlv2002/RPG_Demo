@@ -22,25 +22,32 @@ namespace Achitecture
 
         public virtual void ExitState()
         {
-            if(this is IRootState)
+            DisableAnimationState();
+            if (this is IRootState)
             {
                 _childState.ExitState();
                 _childState = null;
             }    
-            DisableAnimationState();
+
         }
 
         public virtual void UpdateState()
         {
             _parentState?.UpdateState();
         }
+        public virtual void FixedUpdateState()
+        {
+            _parentState?.FixedUpdateState();
+        }
         public abstract void CheckUpdateState();
 
-        protected virtual void SwitchState(PlayerBaseState newState)
+        protected virtual void SwitchState(PlayerBaseState nextState)
         {
+
+            _parentState._childState = nextState;
+            nextState._parentState = _parentState;
             ExitState();
-            newState.SetParenForChildState(_parentState);
-            newState.EnterState();
+            nextState.EnterState();
         }
 
         protected virtual void SetParenForChildState(PlayerBaseState parentState)

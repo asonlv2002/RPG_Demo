@@ -24,11 +24,15 @@ namespace Achitecture
 
         public override void UpdateState()
         {
-            GravityEffect();
             base.UpdateState();
             CheckUpdateState();
         }
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            GravityEffect();
 
+        }
         private void GravityEffect()
         {
             float oldYVelocity = _context._currentMovement.y;

@@ -2,9 +2,8 @@
 
 namespace Achitecture
 {
-    internal class PlayerGrundedState : PlayerBaseState
+    internal class PlayerGrundedState : PlayerBaseState,IRootState
     {
-        float _timeExitGrounded;
         public PlayerGrundedState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) 
             : base(playerStateMachine, playerStateFactory)
         {
@@ -23,15 +22,15 @@ namespace Achitecture
         {
             base.EnterState();
             Debug.Log("Grounded");
-            InitialaztionSubState();
+            InitializationSubState();
         }
         public override void UpdateState()
         {
-            GravityEffect();
+
             base.UpdateState();
             CheckUpdateState();
         }
-        public void InitialaztionSubState()
+        public void InitializationSubState()
         {
             if(_context.IsRunPressed)
             {
@@ -42,7 +41,11 @@ namespace Achitecture
             }
             _childState.EnterState();
         }
-
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            GravityEffect();
+        }
         private void GravityEffect()
         {
             _context._currentMovement.y = _context.GroundedGravity;

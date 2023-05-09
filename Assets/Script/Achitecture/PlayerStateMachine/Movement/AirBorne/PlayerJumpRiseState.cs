@@ -11,7 +11,7 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if(_context._applyMovement.y < 0 || !_context.IsJumpPressed)
+            if(_context._applyMovement.y < 0)
             {
                 SwitchState(_factory.JumpFall());
             }
@@ -19,10 +19,11 @@ namespace Achitecture
 
         public override void EnterState()
         {
+
             base.EnterState();
-            Debug.Log("JumpRise");
             GetPositionBeginJump();
             Jump();
+            Debug.Log("JumpRise");
         }
 
         public override void UpdateState()
@@ -35,8 +36,9 @@ namespace Achitecture
 
         private void Jump()
         {
-            _context._applyMovement.y = _context.InitialJumpVelocity;
             _context._currentMovement.y = _context.InitialJumpVelocity;
+            _context._applyMovement.y = _context.InitialJumpVelocity;
+
         }
 
         private void GravityEffect()

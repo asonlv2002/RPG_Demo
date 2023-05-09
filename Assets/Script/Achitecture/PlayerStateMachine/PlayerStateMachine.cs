@@ -70,16 +70,14 @@ namespace Achitecture
         private void Update()
         {
             _currentState.UpdateState();
-            Debug.Log(_currentState.ToString());
-            //_chaController.Move(_applyMovement*Time.deltaTime);
-            _playerPhysics.Physics.velocity = _applyMovement * Time.deltaTime;
 
         }
 
-        //private void FixedUpdate()
-        //{
-        //    _playerPhysics.Physics.velocity = _applyMovement * Time.deltaTime;
-        //}
+        private void FixedUpdate()
+        {
+            _currentState.FixedUpdateState();
+
+        }
 
 
 

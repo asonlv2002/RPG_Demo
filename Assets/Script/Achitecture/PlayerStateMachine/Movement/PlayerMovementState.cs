@@ -17,16 +17,23 @@ namespace Achitecture
         {
             SetJumpVariabes();
             UnityEngine.Debug.Log("Movement");
-            InitialaztionSubState();
+            InitializationSubState();
         }
 
         public override void UpdateState()
         {
-            Rotation();
+
             base.UpdateState();
         }
 
-        public void InitialaztionSubState()
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            _context.PlayerPhysic.Physics.velocity =_context._applyMovement;
+            Rotation();
+        }
+
+        public void InitializationSubState()
         {
             if(_context.IsGrounded)
             {

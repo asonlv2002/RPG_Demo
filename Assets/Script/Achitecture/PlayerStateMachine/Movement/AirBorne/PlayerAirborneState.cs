@@ -12,6 +12,7 @@ namespace Achitecture
         {
             if(_context.IsGrounded)
             {
+                UnityEngine.Debug.Log(_childState);
                 SwitchState(_factory.Grounded());
             }
         }
@@ -40,11 +41,6 @@ namespace Achitecture
             base.UpdateState();
             CheckUpdateState();
 
-        }
-
-        public void InitialaztionSubState()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

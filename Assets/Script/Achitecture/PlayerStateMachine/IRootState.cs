@@ -8,6 +8,6 @@ namespace Achitecture
 {
     internal interface IRootState
     {
-        void InitialaztionSubState();
+        void InitializationSubState();
     }
 }

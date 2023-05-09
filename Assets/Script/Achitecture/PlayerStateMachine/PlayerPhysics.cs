@@ -24,5 +24,20 @@ namespace Achitecture
         {
             _isGrounded = true;
         }
+        //void GroundCheck()
+        //{
+        //    RaycastHit hit;
+        //    float distance = 1f;
+        //    Vector3 dir = new Vector3(0, -1);
+
+        //    if (Physics.Raycast(transform.position, dir, out hit, distance))
+        //    {
+        //        isGrounded = true;
+        //    }
+        //    else
+        //    {
+        //        isGrounded = false;
+        //    }
+        //}
     }
 }

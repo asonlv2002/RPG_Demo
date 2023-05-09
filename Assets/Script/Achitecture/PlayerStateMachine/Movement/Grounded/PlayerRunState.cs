@@ -33,9 +33,14 @@ namespace Achitecture
 
         public override void UpdateState()
         {
-            Run();
+
             base.UpdateState();
             CheckUpdateState();
+        }
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            Run();
         }
 
         private void Run()

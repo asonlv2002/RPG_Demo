@@ -29,9 +29,14 @@ namespace Achitecture
 
         public override void UpdateState()
         {
-            Sprint();
+
             base.UpdateState();
             CheckUpdateState();
+        }
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            Sprint();
         }
 
         private void Sprint()

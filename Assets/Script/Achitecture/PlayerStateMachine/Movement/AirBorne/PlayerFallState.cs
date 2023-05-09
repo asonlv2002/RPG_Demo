@@ -21,8 +21,14 @@ namespace Achitecture
 
         public override void UpdateState()
         {
-            GravityEffect();
+
             base.UpdateState();
+        }
+
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            GravityEffect();
         }
 
         private void GravityEffect()
