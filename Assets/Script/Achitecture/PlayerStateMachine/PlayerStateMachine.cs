@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Extension;
 using UnityEngine.InputSystem;
 namespace Achitecture
 {
@@ -70,6 +71,10 @@ namespace Achitecture
             _currentState.EnterState();
         }
 
+        private void OnValidate()
+        {
+            CalculateCapsuleUtility.CalculateCapsuleColliderDimensions();
+        }
 
         private void Update()
         {
@@ -145,6 +150,8 @@ namespace Achitecture
         private PlayerBaseState _lastState;
         public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
         public PlayerBaseState LastState { get => _lastState; set { _lastState = value; } }
+
+        [field : SerializeField] public CalculateCapsuleUtility CalculateCapsuleUtility { get; private set; }
 
         #endregion
 

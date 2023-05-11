@@ -192,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21922852}
-  m_LocalRotation: {x: 0.34042525, y: -0, z: -0, w: 0.9402716}
+  m_LocalRotation: {x: 0.34042525, y: 0.00000002288009, z: -0.0000000082837355, w: 0.9402717}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -458,7 +458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307295146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.3900003, z: -3}
+  m_LocalPosition: {x: 0, y: 5, z: 6.7799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -553,7 +553,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442280838}
-  m_LocalRotation: {x: 0.34042525, y: -1e-45, z: -0, w: 0.9402716}
+  m_LocalRotation: {x: 0.34042525, y: -0.00000002288009, z: 0.0000000082837355, w: 0.9402717}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -778,8 +778,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.34042528, y: -0.000000056044563, z: 0.00000002029093, w: 0.9402716}
-  m_LocalPosition: {x: 0, y: 5.3900003, z: -3}
+  m_LocalRotation: {x: 0.34042534, y: -0.000000036176605, z: 0.000000013097739, w: 0.9402716}
+  m_LocalPosition: {x: 0, y: 5, z: 6.7799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1036,14 +1036,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150769437}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.31, y: 1, z: 1}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 3.04, z: 1.96}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1 &1425953646
 GameObject:
   m_ObjectHideFlags: 3
@@ -1171,6 +1171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &1465251528 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 7071238951922542015, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+  m_PrefabInstance: {fileID: 1808443594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1676071021
 GameObject:
   m_ObjectHideFlags: 3
@@ -1240,7 +1245,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676071021}
-  m_LocalRotation: {x: 0.2611698, y: -1.8996613e-15, z: -3.968324e-17, w: 0.9652929}
+  m_LocalRotation: {x: 0.2611698, y: 0.0000000113150165, z: -0.000000003061392, w: 0.9652929}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1256,6 +1261,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 867068425, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: calculateCapsuleUtility.<CapsuleColliderData>k__BackingField._collider
+      value: 
+      objectReference: {fileID: 1465251528}
+    - target: {fileID: 867068425, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: calculateCapsuleUtility.<DefaultColliderData>k__BackingField.<Height>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 867068425, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: calculateCapsuleUtility.<DefaultColliderData>k__BackingField.<Radius>k__BackingField
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 867068425, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: <CalculateCapsuleUtility>k__BackingField.<CapsuleColliderData>k__BackingField._collider
+      value: 
+      objectReference: {fileID: 1465251528}
+    - target: {fileID: 867068425, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: calculateCapsuleUtility.<SlopeData>k__BackingField.<StepHeightPercentage>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 867068425, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: <CalculateCapsuleUtility>k__BackingField.<SlopeData>k__BackingField.<StepHeightPercentage>k__BackingField
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071238951922542015, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: m_Height
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071238951922542015, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: m_Radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071238951922542015, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: m_Center.y
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7071238952219145836, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1266,11 +1307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7071238952219145836, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.89
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7071238952219145836, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 9.78
       objectReference: {fileID: 0}
     - target: {fileID: 7071238952219145836, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
       propertyPath: m_LocalRotation.w

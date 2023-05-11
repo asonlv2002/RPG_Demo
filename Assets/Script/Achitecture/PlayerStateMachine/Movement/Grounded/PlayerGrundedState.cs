@@ -4,6 +4,7 @@ namespace Achitecture
 {
     internal class PlayerGrundedState : PlayerBaseState,IRootState
     {
+        float liftFloat;
         public PlayerGrundedState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) 
             : base(playerStateMachine, playerStateFactory)
         {
@@ -44,13 +45,27 @@ namespace Achitecture
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
+            FloatCapsulaCollier();
             GravityEffect();
         }
         private void GravityEffect()
         {
-            _context._currentMovement.y = _context.GroundedGravity;
-            _context._applyMovement.y = _context.GroundedGravity;
+            _context._currentMovement.y = liftFloat;
+            _context._applyMovement.y = liftFloat;
         }
 
+        private void FloatCapsulaCollier()
+        {
+            Vector3 capsuleCenterWorldSpace = _context.CalculateCapsuleUtility.CapsuleColliderData.CenterCapsuleInWorldSpace;
+            Ray downwardRay = new Ray(capsuleCenterWorldSpace, Vector3.down);
+            float rayDistance = _context.CalculateCapsuleUtility.SlopeData.RayDistance;
+            float distaneToHitPoint;
+            if (Physics.Raycast(downwardRay, out RaycastHit hit, rayDistance,LayerMask.GetMask("Default"),QueryTriggerInteraction.Ignore))
+            {
+                float hitDistance = hit.distance;
+                distaneToHitPoint = _context.CalculateCapsuleUtility.CapsuleColliderData.CenterCapsuleInLocalSpace.y - hitDistance;
+                liftFloat = distaneToHitPoint*10f;
+            }
+        }
     }
 }
