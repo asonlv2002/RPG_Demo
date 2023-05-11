@@ -12,6 +12,8 @@ namespace Achitecture
         const string _isFall = "isFall";
         const string _isJumpRise = "isJumpRise";
         const string _isJumpFall = "isJumpFall";
+        const string _isStopOnGround = "isStopOnGround";
+        const string _isSprintToStop = "isSprintToStop";
 
         public int IsGroundHash { get; }
         public int IsIdleHash { get; }
@@ -22,6 +24,8 @@ namespace Achitecture
         public int IsJumpRiseHash { get; }
         public int IsJumpFallHash { get; }
         public int IsFallHash { get; }
+        public int IsStopOnGround { get; }
+        public int IsSprintToStop { get; }
 
         public AnimationHashContain()
         {
@@ -34,6 +38,9 @@ namespace Achitecture
             IsJumpRiseHash = Animator.StringToHash(_isJumpRise);
             IsJumpFallHash = Animator.StringToHash(_isJumpFall);
             IsFallHash = Animator.StringToHash(_isFall);
+
+            IsStopOnGround = Animator.StringToHash(_isStopOnGround);
+            IsSprintToStop = Animator.StringToHash(_isSprintToStop);
 
         }
     }

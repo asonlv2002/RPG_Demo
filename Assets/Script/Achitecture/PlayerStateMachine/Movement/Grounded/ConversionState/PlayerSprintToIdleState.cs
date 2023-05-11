@@ -6,14 +6,14 @@ namespace Achitecture
         public float TimeExitState { get; private set; }
         public PlayerSprintToIdleState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            TimeExitState = 0.25f;
+            _animtionHash = _context.AnimationHashs.IsSprintToStop;
         }
 
         public override void EnterState()
         {
             Debug.Log("SprintToIdle");
             base.EnterState();
-            TimeExitState = 0.25f;
+            TimeExitState = 0.6333333333333333f;
         }
 
 

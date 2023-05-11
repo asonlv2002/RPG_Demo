@@ -5,14 +5,16 @@
         private PlayerBaseState _lastState;
         public PlayerStopOnGroundState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
+            _animtionHash = _context.AnimationHashs.IsStopOnGround;
         }
 
         public override void EnterState()
         {
             _lastState = _context.CurrentState;
             base.EnterState();
-            InitializationSubState();
             UnityEngine.Debug.Log("StopOnGround");
+            InitializationSubState();
+
             StopOnGround();
         }
 
