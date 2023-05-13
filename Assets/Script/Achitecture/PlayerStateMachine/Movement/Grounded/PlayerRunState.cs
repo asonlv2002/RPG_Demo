@@ -15,11 +15,11 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if(_context.IsRunPressed && _context.IsSpintPressed)
+            if(_context.InputPress.IsRunPressed && _context.InputPress.IsSpintPressed)
             {
                 SwitchState(_factory.Spint());
             }
-            else if(!_context.IsRunPressed)
+            else if(!_context.InputPress.IsRunPressed)
             {
                 SwitchState(_factory.StopOnGround());
             }
@@ -45,8 +45,9 @@ namespace Achitecture
 
         private void Run()
         {
-            _context._applyMovement.x = _context._currentMovement.x;
-            _context._applyMovement.z = _context._currentMovement.z;
+            _context.PlayerPhysic.VelocityX = _context.InputPress.CurrentInputMovement.x * 2;
+            _context.PlayerPhysic.VelocityZ = _context.InputPress.CurrentInputMovement.z * 2;
+
         }
     }
 }

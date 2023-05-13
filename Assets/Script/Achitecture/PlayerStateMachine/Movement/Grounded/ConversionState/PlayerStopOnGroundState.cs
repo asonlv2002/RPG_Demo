@@ -20,7 +20,7 @@
 
         public override void CheckUpdateState()
         {
-            if (_context.IsRunPressed)
+            if (_context.InputPress.IsRunPressed)
             {
                 SwitchState(_factory.Run());
             }
@@ -47,8 +47,7 @@
 
         private void StopOnGround()
         {
-            _context._applyMovement.x = 0;
-            _context._applyMovement.z = 0;
+            _context.PlayerPhysic.Velocity = UnityEngine.Vector3.up * _context.PlayerPhysic.VelocityY;
         }
     }
 }

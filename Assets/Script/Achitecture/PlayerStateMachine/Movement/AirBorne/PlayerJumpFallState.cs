@@ -10,10 +10,10 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if(_context.GroundPos.y <= (_context.HeightGroundBeginJump - _context.CharacterHeight/2))
-            {
-                SwitchState(_factory.Fall());
-            }
+            //if(_context.GroundPos.y <= -5 /*(_context.HeightGroundBeginJump - _context.CharacterHeight/2)*/)
+            //{
+            //    SwitchState(_factory.Fall());
+            //}
         }
 
         public override void EnterState()
@@ -35,9 +35,9 @@ namespace Achitecture
         }
         private void GravityEffect()
         {
-            float oldYVelocity = _context._currentMovement.y;
-            _context._currentMovement.y = _context._currentMovement.y + _context.Gravity*2f * Time.deltaTime;
-            _context._applyMovement.y = (oldYVelocity + _context._currentMovement.y) * .5f;
+            float oldYVelocity = _context.PlayerPhysic.VelocityY;
+            float newYVelocity = _context.PlayerPhysic.VelocityY + _context.PlayerPhysic.Gravity * 2f * Time.fixedDeltaTime;
+            _context.PlayerPhysic.VelocityY = (oldYVelocity + newYVelocity) / 2f;
         }
     }
 }

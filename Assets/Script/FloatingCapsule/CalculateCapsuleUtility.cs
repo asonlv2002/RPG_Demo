@@ -14,7 +14,7 @@ namespace Extension
         {
             if (CapsuleColliderData.Collider == null) return;
             SetCapsuleColliderRadius(DefaultColliderData.Radius);
-            SetCaptureCollierHeight(DefaultColliderData.Height*(1- SlopeData.StepHeightPercentage));
+            SetCaptureCollierHeight(DefaultColliderData.Height*(1- SlopeData.StepHeight));
             ReclationCapsuleColliderCenter();
             float halfCapsule = CapsuleColliderData.Collider.height / 2f;
             if (halfCapsule < CapsuleColliderData.Collider.radius)

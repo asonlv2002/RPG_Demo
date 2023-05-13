@@ -4,7 +4,6 @@ namespace Achitecture
 {
     internal class PlayerGrundedState : PlayerBaseState,IRootState
     {
-        float liftFloat;
         public PlayerGrundedState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) 
             : base(playerStateMachine, playerStateFactory)
         {
@@ -13,7 +12,7 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if (_context.IsJumpPressed || !_context.IsGrounded)
+            if (_context.InputPress.IsJumpPressed || _context.Body.TrackingBodyOnGround.IsExitGrounded)
             {
                 SwitchState(_factory.Airborne());
             }
@@ -33,7 +32,7 @@ namespace Achitecture
         }
         public void InitializationSubState()
         {
-            if(_context.IsRunPressed)
+            if(_context.InputPress.IsRunPressed)
             {
                 SetChildState(_factory.Run());
             }else 
@@ -45,27 +44,46 @@ namespace Achitecture
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            FloatCapsulaCollier();
-            GravityEffect();
-        }
-        private void GravityEffect()
-        {
-            _context._currentMovement.y = liftFloat;
-            _context._applyMovement.y = liftFloat;
+            //Float();
+            //FloatBodyOnGround();
         }
 
-        private void FloatCapsulaCollier()
+        //private void FloatBodyOnGround()
+        //{
+        //    _context.PlayerPhysic.VelocityY = _context.Body.TrackingBodyOnGround.FLoatDirection * 10f - _context.PlayerPhysic.Physics.velocity.y ;
+        //    _context.PlayerPhysic.VelocityX *= _context.PlayerPhysic.GetSpeedOnGroundDenpeden(_context.Body.TrackingBodyOnGround.AngleBodyWitHitGround);
+        //    _context.PlayerPhysic.VelocityZ *= _context.PlayerPhysic.GetSpeedOnGroundDenpeden(_context.Body.TrackingBodyOnGround.AngleBodyWitHitGround);
+        //}
+
+        private void Float()
         {
-            Vector3 capsuleCenterWorldSpace = _context.CalculateCapsuleUtility.CapsuleColliderData.CenterCapsuleInWorldSpace;
-            Ray downwardRay = new Ray(capsuleCenterWorldSpace, Vector3.down);
-            float rayDistance = _context.CalculateCapsuleUtility.SlopeData.RayDistance;
-            float distaneToHitPoint;
-            if (Physics.Raycast(downwardRay, out RaycastHit hit, rayDistance,LayerMask.GetMask("Default"),QueryTriggerInteraction.Ignore))
+            Vector3 capsuleColliderCenterInWorldSpace = _context.Body.CapsuleCollider.bounds.center;// stateMachine.Player.ResizableCapsuleCollider.CapsuleColliderData.Collider.bounds.center;
+
+            Ray downwardsRayFromCapsuleCenter = new Ray(capsuleColliderCenterInWorldSpace, Vector3.down);
+
+            if (Physics.Raycast(downwardsRayFromCapsuleCenter, out RaycastHit hit, _context.Body.SlopeData.RayDistance, LayerMask.GetMask(LayerMask.LayerToName(6)), QueryTriggerInteraction.Ignore))
             {
-                float hitDistance = hit.distance;
-                distaneToHitPoint = _context.CalculateCapsuleUtility.CapsuleColliderData.CenterCapsuleInLocalSpace.y - hitDistance;
-                liftFloat = distaneToHitPoint*10f;
+                float groundAngle = Vector3.Angle(hit.normal, -downwardsRayFromCapsuleCenter.direction);
+
+                float slopeSpeedModifier = _context.PlayerPhysic.GetSpeedOnGroundDenpeden(groundAngle);
+
+                if (slopeSpeedModifier == 0f)
+                {
+                    return;
+                }
+
+                float distanceToFloatingPoint = _context.Body.CenterCapsuleInLocalSpace.y - hit.distance;
+
+                if (distanceToFloatingPoint == 0f)
+                {
+                    return;
+                }
+
+                float amountToLift = distanceToFloatingPoint * 10f - _context.PlayerPhysic.Physics.velocity.y;
+                _context.PlayerPhysic.VelocityY = amountToLift;
+                //Vector3 liftForce = new Vector3(0f, amountToLift, 0f);
             }
         }
+
     }
 }

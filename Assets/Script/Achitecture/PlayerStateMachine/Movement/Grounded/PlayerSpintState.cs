@@ -11,11 +11,11 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if(!_context.IsSpintPressed)
+            if(!_context.InputPress.IsSpintPressed)
             {
                 SwitchState(_factory.Run());
             }
-            else if(!_context.IsRunPressed)
+            else if(!_context.InputPress.IsRunPressed)
             {
                 SwitchState(_factory.StopOnGround());
             }
@@ -41,8 +41,8 @@ namespace Achitecture
 
         private void Sprint()
         {
-            _context._applyMovement.x = _context._currentRunMovement.x;
-            _context._applyMovement.z = _context._currentRunMovement.z;
+            _context.PlayerPhysic.VelocityX = _context.InputPress.CurrentInputMovement.x*4;
+            _context.PlayerPhysic.VelocityZ = _context.InputPress.CurrentInputMovement.z*4;
         }
     }
 }

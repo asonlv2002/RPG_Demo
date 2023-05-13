@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071238951922542014}
   - component: {fileID: 7071238951922542015}
+  - component: {fileID: 1808443596}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -73,10 +74,30 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 2
+  m_Radius: 0.2
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &1808443596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7071238951922542009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ee4a7b11019764aa7575894b1b3133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CapsuleCollider>k__BackingField: {fileID: 7071238951922542015}
+  <DefaultColliderData>k__BackingField:
+    <Height>k__BackingField: 2
+    <CenterY>k__BackingField: 1
+    <Radius>k__BackingField: 0.2
+  <SlopeData>k__BackingField:
+    <StepHeight>k__BackingField: 0.25
+    <RayDistance>k__BackingField: 3
 --- !u!1 &7071238952219145839
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,14 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedc85918459645469222f3962dc5568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentMovement: {x: 0, y: 0, z: 0}
-  _currentRunMovement: {x: 0, y: 0, z: 0}
-  _applyMovement: {x: 0, y: 0, z: 0}
+  _cameraRelativeMovement: {x: 0, y: 0, z: 0}
   _animator: {fileID: 3695348582894630594}
-  _chaController: {fileID: 0}
-  _forceMoverment: 20
-  _groundPosition: {fileID: 7071238951588474815}
-  _playerPhysics: {fileID: 867068426}
+  <PlayerPhysic>k__BackingField: {fileID: 867068426}
+  <Body>k__BackingField: {fileID: 1808443596}
 --- !u!114 &867068426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +180,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 7071238952219145827}
-  _colider: {fileID: 7071238951922542015}
+  _maxJumpHeight: 1
+  _maxTimeJump: 0.5
+  _speedTemplate:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.012892851
+      outSlope: -0.012892851
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 19.626282
+      value: 0.75985414
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 27.98872
+      value: 0.491324
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 36.972034
+      value: 0.25350115
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 45
+      value: 0
+      inSlope: Infinity
+      outSlope: Infinity
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 90
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &7071238953334852435
 PrefabInstance:
   m_ObjectHideFlags: 0

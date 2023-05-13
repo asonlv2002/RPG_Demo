@@ -11,16 +11,19 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if(_context._applyMovement.y < 0)
+            if(_context.PlayerPhysic.VelocityY <= 0/* && _context.Body.IsFall*/)
             {
-                SwitchState(_factory.JumpFall());
+                SwitchState(_factory.Fall());
             }
+            //if (_context.PlayerPhysic.VelocityY <= 0 && !_context.Body.IsFall)
+            //{
+            //    SwitchState(_factory.JumpFall());
+            //}
         }
 
         public override void EnterState()
         {
             base.EnterState();
-            GetPositionBeginJump();
             Jump();
             Debug.Log("JumpRise");
         }
@@ -35,27 +38,22 @@ namespace Achitecture
 
         private void Jump()
         {
-            _context.IsJumping = true;
-            _context._currentMovement.y = _context.InitialJumpVelocity;
-            _context._applyMovement.y = _context.InitialJumpVelocity;
+            //_context.Body.IsJumping = true;
+            _context.PlayerPhysic.VelocityY = _context.PlayerPhysic.InitialJumpVelocity;
+            _context.PlayerPhysic.VelocityY = _context.PlayerPhysic.InitialJumpVelocity;
         }
 
         public override void ExitState()
         {
-            _context.IsJumping = false;
+            //_context.Body.IsJumping = false;
             base.ExitState();
         }
 
         private void GravityEffect()
         {
-            float oldYVelocity = _context._currentMovement.y;
-            _context._currentMovement.y = _context._currentMovement.y + _context.Gravity * Time.deltaTime;
-            _context._applyMovement.y = (oldYVelocity + _context._currentMovement.y) * .5f;
-        }
-
-        private void GetPositionBeginJump()
-        {
-            _context.HeightGroundBeginJump = _context.GroundPos.y;
+            var oldYVelocity = _context.PlayerPhysic.VelocityY;
+            var newVelocityY = _context.PlayerPhysic.VelocityY + _context.PlayerPhysic.Gravity * Time.deltaTime;
+            _context.PlayerPhysic.VelocityY = (oldYVelocity + newVelocityY) * .5f;
         }
     }
 }

@@ -15,8 +15,8 @@ namespace Achitecture
 
         public override void EnterState()
         {
-            SetJumpVariabes();
             UnityEngine.Debug.Log("Movement");
+            base.EnterState();
             InitializationSubState();
         }
 
@@ -29,13 +29,13 @@ namespace Achitecture
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            Movemen();
+            Movement();
             Rotation();
         }
 
         public void InitializationSubState()
         {
-            if(_context.IsGrounded)
+            if(_context.Body.TrackingBodyOnGround.IsExitGrounded)
             {
                 SetChildState(_factory.Grounded());
             }else
@@ -43,15 +43,6 @@ namespace Achitecture
                 SetChildState(_factory.Airborne());
             }
             _childState.EnterState();
-        }
-
-        private void SetJumpVariabes()
-        {
-            float timeToApex = _context.MaxTimeJump / 2;
-
-            _context.Gravity = (-2 * _context.MaxJumpHeight) / Mathf.Pow(timeToApex, 2);
-
-            _context.InitialJumpVelocity = (2 * _context.MaxJumpHeight) / timeToApex;
         }
 
         private void Rotation()
@@ -64,17 +55,48 @@ namespace Achitecture
 
             Quaternion currentRotation = _context.transform.rotation;
 
-            if (_context.IsRunPressed)
+            if (_context.InputPress.IsRunPressed)
             {
                 Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
                 _context.transform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.deltaTime);
             }
         }
 
-        private void Movemen()
+        private void Movement()
         {
-            _context._cameraRelativeMovement = _context.ConvertToCameraSpace(_context._applyMovement);
+            Float();
+            _context._cameraRelativeMovement = _context.ConvertToCameraSpace(_context.PlayerPhysic.Velocity);
             _context.PlayerPhysic.Physics.velocity = _context._cameraRelativeMovement;
+        }
+
+        private void Float()
+        {
+            Vector3 capsuleColliderCenterInWorldSpace = _context.Body.CapsuleCollider.bounds.center;// stateMachine.Player.ResizableCapsuleCollider.CapsuleColliderData.Collider.bounds.center;
+
+            Ray downwardsRayFromCapsuleCenter = new Ray(capsuleColliderCenterInWorldSpace, Vector3.down);
+
+            if (Physics.Raycast(downwardsRayFromCapsuleCenter, out RaycastHit hit, _context.Body.SlopeData.RayDistance, LayerMask.GetMask(LayerMask.LayerToName(6)), QueryTriggerInteraction.Ignore))
+            {
+                float groundAngle = Vector3.Angle(hit.normal, -downwardsRayFromCapsuleCenter.direction);
+
+                float slopeSpeedModifier = _context.PlayerPhysic.GetSpeedOnGroundDenpeden(groundAngle);
+
+                if (slopeSpeedModifier == 0f)
+                {
+                    return;
+                }
+
+                float distanceToFloatingPoint = _context.Body.CenterCapsuleInLocalSpace.y - hit.distance;
+
+                if (distanceToFloatingPoint == 0f)
+                {
+                    return;
+                }
+
+                float amountToLift = distanceToFloatingPoint * 10f - _context.PlayerPhysic.Physics.velocity.y;
+                _context.PlayerPhysic.VelocityY = amountToLift;
+                //Vector3 liftForce = new Vector3(0f, amountToLift, 0f);
+            }
         }
     }
 }

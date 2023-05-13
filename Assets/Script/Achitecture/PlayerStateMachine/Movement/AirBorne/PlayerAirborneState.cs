@@ -10,7 +10,7 @@ namespace Achitecture
 
         public override void CheckUpdateState()
         {
-            if(_context.IsGrounded && !_context.IsJumping)
+            if(_context.Body.TrackingBodyOnGround.IsGrounded && _childState != _factory.JumpRise())
             {
                 SwitchState(_factory.Grounded());
             }
@@ -25,11 +25,11 @@ namespace Achitecture
 
         public void InitializationSubState()
         {
-            if(_context.IsJumpPressed)
+            if(_context.InputPress.IsJumpPressed)
             {
                 SetChildState(_factory.JumpRise());
             }
-            else if(!_context.IsGrounded)
+            else
             {
                 SetChildState(_factory.Fall());
             }

@@ -33,9 +33,9 @@ namespace Achitecture
 
         private void GravityEffect()
         {
-            float oldYVelocity = _context._currentMovement.y;
-            _context._currentMovement.y = _context._currentMovement.y + _context.Gravity * 2f * Time.deltaTime;
-            _context._applyMovement.y = (oldYVelocity + _context._currentMovement.y) * .5f;
+            float oldYVelocity = _context.PlayerPhysic.VelocityY;
+            float newYVelocity = _context.PlayerPhysic.VelocityY + _context.PlayerPhysic.Gravity * 2f * Time.fixedDeltaTime;
+            _context.PlayerPhysic.VelocityY = (oldYVelocity + newYVelocity) / 2f;
         }
     }
 }
