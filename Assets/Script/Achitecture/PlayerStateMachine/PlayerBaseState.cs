@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-namespace Achitecture
+namespace Achitecture.StateMachine
 {
     internal abstract class PlayerBaseState
     {

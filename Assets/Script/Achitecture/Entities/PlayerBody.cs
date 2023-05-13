@@ -7,7 +7,7 @@ namespace Achitecture
         [field: SerializeField] public CapsuleCollider CapsuleCollider { get; private set; }
         [field: SerializeField] public DefaultColliderData DefaultColliderData { get; private set; }
         [field: SerializeField] public SlopeData SlopeData { get; private set; }
-        [field: SerializeField] public StepBoxCast TrackingBodyOnGround { get; private set; }
+        [field: SerializeField] public FeetTrack FootTrack { get; private set; }
 
 
         public Vector3 CenterCapsuleInLocalSpace => CapsuleCollider.center;
@@ -19,7 +19,7 @@ namespace Achitecture
         }
         private void Update()
         {
-            TrackingBodyOnGround.OnRayCast(CenterCapsuleInWorldSpace+ Vector3.down, SlopeData.RayDistance);
+            FootTrack.OnRayCast(CenterCapsuleInWorldSpace, SlopeData.RayDistance);
         }
         private void FixedUpdate()
         {
@@ -36,6 +36,7 @@ namespace Achitecture
             {
                 SetCapsuleColliderRadius(halfCapsule);
             }
+            FootTrack.GetBodyCenter(CenterCapsuleInLocalSpace.y);
         }
 
         private void SetCaptureCollierHeight(float height)

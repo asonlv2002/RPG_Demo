@@ -1,5 +1,5 @@
 ﻿
-namespace Achitecture
+namespace Achitecture.StateMachine
 {
     internal interface IConversionState
     {

@@ -7,6 +7,7 @@ namespace Achitecture
         const string _isGround = "isGround";
         const string _isIdle = "isIdle";
         const string _isRun = "isRun";
+        const string _isMove = "isMove";
         const string _isSprint = "isSprint";
         const string _isAirborne = "isAirBorne";
         const string _isFall = "isFall";
@@ -17,6 +18,7 @@ namespace Achitecture
 
         public int IsGroundHash { get; }
         public int IsIdleHash { get; }
+        public int IsMoveHash { get; }
         public int IsRunHash { get; }
         public int IsSprintHash { get; }
 
@@ -31,6 +33,7 @@ namespace Achitecture
         {
             IsGroundHash = Animator.StringToHash(_isGround);
             IsIdleHash = Animator.StringToHash(_isIdle);
+            IsMoveHash = Animator.StringToHash(_isMove);
             IsRunHash = Animator.StringToHash(_isRun);
             IsSprintHash = Animator.StringToHash(_isSprint);
 
