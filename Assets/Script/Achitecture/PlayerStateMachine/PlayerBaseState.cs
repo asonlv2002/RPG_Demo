@@ -4,11 +4,11 @@ namespace Achitecture.StateMachine
 {
     internal abstract class PlayerBaseState
     {
-        protected PlayerStateMachine _context;
-        protected PlayerStateFactory _factory;
-        protected PlayerBaseState _childState;
-        protected PlayerBaseState _parentState;
-        protected int _animtionHash;
+        protected PlayerStateMachine stateControl;
+        protected PlayerStateFactory factoryState;
+        protected PlayerBaseState childState;
+        protected PlayerBaseState parentState;
+        protected int animtionHash;
 
         protected UnityAction OnEnter;
         protected UnityAction OnUpdate;
@@ -18,12 +18,12 @@ namespace Achitecture.StateMachine
         public PlayerBaseState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory)
         {
             InitilaztionAction();
-            _context = playerStateMachine;
-            _factory = playerStateFactory;
+            stateControl = playerStateMachine;
+            factoryState = playerStateFactory;
         }
         public virtual void EnterState()
         {
-            _context.CurrentState = this;
+            stateControl.CurrentState = this;
             OnEnter?.Invoke();
             EnableAnimationState();
         }
@@ -31,8 +31,8 @@ namespace Achitecture.StateMachine
         protected virtual void SwitchState(PlayerBaseState nextState)
         {
 
-            _parentState._childState = nextState;
-            nextState._parentState = _parentState;
+            parentState.childState = nextState;
+            nextState.parentState = parentState;
             ExitState();
             nextState.EnterState();
         }
@@ -40,12 +40,12 @@ namespace Achitecture.StateMachine
         public virtual void UpdateState()
         {
             OnUpdate?.Invoke();
-            _parentState?.UpdateState();
+            parentState?.UpdateState();
         }
         public virtual void FixedUpdateState()
         {
             OnFixedUpdate?.Invoke();
-            _parentState?.FixedUpdateState();
+            parentState?.FixedUpdateState();
         }
 
         public virtual void ExitState()
@@ -54,30 +54,30 @@ namespace Achitecture.StateMachine
             DisableAnimationState();
             if (this is IRootState)
             {
-                _childState.ExitState();
-                _childState = null;
+                childState.ExitState();
+                childState = null;
             }
 
         }
         public abstract void CheckUpdateState();
         protected virtual void SetParenForChildState(PlayerBaseState parentState)
         {
-            _parentState = parentState;
+            this.parentState = parentState;
         }
 
         protected virtual void SetChildState(PlayerBaseState childState)
         {
-            _childState = childState;
-            _childState.SetParenForChildState(this);
+            this.childState = childState;
+            this.childState.SetParenForChildState(this);
         }
 
         protected void EnableAnimationState()
         {
-            _context.AnimationControl.SetBool(_animtionHash, true);
+            stateControl.AnimationControl.SetBool(animtionHash, true);
         }
         protected void DisableAnimationState()
         {
-            _context.AnimationControl.SetBool(_animtionHash, false);
+            stateControl.AnimationControl.SetBool(animtionHash, false);
         }
         protected virtual void InitilaztionAction() { }
 

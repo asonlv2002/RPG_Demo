@@ -1,13 +1,14 @@
 using UnityEngine;
-using Extension;
-namespace Achitecture
+namespace BodyCollider
 {
-    internal class PlayerBody : MonoBehaviour
+    internal class PlayerBody : EntitiesContents.BranchContent
     {
         [field: SerializeField] public CapsuleCollider CapsuleCollider { get; private set; }
         [field: SerializeField] public DefaultColliderData DefaultColliderData { get; private set; }
         [field: SerializeField] public SlopeData SlopeData { get; private set; }
         [field: SerializeField] public FeetTrack FootTrack { get; private set; }
+
+        [field: SerializeField] public Transform PlayerTranform { get; private set; }
 
 
         public Vector3 CenterCapsuleInLocalSpace => CapsuleCollider.center;

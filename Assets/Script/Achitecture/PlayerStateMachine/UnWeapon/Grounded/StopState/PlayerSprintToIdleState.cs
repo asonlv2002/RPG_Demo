@@ -6,7 +6,7 @@ namespace Achitecture.StateMachine
         public float TimeExitState { get; private set; }
         public PlayerSprintToIdleState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsSprintToStop;
+            animtionHash = stateControl.AnimationHashs.IsSprintToStop;
         }
 
         public override void EnterState()
@@ -21,7 +21,7 @@ namespace Achitecture.StateMachine
         {
             if(TimeExitState <= 0)
             {
-                SwitchState(_factory.Idle());
+                SwitchState(factoryState.Idle());
             }
         }
 

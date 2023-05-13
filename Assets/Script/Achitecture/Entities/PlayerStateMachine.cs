@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using Extension;
-using UnityEngine.InputSystem;
-namespace Achitecture
+using EntitiesContents;
+namespace Achitecture.StateMachine
 {
-    internal class PlayerStateMachine : MonoBehaviour
+    internal class PlayerStateMachine : BranchContent
     {
         public Vector3 _cameraRelativeMovement;
 
@@ -77,10 +76,6 @@ namespace Achitecture
         private PlayerBaseState _lastState;
         public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
         public PlayerBaseState LastState { get => _lastState; set { _lastState = value; } }
-        [field : SerializeField] public PlayerPhysics PlayerPhysic { get; private set; }
-
-        [field : SerializeField] public PlayerBody Body { get; private set; }
-
         [field : SerializeField] public InputPressed InputPress { get; private set; }
         #endregion
 

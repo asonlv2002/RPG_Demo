@@ -5,14 +5,14 @@ namespace Achitecture.StateMachine
     {
         public PlayerJumpFallState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsJumpFallHash;
+            animtionHash = stateControl.AnimationHashs.IsJumpFallHash;
         }
 
         public override void CheckUpdateState()
         {
-            //if(_context.GroundPos.y <= -5 /*(_context.HeightGroundBeginJump - _context.CharacterHeight/2)*/)
+            //if(stateControl.GroundPos.y <= -5 /*(stateControl.HeightGroundBeginJump - stateControl.CharacterHeight/2)*/)
             //{
-            //    SwitchState(_factory.Fall());
+            //    SwitchState(factoryState.Fall());
             //}
         }
 
@@ -35,9 +35,10 @@ namespace Achitecture.StateMachine
         }
         private void GravityEffect()
         {
-            float oldYVelocity = _context.PlayerPhysic.VelocityY;
-            float newYVelocity = _context.PlayerPhysic.VelocityY + _context.PlayerPhysic.Gravity * 2f * Time.fixedDeltaTime;
-            _context.PlayerPhysic.VelocityY = (oldYVelocity + newYVelocity) / 2f;
+            float gravity = stateControl.MainContent.Physiscal.PhysiscVariable.Gravity;
+            float oldYVelocity = stateControl.MainContent.Physiscal.Y_VelocityApplie;
+            float newYVelocity = stateControl.MainContent.Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
+            stateControl.MainContent.Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
         }
     }
 }

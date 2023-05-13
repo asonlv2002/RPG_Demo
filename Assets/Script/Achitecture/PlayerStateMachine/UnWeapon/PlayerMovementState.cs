@@ -34,17 +34,17 @@ namespace Achitecture.StateMachine
 
         public void InitializationSubState()
         {
-            if (_context.Body.FootTrack.IsTerrestrial)
+            if (stateControl.MainContent.Body.FootTrack.IsTerrestrial)
             {
-                SetChildState(_factory.Grounded());
+                SetChildState(factoryState.Grounded());
             }
             else
             {
-                SetChildState(_factory.Airborne());
+                SetChildState(factoryState.Airborne());
             }
-            _childState.EnterState();
-            //SetChildState(_factory.Grounded());
-            //_childState.EnterState();
+            childState.EnterState();
+            //SetChildState(factoryState.Grounded());
+            //childState.EnterState();
         }
 
 
@@ -52,7 +52,7 @@ namespace Achitecture.StateMachine
         private void Movement()
         {
             
-            _context.PlayerPhysic.MovementForceApplie();
+            stateControl.MainContent.Physiscal.MovementForceApplie();
         }
     }
 }

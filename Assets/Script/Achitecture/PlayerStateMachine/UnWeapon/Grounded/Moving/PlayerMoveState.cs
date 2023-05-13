@@ -6,14 +6,14 @@ namespace Achitecture.StateMachine
     {
         public PlayerMoveState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsMoveHash;
+            animtionHash = stateControl.AnimationHashs.IsMoveHash;
         }
 
         public override void CheckUpdateState()
         {
-            if(!_context.InputPress.IsRunPressed)
+            if(!stateControl.InputPress.IsRunPressed)
             {
-                SwitchState(_factory.StopOnGround());
+                SwitchState(factoryState.StopOnGround());
             }
         }
         public override void EnterState()
@@ -32,15 +32,15 @@ namespace Achitecture.StateMachine
 
         public void InitializationSubState()
         {
-            if(_context.InputPress.IsRunPressed)
+            if(stateControl.InputPress.IsRunPressed)
             {
-                SetChildState(_factory.Run());
+                SetChildState(factoryState.Run());
             }
-            if(_context.InputPress.IsSpintPressed)
+            if(stateControl.InputPress.IsSpintPressed)
             {
-                SetChildState(_factory.Sprint());
+                SetChildState(factoryState.Sprint());
             }
-            _childState.EnterState();
+            childState.EnterState();
         }
 
         public override void FixedUpdateState()
@@ -48,35 +48,30 @@ namespace Achitecture.StateMachine
             base.FixedUpdateState();
             ConvertDirection();
             Rotation();
-            //Move();
+            stateControl.MainContent.Physiscal.VelocityApplie *= stateControl.MainContent.Physiscal.GetSpeedOnGroundDenpeden(stateControl.MainContent.Body.FootTrack.AngleFeetGround);
         }
 
         private void Rotation()
         {
             Vector3 postionToLookAt;
 
-            postionToLookAt.x = _context._cameraRelativeMovement.normalized.x;
+            postionToLookAt.x = stateControl._cameraRelativeMovement.normalized.x;
             postionToLookAt.y = 0f;
-            postionToLookAt.z = _context._cameraRelativeMovement.normalized.z;
+            postionToLookAt.z = stateControl._cameraRelativeMovement.normalized.z;
 
-            Quaternion currentRotation = _context.transform.rotation;
+            Quaternion currentRotation = stateControl.MainContent.Body.PlayerTranform.rotation;
 
-            if (_context.InputPress.IsRunPressed)
+            if (stateControl.InputPress.IsRunPressed)
             {
                 Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
-                _context.transform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
+                stateControl.MainContent.Body.PlayerTranform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
             }
         }
 
         private void ConvertDirection()
         {
-            _context._cameraRelativeMovement = _context.ConvertToCameraSpace(_context.InputPress.CurrentInputMovement);
+            stateControl._cameraRelativeMovement = stateControl.ConvertToCameraSpace(stateControl.InputPress.CurrentInputMovement);
+            
         }
-
-        //void Move()
-        //{
-        //    _context.PlayerPhysic.VelocityX = _context._cameraRelativeMovement.normalized.x * 4;
-        //    _context.PlayerPhysic.VelocityZ = _context._cameraRelativeMovement.normalized.z * 4;
-        //}
     }
 }

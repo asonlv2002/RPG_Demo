@@ -5,12 +5,12 @@
         private PlayerBaseState _lastState;
         public PlayerStopOnGroundState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsStopOnGround;
+            animtionHash = stateControl.AnimationHashs.IsStopOnGround;
         }
 
         public override void EnterState()
         {
-            _lastState = _context.CurrentState;
+            _lastState = stateControl.CurrentState;
             base.EnterState();
             UnityEngine.Debug.Log("StopOnGround");
             InitializationSubState();
@@ -20,9 +20,9 @@
 
         public override void CheckUpdateState()
         {
-            if (_context.InputPress.IsRunPressed)
+            if (stateControl.InputPress.IsRunPressed)
             {
-                SwitchState(_factory.Move());
+                SwitchState(factoryState.Move());
             }
         }
         public override void UpdateState()
@@ -33,21 +33,21 @@
 
         public void InitializationSubState()
         {
-            if(_lastState == _factory.Sprint())
+            if(_lastState == factoryState.Sprint())
             {
-                SetChildState(_factory.SprintToIdle());
+                SetChildState(factoryState.SprintToIdle());
             }
             else
             {
-                SetChildState(_factory.Idle());
+                SetChildState(factoryState.Idle());
             }
-            _context.LastState = null;
-            _childState.EnterState();
+            stateControl.LastState = null;
+            childState.EnterState();
         }
 
         private void StopOnGround()
         {
-            _context.PlayerPhysic.VelocityApplie = UnityEngine.Vector3.up * _context.PlayerPhysic.VelocityY;
+            stateControl.MainContent.Physiscal.VelocityApplie = UnityEngine.Vector3.up * stateControl.MainContent.Physiscal.Y_VelocityApplie;
         }
     }
 }

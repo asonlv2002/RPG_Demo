@@ -5,7 +5,7 @@ namespace Achitecture.StateMachine
     {
         public PlayerFallState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsFallHash;
+            animtionHash = stateControl.AnimationHashs.IsFallHash;
         }
 
         public override void CheckUpdateState()
@@ -33,9 +33,10 @@ namespace Achitecture.StateMachine
 
         private void GravityEffect()
         {
-            float oldYVelocity = _context.PlayerPhysic.VelocityY;
-            float newYVelocity = _context.PlayerPhysic.VelocityY + _context.PlayerPhysic.Gravity * 2f * Time.fixedDeltaTime;
-            _context.PlayerPhysic.VelocityY = (oldYVelocity + newYVelocity) / 2f;
+            float gravity = stateControl.MainContent.Physiscal.PhysiscVariable.Gravity;
+            float oldYVelocity = stateControl.MainContent.Physiscal.Y_VelocityApplie;
+            float newYVelocity = stateControl.MainContent.Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
+            stateControl.MainContent.Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
         }
     }
 }

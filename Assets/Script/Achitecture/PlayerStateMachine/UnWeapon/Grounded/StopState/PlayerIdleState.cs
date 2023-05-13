@@ -4,7 +4,7 @@
     {
         public PlayerIdleState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsIdleHash;
+            animtionHash = stateControl.AnimationHashs.IsIdleHash;
         }
 
         public override void CheckUpdateState()

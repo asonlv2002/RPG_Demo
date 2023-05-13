@@ -7,14 +7,14 @@ namespace Achitecture.StateMachine
         public PlayerGrundedState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) 
             : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsGroundHash;
+            animtionHash = stateControl.AnimationHashs.IsGroundHash;
         }
 
         public override void CheckUpdateState()
         {
-            if (_context.InputPress.IsJumpPressed && _context.Body.FootTrack.IsOnGround || !_context.Body.FootTrack.IsTerrestrial)
+            if (stateControl.InputPress.IsJumpPressed && stateControl.MainContent.Body.FootTrack.IsOnGround || !stateControl.MainContent.Body.FootTrack.IsTerrestrial)
             {
-                SwitchState(_factory.Airborne());
+                SwitchState(factoryState.Airborne());
             }
         }
 
@@ -32,14 +32,14 @@ namespace Achitecture.StateMachine
         }
         public void InitializationSubState()
         {
-            if(_context.InputPress.IsRunPressed)
+            if(stateControl.InputPress.IsRunPressed)
             {
-                SetChildState(_factory.Move());
+                SetChildState(factoryState.Move());
             }else 
             {
-                SetChildState(_factory.StopOnGround());
+                SetChildState(factoryState.StopOnGround());
             }
-            _childState.EnterState();
+            childState.EnterState();
         }
         public override void FixedUpdateState()
         {
@@ -49,8 +49,8 @@ namespace Achitecture.StateMachine
 
         private void FloatBodyOnGround()
         {
-
-            _context.PlayerPhysic.VelocityY = _context.Body.FootTrack.FLoatDirection* 5f;
+            var constFeet = stateControl.MainContent.Physiscal.PhysiscVariable.ConstFeet;
+            stateControl.MainContent.Physiscal.Y_VelocityApplie = stateControl.MainContent.Body.FootTrack.FLoatDirection* constFeet;
         }
     }
 }

@@ -5,14 +5,14 @@ namespace Achitecture.StateMachine
     {
         public PlayerAirborneState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsAirborneHash;
+            animtionHash = stateControl.AnimationHashs.IsAirborneHash;
         }
 
         public override void CheckUpdateState()
         {
-            if(_context.Body.FootTrack.IsOnGround && _childState != _factory.JumpRise())
+            if(stateControl.MainContent.Body.FootTrack.IsOnGround && childState != factoryState.JumpRise())
             {
-                SwitchState(_factory.Grounded());
+                SwitchState(factoryState.Grounded());
             }
         }
 
@@ -25,15 +25,15 @@ namespace Achitecture.StateMachine
 
         public void InitializationSubState()
         {
-            if(_context.InputPress.IsJumpPressed)
+            if(stateControl.InputPress.IsJumpPressed)
             {
-                SetChildState(_factory.JumpRise());
+                SetChildState(factoryState.JumpRise());
             }
             else
             {
-                SetChildState(_factory.Fall());
+                SetChildState(factoryState.Fall());
             }
-            _childState.EnterState();
+            childState.EnterState();
         }
         public override void UpdateState()
         {

@@ -6,18 +6,18 @@ namespace Achitecture.StateMachine
     {
         public PlayerSpintState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            _animtionHash = _context.AnimationHashs.IsSprintHash;
+            animtionHash = stateControl.AnimationHashs.IsSprintHash;
         }
 
         public override void CheckUpdateState()
         {
-            if(!_context.InputPress.IsSpintPressed)
+            if(!stateControl.InputPress.IsSpintPressed)
             {
-                SwitchState(_factory.Run());
+                SwitchState(factoryState.Run());
             }
-            else if(!_context.InputPress.IsRunPressed)
+            else if(!stateControl.InputPress.IsRunPressed)
             {
-                SwitchState(_factory.StopOnGround());
+                SwitchState(factoryState.StopOnGround());
             }
         }
 
@@ -41,8 +41,9 @@ namespace Achitecture.StateMachine
 
         private void Sprint()
         {
-            _context.PlayerPhysic.VelocityX = _context._cameraRelativeMovement.normalized.x * 4;
-            _context.PlayerPhysic.VelocityZ = _context._cameraRelativeMovement.normalized.z * 4;
+            float sprintSpeed = stateControl.MainContent.Physiscal.PhysiscVariable.SprintSpeed;
+            stateControl.MainContent.Physiscal.X_VelocityApplie = stateControl._cameraRelativeMovement.normalized.x * sprintSpeed;
+            stateControl.MainContent.Physiscal.Z_VelocityApplie = stateControl._cameraRelativeMovement.normalized.z * sprintSpeed;
         }
     }
 }
