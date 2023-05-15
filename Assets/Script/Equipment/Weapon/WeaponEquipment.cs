@@ -15,15 +15,6 @@ namespace Equipments.Weapon
         {
             curentWeaponEquipment = weapon as WeaponInWorldSpace;
             var postionEquipment = curentWeaponEquipment.PositionEquipment;
-            if (postionEquipment is HandRightEquipment)
-            {
-                postionEquipment.SetPositionEquipment(HandRight);
-            }
-            else
-            {
-                postionEquipment.SetPositionEquipment(HandLeft);
-            }
-
             switch (postionEquipment)
             {
                 case HandRightEquipment:
@@ -31,6 +22,12 @@ namespace Equipments.Weapon
                     break;
 
             }
+        }
+
+        public void UnequipWeapon()
+        {
+            var postionEquipment = curentWeaponEquipment.PositionEquipment;
+            postionEquipment.SetPositionEquipment(null);
         }
     }
 }
