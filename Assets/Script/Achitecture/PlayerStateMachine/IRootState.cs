@@ -1,5 +1,5 @@
 ﻿
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal interface IRootState
     {

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Achitecture
+namespace AnimationAction
 {
-    internal class AnimationHashContain
+    internal class AnimationIntHashs
     {
         const string _isGround = "isGround";
         const string _isIdle = "isIdle";
@@ -29,7 +29,7 @@ namespace Achitecture
         public int IsStopOnGround { get; }
         public int IsSprintToStop { get; }
 
-        public AnimationHashContain()
+        public AnimationIntHashs()
         {
             IsGroundHash = Animator.StringToHash(_isGround);
             IsIdleHash = Animator.StringToHash(_isIdle);

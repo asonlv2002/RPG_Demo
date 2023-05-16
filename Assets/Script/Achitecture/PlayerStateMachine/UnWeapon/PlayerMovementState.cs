@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerMovementState : PlayerBaseState, IRootState
     {
@@ -43,15 +43,10 @@ namespace Achitecture.StateMachine
                 SetChildState(factoryState.Airborne());
             }
             childState.EnterState();
-            //SetChildState(factoryState.Grounded());
-            //childState.EnterState();
         }
-
-
 
         private void Movement()
         {
-            
             stateControl.MainContent.Physiscal.MovementForceApplie();
         }
     }

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-namespace EntitiesContents
+namespace Entities
 {
     internal class BranchContent : MonoBehaviour
     {
-        [field: SerializeField] public PlayerMainContent MainContent { get; private set; }
+        [field: SerializeField] public PlayerRootContent MainContent { get; private set; }
 
-        public void InitMainContent(PlayerMainContent mainContent)
+        public virtual void InitMainContent(PlayerRootContent mainContent)
         {
             MainContent = mainContent;
         }

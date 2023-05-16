@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal abstract class PlayerBaseState
     {
@@ -73,11 +73,11 @@ namespace Achitecture.StateMachine
 
         protected void EnableAnimationState()
         {
-            stateControl.AnimationControl.SetBool(animtionHash, true);
+            stateControl.MainContent.Animator.Animator.SetBool(animtionHash, true);
         }
         protected void DisableAnimationState()
         {
-            stateControl.AnimationControl.SetBool(animtionHash, false);
+            stateControl.MainContent.Animator.Animator.SetBool(animtionHash, false);
         }
         protected virtual void InitilaztionAction() { }
 

@@ -2,7 +2,7 @@
 using Equipments.Weapon;
 namespace Equipments
 {
-    internal class PlayerEquipment : EntitiesContents.BranchContent
+    internal class PlayerEquipment : Entities.BranchContent
     {
         [field : SerializeField] public WeaponEquipment WeaponEquipment { get; private set; }
 

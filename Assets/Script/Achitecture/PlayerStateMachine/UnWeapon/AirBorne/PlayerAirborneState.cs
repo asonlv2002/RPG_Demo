@@ -1,11 +1,11 @@
 ﻿
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerAirborneState : PlayerBaseState, IRootState
     {
         public PlayerAirborneState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            animtionHash = stateControl.AnimationHashs.IsAirborneHash;
+            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsAirborneHash;
         }
 
         public override void CheckUpdateState()
@@ -25,7 +25,7 @@ namespace Achitecture.StateMachine
 
         public void InitializationSubState()
         {
-            if(stateControl.InputPress.IsJumpPressed)
+            if(stateControl.MainContent.InputAction.InputPress.IsJumpPressed)
             {
                 SetChildState(factoryState.JumpRise());
             }

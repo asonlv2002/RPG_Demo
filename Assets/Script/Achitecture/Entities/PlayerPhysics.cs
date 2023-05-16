@@ -2,7 +2,7 @@
 namespace Physical
 {
 
-    internal class PlayerPhysics : EntitiesContents.BranchContent
+    internal class PlayerPhysics : Entities.BranchContent
     {
         [field: SerializeField] public Rigidbody PhysiscHandler { get; private set; }
         [field: SerializeField] public PhysiscVariable PhysiscVariable { get; private set; }

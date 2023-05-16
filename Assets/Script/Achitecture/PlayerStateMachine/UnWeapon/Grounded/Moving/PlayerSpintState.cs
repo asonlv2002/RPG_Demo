@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerSpintState : PlayerBaseState
     {
         public PlayerSpintState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            animtionHash = stateControl.AnimationHashs.IsSprintHash;
+            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsSprintHash;
         }
 
         public override void CheckUpdateState()
         {
-            if(!stateControl.InputPress.IsSpintPressed)
+            if(!stateControl.MainContent.InputAction.InputPress.IsSpintPressed)
             {
                 SwitchState(factoryState.Run());
             }
-            else if(!stateControl.InputPress.IsRunPressed)
+            else if(!stateControl.MainContent.InputAction.InputPress.IsRunPressed)
             {
                 SwitchState(factoryState.StopOnGround());
             }
@@ -42,8 +42,8 @@ namespace Achitecture.StateMachine
         private void Sprint()
         {
             float sprintSpeed = stateControl.MainContent.Physiscal.PhysiscVariable.SprintSpeed;
-            stateControl.MainContent.Physiscal.X_VelocityApplie = stateControl._cameraRelativeMovement.normalized.x * sprintSpeed;
-            stateControl.MainContent.Physiscal.Z_VelocityApplie = stateControl._cameraRelativeMovement.normalized.z * sprintSpeed;
+            stateControl.MainContent.Physiscal.X_VelocityApplie = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.x * sprintSpeed;
+            stateControl.MainContent.Physiscal.Z_VelocityApplie = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.z * sprintSpeed  ;
         }
     }
 }

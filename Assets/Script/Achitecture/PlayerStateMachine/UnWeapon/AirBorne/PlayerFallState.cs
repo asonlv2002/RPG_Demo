@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerFallState : PlayerBaseState
     {
         public PlayerFallState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            animtionHash = stateControl.AnimationHashs.IsFallHash;
+            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsFallHash;
         }
 
         public override void CheckUpdateState()

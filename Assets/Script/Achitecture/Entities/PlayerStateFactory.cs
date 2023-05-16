@@ -1,7 +1,6 @@
 ﻿
 using System.Collections.Generic;
-using EntitiesContents; 
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerStateFactory
     {

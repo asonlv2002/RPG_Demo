@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerGrundedState : PlayerBaseState,IRootState
     {
         public PlayerGrundedState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) 
             : base(playerStateMachine, playerStateFactory)
         {
-            animtionHash = stateControl.AnimationHashs.IsGroundHash;
+            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsGroundHash;
         }
 
         public override void CheckUpdateState()
         {
-            if (stateControl.InputPress.IsJumpPressed && stateControl.MainContent.Body.FootTrack.IsOnGround || !stateControl.MainContent.Body.FootTrack.IsTerrestrial)
+            if (stateControl.MainContent.InputAction.InputPress.IsJumpPressed && stateControl.MainContent.Body.FootTrack.IsOnGround || !stateControl.MainContent.Body.FootTrack.IsTerrestrial)
             {
                 SwitchState(factoryState.Airborne());
             }
@@ -32,7 +32,7 @@ namespace Achitecture.StateMachine
         }
         public void InitializationSubState()
         {
-            if(stateControl.InputPress.IsRunPressed)
+            if(stateControl.MainContent.InputAction.InputPress.IsRunPressed)
             {
                 SetChildState(factoryState.Move());
             }else 

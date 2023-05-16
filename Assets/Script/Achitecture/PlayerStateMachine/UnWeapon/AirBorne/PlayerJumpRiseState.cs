@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerJumpRiseState : PlayerBaseState
     {
         public PlayerJumpRiseState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            animtionHash = stateControl.AnimationHashs.IsJumpRiseHash;
+            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsJumpRiseHash;
         }
 
         public override void CheckUpdateState()

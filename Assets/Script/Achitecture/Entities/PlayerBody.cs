@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace BodyCollider
 {
-    internal class PlayerBody : EntitiesContents.BranchContent
+    internal class PlayerBody : Entities.BranchContent
     {
         [field: SerializeField] public CapsuleCollider CapsuleCollider { get; private set; }
         [field: SerializeField] public DefaultColliderData DefaultColliderData { get; private set; }

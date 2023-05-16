@@ -1,11 +1,11 @@
-﻿namespace Achitecture.StateMachine
+﻿namespace StateMachine
 {
     internal class PlayerStopOnGroundState : PlayerBaseState, IRootState
     {
         private PlayerBaseState _lastState;
         public PlayerStopOnGroundState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            animtionHash = stateControl.AnimationHashs.IsStopOnGround;
+            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsStopOnGround;
         }
 
         public override void EnterState()
@@ -20,7 +20,7 @@
 
         public override void CheckUpdateState()
         {
-            if (stateControl.InputPress.IsRunPressed)
+            if (stateControl.MainContent.InputAction.InputPress.IsRunPressed)
             {
                 SwitchState(factoryState.Move());
             }

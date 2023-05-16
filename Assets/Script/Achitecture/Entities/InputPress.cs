@@ -1,10 +1,10 @@
 ﻿
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace Achitecture
+namespace Input
 {
     [System.Serializable]
-    internal class InputPressed
+    internal class InputPress
     {
         private PlayerInput _playerInput;
         private bool _isMovementPresesd;
@@ -16,7 +16,7 @@ namespace Achitecture
         public bool IsJumpPressed => _isJumpPressed;
         public bool IsSpintPressed => _isSpintingPressed;
         public Vector3 CurrentInputMovement => _currentInputMovement;
-        public InputPressed(PlayerInput playerInput)
+        public InputPress(PlayerInput playerInput)
         {
             _playerInput = playerInput;
             _playerInput.CharacterControl.Move.started += OnHandleInputMovement;

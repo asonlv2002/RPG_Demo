@@ -1,12 +1,12 @@
 using UnityEngine;
-namespace Achitecture.StateMachine
+namespace StateMachine
 {
     internal class PlayerSprintToIdleState : PlayerBaseState, IConversionState
     {
         public float TimeExitState { get; private set; }
         public PlayerSprintToIdleState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
         {
-            animtionHash = stateControl.AnimationHashs.IsSprintToStop;
+            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsSprintToStop;
         }
 
         public override void EnterState()
