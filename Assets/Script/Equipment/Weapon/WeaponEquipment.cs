@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Equipments.PositionEquipments;
-
-namespace Equipments.Weapon
+using Item.InWorldSpace;
+using Item.ItemGameData;
+namespace Item.InEquipment
 {
     [System.Serializable]
     internal class WeaponEquipment
@@ -9,25 +9,25 @@ namespace Equipments.Weapon
         [field: SerializeField] public Transform HandLeft { get; private set; }
         [field: SerializeField] public Transform HandRight { get; private set; }
 
+
+        WeaponBeHaviourFactory _weaponBehaviourFActory;
+        WeaponBehaviour _curentWeaponBehaviour;
         WeaponInWorldSpace curentWeaponEquipment;
 
-        public void EquipWeapon(EquipmentWorldSpace weapon)
+        public WeaponEquipment()
         {
-            curentWeaponEquipment = weapon as WeaponInWorldSpace;
-            var postionEquipment = curentWeaponEquipment.PositionEquipment;
-            switch (postionEquipment)
-            {
-                case HandRightEquipment:
-                    postionEquipment.SetPositionEquipment(HandRight);
-                    break;
-
-            }
+            _weaponBehaviourFActory = new WeaponBeHaviourFactory();
         }
 
-        public void UnequipWeapon()
+        public void EquipWeaponInWorldSpace(ItemAdapter.IItemAdapter  adapter)
         {
-            var postionEquipment = curentWeaponEquipment.PositionEquipment;
-            postionEquipment.SetPositionEquipment(null);
+            var weapon = adapter.TakeItemInformationID<WeaponData>();
+
+            Debug.Log(weapon.Information.IDItem);
+            GameObject weaponObject = MonoBehaviour.Instantiate(weapon.Model.Prefab, HandRight);
+
+            Transform weaponTrasform = weaponObject.transform;
+            weaponTrasform.localPosition = Vector3.zero;
         }
     }
 }
