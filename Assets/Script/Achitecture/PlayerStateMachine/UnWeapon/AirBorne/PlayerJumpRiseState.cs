@@ -25,7 +25,6 @@ namespace StateMachine
         {
             base.EnterState();
             Jump();
-            Debug.Log("JumpRise");
         }
 
         public override void UpdateState()

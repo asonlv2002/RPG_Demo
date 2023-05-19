@@ -14,7 +14,6 @@
         public override void EnterState()
         {
             base.EnterState();
-            UnityEngine.Debug.Log("Idle");
         }
 
         public override void UpdateState()

@@ -15,7 +15,6 @@ namespace StateMachine
 
         public override void EnterState()
         {
-            UnityEngine.Debug.Log("Movement");
             base.EnterState();
             InitializationSubState();
         }

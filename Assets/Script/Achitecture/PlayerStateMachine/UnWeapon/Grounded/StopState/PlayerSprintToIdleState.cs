@@ -11,7 +11,6 @@ namespace StateMachine
 
         public override void EnterState()
         {
-            Debug.Log("SprintToIdle");
             base.EnterState();
             TimeExitState = 0.6333333333333333f;
         }

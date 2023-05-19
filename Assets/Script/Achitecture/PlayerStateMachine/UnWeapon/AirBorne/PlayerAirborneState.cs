@@ -19,7 +19,6 @@ namespace StateMachine
         public override void EnterState()
         {
             base.EnterState();
-            UnityEngine.Debug.Log("AirBorne");
             InitializationSubState();
         }
 

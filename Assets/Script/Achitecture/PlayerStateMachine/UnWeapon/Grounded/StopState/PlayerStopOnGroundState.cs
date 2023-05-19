@@ -12,7 +12,6 @@
         {
             _lastState = stateControl.CurrentState;
             base.EnterState();
-            UnityEngine.Debug.Log("StopOnGround");
             InitializationSubState();
 
             StopOnGround();

@@ -23,7 +23,7 @@ namespace Item.InEquipment
         {
             var weapon = adapter.TakeItemInformationID<WeaponData>();
 
-            Debug.Log(weapon.Information.IDItem);
+            Debug.Log($"Id Item : {weapon.Information.IDItem}");
             GameObject weaponObject = MonoBehaviour.Instantiate(weapon.Model.Prefab, HandRight);
 
             Transform weaponTrasform = weaponObject.transform;

@@ -23,7 +23,6 @@ namespace StateMachine
         public override void EnterState()
         {
             base.EnterState();
-            UnityEngine.Debug.Log("Run");
         }
 
         public override void UpdateState()

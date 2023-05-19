@@ -19,7 +19,6 @@ namespace StateMachine
         public override void EnterState()
         {
             base.EnterState();
-            Debug.Log("JumpFall");
         }
 
         public override void UpdateState()

@@ -24,7 +24,6 @@ namespace StateMachine
         public override void EnterState()
         {
             base.EnterState();
-            Debug.Log("Sprint");
         }
 
         public override void UpdateState()

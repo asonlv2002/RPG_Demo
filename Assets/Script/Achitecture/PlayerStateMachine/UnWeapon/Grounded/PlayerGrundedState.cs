@@ -21,7 +21,6 @@ namespace StateMachine
         public override void EnterState()
         {
             base.EnterState();
-            Debug.Log("Grounded");
             InitializationSubState();
         }
         public override void UpdateState()
