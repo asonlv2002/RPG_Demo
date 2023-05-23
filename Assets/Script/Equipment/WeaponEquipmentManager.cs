@@ -8,9 +8,8 @@ namespace Item.InEquipment
     {
         public IWeaponEquipPosition providerPosition { get; private set; }
         WeaponBeHaviourFactory _weaponBehaviourFactory;
-        WeaponPrefabFactory _weaponPrefabFactory;
         WeaponEquipmentFactory _weaponEquipmentFactory;
-        public WeaponEquipmentManager(IProviderPosition providerPosition, IStoreWeapon storeWeapon)
+        public WeaponEquipmentManager(IProviderPosition providerPosition)
         {
             this.providerPosition = providerPosition as IWeaponEquipPosition;
             _weaponEquipmentFactory = new WeaponEquipmentFactory(this);

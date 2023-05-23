@@ -9,12 +9,11 @@ namespace Equipments
     {
         [SerializeField] WeaponEquipmentManager _weaponEquipment; 
         [SerializeField] StoreEquipmentPosition equipmentPositions;
-        [SerializeField] WeaponPrefabContain weaponPrefabs;
 
 
         private void Awake()
         {
-            _weaponEquipment = new WeaponEquipmentManager(equipmentPositions, weaponPrefabs);
+            _weaponEquipment = new WeaponEquipmentManager(equipmentPositions);
         }
         private void OnTriggerEnter(Collider other)
         {
