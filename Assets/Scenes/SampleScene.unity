@@ -460,11 +460,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 489103835}
---- !u!4 &356024064 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6177345373450509316, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
-  m_PrefabInstance: {fileID: 1808443594}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &442280838
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +582,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &564206374 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8745270527318728548, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+  m_PrefabInstance: {fileID: 1808443594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &571308919
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,10 +1435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89990573e1bc0ab4986e4aff193a99d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipmentDatas:
-    <WeaponDatas>k__BackingField:
-      _scytheDatas: []
-      _bowDatas: []
 --- !u!4 &1700638150
 Transform:
   m_ObjectHideFlags: 0
@@ -1462,9 +1458,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1291106231639487442, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
+      propertyPath: equipmentPositions._handRight
+      value: 
+      objectReference: {fileID: 564206374}
+    - target: {fileID: 1291106231639487442, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
       propertyPath: <WeaponEquipment>k__BackingField.<HandRight>k__BackingField
       value: 
-      objectReference: {fileID: 356024064}
+      objectReference: {fileID: 0}
     - target: {fileID: 2795243353425414339, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
       propertyPath: runtimeAnimatorController
       value: 
@@ -1521,7 +1521,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5375388596365003203, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea769dad2660ab341bf9d0983c8af65e, type: 3}
 --- !u!1 &1811434010
 GameObject:
