@@ -1,25 +1,44 @@
 ﻿using UnityEngine;
 using Item.InEquipment;
-using Item.InWorldSpace;
 using Item.ItemGameData;
+using Item;
+
 namespace Equipments
 {
     internal class PlayerEquipment : Entities.BranchContent
     {
-        [field : SerializeField] public WeaponEquipment WeaponEquipment { get; private set; }
+        [SerializeField] WeaponEquipmentManager _weaponEquipment; 
+        [SerializeField] StoreEquipmentPosition equipmentPositions;
+        [SerializeField] WeaponPrefabContain weaponPrefabs;
+
+
+        private void Awake()
+        {
+            _weaponEquipment = new WeaponEquipmentManager(equipmentPositions, weaponPrefabs);
+        }
         private void OnTriggerEnter(Collider other)
         {
-            var equipment = other.GetComponent<ItemWorldController>();
-            EquipEquipment(equipment);
+            var equipment = other.gameObject;
+            var equipmentData = equipment.GetComponent<IItem>();
+            EquipEquipment(equipmentData);
         }
 
-        void EquipEquipment(ItemWorldController equipment)
+        void EquipEquipment(IItem equipment)
         {
             if (equipment == null) return;
+            IEquipmentManager equipmentManager = EquipmentManagerProxy(equipment);
+            equipmentManager.Equip(equipment);
+        }
 
-            WeaponEquipment.EquipWeaponInWorldSpace(new ItemAdapter.WeaponProviderFormWorld(equipment));
-
-            Destroy(equipment.gameObject);
+        IEquipmentManager EquipmentManagerProxy(IItem itemData)
+        {
+            switch (itemData.ItemData)
+            {
+                case WeaponData:
+                    return _weaponEquipment;
+                default : 
+                    return null;
+            }
         }
     }
 }

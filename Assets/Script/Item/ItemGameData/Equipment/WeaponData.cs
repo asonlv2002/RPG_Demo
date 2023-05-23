@@ -2,10 +2,8 @@
 using Item.Information;
 namespace Item.ItemGameData
 {
-    [CreateAssetMenu(menuName = "Item/Weapon Data")]
-    internal class WeaponData : ScriptableObject
+    internal abstract class WeaponData : EquipmentData
     {
-        [field: SerializeField] public ItemInformation Information { get; private set; }
-        [field: SerializeField] public ItemModel Model { get; private set; }
+
     }
 }
