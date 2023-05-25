@@ -11,7 +11,7 @@ namespace StateMachine
 
         public override void SwitchToOtherRoot()
         {
-            if(!Input.IsRunPressed)
+            if(!InputTransform.IsRunPressed)
             {
                 SwitchState(StateContain.StopOnGround);
             }
@@ -31,11 +31,11 @@ namespace StateMachine
 
         public void InitilationChildrenState()
         {
-            if(Input.IsRunPressed)
+            if(InputTransform.IsRunPressed)
             {
                 SetChildState(StateContain.Run);
             }
-            if(Input.IsSpintPressed)
+            if(InputTransform.IsSpintPressed)
             {
                 SetChildState(StateContain.Sprint);
             }
@@ -53,13 +53,13 @@ namespace StateMachine
         {
             Vector3 postionToLookAt;
 
-            postionToLookAt.x = Input.CurrentInputMovement.x;
+            postionToLookAt.x = InputTransform.CurrentInputMovement.x;
             postionToLookAt.y = 0f;
-            postionToLookAt.z = Input.CurrentInputMovement.z;
+            postionToLookAt.z = InputTransform.CurrentInputMovement.z;
 
             Quaternion currentRotation = Body.PlayerTransform.rotation;
 
-            if (Input.IsRunPressed)
+            if (InputTransform.IsRunPressed)
             {
                 Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
                 Body.PlayerTransform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);

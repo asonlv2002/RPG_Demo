@@ -11,11 +11,11 @@ namespace StateMachine
 
         public override void SwitchToOtherRoot()
         {
-            if(!Input.IsSpintPressed)
+            if(!InputTransform.IsSpintPressed)
             {
                 SwitchState(StateContain.Run);
             }
-            else if(!Input.IsRunPressed)
+            else if(!InputTransform.IsRunPressed)
             {
                 SwitchState(StateContain.StopOnGround);
             }
@@ -41,8 +41,8 @@ namespace StateMachine
         private void Sprint()
         {
             float sprintSpeed = 2f;
-            Physiscal.X_VelocityApplie = Input.CurrentInputMovement.x * sprintSpeed;
-            Physiscal.Z_VelocityApplie = Input.CurrentInputMovement.z * sprintSpeed;
+            Physiscal.X_VelocityApplie = InputTransform.CurrentInputMovement.x * sprintSpeed;
+            Physiscal.Z_VelocityApplie = InputTransform.CurrentInputMovement.z * sprintSpeed;
         }
     }
 }

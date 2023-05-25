@@ -3,19 +3,20 @@ namespace StateMachine
 {
     internal class StateContext : IStateContext, IStatePhysiscalProvider, IStateBodyProvider, IStateInputProvider,IStateAnimationIDProvider
     {
-        public IStateContain StateProvider { get; private set; }
+        public StateContain StateProvider { get; private set; }
+        public IState CurrentState { get; set; }
         public IStateBodyAdapter Body { get; private set; }
-        public IStateInputAdapter Input { get; private set; }
-        public IState CurrentState { get; set ; }
-        public IStateAnimationIDAdapter AnimationID { get; private set; }
-        public IStatePhysicAdapter Physiscal { get; private set; }
+        public IStatePhysicAdapter PhysiscalProvider { get; private set; }
+        public StateInputAdapter InputProvider { get; private set; }
+        public AnimationIDAdapter AnimationIDProvider { get; private set; }
+
 
         public StateContext(Entities.PlayerRootContent mainContext)
         {
-            Physiscal = new StatePhysicAdapter(mainContext.Physiscal);
-            Input = new StateInputAdapter(mainContext.InputAction);
+            PhysiscalProvider = new StatePhysicAdapter(mainContext.Physiscal);
+            InputProvider = new StateInputUnequipAdapter(mainContext.InputAction);
             Body = new StateBodyAdapter(mainContext.Body);
-            AnimationID = new AnimationParameterUnequipIntance(mainContext.Animator);
+            AnimationIDProvider = new AnimationIdUnequipStore(mainContext.Animator);
             StateProvider = new StateContainIntance(this);
             SetUpState();
         }

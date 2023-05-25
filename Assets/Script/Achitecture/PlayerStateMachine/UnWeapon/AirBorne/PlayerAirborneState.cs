@@ -24,7 +24,7 @@ namespace StateMachine
 
         public void InitilationChildrenState()
         {
-            if(Input.IsJumpPressed)
+            if(InputTransform.IsJumpPressed)
             {
                 SetChildState(StateContain.JumpRise);
             }

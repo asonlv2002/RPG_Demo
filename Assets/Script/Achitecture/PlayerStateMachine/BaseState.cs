@@ -10,7 +10,6 @@ namespace StateMachine
 
         protected IStatePhysicAdapter Physiscal;
         protected IStateBodyAdapter Body;
-        protected IStateInputAdapter Input;
         protected int animtionID;
 
         private IStateAnimationTrigger AnimationTrigger;
@@ -19,10 +18,10 @@ namespace StateMachine
         public BaseState(IStateContext stateContext)
         {
             StateContext = stateContext;
-            AnimationTrigger = (StateContext as IStateAnimationIDProvider).AnimationID as IStateAnimationTrigger;
-            Physiscal = (StateContext as IStatePhysiscalProvider).Physiscal;
+            AnimationTrigger = (StateContext as IStateAnimationIDProvider).AnimationIDProvider as IStateAnimationTrigger;
+            Physiscal = (StateContext as IStatePhysiscalProvider).PhysiscalProvider;
             Body = (StateContext as IStateBodyProvider).Body;
-            Input = (StateContext as IStateInputProvider).Input;
+
         }
         public virtual void EnterState()
         {

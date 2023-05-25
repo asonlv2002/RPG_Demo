@@ -11,7 +11,7 @@ namespace StateMachine
 
         public override void SwitchToOtherRoot()
         {
-            if (Input.IsJumpPressed && Body.IsOnGround || !Body.IsTerrestrial)
+            if (InputTransform.IsJumpPressed && Body.IsOnGround || !Body.IsTerrestrial)
             {
                 SwitchState(StateContain.Airborne);
             }
@@ -30,7 +30,7 @@ namespace StateMachine
         }
         public void InitilationChildrenState()
         {
-            if(Input.IsRunPressed)
+            if(InputTransform.IsRunPressed)
             {
                 SetChildState(StateContain.Move);
             }else 

@@ -1,6 +1,6 @@
 ﻿namespace StateMachine
 {
-    internal interface IStateAnimationIDAdapter 
+    internal interface ITransfomAnimationID 
     {
         public int IsGroundHash { get; }
         public int IsIdleHash { get; }

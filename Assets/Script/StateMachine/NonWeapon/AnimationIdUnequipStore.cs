@@ -2,7 +2,7 @@
 {
     using AnimationAction;
     using UnityEngine;
-    internal class AnimationParameterUnequipIntance : AnimationIDAdapter, IStateAnimationIDAdapter
+    internal class AnimationIdUnequipStore : AnimationIDAdapter, ITransfomAnimationID
     {
         const string _isGround = "isGround";
         const string _isIdle = "isIdle";
@@ -16,7 +16,7 @@
         const string _isStopOnGround = "isStopOnGround";
         const string _isSprintToStop = "isSprintToStop";
 
-        public AnimationParameterUnequipIntance(PlayerAnimator playerAnimator ) : base(playerAnimator)
+        public AnimationIdUnequipStore(PlayerAnimator playerAnimator ) : base(playerAnimator)
         {
             IsGroundHash = Animator.StringToHash(_isGround);
             IsIdleHash = Animator.StringToHash(_isIdle);

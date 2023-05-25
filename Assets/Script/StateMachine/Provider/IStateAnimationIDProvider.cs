@@ -2,6 +2,6 @@
 {
     internal interface IStateAnimationIDProvider
     {
-        IStateAnimationIDAdapter AnimationID { get; }
+        AnimationIDAdapter AnimationIDProvider { get; }
     }
 }

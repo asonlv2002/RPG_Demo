@@ -3,6 +3,6 @@ namespace StateMachine
 {
     internal interface IStatePhysiscalProvider
     {
-        IStatePhysicAdapter Physiscal { get; }
+        IStatePhysicAdapter PhysiscalProvider { get; }
     }
 }

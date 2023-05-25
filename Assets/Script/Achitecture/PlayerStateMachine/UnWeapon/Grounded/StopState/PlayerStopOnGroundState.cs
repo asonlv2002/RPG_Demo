@@ -16,7 +16,7 @@
 
         public override void SwitchToOtherRoot()
         {
-            if (Input.IsRunPressed)
+            if (InputTransform.IsRunPressed)
             {
                 SwitchState(StateContain.Move);
             }

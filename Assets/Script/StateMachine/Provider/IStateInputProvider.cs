@@ -3,6 +3,6 @@ namespace StateMachine
 {
     internal interface IStateInputProvider
     {
-        IStateInputAdapter Input { get; }
+        StateInputAdapter InputProvider { get; }
     }
 }

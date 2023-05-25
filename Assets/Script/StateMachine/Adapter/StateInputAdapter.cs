@@ -1,22 +1,12 @@
-﻿
-using UnityEngine;
-
-namespace StateMachine
+﻿namespace StateMachine
 {
     using Input;
-    internal class StateInputAdapter : IStateInputAdapter
+    internal abstract class StateInputAdapter
     {
-        PlayerInputAction PlayerInput;
-        public StateInputAdapter(PlayerInputAction input)
+        protected PlayerInputAction PlayerInput;
+        public StateInputAdapter(PlayerInputAction inputAction)
         {
-            PlayerInput = input;
+            PlayerInput = inputAction;
         }
-        public bool IsRunPressed => PlayerInput.InputPress.IsRunPressed;
-
-        public bool IsJumpPressed => PlayerInput.InputPress.IsJumpPressed;
-
-        public bool IsSpintPressed => PlayerInput.InputPress.IsSpintPressed;
-
-        public Vector3 CurrentInputMovement => PlayerInput.InputPress.CurrentInputMovement;
     }
 }

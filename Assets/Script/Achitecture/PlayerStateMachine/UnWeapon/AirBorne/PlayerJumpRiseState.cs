@@ -15,7 +15,7 @@ namespace StateMachine
             {
                 SwitchState(StateContain.Fall);
             }
-            //if (stateControl.Physiscal.Y_VelocityApplie <= 0 && !stateControl.Body.IsFall)
+            //if (stateControl.PhysiscalProvider.Y_VelocityApplie <= 0 && !stateControl.Body.IsFall)
             //{
             //    SwitchState(StateContain.JumpFall());
             //}

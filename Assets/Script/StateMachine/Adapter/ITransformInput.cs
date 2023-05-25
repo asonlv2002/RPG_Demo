@@ -1,6 +1,6 @@
 ﻿namespace StateMachine
 {
-    internal interface IStateInputAdapter
+    internal interface ITransformInput
     {
         bool IsRunPressed { get; }
         bool IsJumpPressed { get; }

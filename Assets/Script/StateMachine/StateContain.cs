@@ -2,7 +2,7 @@
 
 namespace StateMachine
 {
-    internal abstract class StateContain : IStateContain
+    internal abstract class StateContain
     {
         protected IStateContext _stateContext;
         public StateContain(IStateContext stateContext)
