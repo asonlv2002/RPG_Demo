@@ -2,6 +2,7 @@
 using Item.InEquipment;
 using Item.ItemGameData;
 using Item;
+using Entities;
 
 namespace Equipments
 {
@@ -9,11 +10,12 @@ namespace Equipments
     {
         [SerializeField] WeaponEquipmentManager _weaponEquipment; 
         [SerializeField] StoreEquipmentPosition equipmentPositions;
-
-
-        private void Awake()
+        IEquipWeaponNotify _equipWeaponNotify;
+        public override void InitMainContent(PlayerRootContent mainContent)
         {
-            _weaponEquipment = new WeaponEquipmentManager(equipmentPositions);
+            base.InitMainContent(mainContent);
+            _equipWeaponNotify = new EquipWeaponChannel(MainContent);
+            _weaponEquipment = new WeaponEquipmentManager(equipmentPositions, _equipWeaponNotify);
         }
         private void OnTriggerEnter(Collider other)
         {
