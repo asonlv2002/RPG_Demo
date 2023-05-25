@@ -1,13 +1,13 @@
 ﻿namespace StateMachine
 {
-    internal class PlayerIdleState : PlayerBaseState
+    internal class PlayerIdleState : TransformState
     {
-        public PlayerIdleState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerIdleState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsIdleHash;
+            animtionID = AnimationID.IsIdleHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
         }
 
@@ -19,7 +19,7 @@
         public override void UpdateState()
         {
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
 
     }

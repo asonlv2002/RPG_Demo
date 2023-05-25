@@ -2,42 +2,42 @@
 
 namespace StateMachine
 {
-    internal class PlayerMoveState : PlayerBaseState , IRootState
+    internal class PlayerMoveState : TransformState , IRootState
     {
-        public PlayerMoveState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerMoveState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsMoveHash;
+            animtionID = AnimationID.IsMoveHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
-            if(!stateControl.MainContent.InputAction.InputPress.IsRunPressed)
+            if(!Input.IsRunPressed)
             {
-                SwitchState(factoryState.StopOnGround());
+                SwitchState(StateContain.StopOnGround);
             }
         }
         public override void EnterState()
         {
             base.EnterState();
-            InitializationSubState();
+            InitilationChildrenState();
         }
 
         public override void UpdateState()
         {
 
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
 
-        public void InitializationSubState()
+        public void InitilationChildrenState()
         {
-            if(stateControl.MainContent.InputAction.InputPress.IsRunPressed)
+            if(Input.IsRunPressed)
             {
-                SetChildState(factoryState.Run());
+                SetChildState(StateContain.Run);
             }
-            if(stateControl.MainContent.InputAction.InputPress.IsSpintPressed)
+            if(Input.IsSpintPressed)
             {
-                SetChildState(factoryState.Sprint());
+                SetChildState(StateContain.Sprint);
             }
             childState.EnterState();
         }
@@ -46,30 +46,25 @@ namespace StateMachine
         {
             base.FixedUpdateState();
             Rotation();
-            stateControl.MainContent.Physiscal.VelocityApplie *= stateControl.MainContent.Physiscal.GetSpeedOnGroundDenpeden(stateControl.MainContent.Body.FootTrack.AngleFeetGround);
+            Physiscal.VelocityApplie *= Physiscal.GetSpeedOnGroundDenpeden(Body.AngleFeetGround);
         }
 
         private void Rotation()
         {
             Vector3 postionToLookAt;
 
-            postionToLookAt.x = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.x;
+            postionToLookAt.x = Input.CurrentInputMovement.x;
             postionToLookAt.y = 0f;
-            postionToLookAt.z = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.z;
+            postionToLookAt.z = Input.CurrentInputMovement.z;
 
-            Quaternion currentRotation = stateControl.MainContent.Body.PlayerTranform.rotation;
+            Quaternion currentRotation = Body.PlayerTransform.rotation;
 
-            if (stateControl.MainContent.InputAction.InputPress.IsRunPressed)
+            if (Input.IsRunPressed)
             {
                 Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
-                stateControl.MainContent.Body.PlayerTranform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
+                Body.PlayerTransform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
             }
         }
 
-        //private void ConvertDirection()
-        //{
-        //    stateControl._cameraRelativeMovement = stateControl.ConvertToCameraSpace(stateControl.InputPress.CurrentInputMovement);
-
-        //}
     }
 }

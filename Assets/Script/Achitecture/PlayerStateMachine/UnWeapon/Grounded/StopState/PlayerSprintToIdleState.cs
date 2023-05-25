@@ -1,13 +1,15 @@
 using UnityEngine;
 namespace StateMachine
 {
-    internal class PlayerSprintToIdleState : PlayerBaseState, IConversionState
+    internal class PlayerSprintToIdleState : TransformState, IConversionState
     {
-        public float TimeExitState { get; private set; }
-        public PlayerSprintToIdleState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerSprintToIdleState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsSprintToStop;
+            animtionID = AnimationID.IsSprintToStop;
         }
+
+        public float TimeExitState { get; private set; }
+
 
         public override void EnterState()
         {
@@ -16,11 +18,11 @@ namespace StateMachine
         }
 
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
             if(TimeExitState <= 0)
             {
-                SwitchState(factoryState.Idle());
+                SwitchState(StateContain.Idle);
             }
         }
 
@@ -28,7 +30,7 @@ namespace StateMachine
         {
             CalculatorTimeExit();
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
 
         public void CalculatorTimeExit()

@@ -18,11 +18,11 @@ namespace Physical
             return _speedTemplate.Evaluate(angleToGround);
         }
 
-        public Vector3 GetCurrentPlayerVerticalVelocity() => PhysiscHandler.velocity;
+        public Vector3 CurrentRiribodyVelocity => PhysiscHandler.velocity;
 
         public void MovementForceApplie()
         {
-            var velocity = VelocityApplie - GetCurrentPlayerVerticalVelocity();
+            var velocity = VelocityApplie - CurrentRiribodyVelocity;
             PhysiscHandler.AddForce(velocity, ForceMode.VelocityChange);
 
         }

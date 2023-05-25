@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 namespace StateMachine
 {
-    internal class PlayerMovementState : PlayerBaseState, IRootState
+    internal class PlayerMovementState : TransformState, IRootState
     {
-        public PlayerMovementState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) :
-            base(playerStateMachine, playerStateFactory)
+        public PlayerMovementState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
+            animtionID = 0;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
 
         }
@@ -16,13 +16,7 @@ namespace StateMachine
         public override void EnterState()
         {
             base.EnterState();
-            InitializationSubState();
-        }
-
-        public override void UpdateState()
-        {
-
-            base.UpdateState();
+            InitilationChildrenState();
         }
 
         public override void FixedUpdateState()
@@ -31,22 +25,22 @@ namespace StateMachine
             Movement();
         }
 
-        public void InitializationSubState()
+        public void InitilationChildrenState()
         {
-            if (stateControl.MainContent.Body.FootTrack.IsTerrestrial)
+            if (Body.IsTerrestrial)
             {
-                SetChildState(factoryState.Grounded());
+                SetChildState(StateContain.Grounded);
             }
             else
             {
-                SetChildState(factoryState.Airborne());
+                SetChildState(StateContain.Airborne);
             }
             childState.EnterState();
         }
 
         private void Movement()
         {
-            stateControl.MainContent.Physiscal.MovementForceApplie();
+            Physiscal.MovementForceApplie();
         }
     }
 }

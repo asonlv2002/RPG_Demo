@@ -1,43 +1,43 @@
 ﻿
 namespace StateMachine
 {
-    internal class PlayerAirborneState : PlayerBaseState, IRootState
+    internal class PlayerAirborneState : TransformState, IRootState
     {
-        public PlayerAirborneState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerAirborneState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsAirborneHash;
+            animtionID = AnimationID.IsAirborneHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
-            if(stateControl.MainContent.Body.FootTrack.IsOnGround && childState != factoryState.JumpRise())
+            if(Body.IsOnGround && childState != StateContain.JumpRise)
             {
-                SwitchState(factoryState.Grounded());
+                SwitchState(StateContain.Grounded);
             }
         }
 
         public override void EnterState()
         {
             base.EnterState();
-            InitializationSubState();
+            InitilationChildrenState();
         }
 
-        public void InitializationSubState()
+        public void InitilationChildrenState()
         {
-            if(stateControl.MainContent.InputAction.InputPress.IsJumpPressed)
+            if(Input.IsJumpPressed)
             {
-                SetChildState(factoryState.JumpRise());
+                SetChildState(StateContain.JumpRise);
             }
             else
             {
-                SetChildState(factoryState.Fall());
+                SetChildState(StateContain.Fall);
             }
             childState.EnterState();
         }
         public override void UpdateState()
         {
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
 
         }
     }

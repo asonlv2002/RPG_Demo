@@ -2,22 +2,22 @@
 
 namespace StateMachine
 {
-    internal class PlayerJumpRiseState : PlayerBaseState
+    internal class PlayerJumpRiseState : TransformState
     {
-        public PlayerJumpRiseState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerJumpRiseState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsJumpRiseHash;
+            animtionID = AnimationID.IsJumpRiseHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
-            if(stateControl.MainContent.Physiscal.GetCurrentPlayerVerticalVelocity().y <= 0/* && stateControl.Body.IsFall*/)
+            if(Physiscal.CurrenRigibodyVelocity.y <= 0/* && stateControl.Body.IsFall*/)
             {
-                SwitchState(factoryState.Fall());
+                SwitchState(StateContain.Fall);
             }
             //if (stateControl.Physiscal.Y_VelocityApplie <= 0 && !stateControl.Body.IsFall)
             //{
-            //    SwitchState(factoryState.JumpFall());
+            //    SwitchState(StateContain.JumpFall());
             //}
         }
 
@@ -30,7 +30,7 @@ namespace StateMachine
         public override void UpdateState()
         {
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
 
         public override void FixedUpdateState()
@@ -41,7 +41,7 @@ namespace StateMachine
 
         private void Jump()
         {
-            stateControl.MainContent.Physiscal.Y_VelocityApplie = stateControl.MainContent.Physiscal.PhysiscVariable.JumpHeight;
+            Physiscal.Y_VelocityApplie = Physiscal.JumpHeight;
         }
 
         public override void ExitState()
@@ -51,10 +51,10 @@ namespace StateMachine
 
         private void GravityEffect()
         {
-            var gravity = stateControl.MainContent.Physiscal.PhysiscVariable.Gravity;
-            var oldYVelocity = stateControl.MainContent.Physiscal.Y_VelocityApplie;
-            var newVelocityY = stateControl.MainContent.Physiscal.Y_VelocityApplie + gravity * Time.deltaTime;
-            stateControl.MainContent.Physiscal.Y_VelocityApplie = (oldYVelocity + newVelocityY) * .5f;
+            var gravity = Physiscal.Gravity;
+            var oldYVelocity = Physiscal.Y_VelocityApplie;
+            var newVelocityY = Physiscal.Y_VelocityApplie + gravity * Time.deltaTime;
+            Physiscal.Y_VelocityApplie = (oldYVelocity + newVelocityY) * .5f;
         }
-    }
+    } 
 }

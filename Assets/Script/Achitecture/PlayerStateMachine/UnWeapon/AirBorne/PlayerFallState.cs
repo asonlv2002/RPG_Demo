@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 namespace StateMachine
 {
-    internal class PlayerFallState : PlayerBaseState
+    internal class PlayerFallState : TransformState
     {
-        public PlayerFallState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerFallState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsFallHash;
+            animtionID = AnimationID.IsFallHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
             
         }
@@ -32,10 +32,10 @@ namespace StateMachine
 
         private void GravityEffect()
         {
-            float gravity = stateControl.MainContent.Physiscal.PhysiscVariable.Gravity;
-            float oldYVelocity = stateControl.MainContent.Physiscal.Y_VelocityApplie;
-            float newYVelocity = stateControl.MainContent.Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
-            stateControl.MainContent.Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
+            float gravity = Physiscal.Gravity;
+            float oldYVelocity = Physiscal.Y_VelocityApplie;
+            float newYVelocity = Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
+            Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
         }
     }
 }

@@ -2,22 +2,22 @@
 
 namespace StateMachine
 {
-    internal class PlayerSpintState : PlayerBaseState
+    internal class PlayerSpintState : TransformState
     {
-        public PlayerSpintState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerSpintState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsSprintHash;
+            animtionID = AnimationID.IsSprintHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
-            if(!stateControl.MainContent.InputAction.InputPress.IsSpintPressed)
+            if(!Input.IsSpintPressed)
             {
-                SwitchState(factoryState.Run());
+                SwitchState(StateContain.Run);
             }
-            else if(!stateControl.MainContent.InputAction.InputPress.IsRunPressed)
+            else if(!Input.IsRunPressed)
             {
-                SwitchState(factoryState.StopOnGround());
+                SwitchState(StateContain.StopOnGround);
             }
         }
 
@@ -30,7 +30,7 @@ namespace StateMachine
         {
 
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
         public override void FixedUpdateState()
         {
@@ -40,9 +40,9 @@ namespace StateMachine
 
         private void Sprint()
         {
-            float sprintSpeed = stateControl.MainContent.Physiscal.PhysiscVariable.SprintSpeed;
-            stateControl.MainContent.Physiscal.X_VelocityApplie = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.x * sprintSpeed;
-            stateControl.MainContent.Physiscal.Z_VelocityApplie = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.z * sprintSpeed  ;
+            float sprintSpeed = 2f;
+            Physiscal.X_VelocityApplie = Input.CurrentInputMovement.x * sprintSpeed;
+            Physiscal.Z_VelocityApplie = Input.CurrentInputMovement.z * sprintSpeed;
         }
     }
 }

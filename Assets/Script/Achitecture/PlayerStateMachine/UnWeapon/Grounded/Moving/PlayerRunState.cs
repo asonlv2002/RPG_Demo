@@ -1,22 +1,22 @@
 ﻿
 namespace StateMachine
 {
-    internal class PlayerRunState : PlayerBaseState
+    internal class PlayerRunState : TransformState
     {
-        public PlayerRunState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerRunState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsRunHash;
+            animtionID = AnimationID.IsRunHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
-            if(stateControl.MainContent.InputAction.InputPress.IsRunPressed && stateControl.MainContent.InputAction.InputPress.IsSpintPressed)
+            if(Input.IsRunPressed && Input.IsSpintPressed)
             {
-                SwitchState(factoryState.Sprint());
+                SwitchState(StateContain.Sprint);
             }
-            else if(!stateControl.MainContent.InputAction.InputPress.IsRunPressed)
+            else if(!Input.IsRunPressed)
             {
-                SwitchState(factoryState.StopOnGround());
+                SwitchState(StateContain.StopOnGround);
             }
         }
 
@@ -29,7 +29,7 @@ namespace StateMachine
         {
 
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
         public override void FixedUpdateState()
         {
@@ -39,9 +39,9 @@ namespace StateMachine
 
         private void Run()
         {
-            float speedRun = stateControl.MainContent.Physiscal.PhysiscVariable.RunSpeed;
-            stateControl.MainContent.Physiscal.X_VelocityApplie = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.x*speedRun;
-            stateControl.MainContent.Physiscal.Z_VelocityApplie = stateControl.MainContent.InputAction.InputPress.CurrentInputMovement.z*speedRun;
+            float speedRun = 2f;
+            Physiscal.X_VelocityApplie = Input.CurrentInputMovement.x*speedRun;
+            Physiscal.Z_VelocityApplie = Input.CurrentInputMovement.z*speedRun;
         }
     }
 }

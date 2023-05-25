@@ -2,41 +2,40 @@
 
 namespace StateMachine
 {
-    internal class PlayerGrundedState : PlayerBaseState,IRootState
+    internal class PlayerGroundedState : TransformState,IRootState
     {
-        public PlayerGrundedState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) 
-            : base(playerStateMachine, playerStateFactory)
+        public PlayerGroundedState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsGroundHash;
+            animtionID = AnimationID.IsGroundHash;
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
-            if (stateControl.MainContent.InputAction.InputPress.IsJumpPressed && stateControl.MainContent.Body.FootTrack.IsOnGround || !stateControl.MainContent.Body.FootTrack.IsTerrestrial)
+            if (Input.IsJumpPressed && Body.IsOnGround || !Body.IsTerrestrial)
             {
-                SwitchState(factoryState.Airborne());
+                SwitchState(StateContain.Airborne);
             }
         }
 
         public override void EnterState()
         {
             base.EnterState();
-            InitializationSubState();
+            InitilationChildrenState();
         }
         public override void UpdateState()
         {
 
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
-        public void InitializationSubState()
+        public void InitilationChildrenState()
         {
-            if(stateControl.MainContent.InputAction.InputPress.IsRunPressed)
+            if(Input.IsRunPressed)
             {
-                SetChildState(factoryState.Move());
+                SetChildState(StateContain.Move);
             }else 
             {
-                SetChildState(factoryState.StopOnGround());
+                SetChildState(StateContain.StopOnGround);
             }
             childState.EnterState();
         }
@@ -48,8 +47,8 @@ namespace StateMachine
 
         private void FloatBodyOnGround()
         {
-            var constFeet = stateControl.MainContent.Physiscal.PhysiscVariable.ConstFeet;
-            stateControl.MainContent.Physiscal.Y_VelocityApplie = stateControl.MainContent.Body.FootTrack.FLoatDirection* constFeet;
+            var constFeet = Physiscal.ConstFeet;
+            Physiscal.Y_VelocityApplie = Body.FLoatDirection* constFeet;
         }
     }
 }

@@ -1,52 +1,49 @@
 ﻿namespace StateMachine
 {
-    internal class PlayerStopOnGroundState : PlayerBaseState, IRootState
+    internal class PlayerStopOnGroundState : TransformState, IRootState
     {
-        private PlayerBaseState _lastState;
-        public PlayerStopOnGroundState(PlayerStateMachine playerStateMachine, PlayerStateFactory playerStateFactory) : base(playerStateMachine, playerStateFactory)
+        public PlayerStopOnGroundState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
-            animtionHash = stateControl.MainContent.Animator.AnimationIntHashs.IsStopOnGround;
+            animtionID = AnimationID.IsStopOnGround;
         }
 
         public override void EnterState()
         {
-            _lastState = stateControl.CurrentState;
             base.EnterState();
-            InitializationSubState();
-
+            InitilationChildrenState();
             StopOnGround();
         }
 
-        public override void CheckUpdateState()
+        public override void SwitchToOtherRoot()
         {
-            if (stateControl.MainContent.InputAction.InputPress.IsRunPressed)
+            if (Input.IsRunPressed)
             {
-                SwitchState(factoryState.Move());
+                SwitchState(StateContain.Move);
             }
         }
         public override void UpdateState()
         {
             base.UpdateState();
-            CheckUpdateState();
+            SwitchToOtherRoot();
         }
 
-        public void InitializationSubState()
+        public void InitilationChildrenState()
         {
-            if(_lastState == factoryState.Sprint())
-            {
-                SetChildState(factoryState.SprintToIdle());
-            }
-            else
-            {
-                SetChildState(factoryState.Idle());
-            }
-            stateControl.LastState = null;
-            childState.EnterState();
+            //if (_lastState == StateContain.Sprint())
+            //{
+            //    SetChildState(StateContain.SprintToIdle());
+            //}
+            //else
+            //{
+            //    SetChildState(StateContain.Idle());
+            //}
+            //stateControl.LastState = null;
+            //childState.EnterState();
         }
 
         private void StopOnGround()
         {
-            stateControl.MainContent.Physiscal.VelocityApplie = UnityEngine.Vector3.up * stateControl.MainContent.Physiscal.Y_VelocityApplie;
+            Physiscal.VelocityApplie = UnityEngine.Vector3.up * Physiscal.Y_VelocityApplie;
         }
     }
 }
