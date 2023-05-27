@@ -2,9 +2,13 @@ using UnityEngine;
 
 namespace Input
 {
-    internal class PlayerInputAction : Entities.BranchContent
+    using InputModify;
+    using Equipments;
+    using Item.ItemGameData;
+    internal class PlayerInputAction : Entities.BranchContent,IEquipWeaponSubscriber,IInputAttackProvider
     {
         public InputPress InputPress { get; private set; }
+        public InputAttack InputAttack { get; private set; }
 
         private void Awake()
         {
@@ -21,5 +25,9 @@ namespace Input
             InputPress.DisableInput();
         }
 
+        public void OnEquipWeapon(WeaponData weaponData)
+        {
+            InputAttack = new InputAttackFactory(weaponData).InputAttack;
+        }
     }
 }

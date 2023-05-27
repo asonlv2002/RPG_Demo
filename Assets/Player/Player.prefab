@@ -493,6 +493,7 @@ MonoBehaviour:
   <Body>k__BackingField: {fileID: 1808443596}
   <Animator>k__BackingField: {fileID: 1561595876163820610}
   <InputAction>k__BackingField: {fileID: 621589853630580565}
+  <Equipment>k__BackingField: {fileID: 1291106231639487442}
 --- !u!1001 &8540519292268006504
 PrefabInstance:
   m_ObjectHideFlags: 0

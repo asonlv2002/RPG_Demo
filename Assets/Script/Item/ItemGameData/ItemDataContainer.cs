@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace Item.ItemGameData
 {
-    class ItemDataContainer : MonoBehaviour
+    internal class ItemDataContainer : MonoBehaviour
     {
         public static ItemDataContainer Intance;
 

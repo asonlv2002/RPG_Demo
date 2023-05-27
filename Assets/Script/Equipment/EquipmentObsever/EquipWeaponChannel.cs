@@ -9,6 +9,7 @@ namespace Equipments
         public EquipWeaponChannel(Entities.PlayerRootContent mainContent)
         {
             _subsribers = new List<IEquipWeaponSubscriber>();
+            _subsribers.Add(mainContent.InputAction);
         }
         public void EquipWeapon(WeaponData weaponData)
         {

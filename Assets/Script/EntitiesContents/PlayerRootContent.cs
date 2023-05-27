@@ -8,12 +8,14 @@ namespace Entities
         [field: SerializeField] public BodyCollider.PlayerBody Body { get; private set; }
         [field: SerializeField] public AnimationAction.PlayerAnimator Animator { get; private set; }
         [field: SerializeField] public Input.PlayerInputAction InputAction { get; private set; }
+        [field: SerializeField] public Equipments.PlayerEquipment Equipment { get; private set; }
 
         private void Start()
         {
             StateMachine.InitMainContent(this);
             Physiscal.InitMainContent(this);
             Body.InitMainContent(this);
+            Equipment.InitMainContent(this);
         }
     }
 }

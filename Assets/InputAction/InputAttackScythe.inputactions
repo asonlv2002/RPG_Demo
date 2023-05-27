@@ -1,0 +1,54 @@
+{
+    "name": "InputAttackScythe",
+    "maps": [
+        {
+            "name": "Attack",
+            "id": "eefc796d-7fda-4a35-9496-a8893affe5f3",
+            "actions": [
+                {
+                    "name": "Attack_Q",
+                    "type": "Button",
+                    "id": "2e35e798-128c-4446-bf50-32914f6a489b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack_E",
+                    "type": "Button",
+                    "id": "41c9bd13-17af-4a0f-ad8b-b1f10cc23425",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "048f94b9-d04e-4b32-a912-b2caa2d3c868",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack_Q",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25a2d06b-0e40-4f91-bcfe-1f28350d84e9",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack_E",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
