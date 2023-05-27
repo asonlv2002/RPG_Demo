@@ -1,7 +1,7 @@
 ﻿namespace StateMachine
 {
     using UnityEngine;
-    using AnimationAction;
+    using AnimatorContent;
     internal abstract class AnimationIDAdapter : IStateAnimationTrigger
     {
         private Animator _animator;

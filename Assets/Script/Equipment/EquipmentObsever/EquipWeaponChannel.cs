@@ -10,6 +10,7 @@ namespace Equipments
         {
             _subsribers = new List<IEquipWeaponSubscriber>();
             _subsribers.Add(mainContent.InputAction);
+            _subsribers.Add(mainContent.Animator);
         }
         public void EquipWeapon(WeaponData weaponData)
         {

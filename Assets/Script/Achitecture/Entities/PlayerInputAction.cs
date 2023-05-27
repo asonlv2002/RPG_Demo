@@ -5,10 +5,14 @@ namespace Input
     using InputModify;
     using Equipments;
     using Item.ItemGameData;
+    using System;
+
     internal class PlayerInputAction : Entities.BranchContent,IEquipWeaponSubscriber,IInputAttackProvider
     {
         public InputPress InputPress { get; private set; }
         public InputAttack InputAttack { get; private set; }
+
+        public Type WeaponType { get; private set; }
 
         private void Awake()
         {

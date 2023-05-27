@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace AnimationAction
+namespace AnimatorContent
 {
     internal class AnimationIntHashs
     {

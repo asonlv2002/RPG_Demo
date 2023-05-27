@@ -1,6 +1,6 @@
 ﻿namespace StateMachine
 {
-    using AnimationAction;
+    using AnimatorContent;
     using UnityEngine;
     internal class AnimationIdUnequipStore : AnimationIDAdapter, ITransfomAnimationID
     {
