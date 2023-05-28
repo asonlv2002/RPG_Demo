@@ -9,30 +9,24 @@ namespace AnimatorContent
 
     internal class PlayerAnimator : Entities.BranchContent,IEquipWeaponSubscriber,IAnimatorContent
     {
+        [field: SerializeField] public Animator Animator { get; private set; }
+
         private List<AnimatorComponent> _animatorComponents;
-        [SerializeField] private Animator _animator;
-        [SerializeField] private AimatorContentByWeaponFactory _animatorControllerFactory;
-        [SerializeField] private AnimatorMovementFactory _animatorMovementFactory;
-        private AnimationAttackParameterFactory _parameterFactory;
-        [SerializeField] RuntimeAnimatorController movement;
-        public Type WeaponType { get; private set; }
-        public Animator Animator => _animator;
+        [SerializeField] private AnimatorMovementControllers _animatorMovementControllers;
+        [SerializeField] private AnimatorAttackContains _animatorAttackControllers;
         public AnimationIntHashs AnimationIntHashs { get; private set; }
+
         private void Awake()
         {
             _animatorComponents = new List<AnimatorComponent>();
             AnimationIntHashs = new AnimationIntHashs();
-            _parameterFactory = new AnimationAttackParameterFactory();
-            _animatorControllerFactory = new AimatorContentByWeaponFactory(_animator);
+            _animatorComponents.Add(_animatorMovementControllers);
+            _animatorComponents.Add(_animatorAttackControllers);
         }
 
-        public void OnEquipWeapon(WeaponData weaponData)
+        public void OnEquipWeapon()
         {
-            if (WeaponType != null && WeaponType == weaponData.GetType()) return;
-            _animatorComponents.Clear();
-            AddAnimatorComponent(_parameterFactory.Factory(weaponData));
-            AddAnimatorComponent(_animatorControllerFactory.Factory(weaponData));
-            _animator.runtimeAnimatorController = movement;
+            GetAimatorComponet<MovementController>().EnterMovement();
         }
 
         public T GetAimatorComponet<T>() where T : AnimatorComponent

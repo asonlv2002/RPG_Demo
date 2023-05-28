@@ -2,7 +2,7 @@
 
 namespace AnimatorContent
 {
-    internal class AnimationIntHashs
+    internal class AnimationIntHashs : AnimatorComponent
     {
         const string _isGround = "isGround";
         const string _isIdle = "isIdle";

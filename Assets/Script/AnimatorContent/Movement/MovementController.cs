@@ -2,7 +2,7 @@
 namespace AnimatorContent
 {
     using UnityEngine;
-    internal class MovementController : AnimatorComponent, IMovementController
+    internal class MovementController : AnimatorComponent, IMovementAnimator
     {
         private Animator _animator;
         private RuntimeAnimatorController _newRuntimeAnimatorController;

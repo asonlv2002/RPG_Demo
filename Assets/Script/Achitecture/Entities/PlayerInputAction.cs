@@ -12,8 +12,6 @@ namespace Input
         public InputPress InputPress { get; private set; }
         public InputAttack InputAttack { get; private set; }
 
-        public Type WeaponType { get; private set; }
-
         private void Awake()
         {
             InputPress = new InputPress(new PlayerInput());
@@ -29,9 +27,9 @@ namespace Input
             InputPress.DisableInput();
         }
 
-        public void OnEquipWeapon(WeaponData weaponData)
+        public void OnEquipWeapon()
         {
-            InputAttack = new InputAttackFactory(weaponData).InputAttack;
+            //InputAttack = new InputAttackFactory(weaponData).InputAttack;
         }
     }
 }

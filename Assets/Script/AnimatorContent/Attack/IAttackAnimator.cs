@@ -1,6 +1,7 @@
 ﻿namespace AnimatorContent
 {
-    internal interface IAttackController
+    using UnityEngine;
+    internal interface IAttackAnimator
     {
         void EnterAttackControll();
     }

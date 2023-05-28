@@ -1,6 +1,6 @@
 ﻿namespace AnimatorContent
 {
-    internal interface IMovementController
+    internal interface IMovementAnimator
     {
         void EnterMovement();
     }

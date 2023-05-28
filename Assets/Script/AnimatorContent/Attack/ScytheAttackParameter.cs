@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace AnimatorContent
 {
-    internal class ScytheAttackParameter : AnimationAttackParameter, IScytheAttackParameter
+    internal class ScytheAttackParameter : AnimatorComponent, IScytheAttackParameter
     {
         public int AttackE => Animator.StringToHash("AttackE");
 
