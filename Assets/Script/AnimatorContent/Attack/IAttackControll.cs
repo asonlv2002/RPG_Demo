@@ -1,6 +1,6 @@
 ﻿namespace AnimatorContent
 {
-    internal interface IAttackControll
+    internal interface IAttackController
     {
         void EnterAttackControll();
     }

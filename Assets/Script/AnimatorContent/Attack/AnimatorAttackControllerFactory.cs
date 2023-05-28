@@ -3,13 +3,13 @@
     using UnityEngine;
     using Item.ItemGameData;
     [System.Serializable]
-    internal class AnimatorAttackControllerFactory
+    internal class AimatorContentByWeaponFactory
     {
         [SerializeField] RuntimeAnimatorController AttackScytheController;
         [SerializeField] RuntimeAnimatorController AttackBowController;
 
         Animator _animator;
-        public AnimatorAttackControllerFactory(Animator animator)
+        public AimatorContentByWeaponFactory(Animator animator)
         {
             _animator = animator;
         }

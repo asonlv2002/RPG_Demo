@@ -11,7 +11,8 @@ namespace AnimatorContent
     {
         private List<AnimatorComponent> _animatorComponents;
         [SerializeField] private Animator _animator;
-        [SerializeField] private AnimatorAttackControllerFactory _animatorControllerFactory;
+        [SerializeField] private AimatorContentByWeaponFactory _animatorControllerFactory;
+        [SerializeField] private AnimatorMovementFactory _animatorMovementFactory;
         private AnimationAttackParameterFactory _parameterFactory;
         [SerializeField] RuntimeAnimatorController movement;
         public Type WeaponType { get; private set; }
@@ -22,7 +23,7 @@ namespace AnimatorContent
             _animatorComponents = new List<AnimatorComponent>();
             AnimationIntHashs = new AnimationIntHashs();
             _parameterFactory = new AnimationAttackParameterFactory();
-            _animatorControllerFactory = new AnimatorAttackControllerFactory(_animator);
+            _animatorControllerFactory = new AimatorContentByWeaponFactory(_animator);
         }
 
         public void OnEquipWeapon(WeaponData weaponData)
