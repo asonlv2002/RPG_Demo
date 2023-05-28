@@ -13,7 +13,7 @@ namespace AnimatorContent
         [SerializeField] private Animator _animator;
         [SerializeField] private AnimatorAttackControllerFactory _animatorControllerFactory;
         private AnimationAttackParameterFactory _parameterFactory;
-
+        [SerializeField] RuntimeAnimatorController movement;
         public Type WeaponType { get; private set; }
         public Animator Animator => _animator;
         public AnimationIntHashs AnimationIntHashs { get; private set; }
@@ -31,6 +31,7 @@ namespace AnimatorContent
             _animatorComponents.Clear();
             AddAnimatorComponent(_parameterFactory.Factory(weaponData));
             AddAnimatorComponent(_animatorControllerFactory.Factory(weaponData));
+            _animator.runtimeAnimatorController = movement;
         }
 
         public T GetAimatorComponet<T>() where T : AnimatorComponent

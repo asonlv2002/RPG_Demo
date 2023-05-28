@@ -319,6 +319,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MainContent>k__BackingField: {fileID: 0}
   _animator: {fileID: 2876833287689597433}
+  _animatorControllerFactory:
+    AttackScytheController: {fileID: 0}
+    AttackBowController: {fileID: 0}
+  movement: {fileID: 22100000, guid: 8bee02ec0d557d44a97f32bf3364e995, type: 2}
 --- !u!1 &7071238951588474814
 GameObject:
   m_ObjectHideFlags: 0
