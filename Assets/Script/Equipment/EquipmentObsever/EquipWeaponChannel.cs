@@ -21,7 +21,7 @@ namespace Equipments
             switch(weaponData)
             {
                 case ScytheData:
-                    _factory = new ScytheEquimentFactory(playerRootContent.Animator);
+                    _factory = new ScytheEquimentFactory(playerRootContent.Animator,playerRootContent.InputAction);
                     break;
             }
             _factory.InitEquipWeapon();

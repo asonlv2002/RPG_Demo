@@ -2,14 +2,12 @@ using UnityEngine;
 public class CamerFollowPlayer : MonoBehaviour
 {
     [SerializeField] Camera _camera;
-    PlayerInput _playerInput;
 
     [SerializeField] Transform _targetFollowed;
     [SerializeField] Transform _resultFollow;
     [SerializeField] float CONST_UN_TRASITION;
     private void Awake()
     {
-        _playerInput = new PlayerInput();
     }
 
     private void FixedUpdate()
@@ -26,11 +24,9 @@ public class CamerFollowPlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInput.CameraControl.Enable();
     }
 
     private void OnDisable()
     {
-        _playerInput.CameraControl.Disable();
     }
 }

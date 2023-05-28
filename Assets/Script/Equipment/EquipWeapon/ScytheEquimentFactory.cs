@@ -1,10 +1,12 @@
 ﻿namespace Equipments
 {
     using AnimatorContent;
+    using InputContent;
+
     internal class ScytheEquimentFactory : EquipWeaponFactory
     {
 
-        public ScytheEquimentFactory(IAnimatorContent animatorContent) : base(animatorContent)
+        public ScytheEquimentFactory(IAnimatorContent animatorContent,IInputContent inputContent) : base(animatorContent, inputContent)
         {
             InitEquipWeapon();
         }
@@ -16,9 +18,11 @@
 
         void InitAnimatorContent()
         {
-            _animatorContent.AddAnimatorComponent(new AttackController(_animatorContent.Animator,_attackController.Scythe));
-            _animatorContent.AddAnimatorComponent(new MovementController(_animatorContent.Animator, _movementController.Scythe));
-            _animatorContent.AddAnimatorComponent(new ScytheAttackParameter());
+            _animatorContent.AddContentComponent(new AttackController(_animatorContent.Animator,_attackController.Scythe));
+            _animatorContent.AddContentComponent(new MovementController(_animatorContent.Animator, _movementController.Scythe));
+            _animatorContent.AddContentComponent(new ScytheAttackParameter());
+
+            _input.AddContentComponent(new InputAttackScyther());
            
         }
     }

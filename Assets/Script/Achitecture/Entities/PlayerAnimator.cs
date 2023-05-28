@@ -26,10 +26,10 @@ namespace AnimatorContent
 
         public void OnEquipWeapon()
         {
-            GetAimatorComponet<MovementController>().EnterMovement();
+            GetContentComponet<MovementController>().EnterMovement();
         }
 
-        public T GetAimatorComponet<T>() where T : AnimatorComponent
+        public T GetContentComponet<T>() where T : AnimatorComponent
         {
             foreach(var component in _animatorComponents)
             {
@@ -38,7 +38,7 @@ namespace AnimatorContent
             return null;
         }
 
-        public void AddAnimatorComponent(AnimatorComponent component)
+        public void AddContentComponent(AnimatorComponent component)
         {
             _animatorComponents.Add(component);
         }

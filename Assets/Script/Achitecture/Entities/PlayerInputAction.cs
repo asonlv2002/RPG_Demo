@@ -1,35 +1,48 @@
 using UnityEngine;
 
-namespace Input
+namespace InputContent
 {
-    using InputModify;
+    using System.Collections.Generic;
+    using InputContent;
     using Equipments;
     using Item.ItemGameData;
     using System;
 
-    internal class PlayerInputAction : Entities.BranchContent,IEquipWeaponSubscriber,IInputAttackProvider
+    internal class PlayerInputAction : Entities.BranchContent,IEquipWeaponSubscriber,IInputContent
     {
-        public InputPress InputPress { get; private set; }
-        public InputAttack InputAttack { get; private set; }
+        private List<InputComponent> _inputComponents;
+        [SerializeField] InputMovement _inputMovement;
+        IInputAttackScythe inputAttack;
 
         private void Awake()
         {
-            InputPress = new InputPress(new PlayerInput());
+            _inputComponents = new List<InputComponent>();
+            _inputMovement = new InputMovement();
+            AddContentComponent(_inputMovement);
         }
-
-        private void OnEnable()
-        {
-            InputPress.EnableInput();
-        }
-
-        private void OnDisable()
-        {
-            InputPress.DisableInput();
-        }
-
         public void OnEquipWeapon()
         {
-            //InputAttack = new InputAttackFactory(weaponData).InputAttack;
+            inputAttack = GetContentComponet<InputAttackScyther>();
+        }
+
+        public T GetContentComponet<T>() where T : InputComponent
+        {
+            foreach(var component in _inputComponents)
+            {
+                if (component is T)
+                    return component as T;
+            }
+            return null;
+        }
+
+        public void AddContentComponent(InputComponent component)
+        {
+            _inputComponents.Add(component);
+        }
+
+        private void Update()
+        {
+            if(inputAttack != null) Debug.Log(inputAttack.AttackQ);
         }
     }
 }

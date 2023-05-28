@@ -24,11 +24,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     ""name"": ""PlayerInput"",
     ""maps"": [
         {
-            ""name"": ""CharacterControl"",
+            ""name"": ""PlayerMovement"",
             ""id"": ""77b658f1-2635-4ac2-84d7-3dd16a069be3"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""Run"",
                     ""type"": ""Value"",
                     ""id"": ""9fb6ed71-1600-464a-a547-d512d147eabb"",
                     ""expectedControlType"": ""Vector2"",
@@ -37,7 +37,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Run"",
+                    ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""b673355b-eaeb-4aeb-ba55-370405947163"",
                     ""expectedControlType"": ""Button"",
@@ -63,7 +63,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Run"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -74,7 +74,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -85,7 +85,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -96,7 +96,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -107,7 +107,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -118,7 +118,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Run"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -134,46 +134,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""CameraControl"",
-            ""id"": ""bf54fac5-f35c-4956-be9e-09036f433662"",
-            ""actions"": [
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""c650b566-5c51-4be0-b719-62693cf6861c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""2997d03d-a248-4228-ba19-09ebc4b4ec81"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // CharacterControl
-        m_CharacterControl = asset.FindActionMap("CharacterControl", throwIfNotFound: true);
-        m_CharacterControl_Move = m_CharacterControl.FindAction("Move", throwIfNotFound: true);
-        m_CharacterControl_Run = m_CharacterControl.FindAction("Run", throwIfNotFound: true);
-        m_CharacterControl_Jump = m_CharacterControl.FindAction("Jump", throwIfNotFound: true);
-        // CameraControl
-        m_CameraControl = asset.FindActionMap("CameraControl", throwIfNotFound: true);
-        m_CameraControl_Look = m_CameraControl.FindAction("Look", throwIfNotFound: true);
+        // PlayerMovement
+        m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
+        m_PlayerMovement_Run = m_PlayerMovement.FindAction("Run", throwIfNotFound: true);
+        m_PlayerMovement_Sprint = m_PlayerMovement.FindAction("Sprint", throwIfNotFound: true);
+        m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -230,95 +199,58 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // CharacterControl
-    private readonly InputActionMap m_CharacterControl;
-    private ICharacterControlActions m_CharacterControlActionsCallbackInterface;
-    private readonly InputAction m_CharacterControl_Move;
-    private readonly InputAction m_CharacterControl_Run;
-    private readonly InputAction m_CharacterControl_Jump;
-    public struct CharacterControlActions
+    // PlayerMovement
+    private readonly InputActionMap m_PlayerMovement;
+    private IPlayerMovementActions m_PlayerMovementActionsCallbackInterface;
+    private readonly InputAction m_PlayerMovement_Run;
+    private readonly InputAction m_PlayerMovement_Sprint;
+    private readonly InputAction m_PlayerMovement_Jump;
+    public struct PlayerMovementActions
     {
         private @PlayerInput m_Wrapper;
-        public CharacterControlActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_CharacterControl_Move;
-        public InputAction @Run => m_Wrapper.m_CharacterControl_Run;
-        public InputAction @Jump => m_Wrapper.m_CharacterControl_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_CharacterControl; }
+        public PlayerMovementActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Run => m_Wrapper.m_PlayerMovement_Run;
+        public InputAction @Sprint => m_Wrapper.m_PlayerMovement_Sprint;
+        public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CharacterControlActions set) { return set.Get(); }
-        public void SetCallbacks(ICharacterControlActions instance)
+        public static implicit operator InputActionMap(PlayerMovementActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerMovementActions instance)
         {
-            if (m_Wrapper.m_CharacterControlActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerMovementActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnMove;
-                @Run.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRun;
-                @Run.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRun;
-                @Run.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnRun;
-                @Jump.started -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_CharacterControlActionsCallbackInterface.OnJump;
+                @Run.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnRun;
+                @Sprint.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnSprint;
+                @Jump.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJump;
             }
-            m_Wrapper.m_CharacterControlActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
             }
         }
     }
-    public CharacterControlActions @CharacterControl => new CharacterControlActions(this);
-
-    // CameraControl
-    private readonly InputActionMap m_CameraControl;
-    private ICameraControlActions m_CameraControlActionsCallbackInterface;
-    private readonly InputAction m_CameraControl_Look;
-    public struct CameraControlActions
+    public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+    public interface IPlayerMovementActions
     {
-        private @PlayerInput m_Wrapper;
-        public CameraControlActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Look => m_Wrapper.m_CameraControl_Look;
-        public InputActionMap Get() { return m_Wrapper.m_CameraControl; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CameraControlActions set) { return set.Get(); }
-        public void SetCallbacks(ICameraControlActions instance)
-        {
-            if (m_Wrapper.m_CameraControlActionsCallbackInterface != null)
-            {
-                @Look.started -= m_Wrapper.m_CameraControlActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_CameraControlActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_CameraControlActionsCallbackInterface.OnLook;
-            }
-            m_Wrapper.m_CameraControlActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
-            }
-        }
-    }
-    public CameraControlActions @CameraControl => new CameraControlActions(this);
-    public interface ICharacterControlActions
-    {
-        void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-    }
-    public interface ICameraControlActions
-    {
-        void OnLook(InputAction.CallbackContext context);
     }
 }

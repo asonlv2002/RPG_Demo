@@ -2,16 +2,23 @@
 namespace Equipments
 {
     using AnimatorContent;
+    using InputContent;
+
     internal abstract class EquipWeaponFactory
     {
         protected IAnimatorContent _animatorContent;
         protected AnimatorAttackContains _attackController;
         protected AnimatorMovementControllers _movementController;
-        public EquipWeaponFactory(IAnimatorContent animatorContent)
+
+
+        protected IInputContent _input;
+        public EquipWeaponFactory(IAnimatorContent animatorContent,IInputContent inpuContent)
         {
             _animatorContent = animatorContent;
-            _attackController = _animatorContent.GetAimatorComponet<AnimatorAttackContains>();
-            _movementController = _animatorContent.GetAimatorComponet<AnimatorMovementControllers>();
+            _attackController = _animatorContent.GetContentComponet<AnimatorAttackContains>();
+            _movementController = _animatorContent.GetContentComponet<AnimatorMovementControllers>();
+
+            _input = inpuContent;
         }
 
         public abstract void InitEquipWeapon();

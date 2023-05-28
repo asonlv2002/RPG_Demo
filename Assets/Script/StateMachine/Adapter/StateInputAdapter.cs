@@ -1,6 +1,6 @@
 ﻿namespace StateMachine
 {
-    using Input;
+    using InputContent;
     internal abstract class StateInputAdapter
     {
         protected PlayerInputAction PlayerInput;

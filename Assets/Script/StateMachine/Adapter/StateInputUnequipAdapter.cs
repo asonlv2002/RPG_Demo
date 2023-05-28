@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace StateMachine
 {
-    using Input;
+    using InputContent;
     internal class StateInputUnequipAdapter: StateInputAdapter, ITransformInput
     {
         public StateInputUnequipAdapter(PlayerInputAction inputAction) : base(inputAction)
         {
         }
 
-        public bool IsRunPressed => PlayerInput.InputPress.IsRunPressed;
+        public bool IsRunPressed => PlayerInput.GetContentComponet<InputMovement>().IsRunPressed;
 
-        public bool IsJumpPressed => PlayerInput.InputPress.IsJumpPressed;
+        public bool IsJumpPressed => PlayerInput.GetContentComponet<InputMovement>().IsJumpPressed;
 
-        public bool IsSpintPressed => PlayerInput.InputPress.IsSpintPressed;
+        public bool IsSpintPressed => PlayerInput.GetContentComponet<InputMovement>().IsSpintPressed;
 
-        public Vector3 CurrentInputMovement => PlayerInput.InputPress.CurrentInputMovement;
+        public Vector3 CurrentInputMovement => PlayerInput.GetContentComponet<InputMovement>().CurrentInputMovement;
     }
 }

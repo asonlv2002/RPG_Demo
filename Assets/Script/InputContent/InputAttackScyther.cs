@@ -1,16 +1,16 @@
 ﻿using UnityEngine.InputSystem;
-namespace InputModify
+namespace InputContent
 {
-    internal class InputAttackScytheContent: InputAttack, IInputAttackScythe
+    internal class InputAttackScyther: InputComponent, IInputAttackScythe
     {
         private InputAttackScythe Input;
-        public InputAttackScytheContent()
+        public InputAttackScyther()
         {
             Input = new InputAttackScythe();
             InitilazationInput();
         }
 
-        protected override void InitilazationInput()
+        protected void InitilazationInput()
         {
             Input.Attack.Enable();
         }

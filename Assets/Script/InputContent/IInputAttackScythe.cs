@@ -1,4 +1,4 @@
-﻿namespace InputModify
+﻿namespace InputContent
 {
     internal interface IInputAttackScythe
     {
