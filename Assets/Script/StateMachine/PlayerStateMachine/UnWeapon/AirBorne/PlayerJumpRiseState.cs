@@ -9,17 +9,13 @@ namespace StateMachine
             animtionID = AnimationID.IsJumpRiseHash;
         }
 
-        public override void SwitchToOtherRoot()
-        {
-            if(Physiscal.CurrenRigibodyVelocity.y <= 0/* && stateControl.Body.IsFall*/)
-            {
-                SwitchState(StateContain.Fall);
-            }
-            //if (stateControl.PhysiscalProvider.Y_VelocityApplie <= 0 && !stateControl.Body.IsFall)
-            //{
-            //    SwitchState(StateContain.JumpFall());
-            //}
-        }
+        //public override void SwitchToFriendState()
+        //{
+        //    if(StateContain.Fall.ConditionEnterState())
+        //    {
+        //        SwitchState(StateContain.Fall);
+        //    }
+        //}
 
         public override void EnterState()
         {
@@ -30,7 +26,6 @@ namespace StateMachine
         public override void UpdateState()
         {
             base.UpdateState();
-            SwitchToOtherRoot();
         }
 
         public override void FixedUpdateState()
@@ -55,6 +50,16 @@ namespace StateMachine
             var oldYVelocity = Physiscal.Y_VelocityApplie;
             var newVelocityY = Physiscal.Y_VelocityApplie + gravity * Time.deltaTime;
             Physiscal.Y_VelocityApplie = (oldYVelocity + newVelocityY) * .5f;
+        }
+
+        public override bool ConditionEnterState()
+        {
+            return InputTransform.IsJumpPressed && Body.IsOnGround;
+        }
+
+        public override bool ConditionInitChildState()
+        {
+            return InputTransform.IsJumpPressed;
         }
     } 
 }

@@ -7,10 +7,6 @@
             animtionID = AnimationID.IsIdleHash;
         }
 
-        public override void SwitchToOtherRoot()
-        {
-        }
-
         public override void EnterState()
         {
             base.EnterState();
@@ -19,8 +15,16 @@
         public override void UpdateState()
         {
             base.UpdateState();
-            SwitchToOtherRoot();
         }
 
+        public override bool ConditionEnterState()
+        {
+            return !InputTransform.IsRunPressed && !InputTransform.IsSpintPressed;
+        }
+
+        public override bool ConditionInitChildState()
+        {
+            return !InputTransform.IsRunPressed && !InputTransform.IsSpintPressed;
+        }
     }
 }

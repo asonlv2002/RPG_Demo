@@ -9,7 +9,7 @@ namespace AnimatorContent
 
     internal class PlayerAnimator : Entities.BranchContent,IEquipWeaponSubscriber,IAnimatorContent
     {
-        [SerializeField, HideInInspector] private List<AnimatorComponent> _animatorComponents;
+        private List<AnimatorComponent> _animatorComponents;
         [SerializeField] private Animator _animator;
         [SerializeField] private AnimatorAttackControllerFactory _animatorControllerFactory;
         private AnimationAttackParameterFactory _parameterFactory;
@@ -19,6 +19,7 @@ namespace AnimatorContent
         public AnimationIntHashs AnimationIntHashs { get; private set; }
         private void Awake()
         {
+            _animatorComponents = new List<AnimatorComponent>();
             AnimationIntHashs = new AnimationIntHashs();
             _parameterFactory = new AnimationAttackParameterFactory();
             _animatorControllerFactory = new AnimatorAttackControllerFactory(_animator);

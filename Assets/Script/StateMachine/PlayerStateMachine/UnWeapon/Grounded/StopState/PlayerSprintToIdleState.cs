@@ -18,24 +18,26 @@ namespace StateMachine
         }
 
 
-        public override void SwitchToOtherRoot()
-        {
-            if(TimeExitState <= 0)
-            {
-                SwitchState(StateContain.Idle);
-            }
-        }
-
         public override void UpdateState()
         {
             CalculatorTimeExit();
             base.UpdateState();
-            SwitchToOtherRoot();
+            SwitchToFriendState();
         }
 
         public void CalculatorTimeExit()
         {
             TimeExitState -= UnityEngine.Time.deltaTime;
+        }
+
+        public override bool ConditionEnterState()
+        {
+            return false;
+        }
+
+        public override bool ConditionInitChildState()
+        {
+            return false;
         }
     }
 }

@@ -9,17 +9,10 @@ namespace StateMachine
             animtionID = AnimationID.IsSprintHash;
         }
 
-        public override void SwitchToOtherRoot()
-        {
-            if(!InputTransform.IsSpintPressed)
-            {
-                SwitchState(StateContain.Run);
-            }
-            else if(!InputTransform.IsRunPressed)
-            {
-                SwitchState(StateContain.StopOnGround);
-            }
-        }
+        //public override void SwitchToFriendState()
+        //{
+        //    if(StateContain.Run.ConditionEnterState()) SwitchState(StateContain.Run);
+        //}
 
         public override void EnterState()
         {
@@ -30,7 +23,7 @@ namespace StateMachine
         {
 
             base.UpdateState();
-            SwitchToOtherRoot();
+            SwitchToFriendState();
         }
         public override void FixedUpdateState()
         {
@@ -43,6 +36,16 @@ namespace StateMachine
             float sprintSpeed = 2f;
             Physiscal.X_VelocityApplie = InputTransform.CurrentInputMovement.x * sprintSpeed;
             Physiscal.Z_VelocityApplie = InputTransform.CurrentInputMovement.z * sprintSpeed;
+        }
+
+        public override bool ConditionEnterState()
+        {
+            return InputTransform.IsSpintPressed;
+        }
+
+        public override bool ConditionInitChildState()
+        {
+            return InputTransform.IsSpintPressed;
         }
     }
 }

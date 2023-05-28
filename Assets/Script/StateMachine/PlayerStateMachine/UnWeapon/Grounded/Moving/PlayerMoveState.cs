@@ -2,46 +2,23 @@
 
 namespace StateMachine
 {
-    internal class PlayerMoveState : TransformState , IRootState
+    internal class PlayerMoveState : TransformState
     {
         public PlayerMoveState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
         {
             animtionID = AnimationID.IsMoveHash;
         }
 
-        public override void SwitchToOtherRoot()
-        {
-            if(!InputTransform.IsRunPressed)
-            {
-                SwitchState(StateContain.StopOnGround);
-            }
-        }
         public override void EnterState()
         {
             base.EnterState();
-            InitilationChildrenState();
         }
 
         public override void UpdateState()
         {
 
             base.UpdateState();
-            SwitchToOtherRoot();
         }
-
-        public void InitilationChildrenState()
-        {
-            if(InputTransform.IsRunPressed)
-            {
-                SetChildState(StateContain.Run);
-            }
-            if(InputTransform.IsSpintPressed)
-            {
-                SetChildState(StateContain.Sprint);
-            }
-            childState.EnterState();
-        }
-
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
@@ -66,5 +43,14 @@ namespace StateMachine
             }
         }
 
+        public override bool ConditionEnterState()
+        {
+            return InputTransform.IsRunPressed || InputTransform.IsSpintPressed;
+        }
+
+        public override bool ConditionInitChildState()
+        {
+            return InputTransform.IsRunPressed || InputTransform.IsSpintPressed;
+        }
     }
 }

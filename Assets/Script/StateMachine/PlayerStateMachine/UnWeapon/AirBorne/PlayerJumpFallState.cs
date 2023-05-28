@@ -8,13 +8,13 @@ namespace StateMachine
             animtionID = AnimationID.IsJumpFallHash;
         }
 
-        public override void SwitchToOtherRoot()
-        {
-            //if (stateControl.GroundPos.y <= -5 /*(stateControl.HeightGroundBeginJump - stateControl.CharacterHeight/2)*/)
-            //{
-            //    SwitchState(StateContain.Fall());
-            //}
-        }
+        //public override void SwitchToFriendState()
+        //{
+        //    //if (stateControl.GroundPos.y <= -5 /*(stateControl.HeightGroundBeginJump - stateControl.CharacterHeight/2)*/)
+        //    //{
+        //    //    SwitchState(StateContain.Fall());
+        //    //}
+        //}
 
         public override void EnterState()
         {
@@ -24,7 +24,6 @@ namespace StateMachine
         public override void UpdateState()
         {
             base.UpdateState();
-            SwitchToOtherRoot();
         }
         public override void FixedUpdateState()
         {
@@ -37,6 +36,16 @@ namespace StateMachine
             float oldYVelocity = Physiscal.Y_VelocityApplie;
             float newYVelocity = Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
             Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
+        }
+
+        public override bool ConditionEnterState()
+        {
+            return false;
+        }
+
+        public override bool ConditionInitChildState()
+        {
+            return false;
         }
     }
 }

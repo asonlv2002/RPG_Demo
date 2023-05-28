@@ -28,6 +28,8 @@
 
         public StateContainIntance(IStateContext stateContext) : base(stateContext)
         {
+            LinkChildState();
+            LinkFriendState();
 
         }
         protected override void CreateStateContain()
@@ -45,9 +47,34 @@
             JumpFall = new PlayerJumpFallState(_stateContext, this);
 
             Fall = new PlayerFallState(_stateContext, this);
-
             StopOnGround = new PlayerStopOnGroundState(_stateContext, this);
             SprintToIdle = new PlayerSprintToIdleState(_stateContext, this);
+        }
+
+        void LinkFriendState()
+        {
+            Grounded.AddFriendState(Airborne);
+            JumpRise.AddFriendState(Fall);
+            Move.AddFriendState(StopOnGround);
+            StopOnGround.AddFriendState(Move);
+            Run.AddFriendState(Sprint);        
+        }
+
+        void LinkChildState()
+        {
+            Movement.AddChildState(Airborne);
+            Movement.AddChildState(Grounded);
+
+            Grounded.AddChildState(Move);
+            Grounded.AddChildState(StopOnGround);
+
+            Move.AddChildState(Run);
+            Move.AddChildState(Sprint);
+
+            StopOnGround.AddChildState(Idle);
+
+            Airborne.AddChildState(JumpRise);
+            Airborne.AddChildState(Fall);
         }
     }
 }

@@ -8,10 +8,10 @@ namespace StateMachine
             animtionID = AnimationID.IsFallHash;
         }
 
-        public override void SwitchToOtherRoot()
-        {
+        //public override void SwitchToFriendState()
+        //{
             
-        }
+        //}
 
         public override void EnterState()
         {
@@ -36,6 +36,16 @@ namespace StateMachine
             float oldYVelocity = Physiscal.Y_VelocityApplie;
             float newYVelocity = Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
             Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
+        }
+
+        public override bool ConditionEnterState()
+        {
+            return Physiscal.Y_VelocityApplie < 0f;
+        }
+
+        public override bool ConditionInitChildState()
+        {
+            return !Body.IsTerrestrial;
         }
     }
 }
