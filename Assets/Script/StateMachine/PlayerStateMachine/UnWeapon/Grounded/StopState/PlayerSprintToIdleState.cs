@@ -1,11 +1,10 @@
 using UnityEngine;
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerSprintToIdleState : TransformState, IConversionState
+    internal class PlayerSprintToIdleState : MovementState
     {
-        public PlayerSprintToIdleState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerSprintToIdleState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsSprintToStop;
         }
 
         public float TimeExitState { get; private set; }

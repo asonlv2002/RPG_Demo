@@ -1,29 +1,17 @@
 ﻿
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerAirborneState : TransformState
+    internal class PlayerAirborneState : MovementState
     {
-        public PlayerAirborneState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerAirborneState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsAirborneHash;
+            AnimatorParameter = MovementParameter.IsAirborneHash;
         }
-
-        //public override void SwitchToFriendState()
-        //{
-        //    if(StateContain.Grounded.ConditionEnterState()) SwitchState(StateContain.Grounded);
-        //}
 
         public override void EnterState()
         {
             base.EnterState();
         }
-
-        //public void InitilationChildrenState()
-        //{
-        //    if(StateContain.JumpRise.ConditionInitChildState()) SetChildState(StateContain.JumpRise);
-        //    else if (StateContain.Fall.ConditionInitChildState()) SetChildState(StateContain.Fall);
-        //    currentChildState.EnterState();
-        //}
         public override void UpdateState()
         {
             base.UpdateState();
@@ -31,7 +19,7 @@ namespace StateMachine
 
         public override bool ConditionEnterState()
         {
-            return InputTransform.IsJumpPressed && Body.IsOnGround || !Body.IsTerrestrial;
+            return InputMovement.IsJumpPressed && Body.IsOnGround || !Body.IsTerrestrial;
         }
 
         public override bool ConditionInitChildState()

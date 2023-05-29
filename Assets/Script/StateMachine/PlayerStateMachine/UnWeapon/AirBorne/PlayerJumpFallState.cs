@@ -1,20 +1,12 @@
 ﻿using UnityEngine;
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerJumpFallState : TransformState
+    internal class PlayerJumpFallState : MovementState
     {
-        public PlayerJumpFallState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerJumpFallState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsJumpFallHash;
+            AnimatorParameter = MovementParameter.IsJumpFallHash;
         }
-
-        //public override void SwitchToFriendState()
-        //{
-        //    //if (stateControl.GroundPos.y <= -5 /*(stateControl.HeightGroundBeginJump - stateControl.CharacterHeight/2)*/)
-        //    //{
-        //    //    SwitchState(StateContain.Fall());
-        //    //}
-        //}
 
         public override void EnterState()
         {

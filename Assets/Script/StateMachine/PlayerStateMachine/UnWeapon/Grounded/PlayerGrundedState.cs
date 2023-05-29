@@ -1,26 +1,12 @@
 ﻿using UnityEngine;
 
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerGroundedState : TransformState
+    internal class PlayerGroundedState : MovementState
     {
-        public PlayerGroundedState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerGroundedState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsGroundHash;
-        }
-
-        //public override void SwitchToFriendState()
-        //{
-        //    if (StateContain.Airborne.ConditionEnterState()) SwitchState(StateContain.Airborne);
-        //}
-
-        public override void EnterState()
-        {
-            base.EnterState();
-        }
-        public override void UpdateState()
-        {
-            base.UpdateState();
+            AnimatorParameter = MovementParameter.IsGroundHash;
         }
         public override void FixedUpdateState()
         {
@@ -36,7 +22,7 @@ namespace StateMachine
 
         public override bool ConditionEnterState()
         {
-            return Body.IsOnGround && StateContext.CurrentState != StateContain.JumpRise;
+            return Body.IsOnGround && StateContent.CurrentState != StateStore.JumpRise;
         }
 
         public override bool ConditionInitChildState()

@@ -15,8 +15,8 @@ namespace Equipments
         public EquipWeaponFactory(IAnimatorContent animatorContent,IInputContent inpuContent)
         {
             _animatorContent = animatorContent;
-            _attackController = _animatorContent.GetContentComponet<AnimatorAttackContains>();
-            _movementController = _animatorContent.GetContentComponet<AnimatorMovementControllers>();
+            _attackController = _animatorContent.GetContentComponent<AnimatorAttackContains>();
+            _movementController = _animatorContent.GetContentComponent<AnimatorMovementControllers>();
 
             _input = inpuContent;
         }

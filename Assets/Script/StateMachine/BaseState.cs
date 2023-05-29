@@ -1,35 +1,40 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
-namespace StateMachine
+namespace StateContent
 {
     internal abstract class BaseState : IState
     {
         protected IState currentParentState;
         protected IState currentChildState;
-        protected IStateContext StateContext;
-        protected IStatePhysicAdapter Physiscal;
-        protected IStateBodyAdapter Body;
-        protected int animtionID;
+
+        protected IStateContent StateContent;
+
+        protected IPhysicAdapter Physiscal;
+        protected IBodyAdapter Body;
+        protected int AnimatorParameter;
 
         protected List<IState> friendStates;
         protected List<IState> childStates;
 
-        private IStateAnimationTrigger AnimationTrigger;
-        public BaseState(IStateContext stateContext)
+        private AnimationTrigger _animationTrigger;
+        public BaseState(IStateContent stateContent)
         {
             friendStates = new List<IState>();
             childStates = new List<IState>();
-            StateContext = stateContext;
-            AnimationTrigger = (StateContext as IStateAnimationIDProvider).AnimationIDProvider as IStateAnimationTrigger;
-            Physiscal = (StateContext as IStatePhysiscalProvider).PhysiscalProvider;
-            Body = (StateContext as IStateBodyProvider).Body;
+
+            StateContent = stateContent;
+
+            _animationTrigger = StateContent.GetContentComponent<AnimationTrigger>();
+            Physiscal = StateContent.GetContentComponent<PhysiscalAdapter>();
+            Body = StateContent.GetContentComponent<BodyAdapter>();
 
         }
         public virtual void EnterState()
         {
-            AnimationTrigger.EnableTrigger(this.animtionID);
-            StateContext.CurrentState = this;
+            Debug.Log(this);
+            _animationTrigger.EnableTrigger(this.AnimatorParameter);
+            StateContent.CurrentState = this;
             InitilationChildrenState();
         }
         public virtual void UpdateState()
@@ -43,7 +48,7 @@ namespace StateMachine
         }
         public virtual void ExitState()
         {
-            AnimationTrigger.DisableTrigger(this.animtionID);
+            _animationTrigger.DisableTrigger(this.AnimatorParameter);
             if (currentChildState != null)
             {
                 currentChildState.ExitState();

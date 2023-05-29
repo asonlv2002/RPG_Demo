@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerMovementState : TransformState
+    internal class PlayerMovementState : MovementState
     {
-        public PlayerMovementState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerMovementState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = 0;
-        }
-
-        public override void EnterState()
-        {
-            base.EnterState();
+            AnimatorParameter = 0;
         }
 
         public override void FixedUpdateState()
@@ -18,14 +13,6 @@ namespace StateMachine
             base.FixedUpdateState();
             Movement();
         }
-
-        //  void InitilationChildrenState()
-        // {
-        //     if (StateContain.Grounded.ConditionInitChildState()) SetChildState(StateContain.Grounded);
-        //     else SetChildState(StateContain.Airborne);
-        //     currentChildState.EnterState();
-        // }
-
         private void Movement()
         {
             Physiscal.MovementForceApplie();

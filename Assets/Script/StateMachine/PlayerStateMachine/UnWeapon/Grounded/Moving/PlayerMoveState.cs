@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerMoveState : TransformState
+    internal class PlayerMoveState : MovementState
     {
-        public PlayerMoveState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerMoveState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsMoveHash;
+            AnimatorParameter = MovementParameter.IsMoveHash;
         }
 
         public override void EnterState()
@@ -30,13 +30,13 @@ namespace StateMachine
         {
             Vector3 postionToLookAt;
 
-            postionToLookAt.x = InputTransform.CurrentInputMovement.x;
+            postionToLookAt.x = InputMovement.CurrentInputMovement.x;
             postionToLookAt.y = 0f;
-            postionToLookAt.z = InputTransform.CurrentInputMovement.z;
+            postionToLookAt.z = InputMovement.CurrentInputMovement.z;
 
             Quaternion currentRotation = Body.PlayerTransform.rotation;
 
-            if (InputTransform.IsRunPressed)
+            if (InputMovement.IsRunPressed)
             {
                 Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
                 Body.PlayerTransform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
@@ -45,12 +45,12 @@ namespace StateMachine
 
         public override bool ConditionEnterState()
         {
-            return InputTransform.IsRunPressed || InputTransform.IsSpintPressed;
+            return InputMovement.IsRunPressed || InputMovement.IsSpintPressed;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputTransform.IsRunPressed || InputTransform.IsSpintPressed;
+            return InputMovement.IsRunPressed || InputMovement.IsSpintPressed;
         }
     }
 }

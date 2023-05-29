@@ -1,30 +1,20 @@
-﻿namespace StateMachine
+﻿namespace StateContent
 {
-    internal class PlayerIdleState : TransformState
+    internal class PlayerIdleState : MovementState
     {
-        public PlayerIdleState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerIdleState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsIdleHash;
-        }
-
-        public override void EnterState()
-        {
-            base.EnterState();
-        }
-
-        public override void UpdateState()
-        {
-            base.UpdateState();
+            AnimatorParameter = MovementParameter.IsIdleHash;
         }
 
         public override bool ConditionEnterState()
         {
-            return !InputTransform.IsRunPressed && !InputTransform.IsSpintPressed;
+            return !InputMovement.IsRunPressed && !InputMovement.IsSpintPressed;
         }
 
         public override bool ConditionInitChildState()
         {
-            return !InputTransform.IsRunPressed && !InputTransform.IsSpintPressed;
+            return !InputMovement.IsRunPressed && !InputMovement.IsSpintPressed;
         }
     }
 }

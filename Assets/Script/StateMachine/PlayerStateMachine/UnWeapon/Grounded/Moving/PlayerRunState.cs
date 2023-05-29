@@ -1,36 +1,13 @@
 ﻿
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerRunState : TransformState
+    internal class PlayerRunState : MovementState
     {
-        public PlayerRunState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerRunState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsRunHash;
+            AnimatorParameter = MovementParameter.IsRunHash;
         }
 
-        //public override void SwitchToFriendState()
-        //{
-        //    if(InputTransform.IsRunPressed && InputTransform.IsSpintPressed)
-        //    {
-        //        SwitchState(StateContain.Sprint);
-        //    }
-        //    else if(!InputTransform.IsRunPressed)
-        //    {
-        //        SwitchState(StateContain.StopOnGround);
-        //    }
-        //}
-
-        public override void EnterState()
-        {
-            base.EnterState();
-        }
-
-        public override void UpdateState()
-        {
-
-            base.UpdateState();
-            SwitchToFriendState();
-        }
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
@@ -40,18 +17,18 @@ namespace StateMachine
         private void Run()
         {
             float speedRun = 2f;
-            Physiscal.X_VelocityApplie = InputTransform.CurrentInputMovement.x*speedRun;
-            Physiscal.Z_VelocityApplie = InputTransform.CurrentInputMovement.z*speedRun;
+            Physiscal.X_VelocityApplie = InputMovement.CurrentInputMovement.x*speedRun;
+            Physiscal.Z_VelocityApplie = InputMovement.CurrentInputMovement.z*speedRun;
         }
 
         public override bool ConditionEnterState()
         {
-            return InputTransform.IsRunPressed && !InputTransform.IsSpintPressed;
+            return InputMovement.IsRunPressed && !InputMovement.IsSpintPressed;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputTransform.IsRunPressed;
+            return InputMovement.IsRunPressed;
         }
     }
 }

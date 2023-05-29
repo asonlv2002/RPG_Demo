@@ -7,6 +7,7 @@ namespace InputContent
     using Equipments;
     using Item.ItemGameData;
     using System;
+    using Entities;
 
     internal class PlayerInputAction : Entities.BranchContent,IEquipWeaponSubscriber,IInputContent
     {
@@ -14,18 +15,19 @@ namespace InputContent
         [SerializeField] InputMovement _inputMovement;
         IInputAttackScythe inputAttack;
 
-        private void Awake()
+        public override void InitMainContent(PlayerRootContent mainContent)
         {
+            base.InitMainContent(mainContent);
             _inputComponents = new List<InputComponent>();
-            _inputMovement = new InputMovement();
+            _inputMovement = new InputMovement(new PlayerInput());
             AddContentComponent(_inputMovement);
         }
         public void OnEquipWeapon()
         {
-            inputAttack = GetContentComponet<InputAttackScyther>();
+            inputAttack = GetContentComponent<InputAttackScyther>();
         }
 
-        public T GetContentComponet<T>() where T : InputComponent
+        public T GetContentComponent<T>() where T : InputComponent
         {
             foreach(var component in _inputComponents)
             {
@@ -40,9 +42,5 @@ namespace InputContent
             _inputComponents.Add(component);
         }
 
-        private void Update()
-        {
-            if(inputAttack != null) Debug.Log(inputAttack.AttackQ);
-        }
     }
 }

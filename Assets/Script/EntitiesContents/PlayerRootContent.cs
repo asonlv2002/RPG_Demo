@@ -3,7 +3,7 @@ namespace Entities
 {
     internal class PlayerRootContent : MonoBehaviour
     {
-        [field : SerializeField] public StateMachine.PlayerStateMachine StateMachine { get; private set; }
+        [field : SerializeField] public StateContent.PlayerStateMachine StateMachine { get; private set; }
         [field : SerializeField] public Physical.PlayerPhysics Physiscal { get; private set; }
         [field: SerializeField] public BodyCollider.PlayerBody Body { get; private set; }
         [field: SerializeField] public AnimatorContent.PlayerAnimator Animator { get; private set; }
@@ -12,10 +12,12 @@ namespace Entities
 
         private void Start()
         {
-            StateMachine.InitMainContent(this);
+
             Physiscal.InitMainContent(this);
             Body.InitMainContent(this);
             Equipment.InitMainContent(this);
+            InputAction.InitMainContent(this);
+            StateMachine.InitMainContent(this);
         }
     }
 }

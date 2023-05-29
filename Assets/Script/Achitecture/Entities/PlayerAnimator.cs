@@ -14,22 +14,23 @@ namespace AnimatorContent
         private List<AnimatorComponent> _animatorComponents;
         [SerializeField] private AnimatorMovementControllers _animatorMovementControllers;
         [SerializeField] private AnimatorAttackContains _animatorAttackControllers;
-        public AnimationIntHashs AnimationIntHashs { get; private set; }
+        MovementAnimatorParameter _animationIntHashs;
 
         private void Awake()
         {
             _animatorComponents = new List<AnimatorComponent>();
-            AnimationIntHashs = new AnimationIntHashs();
+            _animationIntHashs = new MovementAnimatorParameter();
+            _animatorComponents.Add(_animationIntHashs);
             _animatorComponents.Add(_animatorMovementControllers);
             _animatorComponents.Add(_animatorAttackControllers);
         }
 
         public void OnEquipWeapon()
         {
-            GetContentComponet<MovementController>().EnterMovement();
+            GetContentComponent<MovementController>().EnterMovement();
         }
 
-        public T GetContentComponet<T>() where T : AnimatorComponent
+        public T GetContentComponent<T>() where T : AnimatorComponent
         {
             foreach(var component in _animatorComponents)
             {

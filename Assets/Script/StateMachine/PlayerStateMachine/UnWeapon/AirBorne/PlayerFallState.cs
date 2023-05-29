@@ -1,29 +1,12 @@
 ﻿using UnityEngine;
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerFallState : TransformState
+    internal class PlayerFallState : MovementState
     {
-        public PlayerFallState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerFallState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsFallHash;
+            AnimatorParameter = MovementParameter.IsFallHash;
         }
-
-        //public override void SwitchToFriendState()
-        //{
-            
-        //}
-
-        public override void EnterState()
-        {
-            base.EnterState();
-        }
-
-        public override void UpdateState()
-        {
-
-            base.UpdateState();
-        }
-
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();

@@ -1,18 +1,13 @@
 ﻿using UnityEngine;
 
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerSpintState : TransformState
+    internal class PlayerSpintState : MovementState
     {
-        public PlayerSpintState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerSpintState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsSprintHash;
+            AnimatorParameter = MovementParameter.IsSprintHash;
         }
-
-        //public override void SwitchToFriendState()
-        //{
-        //    if(StateContain.Run.ConditionEnterState()) SwitchState(StateContain.Run);
-        //}
 
         public override void EnterState()
         {
@@ -34,18 +29,18 @@ namespace StateMachine
         private void Sprint()
         {
             float sprintSpeed = 2f;
-            Physiscal.X_VelocityApplie = InputTransform.CurrentInputMovement.x * sprintSpeed;
-            Physiscal.Z_VelocityApplie = InputTransform.CurrentInputMovement.z * sprintSpeed;
+            Physiscal.X_VelocityApplie = InputMovement.CurrentInputMovement.x * sprintSpeed;
+            Physiscal.Z_VelocityApplie = InputMovement.CurrentInputMovement.z * sprintSpeed;
         }
 
         public override bool ConditionEnterState()
         {
-            return InputTransform.IsSpintPressed;
+            return InputMovement.IsSpintPressed;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputTransform.IsSpintPressed;
+            return InputMovement.IsSpintPressed;
         }
     }
 }

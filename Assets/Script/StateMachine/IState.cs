@@ -1,4 +1,4 @@
-﻿namespace StateMachine
+﻿namespace StateContent
 {
     internal interface IState
     {

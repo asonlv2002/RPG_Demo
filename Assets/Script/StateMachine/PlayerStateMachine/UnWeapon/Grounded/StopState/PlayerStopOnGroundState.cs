@@ -1,10 +1,10 @@
-﻿namespace StateMachine
+﻿namespace StateContent
 {
-    internal class PlayerStopOnGroundState : TransformState
+    internal class PlayerStopOnGroundState : MovementState
     {
-        public PlayerStopOnGroundState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerStopOnGroundState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsStopOnGround;
+            AnimatorParameter = MovementParameter.IsStopOnGround;
         }
 
         public override void EnterState()
@@ -24,12 +24,12 @@
 
         public override bool ConditionEnterState()
         {
-            return !InputTransform.IsRunPressed && !InputTransform.IsSpintPressed;
+            return !InputMovement.IsRunPressed && !InputMovement.IsSpintPressed;
         }
 
         public override bool ConditionInitChildState()
         {
-            return !InputTransform.IsRunPressed && !InputTransform.IsSpintPressed;
+            return !InputMovement.IsRunPressed && !InputMovement.IsSpintPressed;
         }
     }
 }

@@ -16,9 +16,9 @@ namespace InputContent
         public bool IsJumpPressed => _isJumpPresesd = _playerInput.PlayerMovement.Jump.IsPressed();
         public bool IsSpintPressed => _isSprintPresesd = _playerInput.PlayerMovement.Sprint.IsPressed();
         public Vector3 CurrentInputMovement => _currentInputMovement;
-        public InputMovement()
+        public InputMovement(PlayerInput inputActions)
         {
-            _playerInput = new PlayerInput();
+            _playerInput = inputActions;
             _playerInput.PlayerMovement.Enable();
             _playerInput.PlayerMovement.Run.started += OnHandleInputMovement;
             _playerInput.PlayerMovement.Run.performed += OnHandleInputMovement;

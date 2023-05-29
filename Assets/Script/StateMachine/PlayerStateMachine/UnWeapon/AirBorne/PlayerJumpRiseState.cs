@@ -1,21 +1,13 @@
 ﻿using UnityEngine;
 
-namespace StateMachine
+namespace StateContent
 {
-    internal class PlayerJumpRiseState : TransformState
+    internal class PlayerJumpRiseState : MovementState
     {
-        public PlayerJumpRiseState(IStateContext stateContext, ITransformStateStore stateTransition) : base(stateContext, stateTransition)
+        public PlayerJumpRiseState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            animtionID = AnimationID.IsJumpRiseHash;
+            AnimatorParameter = MovementParameter.IsJumpRiseHash;
         }
-
-        //public override void SwitchToFriendState()
-        //{
-        //    if(StateContain.Fall.ConditionEnterState())
-        //    {
-        //        SwitchState(StateContain.Fall);
-        //    }
-        //}
 
         public override void EnterState()
         {
@@ -54,12 +46,12 @@ namespace StateMachine
 
         public override bool ConditionEnterState()
         {
-            return InputTransform.IsJumpPressed && Body.IsOnGround;
+            return InputMovement.IsJumpPressed && Body.IsOnGround;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputTransform.IsJumpPressed;
+            return InputMovement.IsJumpPressed;
         }
     } 
 }
