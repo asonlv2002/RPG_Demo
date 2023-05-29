@@ -8,17 +8,6 @@ namespace StateContent
         {
             AnimatorParameter = MovementParameter.IsMoveHash;
         }
-
-        public override void EnterState()
-        {
-            base.EnterState();
-        }
-
-        public override void UpdateState()
-        {
-
-            base.UpdateState();
-        }
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();

@@ -8,20 +8,20 @@ namespace Equipments
         List<IEquipWeaponSubscriber> _subsribers;
 
         EquipWeaponFactory _factory;
-        Entities.PlayerRootContent playerRootContent;
+        Entities.PlayerRootContent Maincontent;
         public EquipWeaponChannel(Entities.PlayerRootContent mainContent)
         {
             _subsribers = new List<IEquipWeaponSubscriber>();
-            playerRootContent = mainContent;
-            _subsribers.Add(playerRootContent.InputAction);
-            _subsribers.Add(playerRootContent.Animator);
+            Maincontent = mainContent;
+            _subsribers.Add(Maincontent.InputAction);
+            _subsribers.Add(Maincontent.Animator);
         }
         public void EquipWeapon(WeaponData weaponData)
         {
             switch(weaponData)
             {
                 case ScytheData:
-                    _factory = new ScytheEquimentFactory(playerRootContent.Animator,playerRootContent.InputAction);
+                    _factory = new ScytheEquimentFactory(Maincontent.Animator,Maincontent.InputAction, Maincontent.StateMachine);
                     break;
             }
             _factory.InitEquipWeapon();

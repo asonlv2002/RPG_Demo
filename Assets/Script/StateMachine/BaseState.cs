@@ -70,8 +70,12 @@ namespace StateContent
         #region TransState
         protected virtual void SwitchState(IState nextState)
         {
-            (currentParentState as BaseState).currentChildState = nextState;
-            (nextState as BaseState).currentParentState = currentParentState;
+            if(currentParentState != null)
+            {
+                (currentParentState as BaseState).currentChildState = nextState;
+                (nextState as BaseState).currentParentState = currentParentState;
+            }
+
             ExitState();
             nextState.EnterState();
         }

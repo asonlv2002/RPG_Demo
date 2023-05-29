@@ -13,7 +13,6 @@ namespace InputContent
     {
         private List<InputComponent> _inputComponents;
         [SerializeField] InputMovement _inputMovement;
-        IInputAttackScythe inputAttack;
 
         public override void InitMainContent(PlayerRootContent mainContent)
         {
@@ -24,7 +23,6 @@ namespace InputContent
         }
         public void OnEquipWeapon()
         {
-            inputAttack = GetContentComponent<InputAttackScyther>();
         }
 
         public T GetContentComponent<T>() where T : InputComponent

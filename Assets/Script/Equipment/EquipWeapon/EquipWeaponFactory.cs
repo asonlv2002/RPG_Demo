@@ -3,6 +3,7 @@ namespace Equipments
 {
     using AnimatorContent;
     using InputContent;
+    using StateContent;
 
     internal abstract class EquipWeaponFactory
     {
@@ -12,15 +13,18 @@ namespace Equipments
 
 
         protected IInputContent _input;
-        public EquipWeaponFactory(IAnimatorContent animatorContent,IInputContent inpuContent)
+        protected IStateContent _state;
+        public EquipWeaponFactory(IAnimatorContent animatorContent,IInputContent inpuContent, IStateContent stateContent)
         {
             _animatorContent = animatorContent;
             _attackController = _animatorContent.GetContentComponent<AnimatorAttackContains>();
             _movementController = _animatorContent.GetContentComponent<AnimatorMovementControllers>();
 
             _input = inpuContent;
+            _state = stateContent;
         }
-
         public abstract void InitEquipWeapon();
+
+
     }
 }
