@@ -323,7 +323,7 @@ MonoBehaviour:
     <Scythe>k__BackingField: {fileID: 22100000, guid: 8bee02ec0d557d44a97f32bf3364e995, type: 2}
     <Bow>k__BackingField: {fileID: 0}
   _animatorAttackControllers:
-    <Scythe>k__BackingField: {fileID: 0}
+    <Scythe>k__BackingField: {fileID: 9100000, guid: 794fde1e3c7e0ce47b815d467adda733, type: 2}
     <Bow>k__BackingField: {fileID: 0}
 --- !u!1 &7071238951588474814
 GameObject:
@@ -558,7 +558,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 379411a1327de9e4081d180d39986824, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8283120d2938dc447b154cddb0bc7757, type: 2}
+      objectReference: {fileID: 9100000, guid: 1d589493a2309824a8e21eb81eada95e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 379411a1327de9e4081d180d39986824, type: 3}
 --- !u!95 &2876833287689597433 stripped

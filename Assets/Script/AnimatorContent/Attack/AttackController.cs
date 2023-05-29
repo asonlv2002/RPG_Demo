@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 namespace AnimatorContent
 {
-    internal class AttackController : AnimatorComponent, IAttackAnimator
+    internal class AttackController : AnimatorComponent
     {
         private Animator _animator;
         private RuntimeAnimatorController _animatorControll;

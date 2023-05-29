@@ -12,7 +12,7 @@ namespace AnimatorContent
         [field: SerializeField] public Animator Animator { get; private set; }
 
         private List<AnimatorComponent> _animatorComponents;
-        [SerializeField] private AnimatorMovementControllers _animatorMovementControllers;
+        [SerializeField] private MovementAnimatorController _animatorMovementControllers;
         [SerializeField] private AnimatorAttackContains _animatorAttackControllers;
         MovementAnimatorParameter _animationIntHashs;
 
@@ -27,7 +27,6 @@ namespace AnimatorContent
 
         public void OnEquipWeapon()
         {
-            GetContentComponent<MovementController>().EnterMovement();
         }
 
         public T GetContentComponent<T>() where T : AnimatorComponent

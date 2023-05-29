@@ -32,7 +32,6 @@ namespace StateContent
         }
         public virtual void EnterState()
         {
-            Debug.Log(this);
             _animationTrigger.EnableTrigger(this.AnimatorParameter);
             StateContent.CurrentState = this;
             InitilationChildrenState();

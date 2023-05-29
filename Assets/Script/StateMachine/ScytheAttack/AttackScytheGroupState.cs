@@ -2,14 +2,30 @@
 {
     internal class AttackScytheGroupState : ScytheAttack
     {
+        float time;
+        ScytheAnimatorControllerAdapter AnimatorController;
         public AttackScytheGroupState(IStateContent stateContent) : base(stateContent)
         {
-
+            AnimatorController = stateContent.GetContentComponent<ScytheAnimatorControllerAdapter>();
         }
-
+        public override void EnterState()
+        {
+            AnimatorController.EnterAttackController();
+            base.EnterState();
+            time = 2.067f;
+        }
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            time -= UnityEngine.Time.deltaTime;
+        }
+        protected override void SwitchToFriendState()
+        {
+            if(time <=0)
+            base.SwitchToFriendState();
+        }
         public override bool ConditionEnterState()
         {
-            UnityEngine.Debug.Log(2222222222222);
             if (childStates.Count <= 0) return false;
             foreach (var _child in childStates)
             {

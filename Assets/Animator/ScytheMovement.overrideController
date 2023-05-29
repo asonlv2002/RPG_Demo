@@ -7,7 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ScytheMovement
-  m_Controller: {fileID: 9100000, guid: 8283120d2938dc447b154cddb0bc7757, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1d589493a2309824a8e21eb81eada95e, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: a30649bbe5e008340aeb463e917c3626, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 96283e30b83dda9458ccb212a50bfb3c, type: 2}
@@ -15,8 +15,6 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: 77856b6ea4d4a5948bd5bf11bb69a2f0, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 07e20da6219ef5e41b1df57a1ceab3ea, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: a186126ff6f89f2488a1770493d29d44, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 575f865a124cf04468f77dcc826811e9, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 3974aea2716c37b428896d873d4ec47f, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 6e7348a476c4d1140bca3dfc732cbe3a, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 575f865a124cf04468f77dcc826811e9, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: eb85a941ab4c7a649be3a7c00cc7b191, type: 2}

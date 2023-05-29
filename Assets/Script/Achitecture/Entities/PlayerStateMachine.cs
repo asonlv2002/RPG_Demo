@@ -14,8 +14,9 @@ namespace StateContent
             stateComponents = new List<StateComponent>();
             AddContentComponent(new PhysiscalAdapter(MainContent.Physiscal));
             AddContentComponent(new BodyAdapter(MainContent.Body));
-            AddContentComponent(new AnimationTrigger(MainContent.Animator.Animator));
+
             AddContentComponent(new InputMovementAdapter(MainContent.InputAction));
+            AddContentComponent(new AnimationTrigger(MainContent.Animator.Animator));
             AddContentComponent(new MovementParameterAdapter(MainContent.Animator));
 
             AddContentComponent(new MovementStateStore(this));

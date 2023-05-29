@@ -9,7 +9,7 @@ namespace Equipments
     {
         protected IAnimatorContent _animatorContent;
         protected AnimatorAttackContains _attackController;
-        protected AnimatorMovementControllers _movementController;
+        protected MovementAnimatorController _movementController;
 
 
         protected IInputContent _input;
@@ -18,7 +18,7 @@ namespace Equipments
         {
             _animatorContent = animatorContent;
             _attackController = _animatorContent.GetContentComponent<AnimatorAttackContains>();
-            _movementController = _animatorContent.GetContentComponent<AnimatorMovementControllers>();
+            _movementController = _animatorContent.GetContentComponent<MovementAnimatorController>();
 
             _input = inpuContent;
             _state = stateContent;
