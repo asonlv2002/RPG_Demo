@@ -18,9 +18,9 @@ namespace Item.InEquipment
 
         protected virtual void ResetTransform(Transform modelTransform)
         {
-            modelTransform.localPosition = Vector3.zero;
+            modelTransform.localPosition = new Vector3(0.04f, -0.06f, 0.175f);
             modelTransform.localRotation = Quaternion.identity;
-            modelTransform.localEulerAngles = Vector3.zero; 
+            modelTransform.localEulerAngles = new Vector3(-3.5f, -90f, 90f);
         }
     }
 }
