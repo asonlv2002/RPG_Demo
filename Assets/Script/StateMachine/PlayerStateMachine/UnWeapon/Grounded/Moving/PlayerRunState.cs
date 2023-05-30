@@ -11,14 +11,6 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            Run();
-        }
-
-        private void Run()
-        {
-            float speedRun = 2f;
-            Physiscal.X_VelocityApplie = InputMovement.CurrentInputMovement.x*speedRun;
-            Physiscal.Z_VelocityApplie = InputMovement.CurrentInputMovement.z*speedRun;
         }
 
         public override bool ConditionEnterState()

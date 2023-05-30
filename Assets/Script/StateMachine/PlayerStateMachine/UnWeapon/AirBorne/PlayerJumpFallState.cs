@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+
 namespace StateContents
 {
+    using PhysicContents;
     internal class PlayerJumpFallState : MovementState
     {
         public PlayerJumpFallState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
@@ -20,14 +22,6 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            GravityEffect();
-        }
-        private void GravityEffect()
-        {
-            float gravity = Physiscal.Gravity;
-            float oldYVelocity = Physiscal.Y_VelocityApplie;
-            float newYVelocity = Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
-            Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
         }
 
         public override bool ConditionEnterState()

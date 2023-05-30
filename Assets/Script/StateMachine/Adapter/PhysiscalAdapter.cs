@@ -4,31 +4,42 @@ using UnityEngine;
 namespace StateContents
 {
     using PhysicContents;
-    internal class PhysiscalAdapter : StateComponent, IPhysicAdapter
+    internal class PhysiscalAdapter : StateComponent
     {
         PhysicCore _playerPhysics;
+        PhysicInAir inAir;
+        PhysicOnGround onGround;
         public PhysiscalAdapter(PhysicCore playerPhysics)
         {
             _playerPhysics = playerPhysics;
+            inAir = _playerPhysics.GetContentComponent<PhysicInAir>();
+            onGround = _playerPhysics.GetContentComponent<PhysicOnGround>();
         }
-        public float Gravity => _playerPhysics.PhysiscVariable.Gravity;
-        public float ConstFeet => 10f;
         public float Y_VelocityApplie { get =>  _playerPhysics.Y_VelocityApplie; set => _playerPhysics.Y_VelocityApplie = value; }
-        public float X_VelocityApplie { get => _playerPhysics.X_VelocityApplie; set => _playerPhysics.X_VelocityApplie = value; }
-        public float Z_VelocityApplie { get => _playerPhysics.Z_VelocityApplie; set => _playerPhysics.Z_VelocityApplie = value; }
-        public Vector3 VelocityApplie { get => _playerPhysics.VelocityApplie; set => _playerPhysics.VelocityApplie = value; }
-        public float JumpHeight => _playerPhysics.PhysiscVariable.JumpHeight;
-
-        public Vector3 CurrenRigibodyVelocity =>  _playerPhysics.CurrentRiribodyVelocity;
-
-        public float GetSpeedOnGroundDenpeden(float angleFeetGround)
-        {
-            return _playerPhysics.GetSpeedOnGroundDenpeden(angleFeetGround);
-        }
-
         public void MovementForceApplie()
         {
-            _playerPhysics.MovementForceApplie();
+            _playerPhysics.ApplyVelocity();
         }
+
+        public void GravityEffect(float present = 100f)
+        {
+            inAir.GravityEffect(present);
+        }
+
+        public void Jump(float jumpheight)
+        {
+            inAir.StartJump(jumpheight);
+        }
+
+        public void FloatOnGround(float f)
+        {
+            onGround.FoatOnGround(f);
+        }
+
+        public void Movement(float XSpeed,float Zspeed)
+        {
+            onGround.OnMoving(XSpeed, Zspeed);
+        }
+
     }
 }

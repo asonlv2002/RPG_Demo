@@ -10,8 +10,8 @@ namespace StateContents
 
         protected StateCore StateContent;
 
-        protected IPhysicAdapter Physiscal;
-        protected IBodyAdapter Body;
+        protected PhysiscalAdapter Physiscal;
+        protected BodyAdapter Body;
 
         protected List<IState> friendStates;
         protected List<IState> childStates;

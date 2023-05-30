@@ -15,19 +15,12 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            GravityEffect();
+            Physiscal.GravityEffect(200f);
         }
         public override void ExitState()
         {
             animator.SetBool(ActionParameter, false);
             base.ExitState();
-        }
-        private void GravityEffect()
-        {
-            float gravity = Physiscal.Gravity;
-            float oldYVelocity = Physiscal.Y_VelocityApplie;
-            float newYVelocity = Physiscal.Y_VelocityApplie + gravity * 2f * Time.fixedDeltaTime;
-            Physiscal.Y_VelocityApplie = (oldYVelocity + newYVelocity) / 2f;
         }
 
         public override bool ConditionEnterState()

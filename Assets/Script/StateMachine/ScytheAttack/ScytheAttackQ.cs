@@ -4,8 +4,14 @@
     {
         public ScytheAttackQ(StateCore stateContent) : base(stateContent)
         {
+
         }
 
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            Physiscal.FloatOnGround(Body.FLoatDirection);
+        }
         public override bool ConditionEnterState()
         {
             return Body.IsOnGround && InputAttack.AttackQ;

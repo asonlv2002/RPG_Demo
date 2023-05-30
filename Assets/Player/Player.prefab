@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7ffef40dfe8a14993563e657f45eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PhysiscHandler>k__BackingField: {fileID: 7071238952219145827}
   <PhysiscVariable>k__BackingField:
     <RunSpeed>k__BackingField: 2
     <SprintSpeed>k__BackingField: 4
@@ -224,7 +225,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  <PhysiscHandler>k__BackingField: {fileID: 7071238952219145827}
+  PhysicInAir:
+    PhysicCore: {fileID: 405133052304921471}
+  PhysicOnGround:
+    PhysicCore: {fileID: 405133052304921471}
 --- !u!1 &2562579241052543724
 GameObject:
   m_ObjectHideFlags: 0

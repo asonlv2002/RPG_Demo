@@ -16,15 +16,6 @@ namespace StateContents
             AnimatorMovementController?.EnterAnimatorMovement();
             base.EnterState();
         }
-        public override void FixedUpdateState()
-        {
-            base.FixedUpdateState();
-            Movement();
-        }
-        private void Movement()
-        {
-            Physiscal.MovementForceApplie();
-        }
 
         public override bool ConditionEnterState()
         {
@@ -33,7 +24,7 @@ namespace StateContents
 
         public override bool ConditionInitChildState()
         {
-            return StateStore.Grounded.ConditionInitChildState() || StateStore.Airborne.ConditionInitChildState();
+            return true;
         }
     }
 }

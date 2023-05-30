@@ -13,7 +13,7 @@ namespace StateContents
         {
             base.EnterState();
             animator.SetBool(ActionParameter, true);
-            Jump();
+            Physiscal.Jump(0f);
         }
         public override void UpdateState()
         {
@@ -23,26 +23,13 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            GravityEffect();
-        }
-
-        private void Jump()
-        {
-            Physiscal.Y_VelocityApplie = Physiscal.JumpHeight;
+            Physiscal.GravityEffect(100f);
         }
 
         public override void ExitState()
         {
             animator.SetBool(ActionParameter, false);
             base.ExitState();
-        }
-
-        private void GravityEffect()
-        {
-            var gravity = Physiscal.Gravity;
-            var oldYVelocity = Physiscal.Y_VelocityApplie;
-            var newVelocityY = Physiscal.Y_VelocityApplie + gravity * Time.deltaTime;
-            Physiscal.Y_VelocityApplie = (oldYVelocity + newVelocityY) * .5f;
         }
 
         public override bool ConditionEnterState()

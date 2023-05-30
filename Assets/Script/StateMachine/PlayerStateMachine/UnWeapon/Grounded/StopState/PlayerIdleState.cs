@@ -11,7 +11,7 @@
             base.EnterState();
 
             animator.SetBool(ActionParameter, true);
-            StopOnGround();
+            Physiscal.Movement(0, 0);
         }
         public override void ExitState()
         {
@@ -27,11 +27,6 @@
         public override bool ConditionInitChildState()
         {
             return !InputMovement.IsRunPressed;
-        }
-
-        private void StopOnGround()
-        {
-            Physiscal.VelocityApplie = UnityEngine.Vector3.up * Physiscal.Y_VelocityApplie;
         }
     }
 }

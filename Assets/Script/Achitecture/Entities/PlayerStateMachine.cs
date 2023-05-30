@@ -11,7 +11,6 @@ namespace StateContents
             var animator = MainCores.GetCore<AnimatorContent.AnimatorCore>();
             var physic = MainCores.GetCore<PhysicContents.PhysicCore>();
             var collider = MainCores.GetCore<ColliderContents.ColliderCore>();
-            UnityEngine.Debug.Log(physic);
             AddContentComponent(new PhysiscalAdapter(physic));
             AddContentComponent(new BodyAdapter(collider));
 

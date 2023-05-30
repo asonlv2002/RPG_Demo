@@ -22,14 +22,6 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            Sprint();
-        }
-
-        private void Sprint()
-        {
-            float sprintSpeed = 2f;
-            Physiscal.X_VelocityApplie = InputMovement.CurrentInputMovement.x * sprintSpeed;
-            Physiscal.Z_VelocityApplie = InputMovement.CurrentInputMovement.z * sprintSpeed;
         }
 
         public override bool ConditionEnterState()

@@ -18,8 +18,9 @@ namespace StateContents
         {
             base.FixedUpdateState();
             Rotation();
-            OnMoving();
             RenderAction(SpeedMove());
+            Physiscal.Movement(InputMovement.CurrentInputMovement.x * SpeedMove(),InputMovement.CurrentInputMovement.z * SpeedMove());
+
         }
         public override void ExitState()
         {
@@ -46,13 +47,6 @@ namespace StateContents
         float SpeedMove()
         {
             return InputMovement.IsSpintPressed ? 4 : 2;
-        }
-
-        void OnMoving()
-        {
-            Physiscal.X_VelocityApplie = InputMovement.CurrentInputMovement.x * SpeedMove();
-            Physiscal.Z_VelocityApplie = InputMovement.CurrentInputMovement.z * SpeedMove();
-            Physiscal.VelocityApplie *= Physiscal.GetSpeedOnGroundDenpeden(Body.AngleFeetGround);
         }
 
         void RenderAction(float Speed)
