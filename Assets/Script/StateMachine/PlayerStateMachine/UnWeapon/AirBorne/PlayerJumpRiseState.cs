@@ -6,15 +6,15 @@ namespace StateContent
     {
         public PlayerJumpRiseState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsJumpRiseHash;
+            ActionParameter = Animator.StringToHash("isJumpUp");
         }
 
         public override void EnterState()
         {
             base.EnterState();
+            animator.SetBool(ActionParameter, true);
             Jump();
         }
-
         public override void UpdateState()
         {
             base.UpdateState();
@@ -33,6 +33,7 @@ namespace StateContent
 
         public override void ExitState()
         {
+            animator.SetBool(ActionParameter, false);
             base.ExitState();
         }
 

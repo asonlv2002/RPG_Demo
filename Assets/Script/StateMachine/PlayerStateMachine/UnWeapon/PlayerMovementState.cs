@@ -7,7 +7,7 @@ namespace StateContent
         public PlayerMovementState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             
-            AnimatorParameter = 0;
+            ActionParameter = 0;
         }
 
         public override void EnterState()

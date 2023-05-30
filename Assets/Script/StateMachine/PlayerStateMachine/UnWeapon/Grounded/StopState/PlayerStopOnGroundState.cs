@@ -4,7 +4,6 @@
     {
         public PlayerStopOnGroundState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsStopOnGround;
         }
 
         public override void EnterState()

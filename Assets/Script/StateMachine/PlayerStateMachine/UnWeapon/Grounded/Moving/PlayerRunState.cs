@@ -5,7 +5,7 @@ namespace StateContent
     {
         public PlayerRunState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsRunHash;
+            
         }
 
         public override void FixedUpdateState()

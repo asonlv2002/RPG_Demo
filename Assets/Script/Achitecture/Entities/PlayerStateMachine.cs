@@ -16,9 +16,7 @@ namespace StateContent
             AddContentComponent(new BodyAdapter(MainContent.Body));
 
             AddContentComponent(new InputMovementAdapter(MainContent.InputAction));
-            AddContentComponent(new AnimationTrigger(MainContent.Animator.Animator));
-            AddContentComponent(new MovementParameterAdapter(MainContent.Animator));
-
+            AddContentComponent(new ActionRender(MainContent.Animator));
             AddContentComponent(new MovementStateStore(this));
             CurrentState = GetContentComponent<MovementStateStore>().Movement;
             CurrentState.EnterState();

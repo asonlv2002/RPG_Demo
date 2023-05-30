@@ -6,7 +6,6 @@ namespace StateContent
     {
         public PlayerSpintState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsSprintHash;
         }
 
         public override void EnterState()

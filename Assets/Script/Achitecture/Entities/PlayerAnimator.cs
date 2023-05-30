@@ -14,13 +14,10 @@ namespace AnimatorContent
         private List<AnimatorComponent> _animatorComponents;
         [SerializeField] private MovementAnimatorController _animatorMovementControllers;
         [SerializeField] private AnimatorAttackContains _animatorAttackControllers;
-        MovementAnimatorParameter _animationIntHashs;
 
         private void Awake()
         {
             _animatorComponents = new List<AnimatorComponent>();
-            _animationIntHashs = new MovementAnimatorParameter();
-            _animatorComponents.Add(_animationIntHashs);
             _animatorComponents.Add(_animatorMovementControllers);
             _animatorComponents.Add(_animatorAttackControllers);
         }

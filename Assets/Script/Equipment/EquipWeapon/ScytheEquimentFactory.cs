@@ -21,7 +21,6 @@
         {
             _animatorContent.AddContentComponent(new AttackController(_animatorContent.Animator,_attackController.Scythe));
             _animatorContent.AddContentComponent(new MovementController(_animatorContent.Animator, _movementController.Scythe));
-            _animatorContent.AddContentComponent(new ScytheAttackParameter());
         }
 
         void InitInputContent()

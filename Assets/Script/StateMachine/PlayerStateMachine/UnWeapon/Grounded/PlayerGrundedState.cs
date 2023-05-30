@@ -6,7 +6,6 @@ namespace StateContent
     {
         public PlayerGroundedState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsGroundHash;
         }
         public override void FixedUpdateState()
         {

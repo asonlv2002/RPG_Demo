@@ -6,15 +6,26 @@ namespace StateContent
     {
         public PlayerMoveState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsMoveHash;
+            ActionParameter = Animator.StringToHash("isMove");
+        }
+
+        public override void EnterState()
+        {
+            RenderAction(SpeedMove());
+            base.EnterState();
         }
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
             Rotation();
-            Physiscal.VelocityApplie *= Physiscal.GetSpeedOnGroundDenpeden(Body.AngleFeetGround);
+            OnMoving();
+            RenderAction(SpeedMove());
         }
-
+        public override void ExitState()
+        {
+            RenderAction(0);
+            base.ExitState();
+        }
         private void Rotation()
         {
             Vector3 postionToLookAt;
@@ -32,14 +43,30 @@ namespace StateContent
             }
         }
 
+        float SpeedMove()
+        {
+            return InputMovement.IsSpintPressed ? 4 : 2;
+        }
+
+        void OnMoving()
+        {
+            Physiscal.X_VelocityApplie = InputMovement.CurrentInputMovement.x * SpeedMove();
+            Physiscal.Z_VelocityApplie = InputMovement.CurrentInputMovement.z * SpeedMove();
+            Physiscal.VelocityApplie *= Physiscal.GetSpeedOnGroundDenpeden(Body.AngleFeetGround);
+        }
+
+        void RenderAction(float Speed)
+        {
+            animator.SetFloat(ActionParameter, Speed);
+        }
         public override bool ConditionEnterState()
         {
-            return InputMovement.IsRunPressed || InputMovement.IsSpintPressed;
+            return InputMovement.IsRunPressed;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputMovement.IsRunPressed || InputMovement.IsSpintPressed;
+            return InputMovement.IsRunPressed;
         }
     }
 }

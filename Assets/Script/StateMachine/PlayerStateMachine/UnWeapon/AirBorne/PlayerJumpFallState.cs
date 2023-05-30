@@ -5,7 +5,7 @@ namespace StateContent
     {
         public PlayerJumpFallState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsJumpFallHash;
+            ActionParameter = Animator.StringToHash("isJumpFall");
         }
 
         public override void EnterState()

@@ -40,24 +40,18 @@
 
             Move = new PlayerMoveState(_stateContent, this);
             Idle = new PlayerIdleState(_stateContent, this);
-            Sprint = new PlayerSpintState(_stateContent, this);
 
-            Run = new PlayerRunState(_stateContent, this);
             JumpRise = new PlayerJumpRiseState(_stateContent, this);
             JumpFall = new PlayerJumpFallState(_stateContent, this);
 
             Fall = new PlayerFallState(_stateContent, this);
-            StopOnGround = new PlayerStopOnGroundState(_stateContent, this);
-            SprintToIdle = new PlayerSprintToIdleState(_stateContent, this);
         }
 
         void LinkFriendState()
         {
             Grounded.AddFriendState(Airborne);
             JumpRise.AddFriendState(Fall);
-            Move.AddFriendState(StopOnGround);
-            StopOnGround.AddFriendState(Move);
-            Run.AddFriendState(Sprint);        
+            Move.AddFriendState(Idle);      
         }
 
         void LinkChildState()
@@ -66,12 +60,7 @@
             Movement.AddChildState(Grounded);
 
             Grounded.AddChildState(Move);
-            Grounded.AddChildState(StopOnGround);
-
-            Move.AddChildState(Run);
-            Move.AddChildState(Sprint);
-
-            StopOnGround.AddChildState(Idle);
+            Grounded.AddChildState(Idle);
 
             Airborne.AddChildState(JumpRise);
             Airborne.AddChildState(Fall);

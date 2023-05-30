@@ -12,27 +12,26 @@ namespace StateContent
 
         protected IPhysicAdapter Physiscal;
         protected IBodyAdapter Body;
-        protected int AnimatorParameter;
 
         protected List<IState> friendStates;
         protected List<IState> childStates;
 
-        private AnimationTrigger _animationTrigger;
+        protected int ActionParameter;
+        protected Animator animator;
+
         public BaseState(IStateContent stateContent)
         {
             friendStates = new List<IState>();
             childStates = new List<IState>();
 
             StateContent = stateContent;
-
-            _animationTrigger = StateContent.GetContentComponent<AnimationTrigger>();
+            animator = StateContent.GetContentComponent<ActionRender>().Animator;
             Physiscal = StateContent.GetContentComponent<PhysiscalAdapter>();
             Body = StateContent.GetContentComponent<BodyAdapter>();
 
         }
         public virtual void EnterState()
         {
-            _animationTrigger.EnableTrigger(this.AnimatorParameter);
             StateContent.CurrentState = this;
             InitilationChildrenState();
         }
@@ -47,7 +46,6 @@ namespace StateContent
         }
         public virtual void ExitState()
         {
-            _animationTrigger.DisableTrigger(this.AnimatorParameter);
             if (currentChildState != null)
             {
                 currentChildState.ExitState();

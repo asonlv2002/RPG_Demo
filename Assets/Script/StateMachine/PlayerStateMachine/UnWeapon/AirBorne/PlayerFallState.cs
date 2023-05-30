@@ -5,14 +5,23 @@ namespace StateContent
     {
         public PlayerFallState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsFallHash;
+            ActionParameter = Animator.StringToHash("isFall");
+        }
+        public override void EnterState()
+        {
+            base.EnterState();
+            animator.SetBool(ActionParameter, true);
         }
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
             GravityEffect();
         }
-
+        public override void ExitState()
+        {
+            animator.SetBool(ActionParameter, false);
+            base.ExitState();
+        }
         private void GravityEffect()
         {
             float gravity = Physiscal.Gravity;

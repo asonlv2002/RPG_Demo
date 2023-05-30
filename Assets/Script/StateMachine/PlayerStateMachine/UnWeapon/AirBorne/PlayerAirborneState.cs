@@ -5,7 +5,6 @@ namespace StateContent
     {
         public PlayerAirborneState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            AnimatorParameter = MovementParameter.IsAirborneHash;
         }
 
         public override void EnterState()
