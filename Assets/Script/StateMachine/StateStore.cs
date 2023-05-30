@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace StateContent
+namespace StateContents
 {
     internal abstract class StateStore : StateComponent
     {
-        protected IStateContent _stateContent;
-        public StateStore(IStateContent stateContent)
+        protected StateCore _stateContent;
+        public StateStore(StateCore stateContent)
         {
             _stateContent = stateContent;
             CreateStateContain();

@@ -1,11 +1,11 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     using AnimatorContent;
     internal class MovementAnimatorControllerAdapter : StateComponent
     {
-        IAnimatorContent _animatorContent;
+        AnimatorCore _animatorContent;
         
-        public MovementAnimatorControllerAdapter(IAnimatorContent animatorContent)
+        public MovementAnimatorControllerAdapter(AnimatorCore animatorContent)
         {
             _animatorContent = animatorContent;
         }

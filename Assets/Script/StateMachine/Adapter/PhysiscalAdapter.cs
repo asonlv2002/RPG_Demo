@@ -1,13 +1,13 @@
 ﻿
 using UnityEngine;
 
-namespace StateContent
+namespace StateContents
 {
-    using Physical;
+    using PhysicContents;
     internal class PhysiscalAdapter : StateComponent, IPhysicAdapter
     {
-        PlayerPhysics _playerPhysics;
-        public PhysiscalAdapter(PlayerPhysics playerPhysics)
+        PhysicCore _playerPhysics;
+        public PhysiscalAdapter(PhysicCore playerPhysics)
         {
             _playerPhysics = playerPhysics;
         }

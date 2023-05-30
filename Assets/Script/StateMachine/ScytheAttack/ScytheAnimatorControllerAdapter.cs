@@ -1,12 +1,12 @@
 ﻿using AnimatorContent;
 
-namespace StateContent
+namespace StateContents
 {
 
     internal class ScytheAnimatorControllerAdapter : StateComponent
     {
         AttackController AtatckController;
-        public ScytheAnimatorControllerAdapter(IAnimatorContent animatorContent)
+        public ScytheAnimatorControllerAdapter(AnimatorCore animatorContent)
         {
             AtatckController = animatorContent.GetContentComponent<AttackController>();
         }

@@ -1,10 +1,10 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     internal class AttackScytheGroupState : ScytheAttack
     {
         float time;
         ScytheAnimatorControllerAdapter AnimatorController;
-        public AttackScytheGroupState(IStateContent stateContent) : base(stateContent)
+        public AttackScytheGroupState(StateCore stateContent) : base(stateContent)
         {
             AnimatorController = stateContent.GetContentComponent<ScytheAnimatorControllerAdapter>();
         }

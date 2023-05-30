@@ -1,8 +1,8 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     internal class PlayerIdleState : MovementState
     {
-        public PlayerIdleState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerIdleState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = UnityEngine.Animator.StringToHash("isIdle");
         }

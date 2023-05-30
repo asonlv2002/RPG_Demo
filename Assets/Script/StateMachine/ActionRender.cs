@@ -1,12 +1,12 @@
 ﻿
 using AnimatorContent;
 
-namespace StateContent
+namespace StateContents
 {
     internal class ActionRender : StateComponent
     {
         public UnityEngine.Animator Animator { get; private set; }
-        public ActionRender(IAnimatorContent animator)
+        public ActionRender(AnimatorCore animator)
         {
             Animator = animator.Animator;
         }

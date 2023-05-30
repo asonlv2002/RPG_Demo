@@ -1,15 +1,17 @@
 ﻿
 using UnityEngine;
 
-namespace StateContent
+namespace StateContents
 {
-    using BodyCollider;
+    using ColliderContents;
     internal class BodyAdapter : StateComponent, IBodyAdapter
     {
+        ColliderCore _body;
         PlayerBody Body;
-        public BodyAdapter(PlayerBody body)
+        public BodyAdapter(ColliderCore body)
         {
-            Body = body;
+            _body = body;
+            Body = _body as PlayerBody;
         }
 
         public bool IsTerrestrial => Body.FootTrack.IsTerrestrial;

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerMoveState : MovementState
     {
-        public PlayerMoveState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerMoveState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isMove");
         }

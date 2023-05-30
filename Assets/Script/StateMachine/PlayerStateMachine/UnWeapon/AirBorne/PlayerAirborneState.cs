@@ -1,9 +1,9 @@
 ﻿
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerAirborneState : MovementState
     {
-        public PlayerAirborneState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerAirborneState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
         }
 

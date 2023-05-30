@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
-namespace StateContent
+namespace StateContents
 {
     internal abstract class BaseState : IState
     {
         protected IState currentParentState;
         protected IState currentChildState;
 
-        protected IStateContent StateContent;
+        protected StateCore StateContent;
 
         protected IPhysicAdapter Physiscal;
         protected IBodyAdapter Body;
@@ -19,7 +19,7 @@ namespace StateContent
         protected int ActionParameter;
         protected Animator animator;
 
-        public BaseState(IStateContent stateContent)
+        public BaseState(StateCore stateContent)
         {
             friendStates = new List<IState>();
             childStates = new List<IState>();

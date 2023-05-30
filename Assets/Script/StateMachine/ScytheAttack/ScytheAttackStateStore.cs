@@ -1,8 +1,8 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     internal class ScytheAttackStateStore : StateStore
     {
-        public ScytheAttackStateStore(IStateContent stateContent) : base(stateContent)
+        public ScytheAttackStateStore(StateCore stateContent) : base(stateContent)
         {
 
         }

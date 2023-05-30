@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerSpintState : MovementState
     {
-        public PlayerSpintState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerSpintState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
         }
 

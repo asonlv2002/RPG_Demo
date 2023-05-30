@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerJumpRiseState : MovementState
     {
-        public PlayerJumpRiseState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerJumpRiseState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isJumpUp");
         }

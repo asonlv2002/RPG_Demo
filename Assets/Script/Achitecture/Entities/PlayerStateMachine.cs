@@ -1,22 +1,23 @@
-﻿using UnityEngine;
+﻿using Achitecture;
 using System.Collections.Generic;
-namespace StateContent
+namespace StateContents
 {
-    internal class PlayerStateMachine : Entities.BranchContent,IStateContent
+    internal class PlayerStateMachine : StateCore
     {
-        protected List<StateComponent> stateComponents;
-        
-        public IState CurrentState { get ; set ; }
-
-        public override void InitMainContent(Entities.PlayerRootContent mainContent)
+        public override void InitMainCore(MainCores mainCores)
         {
-            base.InitMainContent(mainContent);
-            stateComponents = new List<StateComponent>();
-            AddContentComponent(new PhysiscalAdapter(MainContent.Physiscal));
-            AddContentComponent(new BodyAdapter(MainContent.Body));
+            base.InitMainCore(mainCores);
+            var input = MainCores.GetCore<InputContents.InputCore>();
+            var animator = MainCores.GetCore<AnimatorContent.AnimatorCore>();
+            var physic = MainCores.GetCore<PhysicContents.PhysicCore>();
+            var collider = MainCores.GetCore<ColliderContents.ColliderCore>();
+            UnityEngine.Debug.Log(physic);
+            AddContentComponent(new PhysiscalAdapter(physic));
+            AddContentComponent(new BodyAdapter(collider));
 
-            AddContentComponent(new InputMovementAdapter(MainContent.InputAction));
-            AddContentComponent(new ActionRender(MainContent.Animator));
+            AddContentComponent(new InputMovementAdapter(input));
+            AddContentComponent(new ActionRender(animator));
+
             AddContentComponent(new MovementStateStore(this));
             CurrentState = GetContentComponent<MovementStateStore>().Movement;
             CurrentState.EnterState();
@@ -30,22 +31,6 @@ namespace StateContent
         private void FixedUpdate()
         {
             CurrentState.FixedUpdateState();
-        }
-
-        public T GetContentComponent<T>() where T : StateComponent
-        {
-            foreach(var component in stateComponents)
-            {
-                if(component is T)
-                    return component as T;
-            }
-
-            return null;
-        }
-
-        public void AddContentComponent(StateComponent component)
-        {
-            stateComponents.Add(component);
         }
     }
 }

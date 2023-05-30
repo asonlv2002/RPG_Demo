@@ -5,6 +5,6 @@ namespace Item.InEquipment
     internal abstract class WeaponBehaviour
     {
         [field : SerializeField] public RuntimeAnimatorController AnimaotrController { get; protected set; }
-        public StateContent.BaseState BigRootState { get; protected set; }
+        public StateContents.BaseState BigRootState { get; protected set; }
     }
 }

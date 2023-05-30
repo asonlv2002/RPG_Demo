@@ -1,6 +1,6 @@
 ﻿using Item.ItemGameData;
 
-namespace Equipments
+namespace EquipmentContents
 {
     internal interface IEquipWeaponNotify
     {

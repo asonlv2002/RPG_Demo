@@ -1,8 +1,8 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     internal class PlayerStopOnGroundState : MovementState
     {
-        public PlayerStopOnGroundState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerStopOnGroundState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
         }
 

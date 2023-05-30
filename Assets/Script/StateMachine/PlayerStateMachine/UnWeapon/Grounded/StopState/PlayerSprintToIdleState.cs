@@ -1,9 +1,9 @@
 using UnityEngine;
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerSprintToIdleState : MovementState
     {
-        public PlayerSprintToIdleState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerSprintToIdleState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
         }
 

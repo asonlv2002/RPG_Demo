@@ -1,5 +1,5 @@
 ﻿using UnityEngine.InputSystem;
-namespace InputContent
+namespace InputContents
 {
     internal class InputAttackScyther: InputComponent, IInputAttackScythe
     {

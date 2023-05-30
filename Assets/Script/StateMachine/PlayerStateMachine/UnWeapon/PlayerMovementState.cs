@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerMovementState : MovementState
     {
         MovementAnimatorControllerAdapter AnimatorMovementController;
-        public PlayerMovementState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerMovementState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             
             ActionParameter = 0;

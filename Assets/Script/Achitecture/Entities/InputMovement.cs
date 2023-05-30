@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace InputContent
+namespace InputContents
 {
     [System.Serializable]
     internal class InputMovement : InputComponent

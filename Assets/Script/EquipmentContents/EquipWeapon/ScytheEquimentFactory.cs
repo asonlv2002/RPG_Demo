@@ -1,12 +1,12 @@
-﻿namespace Equipments
+﻿namespace EquipmentContents
 {
     using AnimatorContent;
-    using InputContent;
-    using StateContent;
+    using InputContents;
+    using StateContents;
 
     internal class ScytheEquimentFactory : EquipWeaponFactory
     {
-        public ScytheEquimentFactory(IAnimatorContent animatorContent, IInputContent inpuContent, IStateContent stateContent) : base(animatorContent, inpuContent, stateContent)
+        public ScytheEquimentFactory(AnimatorCore animatorContent, InputCore inpuContent, StateCore stateContent) : base(animatorContent, inpuContent, stateContent)
         {
         }
 

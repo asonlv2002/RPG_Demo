@@ -1,6 +1,6 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
-    internal abstract class StateComponent
+    internal abstract class StateComponent : Achitecture.CoreComponent
     {
     }
 }

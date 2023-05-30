@@ -1,7 +1,7 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
-    internal interface IStateContent  : Achitecture.IContent<StateComponent>
+    internal abstract class StateCore : Achitecture.CoreContain<StateComponent>
     {
-        IState CurrentState { get; set; }
+        public IState CurrentState { get; set; }
     }
 }

@@ -1,47 +1,27 @@
 ﻿using UnityEngine;
 namespace AnimatorContent
 {
-    using AnimatorContent;
-    using Equipments;
-    using Item.ItemGameData;
-    using System;
-    using System.Collections.Generic;
+    using Achitecture;
+    using EquipmentContents;
 
-    internal class PlayerAnimator : Entities.BranchContent,IEquipWeaponSubscriber,IAnimatorContent
+    internal class PlayerAnimator : AnimatorCore, IEquipWeaponSubscriber
     {
-        [field: SerializeField] public Animator Animator { get; private set; }
-
-        private List<AnimatorComponent> _animatorComponents;
-        [SerializeField] private MovementAnimatorController _animatorMovementControllers;
-        [SerializeField] private AnimatorAttackContains _animatorAttackControllers;
-
-        private void Awake()
+        [field: SerializeField] private MovementAnimatorController _animatorMovementControllers;
+        [field: SerializeField] private AnimatorAttackContains _animatorAttackControllers;
+        protected override void Awake()
         {
-            _animatorComponents = new List<AnimatorComponent>();
-            _animatorComponents.Add(_animatorMovementControllers);
-            _animatorComponents.Add(_animatorAttackControllers);
+            base.Awake();
+            AddContentComponent(_animatorMovementControllers);
+            AddContentComponent(_animatorAttackControllers);
         }
+        public override void InitMainCore(MainCores mainCores)
+        {
+            base.InitMainCore(mainCores);
 
+        }
         public void OnEquipWeapon()
         {
+
         }
-
-        public T GetContentComponent<T>() where T : AnimatorComponent
-        {
-            foreach(var component in _animatorComponents)
-            {
-                if (component is T) return component as T;
-            }
-            return null;
-        }
-
-        public void AddContentComponent(AnimatorComponent component)
-        {
-            _animatorComponents.Add(component);
-        }
-
-
-
-
     }
 }

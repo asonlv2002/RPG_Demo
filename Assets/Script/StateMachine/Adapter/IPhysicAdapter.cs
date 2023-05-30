@@ -1,4 +1,4 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     using UnityEngine;
     internal interface IPhysicAdapter

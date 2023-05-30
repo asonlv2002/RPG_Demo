@@ -1,6 +1,6 @@
 ﻿
 using System;
-namespace Equipments
+namespace EquipmentContents
 {
     using Item.ItemGameData;
     internal interface IEquipWeaponSubscriber

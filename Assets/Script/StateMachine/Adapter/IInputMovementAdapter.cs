@@ -1,4 +1,4 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     internal interface IInputMovementAdapter
     {

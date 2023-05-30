@@ -1,14 +1,15 @@
 ﻿
 using UnityEngine;
 
-namespace StateContent
+namespace StateContents
 {
-    using InputContent;
+    using InputContents;
     internal class InputMovementAdapter: StateComponent, IInputMovementAdapter
     {
         InputMovement InputMovement;
-        public InputMovementAdapter(IInputContent inputContent)
+        public InputMovementAdapter(InputCore inputContent)
         {
+            Debug.Log(inputContent);
             InputMovement = inputContent.GetContentComponent<InputMovement>();
         }
 

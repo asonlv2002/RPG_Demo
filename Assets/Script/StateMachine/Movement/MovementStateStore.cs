@@ -1,4 +1,4 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     internal class MovementStateStore :StateStore , IMovementStateStore
     {
@@ -26,7 +26,7 @@
 
         public IState StopOnGround {get; private set;}
 
-        public MovementStateStore(IStateContent stateContext) : base(stateContext)
+        public MovementStateStore(StateCore stateContext) : base(stateContext)
         {
             LinkChildState();
             LinkFriendState();

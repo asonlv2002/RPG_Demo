@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerGroundedState : MovementState
     {
-        public PlayerGroundedState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerGroundedState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
         }
         public override void FixedUpdateState()

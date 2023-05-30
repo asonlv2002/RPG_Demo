@@ -1,20 +1,20 @@
 ﻿
-namespace Equipments
+namespace EquipmentContents
 {
     using AnimatorContent;
-    using InputContent;
-    using StateContent;
+    using InputContents;
+    using StateContents;
 
     internal abstract class EquipWeaponFactory
     {
-        protected IAnimatorContent _animatorContent;
+        protected AnimatorCore _animatorContent;
         protected AnimatorAttackContains _attackController;
         protected MovementAnimatorController _movementController;
 
 
-        protected IInputContent _input;
-        protected IStateContent _state;
-        public EquipWeaponFactory(IAnimatorContent animatorContent,IInputContent inpuContent, IStateContent stateContent)
+        protected InputCore _input;
+        protected StateCore _state;
+        public EquipWeaponFactory(AnimatorCore animatorContent,InputCore inpuContent, StateCore stateContent)
         {
             _animatorContent = animatorContent;
             _attackController = _animatorContent.GetContentComponent<AnimatorAttackContains>();

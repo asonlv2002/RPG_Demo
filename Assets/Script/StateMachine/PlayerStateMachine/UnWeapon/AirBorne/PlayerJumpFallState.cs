@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-namespace StateContent
+namespace StateContents
 {
     internal class PlayerJumpFallState : MovementState
     {
-        public PlayerJumpFallState(IStateContent stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerJumpFallState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isJumpFall");
         }

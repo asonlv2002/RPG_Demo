@@ -1,6 +1,6 @@
 ﻿namespace AnimatorContent
 {
-    internal abstract class AnimatorComponent
+    internal abstract class AnimatorComponent : Achitecture.CoreComponent
     {
     }
 }

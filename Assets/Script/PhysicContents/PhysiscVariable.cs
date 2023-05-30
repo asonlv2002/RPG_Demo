@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Physical
+namespace PhysicContents
 {
     [System.Serializable]
     internal class PhysiscVariable

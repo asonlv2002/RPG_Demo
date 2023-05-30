@@ -1,7 +1,7 @@
 ﻿using Item.ItemGameData;
 namespace Item.InEquipment
 {
-    using Equipments;
+    using EquipmentContents;
     internal class WeaponEquipmentManager : IEquipmentManager
     {
         public IWeaponEquipPosition providerPosition { get; private set; }

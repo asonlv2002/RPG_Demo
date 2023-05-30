@@ -1,9 +1,9 @@
-﻿namespace StateContent
+﻿namespace StateContents
 {
     internal abstract class ScytheAttack : BaseState
     {
         protected InputScytheAttackAdapter InputAttack;
-        protected ScytheAttack(IStateContent stateContent) : base(stateContent)
+        protected ScytheAttack(StateCore stateContent) : base(stateContent)
         {
             InputAttack = StateContent.GetContentComponent<InputScytheAttackAdapter>();
         }

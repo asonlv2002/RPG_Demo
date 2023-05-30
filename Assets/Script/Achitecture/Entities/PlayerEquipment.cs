@@ -2,20 +2,22 @@
 using Item.InEquipment;
 using Item.ItemGameData;
 using Item;
-using Entities;
+using Achitecture;
 
-namespace Equipments
+namespace EquipmentContents
 {
-    internal class PlayerEquipment : Entities.BranchContent
+    internal class PlayerEquipment : EquipmentCore
     {
         [SerializeField] WeaponEquipmentManager _weaponEquipment; 
         [SerializeField] StoreEquipmentPosition equipmentPositions;
         IEquipWeaponNotify _equipWeaponNotify;
-        public override void InitMainContent(PlayerRootContent mainContent)
+
+        public override void InitMainCore(MainCores mainCores)
         {
-            base.InitMainContent(mainContent);
-            _equipWeaponNotify = new EquipWeaponChannel(MainContent);
+            base.InitMainCore(mainCores);
+            _equipWeaponNotify = new EquipWeaponChannel(MainCores);
             _weaponEquipment = new WeaponEquipmentManager(equipmentPositions, _equipWeaponNotify);
+
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -36,6 +38,7 @@ namespace Equipments
             switch (itemData.ItemData)
             {
                 case WeaponData:
+
                     return _weaponEquipment;
                 default : 
                     return null;

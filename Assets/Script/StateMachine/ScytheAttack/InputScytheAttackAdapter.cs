@@ -1,11 +1,11 @@
-﻿using InputContent;
+﻿using InputContents;
 
-namespace StateContent
+namespace StateContents
 {
     internal class InputScytheAttackAdapter : StateComponent
     {
         InputAttackScyther Input;
-        public InputScytheAttackAdapter(IInputContent inputContent)
+        public InputScytheAttackAdapter(InputCore inputContent)
         {
             Input = inputContent.GetContentComponent<InputAttackScyther>();
         }

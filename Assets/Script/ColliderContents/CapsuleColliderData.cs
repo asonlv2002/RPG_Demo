@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace BodyCollider
+namespace ColliderContents
 {
     [System.Serializable]
     internal class CapsuleColliderData

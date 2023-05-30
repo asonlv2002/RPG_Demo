@@ -1,7 +1,8 @@
+using Achitecture;
 using UnityEngine;
-namespace BodyCollider
+namespace ColliderContents
 {
-    internal class PlayerBody : Entities.BranchContent
+    internal class PlayerBody : ColliderCore
     {
         [field: SerializeField] public CapsuleCollider CapsuleCollider { get; private set; }
         [field: SerializeField] public DefaultColliderData DefaultColliderData { get; private set; }
@@ -54,6 +55,11 @@ namespace BodyCollider
             float colliderHeightDeffernce = DefaultColliderData.Height - CapsuleCollider.height;
             float newCenterY = DefaultColliderData.CenterY + colliderHeightDeffernce / 2;
             CapsuleCollider.center = Vector3.up * newCenterY;
+        }
+
+        public override void InitMainCore(MainCores mainCores)
+        {
+            base.InitMainCore(mainCores);
         }
 
     }

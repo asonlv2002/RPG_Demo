@@ -1,23 +1,17 @@
 using UnityEngine;
 
-namespace InputContent
+namespace InputContents
 {
     using System.Collections.Generic;
-    using InputContent;
-    using Equipments;
-    using Item.ItemGameData;
-    using System;
-    using Entities;
+    using EquipmentContents;
 
-    internal class PlayerInputAction : Entities.BranchContent,IEquipWeaponSubscriber,IInputContent
+    internal class PlayerInputAction : InputCore, IEquipWeaponSubscriber
     {
-        private List<InputComponent> _inputComponents;
         [SerializeField] InputMovement _inputMovement;
 
-        public override void InitMainContent(PlayerRootContent mainContent)
+        protected override void Awake()
         {
-            base.InitMainContent(mainContent);
-            _inputComponents = new List<InputComponent>();
+            base.Awake();
             _inputMovement = new InputMovement(new PlayerInput());
             AddContentComponent(_inputMovement);
         }
@@ -25,20 +19,7 @@ namespace InputContent
         {
         }
 
-        public T GetContentComponent<T>() where T : InputComponent
-        {
-            foreach(var component in _inputComponents)
-            {
-                if (component is T)
-                    return component as T;
-            }
-            return null;
-        }
 
-        public void AddContentComponent(InputComponent component)
-        {
-            _inputComponents.Add(component);
-        }
 
     }
 }

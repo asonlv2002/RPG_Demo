@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7e341fc00eebe4bb74b56bf17222d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MainContent>k__BackingField: {fileID: 0}
   equipmentPositions:
     _handLeft: {fileID: 0}
     _handRight: {fileID: 4602699961766297157}
@@ -106,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e493182a6a104bb4cb4e8b5d4f759a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MainContent>k__BackingField: {fileID: 0}
 --- !u!1 &2112476528409084062
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,8 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7ffef40dfe8a14993563e657f45eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MainContent>k__BackingField: {fileID: 0}
-  <PhysiscHandler>k__BackingField: {fileID: 7071238952219145827}
   <PhysiscVariable>k__BackingField:
     <RunSpeed>k__BackingField: 2
     <SprintSpeed>k__BackingField: 4
@@ -228,6 +224,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  <PhysiscHandler>k__BackingField: {fileID: 7071238952219145827}
 --- !u!1 &2562579241052543724
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5779941994597439338}
-  - component: {fileID: 2795243353425414339}
+  - component: {fileID: 4836493759350664540}
   m_Layer: 0
   m_Name: StateMachine
   m_TagString: Untagged
@@ -260,7 +257,7 @@ Transform:
   m_Father: {fileID: 7071238952219145836}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2795243353425414339
+--- !u!114 &4836493759350664540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccce057c80bad445a28d1ffb182462c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MainContent>k__BackingField: {fileID: 0}
 --- !u!1 &4889516506021967778
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690de724339c99b4b84486872ae2c646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MainContent>k__BackingField: {fileID: 0}
   <Animator>k__BackingField: {fileID: 2876833287689597433}
   _animatorMovementControllers:
     <Scythe>k__BackingField: {fileID: 22100000, guid: 8bee02ec0d557d44a97f32bf3364e995, type: 2}
@@ -415,7 +410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ee4a7b11019764aa7575894b1b3133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MainContent>k__BackingField: {fileID: 0}
   <CapsuleCollider>k__BackingField: {fileID: 7071238951922542015}
   <DefaultColliderData>k__BackingField:
     <Height>k__BackingField: 2
@@ -435,7 +429,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7071238952219145836}
   - component: {fileID: 7071238952219145827}
-  - component: {fileID: 1243120353983459301}
+  - component: {fileID: 3701472954232021858}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -482,7 +476,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1243120353983459301
+--- !u!114 &3701472954232021858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,15 +485,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7071238952219145839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61969bd5625329441984fa8f417e45a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f5bfd0d076e74b4db354ae25331ac65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StateMachine>k__BackingField: {fileID: 2795243353425414339}
-  <Physiscal>k__BackingField: {fileID: 405133052304921471}
-  <Body>k__BackingField: {fileID: 1808443596}
-  <Animator>k__BackingField: {fileID: 1561595876163820610}
-  <InputAction>k__BackingField: {fileID: 621589853630580565}
-  <Equipment>k__BackingField: {fileID: 1291106231639487442}
+  cores: []
+  StateMachine: {fileID: 4836493759350664540}
+  Physic: {fileID: 405133052304921471}
+  Body: {fileID: 1808443596}
+  Animator: {fileID: 1561595876163820610}
+  InputAction: {fileID: 621589853630580565}
+  Equipment: {fileID: 1291106231639487442}
 --- !u!1 &7130532494449113473
 GameObject:
   m_ObjectHideFlags: 0
