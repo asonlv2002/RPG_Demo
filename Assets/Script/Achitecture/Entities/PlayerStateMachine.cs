@@ -18,8 +18,8 @@ namespace StateContents
             AddContentComponent(new ActionRender(animator));
 
             AddContentComponent(new MovementStateStore(this));
-            CurrentState = GetContentComponent<MovementStateStore>().Movement;
-            CurrentState.EnterState();
+            var sate = GetContentComponent<MovementStateStore>().Movement;
+            EnterNextState(sate);
         }
 
         private void Update()

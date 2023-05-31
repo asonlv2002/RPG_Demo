@@ -32,13 +32,12 @@ namespace StateContents
         }
         public virtual void EnterState()
         {
-            StateContent.CurrentState = this;
-            InitilationChildrenState();
+            currentParentState?.EnterState();
         }
         public virtual void UpdateState()
         {
-            SwitchToFriendState();
             currentParentState?.UpdateState();
+            SwitchToFriendState();
         }
         public virtual void FixedUpdateState()
         {
@@ -59,22 +58,38 @@ namespace StateContents
             (currentChildState as BaseState).currentParentState = this;
         }
 
-        #region Condition
-        public abstract bool ConditionEnterState();
-        public abstract bool ConditionInitChildState();
-        #endregion;
-
-        #region TransState
-        protected virtual void SwitchState(IState nextState)
+        #region ChildState
+        public void AddChildState(IState childSate)
         {
-            if(currentParentState != null)
+            childStates.Add(childSate);
+        }
+        public void InitilationChildrenState()
+        {
+            if (childStates.Count <= 0) return;
+            foreach (var child in childStates)
             {
-                (currentParentState as BaseState).currentChildState = nextState;
-                (nextState as BaseState).currentParentState = currentParentState;
+                if (child.ConditionInitChildState())
+                {
+                    SetChildState(child);
+                    EnterChildState(currentChildState);
+                    return;
+                }
             }
+        }
+        protected virtual void EnterChildState(IState childState)
+        {
+            StateContent.EnterNextState(childState);
+        }
 
-            ExitState();
-            nextState.EnterState();
+        public abstract bool ConditionInitChildState();
+        #endregion
+
+        #region FriendState
+        public void AddFriendState(IState friendState)
+        {
+            if (friendStates.IndexOf(friendState) >= 0) return;
+            friendStates.Add(friendState);
+            friendState.AddFriendState(this);
         }
         protected virtual void SwitchToFriendState()
         {
@@ -83,39 +98,28 @@ namespace StateContents
             {
                 if (friend.ConditionEnterState())
                 {
-                    //Debug.Log(friend);
-                    SwitchState(friend);
+                    EnterFriendState(friend);
                     return;
                 }
             }
         }
-        protected void InitilationChildrenState()
+
+        protected virtual void EnterFriendState(IState nextState)
         {
-            if(childStates.Count <=0 ) return;
-            foreach (var child in childStates)
+            if (currentParentState != null)
             {
-                if (child.ConditionInitChildState())
-                {
-                    SetChildState(child);
-                    //Debug.Log(child);
-                    currentChildState.EnterState();
-                    return;
-                }
+                (currentParentState as BaseState).currentChildState = nextState;
+                (nextState as BaseState).currentParentState = currentParentState;
             }
-        }
-        #endregion;
-
-        #region Community
-        public void AddFriendState(IState friendState)
-        {
-            if (friendStates.IndexOf(friendState) >= 0) return;
-            friendStates.Add(friendState);
-            friendState.AddFriendState(this);
+            ExitState();
+            StateContent.EnterNextState(nextState);
         }
 
-        public void AddChildState(IState childSate)
+        public abstract bool ConditionEnterState();
+
+        public virtual bool ConditionExitState()
         {
-            childStates.Add(childSate);
+            return true;
         }
         #endregion
 

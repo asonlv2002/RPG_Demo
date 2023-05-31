@@ -9,7 +9,6 @@ namespace StateContents
         InputMovement InputMovement;
         public InputMovementAdapter(InputCore inputContent)
         {
-            Debug.Log(inputContent);
             InputMovement = inputContent.GetContentComponent<InputMovement>();
         }
 

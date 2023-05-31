@@ -10,5 +10,7 @@
         bool ConditionInitChildState();
         void AddFriendState(IState friendState);
         void AddChildState(IState chiSate);
+        bool ConditionExitState();
+        void InitilationChildrenState();
     }
 }
