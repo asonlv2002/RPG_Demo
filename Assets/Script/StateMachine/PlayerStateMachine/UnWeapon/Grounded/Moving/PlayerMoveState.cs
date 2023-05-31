@@ -11,15 +11,15 @@ namespace StateContents
 
         public override void EnterState()
         {
-            RenderAction(SpeedMove());
             base.EnterState();
+            RenderAction(SpeedMove());
         }
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
             Rotation();
-            RenderAction(SpeedMove());
             Physiscal.Movement(InputMovement.CurrentInputMovement.x * SpeedMove(),InputMovement.CurrentInputMovement.z * SpeedMove());
+            RenderAction(SpeedMove());
 
         }
         public override void ExitState()
