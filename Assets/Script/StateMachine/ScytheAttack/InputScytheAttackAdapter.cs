@@ -10,9 +10,21 @@ namespace StateContents
             Input = inputContent.GetContentComponent<InputAttackScyther>();
         }
 
-        public bool AttackQ => Input.AttackQ;
-        public bool AttackE => Input.AttackE;
+        public void ReadInputToState()
+        {
+            Input.ReadInputToState();
+        }
 
+        public void ExitAttackInput()
+        {
+            Input.ExitAttackInput();
+        }
 
+        public bool CheckInut(AttackScytheInput input)
+        {
+            return Input.BeginInput(input);
+        }
+
+        public bool IsInputAttack => Input.IsInputAttack;
     }
 }

@@ -6,6 +6,7 @@ namespace StateContents
     {
         public PlayerGroundedState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
+
         }
         public override void FixedUpdateState()
         {

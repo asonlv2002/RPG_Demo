@@ -9,13 +9,20 @@
 
         protected override void CreateStateContain()
         {
-            AttackGroup = new AttackScytheGroupState(_stateContent);
+            AttackOnGround = new ScytheAttackOnGround(_stateContent);
             AttackQ = new ScytheAttackQ(_stateContent);
-            AttackGroup.AddChildState(AttackQ);
+            AttackE = new ScytheAttackE(_stateContent);
+
+            AttackOnGround.AddChildState(AttackQ);
+            AttackOnGround.AddChildState(AttackE);
+
+            AttackQ.AddFriendState(AttackE);
         }
 
-        public IState AttackGroup { get; private set; }
+        public IState AttackOnGround { get; private set; }
 
         public IState AttackQ { get; private set; }
+
+        public IState AttackE { get; private set; }
     }
 }

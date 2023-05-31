@@ -2,19 +2,19 @@
 {
     using InputContents;
     using UnityEngine;
-    internal class ScytheAttackQ : ScytheAttack
+    internal class ScytheAttackE : ScytheAttack
     {
         float time;
-        public ScytheAttackQ(StateCore stateContent) : base(stateContent)
+        public ScytheAttackE(StateCore stateContent) : base(stateContent)
         {
-            ActionParameter = Animator.StringToHash("isAttackQ");
+            ActionParameter = Animator.StringToHash("isAttackE");
         }
         public override void EnterState()
         {
             base.EnterState();
-
-            time = 2.067f;
+            time = 2f;
             animator.SetBool(ActionParameter, true);
+
         }
         public override void UpdateState()
         {
@@ -28,7 +28,7 @@
         }
         public override void ExitState()
         {
-            Debug.Log("ExitQ");
+            Debug.Log("ExitE");
             base.ExitState();
             animator.SetBool(ActionParameter, false);
         }
@@ -36,18 +36,18 @@
         {
             base.FixedUpdateState();
 
-            time -=Time.fixedDeltaTime;
+            time -= Time.fixedDeltaTime;
 
         }
 
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputQ);
+            return InputAttack.CheckInut(AttackScytheInput.InputE);
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputQ);
+            return InputAttack.CheckInut(AttackScytheInput.InputE);
         }
 
         public override bool ConditionExitState() => time <= 0;

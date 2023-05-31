@@ -35,7 +35,7 @@
             _state.AddContentComponent(new ScytheAnimatorControllerAdapter(_animatorContent));
             var scytheAttackStore = new ScytheAttackStateStore(_state);
             var movementStore = _state.GetContentComponent<MovementStateStore>();
-            movementStore.Grounded.AddFriendState(scytheAttackStore.AttackQ);
+            movementStore.Grounded.AddFriendState(scytheAttackStore.AttackOnGround);
             _state.AddContentComponent(scytheAttackStore);
             _state.EnterNextState(movementStore.Movement);
 
