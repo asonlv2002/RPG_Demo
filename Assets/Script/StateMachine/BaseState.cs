@@ -19,6 +19,8 @@ namespace StateContents
         protected int ActionParameter;
         protected Animator animator;
 
+        public int IndexPriorityFriend { get; protected set; }
+
         public BaseState(StateCore stateContent)
         {
             friendStates = new List<IState>();
@@ -52,32 +54,23 @@ namespace StateContents
             }
 
         }
-        protected virtual void SetChildState(IState _childState)
-        {
-            this.currentChildState = _childState;
-            (currentChildState as BaseState).currentParentState = this;
-        }
 
         #region ChildState
         public void AddChildState(IState childSate)
         {
             childStates.Add(childSate);
+            (childSate as BaseState).currentParentState = this;
+
         }
         public void InitilationChildrenState()
         {
             if (childStates.Count <= 0) return;
-            foreach (var child in childStates)
-            {
-                if (child.ConditionInitChildState())
-                {
-                    SetChildState(child);
-                    EnterChildState(currentChildState);
-                    return;
-                }
-            }
+            EnterChildState(childStates.Find(x => x.ConditionInitChildState() == true));
         }
         protected virtual void EnterChildState(IState childState)
         {
+            if (childState == null) return;
+            currentChildState = childState;
             StateContent.EnterNextState(childState);
         }
 
@@ -93,24 +86,14 @@ namespace StateContents
         }
         protected virtual void SwitchToFriendState()
         {
-            if (friendStates.Count <= 0) return;
-            foreach (var friend in friendStates)
-            {
-                if (friend.ConditionEnterState())
-                {
-                    EnterFriendState(friend);
-                    return;
-                }
-            }
+            if (friendStates.Count <= 0 || !ConditionExitState()) return;
+            EnterFriendState(friendStates.Find(x => x.ConditionEnterState() == true));
         }
 
         protected virtual void EnterFriendState(IState nextState)
         {
-            if (currentParentState != null)
-            {
-                (currentParentState as BaseState).currentChildState = nextState;
-                (nextState as BaseState).currentParentState = currentParentState;
-            }
+            if (nextState == null) return;
+            (currentParentState as BaseState).currentChildState = nextState;
             ExitState();
             StateContent.EnterNextState(nextState);
         }

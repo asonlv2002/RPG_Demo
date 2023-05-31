@@ -2,6 +2,7 @@
 {
     internal interface IState
     {
+        int IndexPriorityFriend { get; }
         void EnterState();
         void ExitState();
         void UpdateState();

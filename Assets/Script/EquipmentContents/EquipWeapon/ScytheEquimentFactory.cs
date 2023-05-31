@@ -19,8 +19,8 @@
 
         void InitAnimatorContent()
         {
-            _animatorContent.AddContentComponent(new AttackController(_animatorContent.Animator,_attackController.Scythe));
-            _animatorContent.AddContentComponent(new MovementController(_animatorContent.Animator, _movementController.Scythe));
+            _animatorContent.AddContentComponent(new AttackController(_animatorContent,_attackController.Scythe));
+            _animatorContent.AddContentComponent(new MovementController(_animatorContent, _movementController.Scythe));
         }
 
         void InitInputContent()
@@ -35,7 +35,7 @@
             _state.AddContentComponent(new ScytheAnimatorControllerAdapter(_animatorContent));
             var scytheAttackStore = new ScytheAttackStateStore(_state);
             var movementStore = _state.GetContentComponent<MovementStateStore>();
-            movementStore.Movement.AddFriendState(scytheAttackStore.AttackGroup);
+            movementStore.Grounded.AddFriendState(scytheAttackStore.AttackQ);
             _state.AddContentComponent(scytheAttackStore);
             _state.EnterNextState(movementStore.Movement);
 

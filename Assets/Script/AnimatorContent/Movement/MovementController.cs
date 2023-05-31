@@ -2,19 +2,19 @@
 namespace AnimatorContent
 {
     using UnityEngine;
-    internal class MovementController : AnimatorComponent, IMovementAnimator
+    internal class MovementController : AnimatorComponent
     {
-        private Animator _animator;
-        private RuntimeAnimatorController _newRuntimeAnimatorController;
-
-        public MovementController(Animator animator, RuntimeAnimatorController animatorControll)
+        private RuntimeAnimatorController runtimeAnimatorControll;
+        AnimatorCore _animatorCore;
+        public MovementController(AnimatorCore animatorCore, RuntimeAnimatorController animatorControll)
         {
-            _animator = animator;
-            _newRuntimeAnimatorController = animatorControll;
+            _animatorCore = animatorCore;
+            runtimeAnimatorControll = animatorControll;
         }
+
         public void EnterMovement()
         {
-            _animator.runtimeAnimatorController = _newRuntimeAnimatorController;
+            _animatorCore.SetRuntimeAnimator(runtimeAnimatorControll);
         }
     }
 }
