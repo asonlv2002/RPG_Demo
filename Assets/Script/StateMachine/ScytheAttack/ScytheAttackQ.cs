@@ -4,52 +4,46 @@
     using UnityEngine;
     internal class ScytheAttackQ : ScytheAttack
     {
-        float time;
-        public ScytheAttackQ(StateCore stateContent) : base(stateContent)
+        float TimeEnd;
+        public ScytheAttackQ(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent,Store)
         {
             ActionParameter = Animator.StringToHash("isAttackQ");
         }
         public override void EnterState()
         {
             base.EnterState();
-
-            time = 2.067f;
+            TimeEnd = Time.time + 2.067f;
+            InputAttack.ReadInputToState();
             animator.SetBool(ActionParameter, true);
         }
         public override void UpdateState()
         {
-            if (time < 0)
+            if (ConditionExitState() && ConditionEnterState())
             {
-                InputAttack.ReadInputToState();
-                time = 0;
+                EnterState();
             }
-            base.UpdateState();
-
+            else base.UpdateState();
         }
         public override void ExitState()
         {
             Debug.Log("ExitQ");
-            base.ExitState();
             animator.SetBool(ActionParameter, false);
-        }
-        public override void FixedUpdateState()
-        {
-            base.FixedUpdateState();
-
-            time -=Time.fixedDeltaTime;
-
+            base.ExitState();
         }
 
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputQ);
+            return InputAttack.CheckInut(AttackScytheInput.InputQ) && Body.IsOnGround;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputQ);
+            return InputAttack.CheckInut(AttackScytheInput.InputQ) && Body.IsOnGround;
         }
 
-        public override bool ConditionExitState() => time <= 0;
+        public override bool ConditionExitState()
+        {
+            return Time.time > TimeEnd;
+        }
     }
 }

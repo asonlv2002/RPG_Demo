@@ -93,8 +93,14 @@ namespace StateContents
         protected virtual void EnterFriendState(IState nextState)
         {
             if (nextState == null) return;
-            if((nextState as BaseState).currentParentState == currentParentState)
-            (currentParentState as BaseState).currentChildState = nextState;
+            var parent = (nextState as BaseState).currentParentState;
+            if (parent != null)
+            {
+                if (parent == currentParentState)
+                    (currentParentState as BaseState).currentChildState = nextState;
+            }
+
+
             ExitState();
             StateContent.EnterNextState(nextState);
         }

@@ -4,39 +4,28 @@
     using UnityEngine;
     internal class ScytheAttackE : ScytheAttack
     {
-        float time;
-        public ScytheAttackE(StateCore stateContent) : base(stateContent)
+        float TimeEnd;
+        public ScytheAttackE(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
             ActionParameter = Animator.StringToHash("isAttackE");
         }
         public override void EnterState()
         {
             base.EnterState();
-            time = 2f;
+            InputAttack.ReadInputToState();
             animator.SetBool(ActionParameter, true);
+            TimeEnd = Time.time + 2f;
 
         }
         public override void UpdateState()
         {
-            if (time < 0)
-            {
-                InputAttack.ReadInputToState();
-                time = 0;
-            }
             base.UpdateState();
-
         }
         public override void ExitState()
         {
             Debug.Log("ExitE");
-            base.ExitState();
             animator.SetBool(ActionParameter, false);
-        }
-        public override void FixedUpdateState()
-        {
-            base.FixedUpdateState();
-
-            time -= Time.fixedDeltaTime;
+            base.ExitState();
 
         }
 
@@ -50,6 +39,9 @@
             return InputAttack.CheckInut(AttackScytheInput.InputE);
         }
 
-        public override bool ConditionExitState() => time <= 0;
+        public override bool ConditionExitState()
+        {
+            return Time.time >= TimeEnd;
+        }
     }
 }

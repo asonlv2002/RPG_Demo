@@ -4,10 +4,10 @@ namespace StateContents
     internal class PlayerMovementState : MovementState
     {
         MovementAnimatorControllerAdapter AnimatorMovementController;
+
         public PlayerMovementState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-            
-            ActionParameter = 0;
+
         }
 
         public override void EnterState()

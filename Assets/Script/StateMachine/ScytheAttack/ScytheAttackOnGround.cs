@@ -2,47 +2,40 @@
 {
     internal class ScytheAttackOnGround : ScytheAttack
     {
-        ScytheAnimatorControllerAdapter AnimatorController;
-        public ScytheAttackOnGround(StateCore stateContent) : base(stateContent)
+
+        public ScytheAttackOnGround(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent,Store)
         {
-            AnimatorController = stateContent.GetContentComponent<ScytheAnimatorControllerAdapter>();
+
         }
         public override void EnterState()
         {
-            AnimatorController.EnterAttackController();
             base.EnterState();
         }
-        public override void ExitState()
-        {
-            base.ExitState();
-            InputAttack.ExitAttackInput();
-        }
-
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
             Physiscal.FloatOnGround(Body.FLoatDirection);
-            Physiscal.Movement(0, 0);
         }
         public override bool ConditionEnterState()
         {
-            return InputAttack.IsInputAttack;
+            foreach (var childState in childStates)
+            {
+                if (childState.ConditionInitChildState()) return true;
+            }
+            return false;
         }
 
         public override bool ConditionInitChildState()
         {
+            foreach (var childState in childStates)
+            {
+                if (childState.ConditionInitChildState()) return true;
+            }
             return false;
         }
         public override bool ConditionExitState()
         {
-            foreach(var child in childStates)
-            {
-                if(!child.ConditionExitState() || child.ConditionInitChildState())
-                {
-                    return false;
-                }
-            }
-            return true;
+            return currentChildState.ConditionExitState();
         }
     }
 }

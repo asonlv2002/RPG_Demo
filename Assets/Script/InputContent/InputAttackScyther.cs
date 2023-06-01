@@ -18,6 +18,7 @@ namespace InputContents
             Input.Attack.Enable();
             Input.Attack.Attack_Q.started += ReadAttackQ;
             Input.Attack.Attack_E.started += ReadAttackE;
+            Input.Attack.Shift.started += ReadAttackShift;
         }
 
         void ReadAttackQ(InputAction.CallbackContext callbackContext)
@@ -28,6 +29,11 @@ namespace InputContents
         void ReadAttackE(InputAction.CallbackContext callbackContext)
         {
             AddInput(AttackScytheInput.InputE);
+        }
+
+        void ReadAttackShift(InputAction.CallbackContext callbackContext)
+        {
+            ExitAttackInput();
         }
 
         public void ReadInputToState()
@@ -41,11 +47,6 @@ namespace InputContents
         }
         void AddInput(AttackScytheInput input)
         {
-            var count = InputAttackScytherQueue.Count;
-            if (count >0)
-            {
-                if (InputAttackScytherQueue[count - 1] == input) return;
-            }
             Debug.Log(input);
             InputAttackScytherQueue.Add(input);
         }
@@ -61,6 +62,7 @@ namespace InputContents
     internal enum AttackScytheInput
     {
         InputQ,
-        InputE
+        InputE,
+        Shift
     }
 }

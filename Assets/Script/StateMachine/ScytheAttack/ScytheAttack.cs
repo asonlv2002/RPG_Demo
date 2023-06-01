@@ -3,8 +3,10 @@
     internal abstract class ScytheAttack : BaseState
     {
         protected InputScytheAttackAdapter InputAttack;
-        protected ScytheAttack(StateCore stateContent) : base(stateContent)
+        protected ScytheAttackStateStore ScytheStore;
+        protected ScytheAttack(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent)
         {
+            ScytheStore = Store;
             InputAttack = StateContent.GetContentComponent<InputScytheAttackAdapter>();
         }
     }
