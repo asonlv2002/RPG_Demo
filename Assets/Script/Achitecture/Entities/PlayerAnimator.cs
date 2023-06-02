@@ -2,12 +2,12 @@
 namespace AnimatorContent
 {
     using Achitecture;
-    using EquipmentContents;
 
-    internal class PlayerAnimator : AnimatorCore, IEquipWeaponSubscriber
+    internal class PlayerAnimator : AnimatorCore
     {
         [field: SerializeField] private MovementAnimatorController _animatorMovementControllers;
         [field: SerializeField] private AnimatorAttackContains _animatorAttackControllers;
+        [SerializeField] protected Transform body;
         protected override void Awake()
         {
             base.Awake();
@@ -19,9 +19,15 @@ namespace AnimatorContent
             base.InitMainCore(mainCores);
 
         }
-        public void OnEquipWeapon()
+        protected override void OnAnimatorMove()
         {
-
+            base.OnAnimatorMove();
+            if (Animator.applyRootMotion)
+            {
+                body.rotation = Animator.rootRotation;
+                body.position += Animator.deltaPosition;
+            }
         }
+
     }
 }

@@ -18,6 +18,7 @@ namespace StateContents
         public override void EnterState()
         {
             base.EnterState();
+            animator.applyRootMotion = false;
             RenderAction(SpeedMove());
         }
         public override void FixedUpdateState()

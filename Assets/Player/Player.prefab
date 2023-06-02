@@ -282,7 +282,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8754924706893643731}
-  - component: {fileID: 1561595876163820610}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -305,25 +304,6 @@ Transform:
   m_Father: {fileID: 7071238952219145836}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1561595876163820610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4889516506021967778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 690de724339c99b4b84486872ae2c646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 2876833287689597433}
-  _animatorMovementControllers:
-    <Scythe>k__BackingField: {fileID: 22100000, guid: 8bee02ec0d557d44a97f32bf3364e995, type: 2}
-    <Bow>k__BackingField: {fileID: 0}
-  _animatorAttackControllers:
-    <Scythe>k__BackingField: {fileID: 9100000, guid: 794fde1e3c7e0ce47b815d467adda733, type: 2}
-    <Bow>k__BackingField: {fileID: 0}
 --- !u!1 &7071238951588474814
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +476,7 @@ MonoBehaviour:
   StateMachine: {fileID: 4836493759350664540}
   Physic: {fileID: 405133052304921471}
   Body: {fileID: 1808443596}
-  Animator: {fileID: 1561595876163820610}
+  Animator: {fileID: 3447673468840574943}
   InputAction: {fileID: 621589853630580565}
   Equipment: {fileID: 1291106231639487442}
 --- !u!1 &7130532494449113473
@@ -606,3 +586,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 379411a1327de9e4081d180d39986824, type: 3}
   m_PrefabInstance: {fileID: 8540519292268006504}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8811130879818363193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 379411a1327de9e4081d180d39986824, type: 3}
+  m_PrefabInstance: {fileID: 8540519292268006504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3447673468840574943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811130879818363193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690de724339c99b4b84486872ae2c646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 2876833287689597433}
+  body: {fileID: 7071238952219145836}
+  _animatorMovementControllers:
+    <Scythe>k__BackingField: {fileID: 22100000, guid: 8bee02ec0d557d44a97f32bf3364e995, type: 2}
+    <Bow>k__BackingField: {fileID: 0}
+  _animatorAttackControllers:
+    <Scythe>k__BackingField: {fileID: 9100000, guid: 794fde1e3c7e0ce47b815d467adda733, type: 2}
+    <Bow>k__BackingField: {fileID: 0}
+  body: {fileID: 0}

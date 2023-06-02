@@ -27,8 +27,8 @@ namespace Achitecture
 
             Equipment.InitMainCore(this);
             InputAction.InitMainCore(this);
-            Animator.InitMainCore(this);
             Physic.InitMainCore(this);
+            Animator.InitMainCore(this);
             StateMachine.InitMainCore(this);
         }
     }

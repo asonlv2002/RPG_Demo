@@ -23,7 +23,6 @@ namespace StateContents
 
         public override void ExitState()
         {
-            UnityEngine.Debug.Log(currentParentState);
             animator.SetBool(ActionParameter, false);
             base.ExitState();
         }
