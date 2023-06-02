@@ -4,6 +4,7 @@
     {
         protected InputScytheAttackAdapter InputAttack;
         protected ScytheAttackStateStore ScytheStore;
+        protected float TimePassed;
         protected ScytheAttack(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent)
         {
             ScytheStore = Store;

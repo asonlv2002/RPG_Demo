@@ -3,7 +3,7 @@ namespace StateContents
 {
     internal class PlayerSprintToIdleState : MovementState
     {
-        public PlayerSprintToIdleState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerSprintToIdleState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
         }
 
@@ -21,7 +21,6 @@ namespace StateContents
         {
             CalculatorTimeExit();
             base.UpdateState();
-            SwitchToFriendState();
         }
 
         public void CalculatorTimeExit()

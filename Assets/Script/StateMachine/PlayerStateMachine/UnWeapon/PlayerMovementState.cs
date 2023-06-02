@@ -5,11 +5,15 @@ namespace StateContents
     {
         MovementAnimatorControllerAdapter AnimatorMovementController;
 
-        public PlayerMovementState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerMovementState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
 
         }
-
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            if (EnterFriendState(StateStore.AttackState)) return;
+        }
         public override void EnterState()
         {
             AnimatorMovementController = StateContent.GetContentComponent<MovementAnimatorControllerAdapter>();
@@ -22,9 +26,10 @@ namespace StateContents
             return StateStore.Grounded.ConditionInitChildState() || StateStore.Airborne.ConditionInitChildState();
         }
 
-        public override bool ConditionInitChildState()
+        public override void InitilationChildrenState()
         {
-            return true;
+            if (EnterChildState(StateStore.Grounded)) return;
+            else if (EnterChildState(StateStore.Airborne)) return;
         }
     }
 }

@@ -12,14 +12,23 @@
         public override void EnterState()
         {
             base.EnterState();
-            InputAttack.ReadInputToState();
-            animator.SetBool(ActionParameter, true);
             TimeEnd = Time.time + 2f;
+            IsExit = false;
+            Debug.Log("EnterE");
+            InputAttack.ReadInputToState();
+
+            animator.SetBool(ActionParameter, true);
+
 
         }
         public override void UpdateState()
         {
             base.UpdateState();
+            if(Time.time> TimeEnd && !IsExit)
+            {
+                IsExit = true;
+                if (EnterFriendState(ScytheStore.AttackCompoA)) return;
+            }
         }
         public override void ExitState()
         {
@@ -39,9 +48,5 @@
             return InputAttack.CheckInut(AttackScytheInput.InputE);
         }
 
-        public override bool ConditionExitState()
-        {
-            return Time.time >= TimeEnd;
-        }
     }
 }

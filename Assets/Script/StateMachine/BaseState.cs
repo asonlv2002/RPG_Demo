@@ -3,18 +3,15 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 namespace StateContents
 {
-    internal abstract class BaseState : IState
+    internal abstract class BaseState
     {
-        protected IState currentParentState;
-        protected IState currentChildState;
+        protected BaseState currentParentState;
+        protected BaseState currentChildState;
 
         protected StateCore StateContent;
-
+        public bool IsExit = true;
         protected PhysiscalAdapter Physiscal;
         protected BodyAdapter Body;
-
-        protected List<IState> friendStates;
-        protected List<IState> childStates;
 
         protected int ActionParameter;
         protected Animator animator;
@@ -23,9 +20,6 @@ namespace StateContents
 
         public BaseState(StateCore stateContent)
         {
-            friendStates = new List<IState>();
-            childStates = new List<IState>();
-
             StateContent = stateContent;
             animator = StateContent.GetContentComponent<ActionRender>().Animator;
             Physiscal = StateContent.GetContentComponent<PhysiscalAdapter>();
@@ -39,7 +33,6 @@ namespace StateContents
         public virtual void UpdateState()
         {
             currentParentState?.UpdateState();
-            SwitchToFriendState();
         }
         public virtual void FixedUpdateState()
         {
@@ -47,70 +40,52 @@ namespace StateContents
         }
         public virtual void ExitState()
         {
-            if (currentChildState != null)
-            {
-                currentChildState.ExitState();
-                currentChildState = null;
-            }
+
+            currentChildState?.ExitState();
+            currentChildState = null;
 
         }
 
         #region ChildState
-        public void AddChildState(IState childSate)
+        public virtual void InitilationChildrenState()
         {
-            childStates.Add(childSate);
-            (childSate as BaseState).currentParentState = this;
 
         }
-        public void InitilationChildrenState()
+        protected virtual bool EnterChildState(BaseState childState)
         {
-            if (childStates.Count <= 0) return;
-            EnterChildState(childStates.Find(x => x.ConditionInitChildState() == true));
-        }
-        protected virtual void EnterChildState(IState childState)
-        {
-            if (childState == null) return;
+            if (!childState.ConditionInitChildState()) return false;
+            (childState as BaseState).currentParentState = this;
             currentChildState = childState;
             StateContent.EnterNextState(childState);
+            return true;
         }
 
-        public abstract bool ConditionInitChildState();
+        public virtual bool ConditionInitChildState()
+        {
+            return false;
+        }
         #endregion
 
         #region FriendState
-        public void AddFriendState(IState friendState)
+        protected virtual bool EnterFriendState(BaseState nextState)
         {
-            if (friendStates.IndexOf(friendState) >= 0) return;
-            friendStates.Add(friendState);
-            friendState.AddFriendState(this);
-        }
-        protected virtual void SwitchToFriendState()
-        {
-            if (friendStates.Count <= 0 || !ConditionExitState()) return;
-            EnterFriendState(friendStates.Find(x => x.ConditionEnterState() == true));
-        }
-
-        protected virtual void EnterFriendState(IState nextState)
-        {
-            if (nextState == null) return;
-            var parent = (nextState as BaseState).currentParentState;
-            if (parent != null)
+            if (nextState == null|| !nextState.ConditionEnterState()) return false;
+            if(currentParentState != null)
             {
-                if (parent == currentParentState)
-                    (currentParentState as BaseState).currentChildState = nextState;
+                currentParentState.currentChildState = nextState;
+                nextState.currentParentState = currentParentState;
             }
-
 
             ExitState();
             StateContent.EnterNextState(nextState);
-        }
-
-        public abstract bool ConditionEnterState();
-
-        public virtual bool ConditionExitState()
-        {
             return true;
         }
+
+        public virtual bool ConditionEnterState()
+        {
+            return false;
+        }
+
         #endregion
 
     }

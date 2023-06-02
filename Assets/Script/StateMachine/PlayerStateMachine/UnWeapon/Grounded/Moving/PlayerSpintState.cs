@@ -4,7 +4,7 @@ namespace StateContents
 {
     internal class PlayerSpintState : MovementState
     {
-        public PlayerSpintState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerSpintState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
         }
 
@@ -17,7 +17,6 @@ namespace StateContents
         {
 
             base.UpdateState();
-            SwitchToFriendState();
         }
         public override void FixedUpdateState()
         {

@@ -2,9 +2,9 @@
 {
     internal abstract class StateCore : Achitecture.CoreContain<StateComponent>
     {
-        public IState CurrentState { get; set; }
+        public BaseState CurrentState { get; set; }
 
-        public void EnterNextState(IState nextState)
+        public void EnterNextState(BaseState nextState)
         {
             CurrentState = nextState;
             CurrentState.EnterState();

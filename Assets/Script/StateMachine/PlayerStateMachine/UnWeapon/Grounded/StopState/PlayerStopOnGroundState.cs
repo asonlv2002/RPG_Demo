@@ -2,8 +2,9 @@
 {
     internal class PlayerStopOnGroundState : MovementState
     {
-        public PlayerStopOnGroundState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerStopOnGroundState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
+
         }
 
         public override void EnterState()

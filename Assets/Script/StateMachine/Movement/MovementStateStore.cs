@@ -1,35 +1,34 @@
 ﻿namespace StateContents
 {
-    internal class MovementStateStore :StateStore , IMovementStateStore
+    internal class MovementStateStore :StateStore
     {
-        public IState Movement {get; private set;}
+        public BaseState Movement {get; private set;}
 
-        public IState Grounded {get; private set;}
+        public BaseState Grounded {get; private set;}
 
-        public IState Idle {get; private set;}
+        public BaseState Idle {get; private set;}
 
-        public IState Move {get; private set;}
+        public BaseState Move {get; private set;}
 
-        public IState Run {get; private set;}
+        public BaseState Run {get; private set;}
 
-        public IState Sprint {get; private set;}
+        public BaseState Sprint {get; private set;}
 
-        public IState Airborne {get; private set;}
+        public BaseState Airborne {get; private set;}
 
-        public IState JumpRise {get; private set;}
+        public BaseState JumpRise {get; private set;}
 
-        public IState JumpFall {get; private set;}
+        public BaseState JumpFall {get; private set;}
 
-        public IState Fall {get; private set;}
+        public BaseState Fall {get; private set;}
 
-        public IState SprintToIdle {get; private set;}
+        public BaseState SprintToIdle {get; private set;}
 
-        public IState StopOnGround {get; private set;}
+        public BaseState StopOnGround {get; private set;}
+        public BaseState AttackState {get; private set;}
 
         public MovementStateStore(StateCore stateContext) : base(stateContext)
         {
-            LinkChildState();
-            LinkFriendState();
 
         }
         protected override void CreateStateContain()
@@ -47,23 +46,9 @@
             Fall = new PlayerFallState(_stateContent, this);
         }
 
-        void LinkFriendState()
+        public void AddAttackGroup(BaseState attackState)
         {
-            Grounded.AddFriendState(Airborne);
-            JumpRise.AddFriendState(Fall);
-            Move.AddFriendState(Idle);      
-        }
-
-        void LinkChildState()
-        {
-            Movement.AddChildState(Airborne);
-            Movement.AddChildState(Grounded);
-
-            Grounded.AddChildState(Move);
-            Grounded.AddChildState(Idle);
-
-            Airborne.AddChildState(JumpRise);
-            Airborne.AddChildState(Fall);
+            AttackState = attackState;
         }
     }
 }

@@ -3,7 +3,7 @@ namespace StateContents
 {
     internal class PlayerRunState : MovementState
     {
-        public PlayerRunState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerRunState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             
         }

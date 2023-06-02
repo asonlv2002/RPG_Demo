@@ -16,15 +16,22 @@
         {
             return ScytheStore.AttackOnGround.ConditionInitChildState();
         }
-
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            if (ScytheStore.AttackOnGround.IsExit && ScytheStore.AttackOnAir.IsExit)
+            {
+                if (EnterFriendState(ScytheStore.Movement)) return;
+            }
+        }
         public override bool ConditionInitChildState()
         {
             return true;
         }
 
-        public override bool ConditionExitState()
+        public override void InitilationChildrenState()
         {
-           return currentChildState.ConditionExitState();
+            if (EnterChildState(ScytheStore.AttackOnGround)) return;
         }
     }
 }

@@ -3,26 +3,30 @@ namespace StateContents
 {
     internal class PlayerFallState : MovementState
     {
-        public PlayerFallState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerFallState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isFall");
         }
+
         public override void EnterState()
         {
-            base.EnterState();
+
             animator.SetBool(ActionParameter, true);
+            base.EnterState();
         }
+
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            Physiscal.GravityEffect(200f);
+            Physiscal.GravityEffect(200);
         }
+
         public override void ExitState()
         {
+            UnityEngine.Debug.Log(currentParentState);
             animator.SetBool(ActionParameter, false);
             base.ExitState();
         }
-
         public override bool ConditionEnterState()
         {
             return Physiscal.Y_VelocityApplie < 0f;

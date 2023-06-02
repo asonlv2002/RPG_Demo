@@ -9,6 +9,7 @@
         }
         public override void EnterState()
         {
+            IsExit = false;
             base.EnterState();
         }
         public override void FixedUpdateState()
@@ -16,26 +17,28 @@
             base.FixedUpdateState();
             Physiscal.FloatOnGround(Body.FLoatDirection);
         }
-        public override bool ConditionEnterState()
+        public override void UpdateState()
         {
-            foreach (var childState in childStates)
+            base.UpdateState();
+            if(ScytheStore.AttackCompoA.IsExit && ScytheStore.AttackE.IsExit)
             {
-                if (childState.ConditionInitChildState()) return true;
+                IsExit = true;
+                if (EnterFriendState(ScytheStore.AttackOnAir)) return;
             }
-            return false;
         }
 
         public override bool ConditionInitChildState()
         {
-            foreach (var childState in childStates)
-            {
-                if (childState.ConditionInitChildState()) return true;
-            }
-            return false;
+            return ConditionEnterState();
         }
-        public override bool ConditionExitState()
+        public override bool ConditionEnterState()
         {
-            return currentChildState.ConditionExitState();
+            return ScytheStore.AttackCompoA.ConditionInitChildState() || ScytheStore.AttackE.ConditionEnterState();
+        }
+        public override void InitilationChildrenState()
+        {
+            if (EnterChildState(ScytheStore.AttackCompoA)) return;
+            else if(EnterChildState(ScytheStore.AttackE)) return;
         }
     }
 }

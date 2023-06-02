@@ -4,9 +4,15 @@ namespace StateContents
 {
     internal class PlayerMoveState : MovementState
     {
-        public PlayerMoveState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerMoveState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isMove");
+        }
+
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            if (EnterFriendState(StateStore.Idle)) return;
         }
 
         public override void EnterState()

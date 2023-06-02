@@ -11,6 +11,7 @@
         }
         public override void EnterState()
         {
+            { IsExit = false; }
             base.EnterState();
             TimeEnd = Time.time + 2.067f;
             InputAttack.ReadInputToState();
@@ -18,11 +19,18 @@
         }
         public override void UpdateState()
         {
-            if (ConditionExitState() && ConditionEnterState())
+            if (TimeEnd < Time.time && InputAttack.CheckInut(AttackScytheInput.InputQ))
             {
-                EnterState();
+                { IsExit = false; }
+                base.EnterState();
+                TimeEnd = Time.time + 2.067f;
+                InputAttack.ReadInputToState();
+            }else if(TimeEnd < Time.time)
+            {
+                { IsExit = true; }
             }
-            else base.UpdateState();
+            base.UpdateState();
+
         }
         public override void ExitState()
         {
@@ -39,11 +47,6 @@
         public override bool ConditionInitChildState()
         {
             return InputAttack.CheckInut(AttackScytheInput.InputQ) && Body.IsOnGround;
-        }
-
-        public override bool ConditionExitState()
-        {
-            return Time.time > TimeEnd;
         }
     }
 }

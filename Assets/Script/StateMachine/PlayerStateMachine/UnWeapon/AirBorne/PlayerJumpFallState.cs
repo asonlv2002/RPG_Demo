@@ -5,7 +5,7 @@ namespace StateContents
     using PhysicContents;
     internal class PlayerJumpFallState : MovementState
     {
-        public PlayerJumpFallState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerJumpFallState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isJumpFall");
         }

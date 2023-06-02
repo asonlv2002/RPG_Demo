@@ -36,8 +36,8 @@
             var scytheAttackStore = new ScytheAttackStateStore(_state);
             _state.AddContentComponent(scytheAttackStore);
             var movementStore = _state.GetContentComponent<MovementStateStore>();
-            movementStore.Grounded.AddFriendState(scytheAttackStore.ScytheGroup);
-
+            movementStore.AddAttackGroup(scytheAttackStore.ScytheAttackGroup);
+            scytheAttackStore.AddMovement(movementStore.Movement);
             _state.EnterNextState(movementStore.Movement);
 
         }

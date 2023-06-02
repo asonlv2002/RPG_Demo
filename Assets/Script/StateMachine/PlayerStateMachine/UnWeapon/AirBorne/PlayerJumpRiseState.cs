@@ -4,7 +4,7 @@ namespace StateContents
 {
     internal class PlayerJumpRiseState : MovementState
     {
-        public PlayerJumpRiseState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerJumpRiseState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isJumpUp");
         }
@@ -18,6 +18,7 @@ namespace StateContents
         public override void UpdateState()
         {
             base.UpdateState();
+            if (EnterFriendState(StateStore.Fall)) return;
         }
 
         public override void FixedUpdateState()

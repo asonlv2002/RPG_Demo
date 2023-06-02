@@ -2,7 +2,7 @@
 {
     internal class PlayerIdleState : MovementState
     {
-        public PlayerIdleState(StateCore stateContent, IMovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerIdleState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = UnityEngine.Animator.StringToHash("isIdle");
         }
@@ -17,6 +17,12 @@
         {
             base.ExitState();
             animator.SetBool(ActionParameter, false);
+        }
+
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            if (EnterFriendState(StateStore.Move)) return;
         }
 
         public override bool ConditionEnterState()
