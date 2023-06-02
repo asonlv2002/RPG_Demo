@@ -13,7 +13,7 @@ namespace StateContents
         {
             base.EnterState();
             animator.SetBool(ActionParameter, true);
-            Physiscal.Jump(0f);
+            Physiscal.Jump(1);
         }
         public override void UpdateState()
         {

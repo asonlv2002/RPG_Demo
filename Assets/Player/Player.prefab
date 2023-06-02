@@ -229,6 +229,7 @@ MonoBehaviour:
     PhysicCore: {fileID: 405133052304921471}
   PhysicOnGround:
     PhysicCore: {fileID: 405133052304921471}
+  animator: {fileID: 2876833287689597433}
 --- !u!1 &2562579241052543724
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,11 +605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 2876833287689597433}
-  body: {fileID: 7071238952219145836}
   _animatorMovementControllers:
     <Scythe>k__BackingField: {fileID: 22100000, guid: 8bee02ec0d557d44a97f32bf3364e995, type: 2}
     <Bow>k__BackingField: {fileID: 0}
   _animatorAttackControllers:
     <Scythe>k__BackingField: {fileID: 9100000, guid: 794fde1e3c7e0ce47b815d467adda733, type: 2}
     <Bow>k__BackingField: {fileID: 0}
-  body: {fileID: 0}
+  body: {fileID: 7071238952219145836}

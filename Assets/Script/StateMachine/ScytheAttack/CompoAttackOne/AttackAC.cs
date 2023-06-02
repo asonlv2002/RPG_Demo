@@ -6,14 +6,16 @@
     {
         public AttackAC(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
+            ActionParameter = Animator.StringToHash("isAC");
         }
 
         public override void EnterState()
         {
+            animator.SetBool(ActionParameter, true);
             IsExit = false;
             base.EnterState();
             InputAttack.ReadInputToState();
-            TimePassed = Time.time + 2;
+            TimePassed = Time.time + 1.333f;
             Debug.Log("EnterAC");
 
         }
@@ -29,6 +31,8 @@
         }
         public override void ExitState()
         {
+            animator.SetBool(ActionParameter, false);
+            Debug.Log("ExitAC");
             base.ExitState();
         }
 

@@ -31,8 +31,8 @@ namespace StateContents
         }
         public override void ExitState()
         {
-            RenderAction(0);
             base.ExitState();
+            RenderAction(0);
         }
         private void Rotation()
         {

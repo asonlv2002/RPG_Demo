@@ -16,7 +16,6 @@
             IsExit = false;
             Debug.Log("EnterE");
             InputAttack.ReadInputToState();
-            animator.applyRootMotion = true;
             animator.SetBool(ActionParameter, true);
 
 
@@ -34,19 +33,18 @@
         {
             Debug.Log("ExitE");
             animator.SetBool(ActionParameter, false);
-            animator.applyRootMotion = true;
             base.ExitState();
 
         }
 
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputE);
+            return ConditionInitChildState();
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputE);
+            return InputAttack.CheckInut(AttackScytheInput.InputE) && Body.IsOnGround;
         }
 
     }

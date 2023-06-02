@@ -41,5 +41,10 @@ namespace StateContents
             onGround.OnMoving(XSpeed, Zspeed);
         }
 
+        public void StopOnAir(bool value)
+        {
+            inAir.StopOnAir(value);
+        }
+
     }
 }

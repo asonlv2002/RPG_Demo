@@ -7,20 +7,22 @@ namespace StateContents
     {
         public ScytheAttackOnAir(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
-
+            ActionParameter = Animator.StringToHash("isAir");
         }
 
         public override void EnterState()
         {
             IsExit = false;
+            TimePassed = Time.time + 2.167f;
+            animator.SetBool(ActionParameter, true);
             base.EnterState();
-            Debug.Log("EnterAttackAir");
+            Physiscal.StopOnAir(true);
             InputAttack.ReadInputToState();
         }
         public override void UpdateState()
         {
             base.UpdateState();
-            if(Body.IsTerrestrial)
+            if(TimePassed < Time.time && !IsExit)
             {
                 IsExit = true;
                 if (EnterFriendState(ScytheStore.AttackOnGround)) return;
@@ -30,23 +32,25 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            Physiscal.GravityEffect(300f);
+
         }
 
         public override void ExitState()
         {
             IsExit = true;
+            Physiscal.StopOnAir(false);
+            animator.SetBool(ActionParameter, true);
             Debug.Log("ExitAttackAir");
             base.ExitState();
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputE) && !Body.IsTerrestrial;
+            return InputAttack.CheckInut(AttackScytheInput.InputE) && !Body.IsOnGround;
         }
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputE) && !Body.IsTerrestrial;
+            return ConditionInitChildState();
         }
     }
 }

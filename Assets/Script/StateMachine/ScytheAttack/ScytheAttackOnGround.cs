@@ -12,11 +12,6 @@
             IsExit = false;
             base.EnterState();
         }
-        public override void FixedUpdateState()
-        {
-            base.FixedUpdateState();
-            Physiscal.FloatOnGround(Body.FLoatDirection);
-        }
         public override void UpdateState()
         {
             base.UpdateState();

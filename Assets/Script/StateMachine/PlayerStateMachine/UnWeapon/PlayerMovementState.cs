@@ -18,6 +18,7 @@ namespace StateContents
         {
             AnimatorMovementController = StateContent.GetContentComponent<MovementAnimatorControllerAdapter>();
             AnimatorMovementController?.EnterAnimatorMovement();
+            animator.applyRootMotion = false;
             base.EnterState();
         }
 

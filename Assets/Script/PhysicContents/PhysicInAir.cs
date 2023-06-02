@@ -16,7 +16,17 @@ namespace PhysicContents
 
         public void StartJump(float jumpHeiht = 8f)
         {
+            //if (jumpHeiht == 0)
+            //{
+            //    var rb = PhysicCore.PhysiscHandler;
+            //    rb.velocity = UnityEngine.Vector3.zero;
+            //    return;
+            //}
             PhysicCore.Y_VelocityApplie = JUMPHEIGHT;
+        }
+        public void StopOnAir(bool value)
+        {
+            PhysicCore.PhysiscHandler.isKinematic = value;
         }
     }
 }
