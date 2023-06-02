@@ -16,7 +16,7 @@
             IsExit = false;
             Debug.Log("EnterE");
             InputAttack.ReadInputToState();
-
+            animator.applyRootMotion = true;
             animator.SetBool(ActionParameter, true);
 
 
@@ -34,6 +34,7 @@
         {
             Debug.Log("ExitE");
             animator.SetBool(ActionParameter, false);
+            animator.applyRootMotion = true;
             base.ExitState();
 
         }
