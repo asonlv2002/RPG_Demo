@@ -1,11 +1,10 @@
-﻿using StateContents;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
-namespace InputContents
+namespace StateContents
 {
-    internal class InputEquip : InputComponent
+    internal class InputEquip : StateComponent
     {
-        StateCore stateCore;
+        StateCore _stateCore;
         BaseState EquipWeapon;
         BaseState UnEquipWeapon;
         InputEquipment inputEquip;
@@ -16,12 +15,13 @@ namespace InputContents
             Init();
         }
 
-        //public InputEquip(StateCore stateCore, BaseState equipWeapon, BaseState unEquipWeapon)
-        //{
-        //    inputEquip = new InputEquipment();
-        //    EquipWeapon = equipWeapon;
-        //    UnEquipWeapon = unEquipWeapon;
-        //}
+        public InputEquip(StateCore stateCore)
+        {
+            inputEquip = new InputEquipment();
+            _stateCore = stateCore;
+            EquipWeapon = _stateCore.GetContentComponent<MovementStateStore>().Equip;
+            Init();
+        }
 
         void Init()
         {
@@ -31,7 +31,8 @@ namespace InputContents
 
         void ReadInpuEquipment(InputAction.CallbackContext callback)
         {
-            UnityEngine.Debug.Log("2002");
+            UnityEngine.Debug.Log(_stateCore.CurrentState);
+            _stateCore.EnterNextState(EquipWeapon);
         }
 
     }

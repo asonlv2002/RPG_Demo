@@ -32,7 +32,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EquipWeapon
+  m_Name: Equip
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a30649bbe5e008340aeb463e917c3626, type: 2}
+  m_Motion: {fileID: 7400000, guid: c91389c39d842cc4190ea8be0836798a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -61,7 +61,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isEquipWeapon
+    m_ConditionEvent: isEquip
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
@@ -232,7 +232,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isEquipWeapon
+  - m_Name: isEquip
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -383,7 +383,10 @@ AnimatorTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isEquip
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5342370515854096283}
   m_Solo: 0
@@ -472,7 +475,7 @@ AnimatorStateMachine:
     m_Position: {x: 400, y: -150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5342370515854096283}
-    m_Position: {x: 400, y: 270, z: 0}
+    m_Position: {x: 410, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:

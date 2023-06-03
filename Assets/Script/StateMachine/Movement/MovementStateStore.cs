@@ -26,7 +26,7 @@
 
         public BaseState StopOnGround {get; private set;}
         public BaseState AttackState {get; private set;}
-
+        public BaseState Equip { get; private set;}
         public MovementStateStore(StateCore stateContext) : base(stateContext)
         {
 
@@ -44,6 +44,9 @@
             JumpFall = new PlayerJumpFallState(_stateContent, this);
 
             Fall = new PlayerFallState(_stateContent, this);
+
+            Equip = new EquipWeapon(_stateContent, this);
+
         }
 
         public void AddAttackGroup(BaseState attackState)

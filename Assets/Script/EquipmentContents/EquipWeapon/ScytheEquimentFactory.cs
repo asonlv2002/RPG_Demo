@@ -33,7 +33,7 @@
             _state.AddContentComponent(new InputScytheAttackAdapter(_input));
             _state.AddContentComponent(new MovementAnimatorControllerAdapter(_animatorContent));
             _state.AddContentComponent(new ScytheAnimatorControllerAdapter(_animatorContent));
-            _input.AddContentComponent(new InputEquip());
+            _state.AddContentComponent(new InputEquip(_state));
             var scytheAttackStore = new ScytheAttackStateStore(_state);
             _state.AddContentComponent(scytheAttackStore);
             var movementStore = _state.GetContentComponent<MovementStateStore>();

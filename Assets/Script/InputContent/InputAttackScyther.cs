@@ -16,7 +16,7 @@ namespace InputContents
         protected void InitilazationInput()
         {
             Input.Attack.Enable();
-            Input.Attack.Attack_E.started += ReadAttackE;
+            //Input.Attack.Attack_E.started += ReadAttackE;
             Input.Attack.Shift.started += ReadAttackShift;
             Input.Attack.LeftMouse.started += ReadMouseLeft;
         }
