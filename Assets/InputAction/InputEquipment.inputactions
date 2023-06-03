@@ -1,0 +1,34 @@
+{
+    "name": "Equipment",
+    "maps": [
+        {
+            "name": "Equipment",
+            "id": "22007d0b-94b3-4859-96f6-ddcb3111f79a",
+            "actions": [
+                {
+                    "name": "Equip",
+                    "type": "Button",
+                    "id": "ba8a51da-bf3c-4460-b2c4-f17512b5a88d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "af2daced-e62a-489f-bd0e-97cd16a5a243",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Equip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
