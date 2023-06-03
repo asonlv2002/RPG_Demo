@@ -4,7 +4,6 @@
     using UnityEngine;
     internal class AttackAB : ScytheAttack
     {
-        float countCompo = 2f;
         public AttackAB(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
             ActionParameter = Animator.StringToHash("isAB");
@@ -38,12 +37,12 @@
 
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputQ) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputQ) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
         }
     }
 }

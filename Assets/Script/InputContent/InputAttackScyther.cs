@@ -16,14 +16,9 @@ namespace InputContents
         protected void InitilazationInput()
         {
             Input.Attack.Enable();
-            Input.Attack.Attack_Q.started += ReadAttackQ;
             Input.Attack.Attack_E.started += ReadAttackE;
             Input.Attack.Shift.started += ReadAttackShift;
-        }
-
-        void ReadAttackQ(InputAction.CallbackContext callbackContext)
-        {
-            AddInput(AttackScytheInput.InputQ);
+            Input.Attack.LeftMouse.started += ReadMouseLeft;
         }
 
         void ReadAttackE(InputAction.CallbackContext callbackContext)
@@ -36,6 +31,10 @@ namespace InputContents
             ExitAttackInput();
         }
 
+        void ReadMouseLeft(InputAction.CallbackContext callbackContext)
+        {
+            AddInput(AttackScytheInput.MouseLeftClick);
+        }
         public void ReadInputToState()
         {
             InputAttackScytherQueue.RemoveAt(0);
@@ -61,7 +60,7 @@ namespace InputContents
 
     internal enum AttackScytheInput
     {
-        InputQ,
+        MouseLeftClick,
         InputE,
         Shift
     }

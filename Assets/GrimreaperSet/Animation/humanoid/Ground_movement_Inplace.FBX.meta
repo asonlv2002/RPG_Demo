@@ -674,7 +674,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
@@ -928,7 +928,7 @@ ModelImporter:
         weight: 0
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 24
     - serializedVersion: 16
       name: strafe_run_F
       takeName: strafe_run_F
@@ -5205,19 +5205,19 @@ ModelImporter:
       name: front_run
       takeName: front_run
       internalID: 0
-      firstFrame: 1
+      firstFrame: 0.9
       lastFrame: 23
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 1
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -5467,7 +5467,7 @@ ModelImporter:
         weight: 0
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 0.9
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -5940,8 +5940,8 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Bip001
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0, y: 0.89552987, z: 0.038907122}
-      rotation: {x: -0.4973172, y: 0.48621535, z: 0.49549595, w: 0.5203402}
+      position: {x: -0.0003863871, y: 0.8961497, z: 0.03906533}
+      rotation: {x: -0.49844027, y: 0.4783013, z: 0.50356436, w: 0.5188527}
       scale: {x: 1, y: 1.0000001, z: 1}
     - name: Bip001 Pelvis
       parentName: Bip001
@@ -6295,38 +6295,38 @@ ModelImporter:
       scale: {x: 0.9999998, y: 0.99999976, z: 1}
     - name: Body
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19864887, z: 0.5800448}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012870379, y: 0.19239599, z: 0.5710691}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: 1.6869249, y: 1.6869249, z: 1.6869249}
     - name: Hair
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19864887, z: 0.5800448}
-      rotation: {x: 0.43648228, y: -0, z: -0, w: 0.89971286}
+      position: {x: 0.012870379, y: 0.19239599, z: 0.5710691}
+      rotation: {x: 0.44232008, y: 0.00416569, z: 0.0084459735, w: 0.8968078}
       scale: {x: -1.6869249, y: -1.6869249, z: -1.6869249}
     - name: Hands001
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19864887, z: 0.5800448}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012870379, y: 0.19239599, z: 0.5710691}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: -1.6869249, y: -1.6869249, z: -1.6869249}
     - name: Hands002
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19864887, z: 0.5800448}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012870379, y: 0.19239599, z: 0.5710691}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: 1.6869249, y: 1.6869249, z: 1.6869249}
     - name: Head
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19864887, z: 0.5800448}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012870379, y: 0.19239599, z: 0.5710691}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: 1.6869249, y: 1.6869249, z: 1.6869249}
     - name: Hood
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19890147, z: 0.57984585}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012865573, y: 0.1926511, z: 0.5708735}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: 1.6869249, y: 1.6869249, z: 1.6869249}
     - name: ik_hand_root
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0, y: 0.20256364, z: 0.5850127}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012797877, y: 0.19624496, z: 0.5760877}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: 1, y: 1, z: 1}
     - name: ik_hand_gun
       parentName: ik_hand_root
@@ -6345,18 +6345,18 @@ ModelImporter:
       scale: {x: 0.9999999, y: 0.9999993, z: 0.9999997}
     - name: Lower_Pants
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19864887, z: 0.5800448}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012870379, y: 0.19239599, z: 0.5710691}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: 1.6869249, y: 1.6869249, z: 1.6869249}
     - name: Mask
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 1.4501787, z: -0.42726266}
-      rotation: {x: -0.32755375, y: -0, z: -0, w: 0.9448326}
+      position: {x: -0.010946177, y: 1.4567311, z: -0.41983175}
+      rotation: {x: -0.32137167, y: -0.0030266193, z: 0.008917792, w: 0.9469064}
       scale: {x: 1.6869249, y: 1.6869249, z: 1.6869249}
     - name: Upper_OUT
       parentName: Ground_movement_Inplace(Clone)
-      position: {x: 0.0000000018626451, y: 0.19864887, z: 0.5800448}
-      rotation: {x: -0.8997128, y: -0, z: -0, w: 0.43648252}
+      position: {x: 0.012870379, y: 0.19239599, z: 0.5710691}
+      rotation: {x: -0.89680773, y: -0.008445973, z: 0.0041656913, w: 0.44232026}
       scale: {x: 1.6869249, y: 1.6869249, z: 1.6869249}
     armTwist: 0.5
     foreArmTwist: 0.5

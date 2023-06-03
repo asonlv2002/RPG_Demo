@@ -53,6 +53,15 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""57d1f74d-da48-46b4-a5b9-49cae0bb3b8c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                     ""action"": ""Shift"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6f32527-9554-4c74-9a10-c5c6ae42d819"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
         m_Attack_Attack_Q = m_Attack.FindAction("Attack_Q", throwIfNotFound: true);
         m_Attack_Attack_E = m_Attack.FindAction("Attack_E", throwIfNotFound: true);
         m_Attack_Shift = m_Attack.FindAction("Shift", throwIfNotFound: true);
+        m_Attack_LeftMouse = m_Attack.FindAction("LeftMouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,6 +182,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
     private readonly InputAction m_Attack_Attack_Q;
     private readonly InputAction m_Attack_Attack_E;
     private readonly InputAction m_Attack_Shift;
+    private readonly InputAction m_Attack_LeftMouse;
     public struct AttackActions
     {
         private @InputAttackScythe m_Wrapper;
@@ -168,6 +190,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
         public InputAction @Attack_Q => m_Wrapper.m_Attack_Attack_Q;
         public InputAction @Attack_E => m_Wrapper.m_Attack_Attack_E;
         public InputAction @Shift => m_Wrapper.m_Attack_Shift;
+        public InputAction @LeftMouse => m_Wrapper.m_Attack_LeftMouse;
         public InputActionMap Get() { return m_Wrapper.m_Attack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +209,9 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                 @Shift.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnShift;
                 @Shift.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnShift;
                 @Shift.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnShift;
+                @LeftMouse.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnLeftMouse;
+                @LeftMouse.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnLeftMouse;
+                @LeftMouse.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnLeftMouse;
             }
             m_Wrapper.m_AttackActionsCallbackInterface = instance;
             if (instance != null)
@@ -199,6 +225,9 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                 @Shift.started += instance.OnShift;
                 @Shift.performed += instance.OnShift;
                 @Shift.canceled += instance.OnShift;
+                @LeftMouse.started += instance.OnLeftMouse;
+                @LeftMouse.performed += instance.OnLeftMouse;
+                @LeftMouse.canceled += instance.OnLeftMouse;
             }
         }
     }
@@ -208,5 +237,6 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
         void OnAttack_Q(InputAction.CallbackContext context);
         void OnAttack_E(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
+        void OnLeftMouse(InputAction.CallbackContext context);
     }
 }
