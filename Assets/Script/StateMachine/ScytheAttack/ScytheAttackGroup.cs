@@ -3,9 +3,11 @@
     internal class ScytheAttackGroup : ScytheAttack
     {
         ScytheAnimatorControllerAdapter AnimatorController;
+        WeaponTransformAdapter _weaponEquipStatus;
         public ScytheAttackGroup(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
             AnimatorController = stateContent.GetContentComponent<ScytheAnimatorControllerAdapter>();
+            _weaponEquipStatus = stateContent.GetContentComponent<WeaponTransformAdapter>();
         }
         public override void EnterState()
         {
@@ -34,7 +36,9 @@
         }
         public override bool ConditionEnterState()
         {
-            return ScytheStore.AttackOnGround.ConditionInitChildState() || ScytheStore.AttackOnAir.ConditionInitChildState();
+            if (!_weaponEquipStatus.IsUsingWeapon) return false;
+            var childCondition = ScytheStore.AttackOnGround.ConditionInitChildState() || ScytheStore.AttackOnAir.ConditionInitChildState();
+            return childCondition;
         }
         public override void InitilationChildrenState()
         {
