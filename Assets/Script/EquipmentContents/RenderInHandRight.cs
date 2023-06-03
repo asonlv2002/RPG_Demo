@@ -18,7 +18,6 @@ namespace Item.InEquipment
         {
             var weapon = MonoBehaviour.Instantiate(Model.Prefab,_handRight);
             ModelTransForm = weapon.transform;
-            ResetTransform(ModelTransForm);
         }
     }
 }

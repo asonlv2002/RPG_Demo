@@ -26,6 +26,7 @@
 
         public BaseState StopOnGround {get; private set;}
         public BaseState AttackState {get; private set;}
+        public BaseState UnEquip { get; private set;}
         public BaseState Equip { get; private set;}
         public MovementStateStore(StateCore stateContext) : base(stateContext)
         {
@@ -33,7 +34,7 @@
         }
         protected override void CreateStateContain()
         {
-            Movement = new PlayerMovementState(_stateContent, this);
+            Movement = new PlayerMovementGroup(_stateContent, this);
             Grounded = new PlayerGroundedState(_stateContent, this);
             Airborne = new PlayerAirborneState(_stateContent, this);
 
@@ -45,7 +46,8 @@
 
             Fall = new PlayerFallState(_stateContent, this);
 
-            Equip = new EquipWeapon(_stateContent, this);
+            UnEquip = new UnequipState(_stateContent, this);
+            Equip = new EquipState(_stateContent, this);
 
         }
 

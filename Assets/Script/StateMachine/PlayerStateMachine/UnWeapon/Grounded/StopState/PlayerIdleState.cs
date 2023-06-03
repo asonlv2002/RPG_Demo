@@ -23,6 +23,18 @@
         {
             base.UpdateState();
             if (EnterFriendState(StateStore.Move)) return;
+            if(StateStore.UnEquip.ConditionEnterState())
+            {
+                ExitState();
+                StateContent.EnterNextState(StateStore.UnEquip);
+                return;
+            }else
+            if(StateStore.Equip.ConditionEnterState())
+            {
+                ExitState();
+                StateContent.EnterNextState(StateStore.Equip);
+                return;
+            }
         }
 
         public override bool ConditionEnterState()

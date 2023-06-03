@@ -6,7 +6,7 @@ using AnimatorContent;
 using StateContents;
 namespace EquipmentContents
 {
-    internal class EquipWeaponChannel : IEquipWeaponNotify
+    internal class EquipWeaponChannel 
     {
         List<IEquipWeaponSubscriber> _subsribers;
         MainCores _mainCores;
@@ -15,6 +15,7 @@ namespace EquipmentContents
         InputCore _inputCore;
         AnimatorCore _animatorCore;
         StateCore _stateCore;
+        EquipmentCore _equipmentCore;
         
         public EquipWeaponChannel(MainCores mainCores)
         {
@@ -23,8 +24,7 @@ namespace EquipmentContents
             _animatorCore = _mainCores.GetCore<AnimatorCore>();
             _inputCore = _mainCores.GetCore<InputCore>();
             _stateCore = _mainCores.GetCore<StateCore>();
-            //_subsribers.Add(_inputCore);
-            //_subsribers.Add(Maincontent.Animator);
+            _equipmentCore= _mainCores.GetCore<EquipmentCore>();
 
         }
         public void EquipWeapon(WeaponData weaponData)
@@ -32,7 +32,7 @@ namespace EquipmentContents
             switch(weaponData)
             {
                 case ScytheData:
-                    _factory = new ScytheEquimentFactory(_animatorCore, _inputCore, _stateCore);
+                    _factory = new ScytheEquimentFactory(_animatorCore, _inputCore, _stateCore, _equipmentCore);
                     break;
             }
             _factory.InitEquipWeapon();

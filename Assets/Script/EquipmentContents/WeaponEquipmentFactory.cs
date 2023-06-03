@@ -1,7 +1,9 @@
 ﻿
-namespace Item.InEquipment
+namespace EquipmentContents
 {
-    using ItemGameData;
+    using Item;
+    using Item.InEquipment;
+    using Item.ItemGameData;
     internal class WeaponEquipmentFactory
     {
         WeaponEquipmentManager _context;

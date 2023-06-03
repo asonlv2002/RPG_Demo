@@ -1,5 +1,4 @@
 ﻿using Achitecture;
-using System.Collections.Generic;
 namespace StateContents
 {
     internal class PlayerStateMachine : StateCore
@@ -11,12 +10,14 @@ namespace StateContents
             var animator = MainCores.GetCore<AnimatorContent.AnimatorCore>();
             var physic = MainCores.GetCore<PhysicContents.PhysicCore>();
             var collider = MainCores.GetCore<ColliderContents.ColliderCore>();
+            var equipmen = MainCores.GetCore<EquipmentContents.EquipmentCore>();
             AddContentComponent(new PhysiscalAdapter(physic));
             AddContentComponent(new BodyAdapter(collider));
 
             AddContentComponent(new InputMovementAdapter(input));
+            AddContentComponent(new MovementAnimatorControllerAdapter(animator));
             AddContentComponent(new ActionRender(animator));
-
+            AddContentComponent(new WeaponTransformAdapter(equipmen));
             AddContentComponent(new MovementStateStore(this));
             var sate = GetContentComponent<MovementStateStore>().Movement;
             EnterNextState(sate);

@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-namespace Item.InEquipment
+namespace EquipmentContents
 {
-    using EquipmentContents;
+    using Item;
+    using Item.InEquipment;
+
     using Item.ItemGameData;
 
     [System.Serializable]
-    internal class WeaponEquipmentManager : IEquipmentManager
+    internal class WeaponEquipmentManager :EquipmentComponent, IEquipmentManager
     {
         [SerializeField] PlayerEquipment equipemt;
         [field: SerializeField] public Transform RightHand { get; private set; }
@@ -16,34 +18,36 @@ namespace Item.InEquipment
 
         IItem WeaponEquip;
         IItem WeaponUnequip;
-       
 
+        WeaponData currentWeaponData;
         public void AddWepon(IItem itemData)
         {
-            var weaponData = itemData.ItemData as WeaponData;
-            equipemt.channel.EquipWeapon(weaponData);
-            WeaponUnequip = new WeaponEquipmentFactory(this).WeaponFactory(weaponData);
+            if (currentWeaponData == itemData.ItemData as WeaponData) return;
+            currentWeaponData = itemData.ItemData as WeaponData;
+            equipemt.channel.EquipWeapon(currentWeaponData);
+            WeaponUnequip = new WeaponEquipmentFactory(this).WeaponFactory(currentWeaponData);
             Equip();
-            //var weaponEquip = _weaponEquipmentFactory.WeaponFactory(weaponData);
-            //(weaponEquip as IItemCreateModel).ItemRenderModel.RenderModel();
         }
 
         public void Equip()
         {
             WeaponEquip = WeaponUnequip;
             WeaponUnequip = null;
-            (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(Back);
+            (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(RightHand);
+
         }
 
         public void UnEquip()
         {
-
+            WeaponUnequip = WeaponEquip;
+            WeaponEquip = null;
+            (WeaponUnequip as IItemCreateModel).ItemRenderModel.SetTransForm(Back);
         }
 
 
         public bool IsEquipping => WeaponEquip != null;
 
-        public bool IsUnequipping => WeaponUnequip != null;
+        public bool IsUnequipping => WeaponEquip == null;
 
         public bool IsWeapon => WeaponEquip != null || WeaponUnequip != null;
     }

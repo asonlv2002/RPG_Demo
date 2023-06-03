@@ -19,5 +19,7 @@ namespace StateContents
         public bool IsSpintPressed => InputMovement.IsSpintPressed;
 
         public Vector3 CurrentInputMovement => InputMovement.CurrentInputMovement;
+
+        public bool IsEquipPressed => InputMovement.IsEquipPressed;
     }
 }

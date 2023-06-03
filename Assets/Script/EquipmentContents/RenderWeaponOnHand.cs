@@ -16,17 +16,12 @@ namespace Item.InEquipment
             RenderModel();
         }
 
-        public virtual void RenderModel()
-        {
-
-        }
+        public abstract  void RenderModel();
 
         public void SetTransForm(Transform transform)
         {
             ModelTransForm.SetParent(transform);
             ResetTransform(ModelTransForm);
-
-
         }
 
         protected virtual void ResetTransform(Transform modelTransform)

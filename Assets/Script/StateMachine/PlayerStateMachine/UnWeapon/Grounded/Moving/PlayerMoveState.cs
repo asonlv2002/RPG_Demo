@@ -53,7 +53,7 @@ namespace StateContents
 
         float SpeedMove()
         {
-            return InputMovement.IsSpintPressed ? 4 : 2;
+            return InputMovement.IsSpintPressed ? 8 : 4;
         }
 
         void RenderAction(float Speed)

@@ -14,7 +14,8 @@ namespace EquipmentContents
 
         protected InputCore _input;
         protected StateCore _state;
-        public EquipWeaponFactory(AnimatorCore animatorContent,InputCore inpuContent, StateCore stateContent)
+        protected EquipmentCore _equipment;
+        public EquipWeaponFactory(AnimatorCore animatorContent,InputCore inpuContent, StateCore stateContent,EquipmentCore equipmentCore)
         {
             _animatorContent = animatorContent;
             _attackController = _animatorContent.GetContentComponent<AnimatorAttackContains>();
@@ -22,6 +23,7 @@ namespace EquipmentContents
 
             _input = inpuContent;
             _state = stateContent;
+            _equipment = equipmentCore;
         }
         public abstract void InitEquipWeapon();
 

@@ -16,6 +16,7 @@ namespace EquipmentContents
         {
             base.InitMainCore(mainCores);
             channel = new EquipWeaponChannel(MainCores);
+            AddContentComponent(_weaponEquipment);
 
         }
         private void OnTriggerEnter(Collider other)

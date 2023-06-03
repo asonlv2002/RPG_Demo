@@ -3,16 +3,25 @@
     using AnimatorContent;
     internal class MovementAnimatorControllerAdapter : StateComponent
     {
-        AnimatorCore _animatorContent;
+        MovementController Movement;
         
         public MovementAnimatorControllerAdapter(AnimatorCore animatorContent)
         {
-            _animatorContent = animatorContent;
+            Movement = animatorContent.GetContentComponent<MovementController>();
         }
 
         public void EnterAnimatorMovement()
         {
-            _animatorContent.Animator.runtimeAnimatorController = _animatorContent.GetContentComponent<MovementAnimatorController>().Scythe;
+            Movement.EnterMovement();
+        }
+        public void EnterUnEquip()
+        {
+            Movement.EnterUnequip();
+        }
+
+        public void EnterEquip()
+        {
+            Movement.EnterEquip();
         }
     }
 }

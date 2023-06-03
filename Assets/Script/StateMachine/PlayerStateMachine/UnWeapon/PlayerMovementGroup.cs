@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 namespace StateContents
 {
-    internal class PlayerMovementState : MovementState
+    internal class PlayerMovementGroup : MovementState
     {
         MovementAnimatorControllerAdapter AnimatorMovementController;
 
-        public PlayerMovementState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerMovementGroup(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
-
+            AnimatorMovementController = StateContent.GetContentComponent<MovementAnimatorControllerAdapter>();
         }
         public override void UpdateState()
         {
@@ -16,8 +16,8 @@ namespace StateContents
         }
         public override void EnterState()
         {
-            AnimatorMovementController = StateContent.GetContentComponent<MovementAnimatorControllerAdapter>();
-            AnimatorMovementController?.EnterAnimatorMovement();
+            
+            AnimatorMovementController.EnterAnimatorMovement();
             animator.applyRootMotion = false;
             base.EnterState();
         }

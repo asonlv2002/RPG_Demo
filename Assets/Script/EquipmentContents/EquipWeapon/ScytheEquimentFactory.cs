@@ -6,7 +6,7 @@
 
     internal class ScytheEquimentFactory : EquipWeaponFactory
     {
-        public ScytheEquimentFactory(AnimatorCore animatorContent, InputCore inpuContent, StateCore stateContent) : base(animatorContent, inpuContent, stateContent)
+        public ScytheEquimentFactory(AnimatorCore animatorContent, InputCore inpuContent, StateCore stateContent,EquipmentCore equipmentCore) : base(animatorContent, inpuContent, stateContent, equipmentCore)
         {
         }
 
@@ -20,7 +20,10 @@
         void InitAnimatorContent()
         {
             _animatorContent.AddContentComponent(new AttackController(_animatorContent,_attackController.Scythe));
-            _animatorContent.AddContentComponent(new MovementController(_animatorContent, _movementController.Scythe));
+            var movementControll = _animatorContent.GetContentComponent<MovementController>();
+            movementControll.SetEquipAnimatorControll(_movementController.Scythe);
+            movementControll.EnterEquip();
+
         }
 
         void InitInputContent()
@@ -31,9 +34,7 @@
         void InitStateContent()
         {
             _state.AddContentComponent(new InputScytheAttackAdapter(_input));
-            _state.AddContentComponent(new MovementAnimatorControllerAdapter(_animatorContent));
             _state.AddContentComponent(new ScytheAnimatorControllerAdapter(_animatorContent));
-            _state.AddContentComponent(new InputEquip(_state));
             var scytheAttackStore = new ScytheAttackStateStore(_state);
             _state.AddContentComponent(scytheAttackStore);
             var movementStore = _state.GetContentComponent<MovementStateStore>();

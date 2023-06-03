@@ -17,6 +17,10 @@ namespace AnimatorContent
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
+            var movementController = new MovementController(this);
+            movementController.SetUnequipAnimatorControll(Animator.runtimeAnimatorController);
+            movementController.EnterUnequip();
+            AddContentComponent(movementController);
 
         }
         protected override void OnAnimatorMove()
