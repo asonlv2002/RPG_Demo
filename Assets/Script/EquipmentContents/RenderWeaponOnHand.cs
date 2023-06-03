@@ -5,16 +5,29 @@ namespace Item.InEquipment
 
     internal abstract class RenderWeaponOnHand : IItemRender
     {
-        protected IWeaponEquipPosition ProviderPosition;
+        protected Transform positionEquip;
         protected ItemModel Model;
+        protected Transform ModelTransForm;
 
-        public RenderWeaponOnHand(IProviderPosition providerPosition, ItemModel model)
+        public RenderWeaponOnHand(Transform providerPosition, ItemModel model)
         {
-            ProviderPosition = providerPosition as IWeaponEquipPosition;
+            positionEquip = providerPosition;
             Model = model;
+            RenderModel();
         }
 
-        public abstract void RenderModel();
+        public virtual void RenderModel()
+        {
+
+        }
+
+        public void SetTransForm(Transform transform)
+        {
+            ModelTransForm.SetParent(transform);
+            ResetTransform(ModelTransForm);
+
+
+        }
 
         protected virtual void ResetTransform(Transform modelTransform)
         {

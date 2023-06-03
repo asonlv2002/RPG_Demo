@@ -9,15 +9,16 @@ namespace Item.InEquipment
     {
         private Transform _handRight;
 
-        public RenderInHandRight(IProviderPosition positionEquipWeapon, ItemModel model) : base(positionEquipWeapon, model)
+        public RenderInHandRight(Transform positionEquipWeapon, ItemModel model) : base(positionEquipWeapon, model)
         {
-            _handRight = ProviderPosition.HandRight();
+            _handRight = positionEquip;
         }
 
         public override void RenderModel()
         {
             var weapon = MonoBehaviour.Instantiate(Model.Prefab,_handRight);
-            ResetTransform(weapon.transform);
+            ModelTransForm = weapon.transform;
+            ResetTransform(ModelTransForm);
         }
     }
 }

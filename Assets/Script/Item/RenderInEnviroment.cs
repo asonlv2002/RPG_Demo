@@ -20,5 +20,10 @@ namespace Item
             Item.transform.localPosition = Vector3.zero;
             Item.transform.localRotation = Quaternion.identity;
         }
+
+        public void SetTransForm(Transform transform)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

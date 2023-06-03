@@ -1,27 +1,50 @@
-﻿using Item.ItemGameData;
+﻿using UnityEngine;
 namespace Item.InEquipment
 {
     using EquipmentContents;
+    using Item.ItemGameData;
+
+    [System.Serializable]
     internal class WeaponEquipmentManager : IEquipmentManager
     {
-        public IWeaponEquipPosition providerPosition { get; private set; }
-        private IEquipWeaponNotify _equipWeaponNotify;
-        WeaponBeHaviourFactory _weaponBehaviourFactory;
-        WeaponEquipmentFactory _weaponEquipmentFactory;
-        public WeaponEquipmentManager(IProviderPosition providerPosition, IEquipWeaponNotify equipWeaponNotify)
-        {
-            this.providerPosition = providerPosition as IWeaponEquipPosition;
-            _weaponEquipmentFactory = new WeaponEquipmentFactory(this);
-            _equipWeaponNotify = equipWeaponNotify;
-        }
+        [SerializeField] PlayerEquipment equipemt;
+        [field: SerializeField] public Transform RightHand { get; private set; }
+        [field: SerializeField] public Transform LeftHand { get; private set; }
+        [field: SerializeField] public Transform Back { get; private set; }
 
-        public void Equip(IItem itemData)
+        WeaponEquipmentFactory _weaponEquipmentFactory;
+
+        IItem WeaponEquip;
+        IItem WeaponUnequip;
+       
+
+        public void AddWepon(IItem itemData)
         {
             var weaponData = itemData.ItemData as WeaponData;
-            _equipWeaponNotify.EquipWeapon(weaponData);
-            var weaponEquip = _weaponEquipmentFactory.WeaponFactory(weaponData);
-
-            (weaponEquip as IItemCreateModel).ItemRenderModel.RenderModel();
+            equipemt.channel.EquipWeapon(weaponData);
+            WeaponUnequip = new WeaponEquipmentFactory(this).WeaponFactory(weaponData);
+            Equip();
+            //var weaponEquip = _weaponEquipmentFactory.WeaponFactory(weaponData);
+            //(weaponEquip as IItemCreateModel).ItemRenderModel.RenderModel();
         }
+
+        public void Equip()
+        {
+            WeaponEquip = WeaponUnequip;
+            WeaponUnequip = null;
+            (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(Back);
+        }
+
+        public void UnEquip()
+        {
+
+        }
+
+
+        public bool IsEquipping => WeaponEquip != null;
+
+        public bool IsUnequipping => WeaponUnequip != null;
+
+        public bool IsWeapon => WeaponEquip != null || WeaponUnequip != null;
     }
 }

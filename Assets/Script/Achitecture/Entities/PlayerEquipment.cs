@@ -6,17 +6,16 @@ using Achitecture;
 
 namespace EquipmentContents
 {
+
     internal class PlayerEquipment : EquipmentCore
     {
         [SerializeField] WeaponEquipmentManager _weaponEquipment; 
         [SerializeField] StoreEquipmentPosition equipmentPositions;
-        IEquipWeaponNotify _equipWeaponNotify;
-
+        public EquipWeaponChannel channel;
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
-            _equipWeaponNotify = new EquipWeaponChannel(MainCores);
-            _weaponEquipment = new WeaponEquipmentManager(equipmentPositions, _equipWeaponNotify);
+            channel = new EquipWeaponChannel(MainCores);
 
         }
         private void OnTriggerEnter(Collider other)
@@ -30,7 +29,7 @@ namespace EquipmentContents
         {
             if (equipment == null) return;
             IEquipmentManager equipmentManager = EquipmentManagerProxy(equipment);
-            equipmentManager.Equip(equipment);
+            equipmentManager.AddWepon(equipment);
         }
 
         IEquipmentManager EquipmentManagerProxy(IItem itemData)

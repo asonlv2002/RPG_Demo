@@ -28,7 +28,7 @@ public partial class @InputEquipment : IInputActionCollection2, IDisposable
             ""id"": ""22007d0b-94b3-4859-96f6-ddcb3111f79a"",
             ""actions"": [
                 {
-                    ""name"": ""Equip"",
+                    ""name"": ""AddWepon"",
                     ""type"": ""Button"",
                     ""id"": ""ba8a51da-bf3c-4460-b2c4-f17512b5a88d"",
                     ""expectedControlType"": ""Button"",
@@ -45,7 +45,7 @@ public partial class @InputEquipment : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Equip"",
+                    ""action"": ""AddWepon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -56,7 +56,7 @@ public partial class @InputEquipment : IInputActionCollection2, IDisposable
 }");
         // Equipment
         m_Equipment = asset.FindActionMap("Equipment", throwIfNotFound: true);
-        m_Equipment_Equip = m_Equipment.FindAction("Equip", throwIfNotFound: true);
+        m_Equipment_Equip = m_Equipment.FindAction("AddWepon", throwIfNotFound: true);
     }
 
     public void Dispose()

@@ -2,15 +2,17 @@
 namespace Item.InEquipment
 {
     using ItemGameData;
+    using UnityEngine;
+
     internal abstract class EquipmentController : IItem,IItemCreateModel
     {
-        protected IWeaponEquipPosition ProviderEquipment;
+        protected Transform trasform;
         public ItemData ItemData { get; private set; }
         public IItemRender ItemRenderModel { get; protected set; }
 
-        public EquipmentController(IWeaponEquipPosition equipPosition, ItemData data)
+        public EquipmentController(Transform equipPosition, ItemData data)
         {
-            ProviderEquipment = equipPosition;
+            trasform = equipPosition;
             ItemData = data;
         }
     }

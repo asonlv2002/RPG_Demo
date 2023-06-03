@@ -1,8 +1,9 @@
 ﻿namespace Item
 {
-    using Information;
     internal interface IItemRender
     {
         void RenderModel();
+
+        void SetTransForm(UnityEngine.Transform transform);
     }
 }

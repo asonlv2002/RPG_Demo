@@ -12,14 +12,16 @@ namespace Item.InEquipment
 
         public IItem WeaponFactory(WeaponData weaponData)
         {
-            switch(weaponData)
+            switch (weaponData)
             {
                 case ScytheData:
-                    return new ScytheEquipControll(_context.providerPosition, weaponData);
+                    return new ScytheEquipControll(_context.RightHand, weaponData);
                 case BowData:
-                    return new BowEquipControll(_context.providerPosition, weaponData);
+                    return new BowEquipControll(_context.LeftHand, weaponData);
+                default: 
+                    return null;
             }
-            return null;
+
         }
     }
 }

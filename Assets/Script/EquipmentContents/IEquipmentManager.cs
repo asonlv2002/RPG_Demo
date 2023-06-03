@@ -2,6 +2,6 @@
 {
     internal interface IEquipmentManager
     {
-        void Equip(IItem item);
+        void AddWepon(IItem item);
     }
 }
