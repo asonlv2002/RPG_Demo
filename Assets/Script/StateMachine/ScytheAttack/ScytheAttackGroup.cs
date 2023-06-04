@@ -14,7 +14,7 @@
             AnimatorController.EnterAttackController();
             animator.applyRootMotion = true;
             Physiscal.Movement(0, 0);
-            base.EnterState();
+            InputAttack.EndReduceTime(true);
         }
 
         public override void UpdateState()
@@ -27,6 +27,7 @@
         }
         public override void ExitState()
         {
+            InputAttack.EndReduceTime(false);
             animator.applyRootMotion = false;
             base.ExitState();
         }

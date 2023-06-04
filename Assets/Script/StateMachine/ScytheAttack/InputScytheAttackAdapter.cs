@@ -15,16 +15,15 @@ namespace StateContents
             Input.ReadInputToState();
         }
 
-        public void ExitAttackInput()
-        {
-            Input.ExitAttackInput();
-        }
-
         public bool CheckInut(AttackScytheInput input)
         {
             return Input.BeginInput(input);
         }
 
-        public bool IsInputAttack => Input.IsInputAttack;
+        public void EndReduceTime(bool isAttacking)
+        {
+            Input.EndTask(isAttacking);
+        }
+
     }
 }
