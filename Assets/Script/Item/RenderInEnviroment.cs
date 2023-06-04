@@ -13,7 +13,7 @@ namespace Item
             _model = model;
         }
 
-        public void RenderModel()
+        public void OnEquipWeapon()
         {
             var Item = MonoBehaviour.Instantiate(_model.Prefab, _transform);
             Item.transform.localEulerAngles = Vector3.zero;

@@ -5,7 +5,7 @@
         private void Start()
         {
             ItemRenderModel = new RenderInEnviroment(this.transform, ItemData.Model);
-            ItemRenderModel.RenderModel();
+            ItemRenderModel.OnEquipWeapon();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Item.InEquipment
             _handRight = positionEquip;
         }
 
-        public override void RenderModel()
+        public override void OnEquipWeapon()
         {
             var weapon = MonoBehaviour.Instantiate(Model.Prefab,_handRight);
             ModelTransForm = weapon.transform;

@@ -3,7 +3,7 @@ namespace Item.InEquipment
 {
     using Information;
 
-    internal abstract class RenderWeaponOnHand : IItemRender
+    internal class RenderWeaponOnHand : IItemRender
     {
         protected Transform positionEquip;
         protected ItemModel Model;
@@ -13,10 +13,16 @@ namespace Item.InEquipment
         {
             positionEquip = providerPosition;
             Model = model;
-            RenderModel();
+            var weapon = MonoBehaviour.Instantiate(Model.Prefab, positionEquip);
+            ModelTransForm = weapon.transform;
+            OnEquipWeapon();
         }
 
-        public abstract  void RenderModel();
+        public virtual void OnEquipWeapon()
+        {
+            ModelTransForm.SetParent(positionEquip);
+            ResetTransform(ModelTransForm);
+        }
 
         public void SetTransForm(Transform transform)
         {
@@ -26,9 +32,9 @@ namespace Item.InEquipment
 
         protected virtual void ResetTransform(Transform modelTransform)
         {
-            modelTransform.localPosition = new Vector3(0.04f, -0.06f, 0.175f);
+            modelTransform.localPosition = Model.PositionEquip;
             modelTransform.localRotation = Quaternion.identity;
-            modelTransform.localEulerAngles = new Vector3(-3.5f, -90f, 90f);
+            modelTransform.localEulerAngles = Model.RotationEquip;
         }
     }
 }

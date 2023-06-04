@@ -2,8 +2,9 @@
 {
     internal interface IItemRender
     {
-        void RenderModel();
+        void OnEquipWeapon();
 
         void SetTransForm(UnityEngine.Transform transform);
+
     }
 }

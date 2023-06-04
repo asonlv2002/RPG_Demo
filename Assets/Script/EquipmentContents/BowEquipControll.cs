@@ -8,6 +8,7 @@ namespace Item.InEquipment
     {
         public BowEquipControll(Transform equipPosition, ItemData data) : base(equipPosition, data)
         {
+            ItemRenderModel = new RenderWeaponOnHand(equipPosition, ItemData.Model);
         }
     }
 }

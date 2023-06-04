@@ -18,3 +18,5 @@ MonoBehaviour:
   <Model>k__BackingField:
     <Prefab>k__BackingField: {fileID: 7510664880884222497, guid: 033cf179bf8044048b299d316ea40ec4, type: 3}
     <Mesh>k__BackingField: {fileID: 4300000, guid: c5588b7cb8c00504eb1bb9f05feb0e7d, type: 2}
+    <PositionEquip>k__BackingField: {x: 0.04, y: -0.06, z: 0.175}
+    <RotationEquip>k__BackingField: {x: -3.5, y: -90, z: 90}

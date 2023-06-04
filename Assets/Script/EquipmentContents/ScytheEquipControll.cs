@@ -7,7 +7,7 @@ namespace Item.InEquipment
     {
         public ScytheEquipControll(Transform positionEquipWeapon, WeaponData data) : base(positionEquipWeapon, data)
         {
-            ItemRenderModel = new RenderInHandRight(trasform, ItemData.Model);
+            ItemRenderModel = new RenderWeaponOnHand(trasform, ItemData.Model);
         }
     }
 }

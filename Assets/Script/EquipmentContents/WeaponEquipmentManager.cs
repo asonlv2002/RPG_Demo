@@ -24,7 +24,7 @@ namespace EquipmentContents
         {
             if (currentWeaponData == itemData.ItemData as WeaponData) return;
             currentWeaponData = itemData.ItemData as WeaponData;
-            equipemt.channel.EquipWeapon(currentWeaponData);
+            //equipemt.channel.EquipWeapon(currentWeaponData);
             WeaponUnequip = new WeaponEquipmentFactory(this).WeaponFactory(currentWeaponData);
             Equip();
         }
@@ -33,7 +33,7 @@ namespace EquipmentContents
         {
             WeaponEquip = WeaponUnequip;
             WeaponUnequip = null;
-            (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(RightHand);
+            (WeaponEquip as IItemCreateModel).ItemRenderModel.OnEquipWeapon();
 
         }
 
