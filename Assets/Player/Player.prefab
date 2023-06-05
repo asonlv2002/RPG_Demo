@@ -702,5 +702,5 @@ MonoBehaviour:
     <Bow>k__BackingField: {fileID: 22100000, guid: 9fbe6ce34220c7c43b43c37e43a59ec0, type: 2}
   _animatorAttackControllers:
     <Scythe>k__BackingField: {fileID: 9100000, guid: 794fde1e3c7e0ce47b815d467adda733, type: 2}
-    <Bow>k__BackingField: {fileID: 0}
+    <Bow>k__BackingField: {fileID: 9100000, guid: 1c17bee902a4c984ebebf9f6a6f25f43, type: 2}
   body: {fileID: 7071238952219145836}

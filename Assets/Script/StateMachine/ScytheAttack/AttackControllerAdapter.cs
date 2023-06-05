@@ -3,10 +3,10 @@
 namespace StateContents
 {
 
-    internal class ScytheAnimatorControllerAdapter : StateComponent
+    internal class AttackControllerAdapter : StateComponent
     {
         AttackController AtatckController;
-        public ScytheAnimatorControllerAdapter(AnimatorCore animatorContent)
+        public AttackControllerAdapter(AnimatorCore animatorContent)
         {
             AtatckController = animatorContent.GetContentComponent<AttackController>();
         }

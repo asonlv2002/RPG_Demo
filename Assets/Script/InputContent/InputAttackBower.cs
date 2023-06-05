@@ -5,8 +5,7 @@ namespace InputContents
     class InputAttackBower : InputComponent
     {
         InputAttackBow bow;
-        bool isStartHold;
-        bool isHolding;
+        public bool IsHolding { get; private set; }
         public InputAttackBower()
         {
             bow = new InputAttackBow();
@@ -18,20 +17,18 @@ namespace InputContents
 
         void StartHold(InputAction.CallbackContext context)
         {
-            isStartHold = true;            
-            Debug.Log("isStartHold "+ isStartHold);
+            IsHolding = true;            
+            Debug.Log("isStartHold "+ IsHolding);
         }
         void Holding(InputAction.CallbackContext context)
         {
-            isStartHold = false;
-            isHolding = true;
+            IsHolding = true;
 
-            Debug.Log("isHolding " + isHolding);
+            Debug.Log("isHolding " + IsHolding);
         }
         void EnHolding(InputAction.CallbackContext context)
         {
-            isHolding = false;
-            Debug.Log("isEndHolding " + isHolding);
+            IsHolding = false;
         }
     }
 }

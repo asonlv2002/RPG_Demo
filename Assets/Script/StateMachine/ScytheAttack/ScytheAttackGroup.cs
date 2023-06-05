@@ -2,11 +2,11 @@
 {
     internal class ScytheAttackGroup : ScytheAttack
     {
-        ScytheAnimatorControllerAdapter AnimatorController;
+        AttackControllerAdapter AnimatorController;
         StatusEquipAdapter _weaponEquipStatus;
         public ScytheAttackGroup(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
-            AnimatorController = stateContent.GetContentComponent<ScytheAnimatorControllerAdapter>();
+            AnimatorController = stateContent.GetContentComponent<AttackControllerAdapter>();
             _weaponEquipStatus = stateContent.GetContentComponent<StatusEquipAdapter>();
         }
         public override void EnterState()
