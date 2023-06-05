@@ -19,10 +19,11 @@
 
         void InitAnimatorContent()
         {
-            _animatorContent.AddContentComponent(new AttackController(_animatorContent,_attackController.Scythe));
             var movementControll = _animatorContent.GetContentComponent<MovementController>();
+            var attackControll = _animatorContent.GetContentComponent<AttackController>();
             movementControll.SetEquipAnimatorControll(_movementController.Scythe);
             movementControll.EnterEquip();
+            attackControll.SetAttackController(_attackController.Scythe);
 
         }
 

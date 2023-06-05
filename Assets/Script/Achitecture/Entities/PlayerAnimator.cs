@@ -20,6 +20,7 @@ namespace AnimatorContent
             var movementController = new MovementController(this);
             movementController.SetUnequipAnimatorControll(Animator.runtimeAnimatorController);
             movementController.EnterUnequip();
+            AddContentComponent(new AttackController(this));
             AddContentComponent(movementController);
 
         }

@@ -3,17 +3,21 @@ namespace AnimatorContent
 {
     internal class AttackController : AnimatorComponent
     {
-        private RuntimeAnimatorController runtimeAnimatorControll;
+        private RuntimeAnimatorController curentAttackController;
         AnimatorCore _animatorCore;
-        public AttackController(AnimatorCore animatorCore, RuntimeAnimatorController animatorControll)
+        public AttackController(AnimatorCore animatorCore)
         {
             _animatorCore = animatorCore;
-            runtimeAnimatorControll = animatorControll;
         }
 
         public void EnterAttackControll()
         {
-            _animatorCore.SetRuntimeAnimator(runtimeAnimatorControll);
+            _animatorCore.SetRuntimeAnimator(curentAttackController);
+        }
+
+        public void SetAttackController(RuntimeAnimatorController runtimeAnimatorController)
+        {
+            curentAttackController = runtimeAnimatorController;
         }
     }
 }

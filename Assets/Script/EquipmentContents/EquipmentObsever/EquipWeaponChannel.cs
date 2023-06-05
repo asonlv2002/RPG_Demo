@@ -8,7 +8,6 @@ namespace EquipmentContents
 {
     internal class EquipWeaponChannel 
     {
-        List<IEquipWeaponSubscriber> _subsribers;
         MainCores _mainCores;
         EquipWeaponFactory _factory;
 
@@ -19,7 +18,6 @@ namespace EquipmentContents
         
         public EquipWeaponChannel(MainCores mainCores)
         {
-            _subsribers = new List<IEquipWeaponSubscriber>();
             _mainCores = mainCores;
             _animatorCore = _mainCores.GetCore<AnimatorCore>();
             _inputCore = _mainCores.GetCore<InputCore>();
@@ -34,13 +32,11 @@ namespace EquipmentContents
                 case ScytheData:
                     _factory = new ScytheEquimentFactory(_animatorCore, _inputCore, _stateCore, _equipmentCore);
                     break;
+                case BowData:
+                    _factory = new BowEquipmentFactory(_animatorCore, _inputCore, _stateCore, _equipmentCore);
+                    break;
             }
             _factory.InitEquipWeapon();
-
-            foreach(IEquipWeaponSubscriber subscriber in _subsribers)
-            {
-                subscriber.OnEquipWeapon();
-            }
         }
     }
 }
