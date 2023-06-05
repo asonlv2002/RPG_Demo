@@ -12,10 +12,15 @@ namespace EquipmentContents
 
         public override void InitEquipWeapon()
         {
+            InitInput();
             InitAnimatorContent();
             InitStateContent();
         }
 
+        void InitInput()
+        {
+            _input.AddContentComponent(new InputAttackBower());
+        }
         void InitAnimatorContent()
         {
             var movementControll = _animatorContent.GetContentComponent<MovementController>();

@@ -1,29 +1,29 @@
 {
-    "name": "Equipment",
+    "name": "InputAttackBow",
     "maps": [
         {
-            "name": "Equipment",
-            "id": "22007d0b-94b3-4859-96f6-ddcb3111f79a",
+            "name": "Attack",
+            "id": "981780f7-5080-4139-8ab0-96e3c4195415",
             "actions": [
                 {
-                    "name": "Equip",
-                    "type": "Button",
-                    "id": "ba8a51da-bf3c-4460-b2c4-f17512b5a88d",
-                    "expectedControlType": "Button",
+                    "name": "Hold",
+                    "type": "Value",
+                    "id": "6f7fcd2d-a484-434a-abb9-066f8b22a088",
+                    "expectedControlType": "Touch",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "af2daced-e62a-489f-bd0e-97cd16a5a243",
-                    "path": "<Keyboard>/e",
+                    "id": "3d3d2df2-630c-4720-98cb-4bf7e2538c6c",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Equip",
+                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
