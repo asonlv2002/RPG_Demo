@@ -5,11 +5,11 @@ namespace StateContents
     internal class EquipState : MovementState
     {
         float TimePassed;
-        WeaponTransformAdapter adapter;
+        StatusEquipAdapter adapter;
         public EquipState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isEquip");
-            adapter = StateContent.GetContentComponent<WeaponTransformAdapter>();
+            adapter = StateContent.GetContentComponent<StatusEquipAdapter>();
         }
 
         public override void EnterState()
@@ -34,8 +34,6 @@ namespace StateContents
 
         public override void ExitState()
         {
-            adapter.Equip();
-
             animator.SetBool(ActionParameter, false);
             IsExit = true;
             base.ExitState();

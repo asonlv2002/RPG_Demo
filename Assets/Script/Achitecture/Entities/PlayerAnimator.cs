@@ -2,9 +2,10 @@
 namespace AnimatorContent
 {
     using Achitecture;
-
+    using EquipmentContents;
     internal class PlayerAnimator : AnimatorCore
     {
+   
         [field: SerializeField] private MovementAnimatorController _animatorMovementControllers;
         [field: SerializeField] private AnimatorAttackContains _animatorAttackControllers;
         [SerializeField] protected Transform body;
@@ -32,6 +33,18 @@ namespace AnimatorContent
                 body.rotation = Animator.rootRotation;
                 body.position += Animator.deltaPosition;
             }
+        }
+
+        void UnEquipWeapon()
+        {
+            //Read On Animation UnEquip;
+            MainCores.GetCore<EquipmentCore>().GetContentComponent<WeaponEquipmentManager>().UnEquip();
+        }
+
+        void EquipWeapon()
+        {
+            //Read On Animation Equip;
+            MainCores.GetCore<EquipmentCore>().GetContentComponent<WeaponEquipmentManager>().Equip();
         }
 
     }

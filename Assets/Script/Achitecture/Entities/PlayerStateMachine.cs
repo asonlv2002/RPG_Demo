@@ -17,7 +17,7 @@ namespace StateContents
             AddContentComponent(new InputMovementAdapter(input));
             AddContentComponent(new MovementAnimatorControllerAdapter(animator));
             AddContentComponent(new ActionRender(animator));
-            AddContentComponent(new WeaponTransformAdapter(equipmen));
+            AddContentComponent(new StatusEquipAdapter(equipmen));
             AddContentComponent(new MovementStateStore(this));
             var sate = GetContentComponent<MovementStateStore>().Movement;
             EnterNextState(sate);

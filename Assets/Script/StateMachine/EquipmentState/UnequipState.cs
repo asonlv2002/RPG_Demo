@@ -4,11 +4,11 @@
     internal class UnequipState : MovementState
     {
         float TimePassed;
-        WeaponTransformAdapter adapter;
+        StatusEquipAdapter StatusEquipment;
         public UnequipState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = Animator.StringToHash("isUnEquip");
-            adapter = StateContent.GetContentComponent<WeaponTransformAdapter>();
+            StatusEquipment = StateContent.GetContentComponent<StatusEquipAdapter>();
         }
 
         public override void EnterState()
@@ -28,8 +28,7 @@
         }
 
         public override void ExitState()
-        {
-            adapter.Unequip();
+        { 
             StateContent.GetContentComponent<MovementAnimatorControllerAdapter>().EnterUnEquip();
             animator.SetBool(ActionParameter, false);
             IsExit = true;
@@ -38,7 +37,7 @@
 
         public override bool ConditionEnterState()
         {
-            return InputMovement.IsEquipPressed && adapter.IsUsingWeapon;
+            return InputMovement.IsEquipPressed && StatusEquipment.IsUsingWeapon;
         }
     }
 }

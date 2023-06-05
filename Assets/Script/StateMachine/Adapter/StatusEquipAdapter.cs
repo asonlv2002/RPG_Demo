@@ -1,22 +1,12 @@
 ﻿namespace StateContents
 {
     using EquipmentContents;
-    internal class WeaponTransformAdapter : StateComponent
+    internal class StatusEquipAdapter : StateComponent
     {
         WeaponEquipmentManager weaponEquipmentManager;
-        public WeaponTransformAdapter(EquipmentCore equipmentCore)
+        public StatusEquipAdapter(EquipmentCore equipmentCore)
         {
             weaponEquipmentManager = equipmentCore.GetContentComponent<WeaponEquipmentManager>();
-        }
-
-        public void Equip()
-        {
-            weaponEquipmentManager.Equip();
-        }
-
-        public void Unequip()
-        {
-            weaponEquipmentManager.UnEquip();
         }
 
         public bool IsUsingWeapon => weaponEquipmentManager.IsEquipping;
