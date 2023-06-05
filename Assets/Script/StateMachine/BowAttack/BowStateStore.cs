@@ -26,5 +26,15 @@
         {
             Movement = move;
         }
+
+        public override void Remove()
+        {
+            AimShootGroup = null;
+            AimShootLoad = null;
+            AimShootReslease = null;
+            AimShootHolding = null;
+            AimShootLoad = null;
+            Movement = null;
+        }
     }
 }

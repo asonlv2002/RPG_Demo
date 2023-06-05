@@ -32,5 +32,17 @@
         {
             CoreComponent.Add(component);
         }
+
+        public void RemoveComponent<T>() where T : TypeCore
+        {
+            var component = CoreComponent.Find(x => x.GetType() == typeof(T));
+            if (component != null)
+            {
+                component.Remove();
+                CoreComponent.Remove(component);
+                
+            }
+
+        }
     }
 }

@@ -33,13 +33,28 @@ namespace EquipmentContents
         void InitStateContent()
         {
             _state.AddContentComponent(new InputBowAttackAdapater(_input));
-            _state.AddContentComponent(new AttackControllerAdapter(_animatorContent));
             var bowStateSore = new BowStateStore(_state);
             _state.AddContentComponent(bowStateSore);
             var movementStore = _state.GetContentComponent<MovementStateStore>();
             movementStore.AddAttackGroup(bowStateSore.AimShootGroup);
             bowStateSore.AddMovement(movementStore.Movement);
             _state.EnterNextState(movementStore.Movement);
+        }
+
+        public override void RemoveEquipWeapon()
+        {
+
+            var movementControll = _animatorContent.GetContentComponent<MovementController>();
+            movementControll.EnterUnequip();
+
+            _input.RemoveComponent<InputAttackBower>();
+
+            _state.RemoveComponent<BowStateStore>();
+            _state.RemoveComponent<InputBowAttackAdapater>();
+            var movementStore = _state.GetContentComponent<MovementStateStore>();
+            movementStore.AddAttackGroup(null);
+
+
         }
     }
 }

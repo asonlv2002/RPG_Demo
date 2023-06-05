@@ -27,6 +27,6 @@ namespace EquipmentContents
         }
         public abstract void InitEquipWeapon();
 
-
+        public abstract void RemoveEquipWeapon();
     }
 }

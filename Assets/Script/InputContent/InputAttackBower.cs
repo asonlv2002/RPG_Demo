@@ -30,5 +30,11 @@ namespace InputContents
         {
             IsHolding = false;
         }
+
+        public override void Remove()
+        {
+            bow.Attack.Disable();
+            bow = null;
+        }
     }
 }

@@ -38,5 +38,10 @@ namespace EquipmentContents
             }
             _factory.InitEquipWeapon();
         }
+
+        public void RemoveWeapon()
+        {
+            _factory.RemoveEquipWeapon();
+        }
     }
 }

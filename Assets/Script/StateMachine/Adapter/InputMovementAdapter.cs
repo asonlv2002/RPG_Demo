@@ -4,7 +4,7 @@ using UnityEngine;
 namespace StateContents
 {
     using InputContents;
-    internal class InputMovementAdapter: StateComponent, IInputMovementAdapter
+    internal class InputMovementAdapter: StateComponent
     {
         InputMovement InputMovement;
         public InputMovementAdapter(InputCore inputContent)

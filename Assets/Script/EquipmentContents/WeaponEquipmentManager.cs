@@ -37,15 +37,28 @@ namespace EquipmentContents
 
         public void UnEquip()
         {
-            WeaponUnequip = WeaponEquip;
+            equipemt.channel.RemoveWeapon();
+            (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(null);
+            WeaponUnequip = null;
             WeaponEquip = null;
-            (WeaponUnequip as IItemCreateModel).ItemRenderModel.SetTransForm(Back);
+            currentWeaponData = null;   
+            //WeaponUnequip = WeaponEquip;
+            //WeaponEquip = null;
+            //(WeaponUnequip as IItemCreateModel).ItemRenderModel.SetTransForm(Back);
         }
 
+        public void RemoveWeapon()
+        {
+            equipemt.channel.RemoveWeapon();
+            (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(null);
+            WeaponUnequip = null;
+            WeaponEquip = null;
+            currentWeaponData = null;
+        }
 
-        public bool IsEquipping => WeaponEquip != null;
+        public bool IsEquipping => WeaponEquip != null && WeaponUnequip == null;
 
-        public bool IsUnequipping => WeaponEquip == null;
+        public bool IsUnequipping => WeaponEquip == null && WeaponUnequip != null;
 
         public bool IsWeapon => WeaponEquip != null || WeaponUnequip != null;
     }

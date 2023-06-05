@@ -9,7 +9,7 @@ namespace InputContents
     {
         private InputAttackScythe Input;
         private List<AttackScytheInput> InputAttackScytherQueue;
-        private float deltaTimedDeleteInput = 0.01f;
+        private float deltaTimedDeleteInput = 0.1f;
         private float runTime;
         bool isAttacking;
         public InputAttackScyther()
@@ -21,15 +21,14 @@ namespace InputContents
         protected void InitilazationInput()
         {
             Input.Attack.Enable();
-            //Input.Attack.Attack_E.started += ReadAttackE;
             Input.Attack.Shift.started += ReadAttackShift;
             Input.Attack.LeftMouse.started += ReadMouseLeft;
         }
 
-        void ReadAttackE(InputAction.CallbackContext callbackContext)
-        {
-            //AddInput(AttackScytheInput.InputQ);
-        }
+        //void NewInput(InputAction.CallbackContext callbackContext)
+        //{
+        //    //AddInput(AttackScytheInput.InputQ);
+        //}
 
         void ReadAttackShift(InputAction.CallbackContext callbackContext)
         {
@@ -78,13 +77,20 @@ namespace InputContents
             isAttacking = _isAttacking;
         }
 
+        public override void Remove()
+        {
+            Input.Disable();
+            Input = null;
+            InputAttackScytherQueue.Clear();
+            InputAttackScytherQueue = null;
+        }
+
     }
 
 
     internal enum AttackScytheInput
     {
         MouseLeftClick,
-        InputE,
         InputQ,
         Shift
     }

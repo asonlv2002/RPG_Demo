@@ -44,7 +44,7 @@
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputE) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.InputQ) && Body.IsOnGround;
         }
 
     }

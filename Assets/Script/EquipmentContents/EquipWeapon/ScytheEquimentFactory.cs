@@ -17,6 +17,19 @@
             InitStateContent();
         }
 
+        public override void RemoveEquipWeapon()
+        {
+            var movementControll = _animatorContent.GetContentComponent<MovementController>();
+            movementControll.EnterUnequip();
+
+            _input.RemoveComponent<InputAttackScyther>();
+
+            _state.RemoveComponent<ScytheAttackStateStore>();
+            _state.RemoveComponent<InputScytheAttackAdapter>();
+            var movementStore = _state.GetContentComponent<MovementStateStore>();
+            movementStore.AddAttackGroup(null);
+        }
+
         void InitAnimatorContent()
         {
             var movementControll = _animatorContent.GetContentComponent<MovementController>();
@@ -35,7 +48,6 @@
         void InitStateContent()
         {
             _state.AddContentComponent(new InputScytheAttackAdapter(_input));
-            _state.AddContentComponent(new AttackControllerAdapter(_animatorContent));
             var scytheAttackStore = new ScytheAttackStateStore(_state);
             _state.AddContentComponent(scytheAttackStore);
             var movementStore = _state.GetContentComponent<MovementStateStore>();
