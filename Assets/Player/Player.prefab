@@ -194,6 +194,126 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1829879462506328516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2986242625520302940}
+  - component: {fileID: 8133079381916258554}
+  - component: {fileID: 3881830718590236643}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2986242625520302940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829879462506328516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7071238952219145836}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8133079381916258554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829879462506328516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bc9d4ccfbce2e439703e966939ea12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shape: 0
+  RaysPerEdge: 1
+  OccludingLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  FadeObjectsBy: 0
+  TagsForFading:
+  - FadeOut
+  LayersForFading:
+    serializedVersion: 2
+    m_Bits: 0
+  ViewportMargin: {x: 0.2, y: 0.2}
+  EnableCameraLookUp: 1
+  LookUpTrigger: 0
+  TagsCausingLookUp:
+  - Terrain
+  LayersCausingLookUp:
+    serializedVersion: 2
+    m_Bits: 0
+  FadeOutAlpha: 0.2
+  FadeInAlpha: 1
+  FadeOutDuration: 0.2
+  FadeInDuration: 0.2
+  EnableCharacterFading: 1
+  CharacterFadeOutAlpha: 0
+  CharacterFadeStartDistance: 1
+  CharacterFadeEndDistance: 0.3
+--- !u!114 &3881830718590236643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829879462506328516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8e7a851f3a7ee498fb50ac730a348b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UsedCamera: 0
+  CameraToUse: {fileID: 0}
+  UsedSkybox: {fileID: 0}
+  CameraPivotLocalPosition: {x: 0, y: 2, z: -2}
+  EnableIntelligentPivot: 1
+  PivotSmoothTime: 0.7
+  ActivateCameraControl: 1
+  UseNewInputSystem: 1
+  LogInputWarnings: 1
+  AlwaysRotateCamera: 1
+  HideCursor: 1
+  CursorBehaviorOrbiting: 2
+  LockRotationX: 0
+  LockRotationY: 0
+  InvertRotationX: 1
+  InvertRotationY: 1
+  RotationXSensitivity: 4
+  RotationYSensitivity: 4
+  ConstrainRotationX: 0
+  RotationXMin: -90
+  RotationXMax: 90
+  RotationYMin: -89.9
+  RotationYMax: 89.9
+  RotationSmoothTime: 0.1
+  ZoomSensitivity: 15
+  MinDistance: 0
+  MaxDistance: 20
+  DistanceSmoothTime: 0.7
+  StartRotationX: 0
+  StartRotationY: 15
+  StartDistance: 7
+  StartZoomOut: 0
+  EnableUnderwaterEffect: 1
+  UnderwaterFogColor: {r: 0, g: 0.13, b: 0.59, a: 1}
+  UnderwaterFogDensity: 0.06
+  UnderwaterThresholdTuning: 0.16
 --- !u!1 &2112476528409084062
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,6 +651,7 @@ Transform:
   - {fileID: 1339303377611444130}
   - {fileID: 8146093043342912387}
   - {fileID: 6407131205479781739}
+  - {fileID: 2986242625520302940}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

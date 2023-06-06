@@ -33,7 +33,10 @@ namespace InputContents
         private void OnHandleInputMovement(InputAction.CallbackContext context)
         {
             Vector2 inputMovent = context.ReadValue<Vector2>();
-            _currentInputMovement.x = inputMovent.x;
+
+            if (inputMovent.x > 0) _currentInputMovement.x = 1;
+            else if (inputMovent.x < 0) _currentInputMovement.x = -1;
+            else if (inputMovent.x == 0) _currentInputMovement.x = 0;
             _currentInputMovement.z = inputMovent.y;
             _isRunPresesd = _currentInputMovement.x != 0 || _currentInputMovement.z != 0;
         }

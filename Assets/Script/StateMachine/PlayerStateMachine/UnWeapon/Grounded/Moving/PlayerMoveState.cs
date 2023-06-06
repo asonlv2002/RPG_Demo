@@ -25,7 +25,7 @@ namespace StateContents
         {
             base.FixedUpdateState();
             RenderAction(Mathf.Abs(SpeedMove()));
-            Physiscal.Movement(Body.Forward().x* SpeedMove(), Body.Forward().z * SpeedMove());
+            Physiscal.Movement(Body.Forward().x* InputMovement.DirectionMove* SpeedMove(), Body.Forward().z * InputMovement.DirectionMove* SpeedMove());
 
 
         }
@@ -38,7 +38,7 @@ namespace StateContents
         float SpeedMove()
         {
             float speedUp = InputMovement.IsSpintPressed ? 8 : 4;
-            return InputMovement.DirectionMove*speedUp;
+            return speedUp;
         }
 
         void RenderAction(float Speed)
@@ -47,12 +47,12 @@ namespace StateContents
         }
         public override bool ConditionEnterState()
         {
-            return InputMovement.IsRunPressed;
+            return InputMovement.DirectionMove != 0;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputMovement.IsRunPressed;
+            return InputMovement.DirectionMove != 0;
         }
     }
 }
