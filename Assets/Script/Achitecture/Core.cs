@@ -5,7 +5,7 @@
 
     internal abstract class Core: MonoBehaviour
     {
-        protected MainCores MainCores;
+        public MainCores MainCores { get; private set; }
         public virtual void InitMainCore(MainCores mainCores)
         {
             MainCores = mainCores;

@@ -7,6 +7,7 @@ namespace Achitecture
     using AnimatorContent;
     using InputContents;
     using EquipmentContents;
+    using StatContents;
     internal class PlayerCore : MainCores
     {
         [SerializeField] StateCore StateMachine;
@@ -15,6 +16,7 @@ namespace Achitecture
         [SerializeField] AnimatorCore Animator;
         [SerializeField] InputCore InputAction;
         [SerializeField] EquipmentCore Equipment;
+        [SerializeField] StatCore Stat;
 
         private void Start()
         {
@@ -30,6 +32,7 @@ namespace Achitecture
             Physic.InitMainCore(this);
             Body.InitMainCore(this);
             Animator.InitMainCore(this);
+            Stat.InitMainCore(this);
             StateMachine.InitMainCore(this);
         }
     }

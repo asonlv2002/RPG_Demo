@@ -652,6 +652,7 @@ Transform:
   - {fileID: 8146093043342912387}
   - {fileID: 6407131205479781739}
   - {fileID: 2986242625520302940}
+  - {fileID: 455530951640735840}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -690,6 +691,65 @@ MonoBehaviour:
   Animator: {fileID: 3447673468840574943}
   InputAction: {fileID: 621589853630580565}
   Equipment: {fileID: 1291106231639487442}
+  Stat: {fileID: 5731763673642497662}
+--- !u!1 &7094181590603525569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455530951640735840}
+  - component: {fileID: 5731763673642497662}
+  m_Layer: 0
+  m_Name: Stat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &455530951640735840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094181590603525569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7071238952219145836}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5731763673642497662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7094181590603525569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e9dc5f7ce502a4bb09c268da5ad067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP:
+    CurrentStatValue: 200
+    MaxStatValue: 200
+    MIN_OF_MAX_VALUE: 1
+  MP:
+    CurrentStatValue: 200
+    MaxStatValue: 200
+    MIN_OF_MAX_VALUE: 1
+  SPEED:
+    CurrentStatValue: 4
+  ATK:
+    CurrentStatValue: 100
+  DEF:
+    CurrentStatValue: 100
 --- !u!1 &7130532494449113473
 GameObject:
   m_ObjectHideFlags: 0
