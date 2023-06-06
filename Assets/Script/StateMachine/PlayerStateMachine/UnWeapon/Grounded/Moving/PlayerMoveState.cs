@@ -25,8 +25,8 @@ namespace StateContents
         {
             base.FixedUpdateState();
             Rotation();
-            Physiscal.Movement(InputMovement.CurrentInputMovement.x * SpeedMove(),InputMovement.CurrentInputMovement.z * SpeedMove());
-            RenderAction(SpeedMove());
+            //Physiscal.Movement(InputMovement.CurrentInputMovement.x * SpeedMove(),InputMovement.CurrentInputMovement.z * SpeedMove());
+            //RenderAction(SpeedMove());
 
         }
         public override void ExitState()
@@ -36,19 +36,20 @@ namespace StateContents
         }
         private void Rotation()
         {
-            Vector3 postionToLookAt;
+            Body.Rotation(InputMovement.CurrentInputMovement.x);
+            //Vector3 postionToLookAt;
 
-            postionToLookAt.x = InputMovement.CurrentInputMovement.x;
-            postionToLookAt.y = 0f;
-            postionToLookAt.z = InputMovement.CurrentInputMovement.z;
+            //postionToLookAt.x = InputMovement.CurrentInputMovement.x;
+            //postionToLookAt.y = 0f;
+            //postionToLookAt.z = InputMovement.CurrentInputMovement.z;
 
-            Quaternion currentRotation = Body.PlayerTransform.rotation;
+            //Quaternion currentRotation = Body.PlayerTransform.rotation;
 
-            if (InputMovement.IsRunPressed)
-            {
-                Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
-                Body.PlayerTransform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
-            }
+            //if (InputMovement.IsRunPressed)
+            //{
+            //    Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
+            //    Body.PlayerTransform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
+            //}
         }
 
         float SpeedMove()

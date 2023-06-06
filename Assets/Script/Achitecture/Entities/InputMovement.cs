@@ -17,6 +17,9 @@ namespace InputContents
         public bool IsSpintPressed => _isSprintPresesd = _playerInput.PlayerMovement.Sprint.IsPressed();
         public Vector3 CurrentInputMovement => _currentInputMovement;
         public bool IsEquipPressed => _playerInput.PlayerMovement.EquipAction.IsPressed();
+
+        public float DirectionMovement => _currentInputMovement.z;
+        public float DirectionRotation => _currentInputMovement.x;
         public InputMovement(PlayerInput inputActions)
         {
             _playerInput = inputActions;

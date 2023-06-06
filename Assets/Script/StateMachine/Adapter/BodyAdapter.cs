@@ -4,14 +4,17 @@ using UnityEngine;
 namespace StateContents
 {
     using ColliderContents;
-    internal class BodyAdapter : StateComponent, IBodyAdapter
+    internal class BodyAdapter : StateComponent
     {
         ColliderCore _body;
         PlayerBody Body;
+        TransFormContent transFormContent;
         public BodyAdapter(ColliderCore body)
         {
             _body = body;
             Body = _body as PlayerBody;
+            transFormContent = _body.GetContentComponent<TransFormContent>();
+
         }
 
         public bool IsTerrestrial => Body.FootTrack.IsTerrestrial;
@@ -22,6 +25,10 @@ namespace StateContents
 
         public float AngleFeetGround => Body.FootTrack.AngleFeetGround;
 
-        public Transform PlayerTransform => Body.PlayerTranform;
+        public void Rotation(float direction)
+        {
+            transFormContent.Rotation(direction);
+        }
+
     }
 }

@@ -8,8 +8,7 @@ namespace ColliderContents
         [field: SerializeField] public DefaultColliderData DefaultColliderData { get; private set; }
         [field: SerializeField] public SlopeData SlopeData { get; private set; }
         [field: SerializeField] public FeetTrack FootTrack { get; private set; }
-
-        [field: SerializeField] public Transform PlayerTranform { get; private set; }
+        [SerializeField] TransFormContent _ChracterTranform;
 
 
         public Vector3 CenterCapsuleInLocalSpace => CapsuleCollider.center;
@@ -22,10 +21,6 @@ namespace ColliderContents
         private void Update()
         {
             FootTrack.OnRayCast(CenterCapsuleInWorldSpace, SlopeData.RayDistance);
-        }
-        private void FixedUpdate()
-        {
-            
         }
 
         public void CalculateCapsuleColliderDimensions()
@@ -60,6 +55,7 @@ namespace ColliderContents
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
+            AddContentComponent(_ChracterTranform);
         }
 
     }
