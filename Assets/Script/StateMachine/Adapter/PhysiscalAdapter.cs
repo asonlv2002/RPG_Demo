@@ -36,9 +36,9 @@ namespace StateContents
             onGround.FoatOnGround(f);
         }
 
-        public void Movement(float XSpeed,float Zspeed)
+        public void Movement(Vector3 forward)
         {
-            onGround.OnMoving(XSpeed, Zspeed);
+            onGround.OnMoving(forward.x, forward.z);
         }
 
         public void StopOnAir(bool value)

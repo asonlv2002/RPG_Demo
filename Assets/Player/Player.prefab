@@ -745,7 +745,7 @@ MonoBehaviour:
     MaxStatValue: 200
     MIN_OF_MAX_VALUE: 1
   SPEED:
-    CurrentStatValue: 4
+    CurrentStatValue: 5
   ATK:
     CurrentStatValue: 100
   DEF:

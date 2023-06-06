@@ -12,7 +12,7 @@ namespace StateContents
         public override void UpdateState()
         {
             base.UpdateState();
-            if (EnterFriendState(StateStore.AttackState)) return;
+            if (EnterFriendState(MovementStore.AttackState)) return;
         }
         public override void EnterState()
         {
@@ -24,13 +24,13 @@ namespace StateContents
 
         public override bool ConditionEnterState()
         {
-            return StateStore.Grounded.ConditionInitChildState() || StateStore.Airborne.ConditionInitChildState();
+            return MovementStore.Grounded.ConditionInitChildState() || MovementStore.Airborne.ConditionInitChildState();
         }
 
         public override void InitilationChildrenState()
         {
-            if (EnterChildState(StateStore.Grounded)) return;
-            else if (EnterChildState(StateStore.Airborne)) return;
+            if (EnterChildState(MovementStore.Grounded)) return;
+            else if (EnterChildState(MovementStore.Airborne)) return;
         }
     }
 }

@@ -23,7 +23,7 @@
             base.UpdateState();
             if(TimePassed < Time.time)
             {
-                if (EnterFriendState(StateStore.Idle)) return;
+                if (EnterFriendState(MovementStore.Idle)) return;
             }
         }
 

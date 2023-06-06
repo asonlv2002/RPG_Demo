@@ -13,7 +13,7 @@
         {
             AnimatorController.EnterAttackController();
             animator.applyRootMotion = true;
-            Physiscal.Movement(0, 0);
+            Physiscal.Movement(UnityEngine.Vector3.zero);
             InputAttack.EndReduceTime(true);
         }
 

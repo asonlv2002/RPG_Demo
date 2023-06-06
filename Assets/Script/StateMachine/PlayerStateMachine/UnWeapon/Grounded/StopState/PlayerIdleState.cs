@@ -11,7 +11,7 @@
             base.EnterState();
 
             animator.SetBool(ActionParameter, true);
-            Physiscal.Movement(0, 0);
+            Physiscal.Movement(UnityEngine.Vector3.zero);
         }
         public override void ExitState()
         {
@@ -22,17 +22,17 @@
         public override void UpdateState()
         {
             base.UpdateState();
-            if (EnterFriendState(StateStore.Move)) return;
-            if(StateStore.UnEquip.ConditionEnterState())
+            if (EnterFriendState(MovementStore.Move)) return;
+            if(MovementStore.UnEquip.ConditionEnterState())
             {
                 ExitState();
-                StateContent.EnterNextState(StateStore.UnEquip);
+                StateContent.EnterNextState(MovementStore.UnEquip);
                 return;
             }else
-            if(StateStore.Equip.ConditionEnterState())
+            if(MovementStore.Equip.ConditionEnterState())
             {
                 ExitState();
-                StateContent.EnterNextState(StateStore.Equip);
+                StateContent.EnterNextState(MovementStore.Equip);
                 return;
             }
         }

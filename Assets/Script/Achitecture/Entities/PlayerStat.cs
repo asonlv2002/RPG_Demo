@@ -13,6 +13,12 @@ namespace StatContents
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
+            AddContentComponent(HP);
+            AddContentComponent(MP);
+            AddContentComponent(SPEED);
+            AddContentComponent(ATK);
+            AddContentComponent(DEF);
+
         }
     }
 }

@@ -39,6 +39,9 @@
             Airborne = new PlayerAirborneState(_stateContent, this);
 
             Move = new PlayerMoveState(_stateContent, this);
+            Run = new PlayerRunState(_stateContent, this);
+            Sprint = new PlayerSpintState(_stateContent, this);
+
             Idle = new PlayerIdleState(_stateContent, this);
 
             JumpRise = new PlayerJumpRiseState(_stateContent, this);

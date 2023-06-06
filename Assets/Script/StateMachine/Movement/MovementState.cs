@@ -2,11 +2,11 @@
 {
     internal abstract class MovementState : BaseState
     {
-        protected MovementStateStore StateStore;
+        protected MovementStateStore MovementStore;
         protected InputMovementAdapter InputMovement;
         public MovementState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent)
         {
-            StateStore = stateTransition;
+            MovementStore = stateTransition;
             InputMovement = StateContent.GetContentComponent<InputMovementAdapter>();
         }
 

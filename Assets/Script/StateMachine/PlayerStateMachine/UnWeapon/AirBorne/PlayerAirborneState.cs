@@ -20,13 +20,13 @@ namespace StateContents
         public override void UpdateState()
         {
             base.UpdateState();
-            if (EnterFriendState(StateStore.Grounded)) return;
+            if (EnterFriendState(MovementStore.Grounded)) return;
         }
 
         public override void InitilationChildrenState()
         {
-            if (EnterChildState(StateStore.Fall)) return;
-            else if(EnterChildState(StateStore.JumpRise)) return;
+            if (EnterChildState(MovementStore.Fall)) return;
+            else if(EnterChildState(MovementStore.JumpRise)) return;
 
         }
     }

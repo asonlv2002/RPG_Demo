@@ -12,7 +12,7 @@ namespace StateContents
         public override void UpdateState()
         {
             base.UpdateState();
-            if (EnterFriendState(StateStore.Airborne)) return;
+            if (EnterFriendState(MovementStore.Airborne)) return;
         }
         public override void FixedUpdateState()
         {
@@ -22,7 +22,7 @@ namespace StateContents
         }
         public override bool ConditionEnterState()
         {
-            return Body.IsOnGround &&  StateContent.CurrentState != StateStore.JumpRise;
+            return Body.IsOnGround &&  StateContent.CurrentState != MovementStore.JumpRise;
         }
 
         public override bool ConditionInitChildState()
@@ -32,8 +32,8 @@ namespace StateContents
 
         public override void InitilationChildrenState()
         {
-            if (EnterChildState(StateStore.Idle)) return;
-            else if (EnterChildState(StateStore.Move)) return;
+            if (EnterChildState(MovementStore.Idle)) return;
+            else if (EnterChildState(MovementStore.Move)) return;
         }
     }
 }

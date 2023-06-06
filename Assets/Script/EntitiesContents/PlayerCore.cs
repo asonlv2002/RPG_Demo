@@ -25,6 +25,7 @@ namespace Achitecture
             AddCore(Body);
             AddCore(Animator);
             AddCore(InputAction);
+            AddCore(Stat);
             AddCore(Equipment);
 
             Equipment.InitMainCore(this);

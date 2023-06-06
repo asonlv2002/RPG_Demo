@@ -10,7 +10,7 @@
         public override void EnterState()
         {
             base.EnterState();
-            Physiscal.Movement(0, 0);
+            Physiscal.Movement(UnityEngine.Vector3.zero);
         }
         public override void UpdateState()
         {

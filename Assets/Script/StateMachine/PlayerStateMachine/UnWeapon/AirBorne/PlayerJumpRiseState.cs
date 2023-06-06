@@ -18,7 +18,7 @@ namespace StateContents
         public override void UpdateState()
         {
             base.UpdateState();
-            if (EnterFriendState(StateStore.Fall)) return;
+            if (EnterFriendState(MovementStore.Fall)) return;
         }
 
         public override void FixedUpdateState()
