@@ -21,5 +21,10 @@ namespace StateContents
         public Vector3 CurrentInputMovement => InputMovement.CurrentInputMovement;
 
         public bool IsEquipPressed => InputMovement.IsEquipPressed;
+
+
+        public float DirectionMove => InputMovement.DirectionMovement;
+
+        public float DirectionRotate => InputMovement.DirectionRotation;
     }
 }

@@ -30,5 +30,6 @@ namespace StateContents
             transFormContent.Rotation(direction);
         }
 
+        public Vector3 Forward() => transFormContent.PlayerTransform.forward;
     }
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 namespace StateContents
 {
     using PhysicContents;
-    internal class PhysiscalAdapter : StateComponent
+    internal class PhysicAdapter : StateComponent
     {
         PhysicCore _playerPhysics;
         PhysicInAir inAir;
         PhysicOnGround onGround;
-        public PhysiscalAdapter(PhysicCore playerPhysics)
+        public PhysicAdapter(PhysicCore playerPhysics)
         {
             _playerPhysics = playerPhysics;
             inAir = _playerPhysics.GetContentComponent<PhysicInAir>();
@@ -45,6 +45,5 @@ namespace StateContents
         {
             inAir.StopOnAir(value);
         }
-
     }
 }

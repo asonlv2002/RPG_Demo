@@ -3,9 +3,11 @@
     using UnityEngine;
     internal class BowAimShootHolding : BowAttack
     {
+        InputMovementAdapter _inputMovement;
         public BowAimShootHolding(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
         {
             ActionParameter = Animator.StringToHash("isShootHold");
+            _inputMovement = StateContent.GetContentComponent<InputMovementAdapter>();
         }
 
         public override void EnterState()
@@ -25,6 +27,12 @@
 
             }
             base.UpdateState();
+        }
+
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            Body.Rotation(_inputMovement.DirectionRotate*0.5f);
         }
         public override void ExitState()
         {

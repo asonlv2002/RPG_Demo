@@ -18,6 +18,7 @@ namespace StateContents
         {
             base.FixedUpdateState();
             Physiscal.FloatOnGround(Body.FLoatDirection);
+            Body.Rotation(InputMovement.DirectionRotate);
         }
         public override bool ConditionEnterState()
         {

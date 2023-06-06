@@ -24,9 +24,9 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            Rotation();
-            //Physiscal.Movement(InputMovement.CurrentInputMovement.x * SpeedMove(),InputMovement.CurrentInputMovement.z * SpeedMove());
-            //RenderAction(SpeedMove());
+            RenderAction(Mathf.Abs(SpeedMove()));
+            Physiscal.Movement(Body.Forward().x* SpeedMove(), Body.Forward().z * SpeedMove());
+
 
         }
         public override void ExitState()
@@ -34,27 +34,11 @@ namespace StateContents
             base.ExitState();
             RenderAction(0);
         }
-        private void Rotation()
-        {
-            Body.Rotation(InputMovement.CurrentInputMovement.x);
-            //Vector3 postionToLookAt;
-
-            //postionToLookAt.x = InputMovement.CurrentInputMovement.x;
-            //postionToLookAt.y = 0f;
-            //postionToLookAt.z = InputMovement.CurrentInputMovement.z;
-
-            //Quaternion currentRotation = Body.PlayerTransform.rotation;
-
-            //if (InputMovement.IsRunPressed)
-            //{
-            //    Quaternion targetRoation = Quaternion.LookRotation(postionToLookAt);
-            //    Body.PlayerTransform.rotation = Quaternion.Slerp(currentRotation, targetRoation, 20f * Time.fixedDeltaTime);
-            //}
-        }
 
         float SpeedMove()
         {
-            return InputMovement.IsSpintPressed ? 8 : 4;
+            float speedUp = InputMovement.IsSpintPressed ? 8 : 4;
+            return InputMovement.DirectionMove*speedUp;
         }
 
         void RenderAction(float Speed)

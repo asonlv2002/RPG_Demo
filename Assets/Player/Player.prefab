@@ -493,7 +493,7 @@ MonoBehaviour:
     <RayDistance>k__BackingField: 1.75
   _ChracterTranform:
     <PlayerTransform>k__BackingField: {fileID: 7071238952219145836}
-    _speedRotation: 45
+    _speedRotation: 90
 --- !u!1 &7071238952219145839
 GameObject:
   m_ObjectHideFlags: 0

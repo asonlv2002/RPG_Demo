@@ -10,7 +10,7 @@ namespace StateContents
 
         protected StateCore StateContent;
         public bool IsExit = true;
-        protected PhysiscalAdapter Physiscal;
+        protected PhysicAdapter Physiscal;
         protected BodyAdapter Body;
 
         protected int ActionParameter;
@@ -22,7 +22,7 @@ namespace StateContents
         {
             StateContent = stateContent;
             animator = StateContent.GetContentComponent<ActionRender>().Animator;
-            Physiscal = StateContent.GetContentComponent<PhysiscalAdapter>();
+            Physiscal = StateContent.GetContentComponent<PhysicAdapter>();
             Body = StateContent.GetContentComponent<BodyAdapter>();
 
         }
