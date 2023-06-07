@@ -18,14 +18,15 @@ namespace UIBarContents
             Slider.value = value;
         }
 
-        protected bool CheckOutStatCore(StatCore statCore)
+        protected bool CheckOutStatCore(out StatCore statCore)
         {
             return (statCore = CharacterSingletonIntance.Instance.MainCore.GetCore<StatCore>()) != null;
         }
 
-        protected bool CheckOutStatBase(StatCore statCore, Stat statbase)
+        protected bool CheckOutStatBase(StatCore statCore,out Stat statbase)
         {
-            return (statbase = statCore.GetContentComponent<Stat>()) != null;
+            statbase = statCore.GetContentComponent<Stat>();
+            return statbase != null;
         }
     }
 }

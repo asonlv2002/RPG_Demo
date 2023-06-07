@@ -14,8 +14,8 @@
         IEnumerator LoadMp()
         {
             StatCore stat = null;
-            yield return new WaitUntil(() => CheckOutStatCore(stat));
-            yield return new WaitUntil(() => CheckOutStatBase(stat, StatBase));
+            yield return new WaitUntil(() => CheckOutStatCore(out stat));
+            yield return new WaitUntil(() => CheckOutStatBase(stat,out StatBase));
             StatBase.AddEventModify(SetCurrentValue);
         }
 

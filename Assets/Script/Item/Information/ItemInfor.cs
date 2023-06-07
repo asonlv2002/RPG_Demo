@@ -7,5 +7,6 @@ namespace Item.Information
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public string IDItem { get; private set; }
+        [field: SerializeField] public Sprite Sprite { get; private set; }
     }
 }
