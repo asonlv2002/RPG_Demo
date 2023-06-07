@@ -36,5 +36,6 @@ namespace Achitecture
             Stat.InitMainCore(this);
             StateMachine.InitMainCore(this);
         }
+
     }
 }
