@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StatContents;
 
 namespace UIBarContents
 {
-    internal class HpBarCore : UIBarCore
+    internal class HpBarCore : UIBarCore<HPStat>
     {
     }
 }

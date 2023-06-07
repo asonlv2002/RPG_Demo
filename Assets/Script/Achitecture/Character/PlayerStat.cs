@@ -10,6 +10,7 @@ namespace StatContents
         [SerializeField] SPEEDStat SPEED;
         [SerializeField] ATKStat ATK;
         [SerializeField] DEFStat DEF;
+        [SerializeField] int value;
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
@@ -19,6 +20,11 @@ namespace StatContents
             AddContentComponent(ATK);
             AddContentComponent(DEF);
 
+        }
+
+        private void Update()
+        {
+            MP.SubCurrentStateValue(value);
         }
     }
 }

@@ -2,18 +2,30 @@
 using UnityEngine.UI;
 namespace UIBarContents
 {
-    internal abstract class UIBarCore : Achitecture.CoreContain<UIBarComponent>
+    using Achitecture;
+    using StatContents;
+    internal abstract class UIBarCore<Stat> : CoreContain<UIBarComponent> where Stat : StatBase
     {
-        [SerializeField] protected Slider Slider;
-
-        void SetMaxValue(int value)
+        [SerializeField] Slider Slider;
+        protected Stat StatBase;
+        protected void SetMaxValue(int value)
         {
             Slider.maxValue += value;
         }
 
-        void SetCurrentValue(int value)
+        protected void SetCurrentValue(int value)
         {
             Slider.value = value;
+        }
+
+        protected bool CheckOutStatCore(StatCore statCore)
+        {
+            return (statCore = CharacterSingletonIntance.Instance.MainCore.GetCore<StatCore>()) != null;
+        }
+
+        protected bool CheckOutStatBase(StatCore statCore, Stat statbase)
+        {
+            return (statbase = statCore.GetContentComponent<Stat>()) != null;
         }
     }
 }
