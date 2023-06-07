@@ -20,3 +20,6 @@ MonoBehaviour:
     <Mesh>k__BackingField: {fileID: 4300000, guid: 2a823087411ef0740ae596199a0a3faa, type: 2}
     <PositionEquip>k__BackingField: {x: 0.6, y: -0.015, z: 0.4}
     <RotationEquip>k__BackingField: {x: 0, y: -110, z: 0}
+  <ItemEffects>k__BackingField:
+  - {fileID: 11400000, guid: 5cf253f9581873040a63edfcd5058cfc, type: 2}
+  - {fileID: 11400000, guid: e35ba812892eb5848a5121b20ecf02cd, type: 2}
