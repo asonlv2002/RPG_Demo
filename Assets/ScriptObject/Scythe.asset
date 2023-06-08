@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Scythe
   m_EditorClassIdentifier: 
   <Information>k__BackingField:
-    <Name>k__BackingField: SonLV
+    <Name>k__BackingField: Scythe Ice
+    _description: Scythe with ice power
     <IDItem>k__BackingField: 2002
     <Sprite>k__BackingField: {fileID: 21300000, guid: a25ad12a301747e42b2ec2a9fc1fed18, type: 3}
   <Model>k__BackingField:
@@ -21,4 +22,7 @@ MonoBehaviour:
     <Mesh>k__BackingField: {fileID: 4300000, guid: c5588b7cb8c00504eb1bb9f05feb0e7d, type: 2}
     <PositionEquip>k__BackingField: {x: 0.04, y: -0.06, z: 0.175}
     <RotationEquip>k__BackingField: {x: -3.5, y: -90, z: 90}
-  <ItemEffects>k__BackingField: []
+  <Effects>k__BackingField:
+    <ItemEffects>k__BackingField:
+    - {fileID: 11400000, guid: 5cf253f9581873040a63edfcd5058cfc, type: 2}
+    - {fileID: 11400000, guid: e35ba812892eb5848a5121b20ecf02cd, type: 2}

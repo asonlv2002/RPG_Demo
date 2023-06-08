@@ -2,8 +2,8 @@
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Item/ItemEffect/GainATK")]
-    internal class GainAttack : ItemEffect
+    [CreateAssetMenu(menuName = "Item/Effect/GainATK")]
+    internal class GainAttack : Effect
     {
         [field: SerializeField] public int Attack;
     }

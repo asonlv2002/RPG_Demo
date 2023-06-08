@@ -1,4 +1,4 @@
-﻿namespace InventoryContens
+﻿namespace InventoryContents
 {
     using Item.ItemGameData;
     using UnityEngine;
@@ -6,18 +6,21 @@
     using TMPro;
     internal class ItemInventory : MonoBehaviour
     {
-        [SerializeField] ItemData _itemData;
-        [SerializeField] Image Icon;
-        [SerializeField] TextMeshProUGUI countUI;
-        [SerializeField] InventoryCore InventoryCore;
+
+        [SerializeField] Image _icon;
+        [SerializeField] TextMeshProUGUI _countUI;
         [SerializeField] Button _openItem;
 
+        ItemData _itemData;
+        InventoryOpenItemInfor _openInfor;
         int _count = 0;
+
         public void SetItemData(ItemData itemData, InventoryCore inventoryCore)
         {
             if (_itemData != null) return;
             _itemData = itemData;
-            InventoryCore = inventoryCore;
+            _openInfor = inventoryCore.GetContentComponent<InventoryOpenItemInfor>();
+            Debug.Log(_openInfor);
             CreateUI();
 
         }
@@ -35,19 +38,19 @@
 
         void OnModifyCount()
         {
-            countUI.text = _count.ToString();
+            _countUI.text = _count.ToString();
         }
 
         void CreateUI()
         {
-            Icon.sprite = _itemData.Information.Sprite;
+            _icon.sprite = _itemData.Information.Sprite;
             _openItem.onClick.AddListener(OpenItem);
             AddCount(1);
         }
 
         public void OpenItem()
         {
-            InventoryCore.OnpenItem();
+            _openInfor.OnOpenInformation(_itemData);
         }
         
     }

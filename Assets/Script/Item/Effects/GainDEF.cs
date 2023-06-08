@@ -2,8 +2,8 @@
 {
     using UnityEngine;
     using StatContents;
-    [CreateAssetMenu(menuName = "Item/ItemEffect/GainDEF")]
-    internal class GainDEF : ItemEffect
+    [CreateAssetMenu(menuName = "Item/Effect/GainDEF")]
+    internal class GainDEF : Effect
     {
         [SerializeField] int DEF;
     }

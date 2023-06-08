@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Item.Information;
-using System.Collections.Generic;
 using Item.Effects;
 
 namespace Item.ItemGameData
@@ -9,7 +8,7 @@ namespace Item.ItemGameData
     {
         [field: SerializeField] public ItemInformation Information { get; private set; }
         [field: SerializeField] public ItemModel Model { get; private set; }
-        [field: SerializeField] public List<ItemEffect> ItemEffects { get; private set; }
+        [field: SerializeField] public EffectStore Effects { get; private set; }
 
     }
 }

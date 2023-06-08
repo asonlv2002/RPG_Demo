@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Information>k__BackingField:
     <Name>k__BackingField: Vohuynhson
+    <Description>k__BackingField: It is Bow
     <IDItem>k__BackingField: 101202
+    <Sprite>k__BackingField: {fileID: 0}
   <Model>k__BackingField:
     <Prefab>k__BackingField: {fileID: 5548049123074737487, guid: 7658491a6a5199d4eb7ff35bd65be8f5, type: 3}
     <Mesh>k__BackingField: {fileID: 4300000, guid: 2a823087411ef0740ae596199a0a3faa, type: 2}

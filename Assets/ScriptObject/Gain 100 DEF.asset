@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4c476c0d06fde4c95387388a9dfdb2, type: 3}
   m_Name: Gain 100 DEF
   m_EditorClassIdentifier: 
-  <EffectDescription>k__BackingField: + 100 DEF
+  _description: '+ 100 ATK
+
+    + 200 DEF'
   DEF: 100

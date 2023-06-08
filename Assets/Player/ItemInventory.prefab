@@ -615,8 +615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a9da7aae4e5a4478f96787f3b19886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemData: {fileID: 0}
-  Icon: {fileID: 8726296800884818555}
-  countUI: {fileID: 7572153486309115039}
-  InventoryCore: {fileID: 0}
+  _icon: {fileID: 8726296800884818555}
+  _countUI: {fileID: 7572153486309115039}
   _openItem: {fileID: 1068712696339748150}
