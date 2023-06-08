@@ -12,7 +12,9 @@
             base.InitMainCore(mainCores);
             AddContentComponent(_informationPresentation);
             AddContentComponent(_effectsPresentation);
+            _buttonOnInfor.Init(this);
             AddContentComponent(_buttonOnInfor);
+
         }
     }
 }

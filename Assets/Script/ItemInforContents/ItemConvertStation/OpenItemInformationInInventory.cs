@@ -13,6 +13,7 @@
         {
             SetActiveButton();
             _buttonPresentation.OnOpenItemInformation(itemData);
+            _buttonPresentation.EquipAction.SetItemData(itemData);
         }
 
         void SetActiveButton()

@@ -652,7 +652,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonEquipments:
     UIEquipmentCores: {fileID: 90962904445872682}
-    Weapon: {fileID: 4066447879327350591}
+    <Weapon>k__BackingField: {fileID: 4066447879327350591}
+  _openInfor:
+    _uiEquipmentCores: {fileID: 0}
 --- !u!1 &5168665235485581266
 GameObject:
   m_ObjectHideFlags: 0

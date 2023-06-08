@@ -5,7 +5,7 @@
     class ButtonEquipmentGroup : UIEquipmentComponent
     {
         [SerializeField] UIEquipmentCores UIEquipmentCores;
-        [SerializeField] WeaponButton Weapon;
+        [field :SerializeField] public WeaponButton Weapon { get; private set; }
 
 
         public void Init()

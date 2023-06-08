@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2346573445168500396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 2346573445168500395}
+  ItemInforCores: {fileID: 0}
 --- !u!1 &2346573445356480035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2346573445955151649
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1187,6 +1188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 2346573445955151648}
+  ItemInforCores: {fileID: 0}
 --- !u!1 &2346573445983693828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,6 +1522,7 @@ MonoBehaviour:
     _effectDirectionPrefab: {fileID: 3285765222472418995}
     _effectDirections: []
   _buttonOnInfor:
+    ItemInforCores: {fileID: 0}
     <EquipAction>k__BackingField: {fileID: 9201456853519159601}
     <UseAction>k__BackingField: {fileID: 3948661454465809622}
 --- !u!1 &2346573446312961275

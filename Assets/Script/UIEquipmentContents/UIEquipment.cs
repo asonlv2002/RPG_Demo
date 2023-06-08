@@ -12,6 +12,7 @@
             _openInfor = new EquipmentOpenItemInfor(this);
             AddContentComponent(_openInfor);
             AddContentComponent(buttonEquipments);
+            AddContentComponent(new ReadConvertEquipItem(this));
         }
 
 
