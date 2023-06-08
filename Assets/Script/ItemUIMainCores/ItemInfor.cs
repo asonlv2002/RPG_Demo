@@ -12,8 +12,16 @@
             base.InitMainCore(mainCores);
             AddContentComponent(_informationPresentation);
             AddContentComponent(_effectsPresentation);
+
+            AddContentComponent(new ReadEquipItemInEquipment(this));
+            AddContentComponent(new ReadEquipItemInInventory(this));
+
+            AddContentComponent(new ReadUnequipFormInventory(this));
+            AddContentComponent(new ReadUnequipFormEquipment(this));
+
             _buttonOnInfor.Init(this);
             AddContentComponent(_buttonOnInfor);
+
 
         }
     }

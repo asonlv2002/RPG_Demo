@@ -11,10 +11,8 @@
             base.InitMainCore(mainCores);
             _openInfor = new EquipmentOpenItemInfor(this);
             AddContentComponent(_openInfor);
+            StartCoroutine(_openInfor.Init());
             AddContentComponent(buttonEquipments);
-            AddContentComponent(new ReadConvertEquipItem(this));
         }
-
-
     }
 }

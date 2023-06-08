@@ -1,5 +1,6 @@
 ﻿using Item.ItemGameData;
 using ItemInforContents;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace UIEquipmentContents
@@ -19,11 +20,12 @@ namespace UIEquipmentContents
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)
         {
             SubOpenItemInformations.Add(subOpenItem);
+
         }
 
         public void OnOpenInformation(ItemData itemData)
         {
-            foreach(var sub in SubOpenItemInformations)
+            foreach (var sub in SubOpenItemInformations)
             {
                 sub.OnOpenItemInformation(itemData);
             }
@@ -34,13 +36,19 @@ namespace UIEquipmentContents
             SubOpenItemInformations.Remove(subOpenItem);
         }
 
-        public void Init(UIEquipmentCores uIEquipmentCores)
+        public IEnumerator Init()
         {
-            var itemOpen = uIEquipmentCores.MainCores.GetCore<ItemInforCores>();
-            AddEventOpen(itemOpen.GetContentComponent<ItemInformationPresentation>());
-            AddEventOpen(itemOpen.GetContentComponent<ItemEffectsPresentation>());
-            var buttonAction = itemOpen.GetContentComponent<ButtonPresentation>();
+            ItemInforCores itemInfor = null;
+            yield return new WaitUntil(() => GetItemInfor(out itemInfor));
+            AddEventOpen(itemInfor.GetContentComponent<ItemInformationPresentation>());
+            AddEventOpen(itemInfor.GetContentComponent<ItemEffectsPresentation>());
+            var buttonAction = itemInfor.GetContentComponent<ButtonPresentation>();
             AddEventOpen(new OpenItemInformationInEquipment(buttonAction));
+        }
+
+        bool GetItemInfor(out ItemInforCores itemInfor)
+        {
+            return (itemInfor = _uiEquipmentCores.MainCores.GetCore<ItemInforCores>()) != null;
         }
     }
 }

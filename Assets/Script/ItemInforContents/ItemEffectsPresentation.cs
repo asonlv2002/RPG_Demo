@@ -12,15 +12,15 @@
         [SerializeField] Transform _effectDirectionContain;
         [SerializeField] TextMeshProUGUI _effectDirectionPrefab;
         [SerializeField] List<TextMeshProUGUI> _effectDirections;
-
+        ItemData currentItemData;
         public void OnOpenItemInformation(ItemData itemData)
         {
-            var effects = itemData.Effects;
-            Debug.Log(effects.ItemEffects.Count);
+            if (currentItemData != null && itemData == currentItemData) return;
+            currentItemData = itemData;
+            var effects = currentItemData.Effects;
             foreach (var effect in effects.ItemEffects)
             {
                 var effectDirection = MonoBehaviour.Instantiate(_effectDirectionPrefab);
-
                 effectDirection.gameObject.SetActive(true);
                 effectDirection.transform.SetParent(_effectDirectionContain);
                 effectDirection.transform.localScale = Vector3.one;

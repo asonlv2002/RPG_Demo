@@ -298,6 +298,8 @@ MonoBehaviour:
     _itemDatas:
     - {fileID: 11400000, guid: 31ed814412bc7da4393c4449e1df56de, type: 2}
     _inventoryCore: {fileID: 5953335334954565258}
+    itemInventoryPrefab: {fileID: 867776188639406291, guid: f68a5074977f6b64288169ab35022586, type: 3}
+    _inventoryContent: {fileID: 741047642347349401}
   _openInfor:
     _inventorCore: {fileID: 0}
 --- !u!1 &741047642619038780
@@ -735,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_AnchorMin.x
@@ -743,15 +745,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_LocalPosition.x
@@ -783,11 +785,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 77.5
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -77.5
       objectReference: {fileID: 0}
     - target: {fileID: 5729704667485528453, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -804,6 +806,10 @@ PrefabInstance:
     - target: {fileID: 7848076704756886785, guid: f68a5074977f6b64288169ab35022586, type: 3}
       propertyPath: m_Name
       value: ItemInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848076704756886785, guid: f68a5074977f6b64288169ab35022586, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68a5074977f6b64288169ab35022586, type: 3}

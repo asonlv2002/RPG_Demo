@@ -6,14 +6,12 @@ namespace ItemInforContents
     {
         public override void Init(ItemInforCores itemInforCores)
         {
+            UnityEngine.Debug.Log("Init Equip");
             base.Init(itemInforCores);
-            var equipmentReader = ItemInforCores.MainCores.GetCore<UIEquipmentCores>().GetContentComponent<ReadConvertEquipItem>();
+            var equipmentReader = ItemInforCores.GetContentComponent<ReadEquipItemInEquipment>();
             AddConvertItemStation(equipmentReader);
-        }
-
-        protected override void OnClickEffect()
-        {
-            base.OnClickEffect();
+            var inventoryReader = ItemInforCores.GetContentComponent<ReadEquipItemInInventory>();
+            AddConvertItemStation(inventoryReader);
         }
     }
 }

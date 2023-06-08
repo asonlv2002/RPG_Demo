@@ -13,12 +13,13 @@
         {
             SetActiveButton();
             _buttonPresentation.OnOpenItemInformation(itemData);
-            _buttonPresentation.EquipAction.SetItemData(itemData);
+            _buttonPresentation.Equip.SetItemData(itemData);
         }
 
         void SetActiveButton()
         {
-            _buttonPresentation.EquipAction.gameObject.SetActive(true);
+            _buttonPresentation.Equip.gameObject.SetActive(true);
+            _buttonPresentation.Unequip.gameObject.SetActive(false);
         }
     }
 }

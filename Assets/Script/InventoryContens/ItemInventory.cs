@@ -12,6 +12,7 @@
         [SerializeField] Button _openItem;
 
         ItemData _itemData;
+        public ItemData ItemData => _itemData;
         InventoryOpenItemInfor _openInfor;
         int _count = 0;
 
@@ -20,7 +21,6 @@
             if (_itemData != null) return;
             _itemData = itemData;
             _openInfor = inventoryCore.GetContentComponent<InventoryOpenItemInfor>();
-            Debug.Log(_openInfor);
             CreateUI();
 
         }

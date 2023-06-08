@@ -11,12 +11,6 @@
         protected ItemData _itemData;
         public List<IConvertItemStationSub> ConvertItemStationSubs { get; private set; }
 
-        private void Awake()
-        {
-            ConvertItemStationSubs = new List<IConvertItemStationSub>();
-            Debug.Log(ConvertItemStationSubs);
-            _button.onClick.AddListener(OnClickEffect);
-        }
 
         public void SetItemData(ItemData itemData)
         {
@@ -26,6 +20,8 @@
         public virtual void Init(ItemInforCores itemInforCores)
         {
             ItemInforCores = itemInforCores;
+            ConvertItemStationSubs = new List<IConvertItemStationSub>();
+            _button.onClick.AddListener(OnClickEffect);
         }
 
         public void AddConvertItemStation(IConvertItemStationSub convertItem)
@@ -35,9 +31,9 @@
 
         public void OnConverStationItem(ItemData itemData)
         {
-            foreach(IConvertItemStationSub convertItemStationSub in ConvertItemStationSubs)
+            foreach(var sub in ConvertItemStationSubs)
             {
-                convertItemStationSub.OnConverItemStation(itemData);
+                sub.OnConverItemStation(itemData);
             }
         }
 

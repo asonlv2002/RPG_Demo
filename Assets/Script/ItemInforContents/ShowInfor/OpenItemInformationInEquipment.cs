@@ -13,6 +13,9 @@ namespace ItemInforContents
 
         public void OnOpenItemInformation(ItemData itemData)
         {
+            _buttonPresentation.Equip.gameObject.SetActive(false);
+            _buttonPresentation.Unequip.gameObject.SetActive(true);
+            _buttonPresentation.Unequip.SetItemData(itemData);
             _buttonPresentation.OnOpenItemInformation(itemData);
         }
     }
