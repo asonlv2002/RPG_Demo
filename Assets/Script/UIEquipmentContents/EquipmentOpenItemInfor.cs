@@ -1,23 +1,20 @@
-﻿
-using Item.ItemGameData;
-using UnityEngine;
+﻿using Item.ItemGameData;
 using ItemInforContents;
 using System.Collections.Generic;
-
-namespace InventoryContents
+using UnityEngine;
+namespace UIEquipmentContents
 {
     [System.Serializable]
-    internal class InventoryOpenItemInfor : InventoryComponent,IOpenItemInformation
+    internal class EquipmentOpenItemInfor : UIEquipmentComponent, IOpenItemInformation
     {
-        [SerializeField] InventoryCore _inventorCore;
-        public InventoryOpenItemInfor(InventoryCore inventoryCore)
+        [SerializeField] UIEquipmentCores _uiEquipmentCores;
+        public List<ISubOpenItemInformation> SubOpenItemInformations { get; private set; }
+
+        public EquipmentOpenItemInfor(UIEquipmentCores uIEquipmentCores)
         {
             SubOpenItemInformations = new List<ISubOpenItemInformation>();
-            _inventorCore = inventoryCore;
-            Init(_inventorCore);
+            _uiEquipmentCores = uIEquipmentCores;
         }
-
-        public List<ISubOpenItemInformation> SubOpenItemInformations { get; private set; }
 
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)
         {
@@ -26,9 +23,9 @@ namespace InventoryContents
 
         public void OnOpenInformation(ItemData itemData)
         {
-            foreach(var eventOpen in SubOpenItemInformations)
+            foreach(var sub in SubOpenItemInformations)
             {
-                eventOpen.OnOpenItemInformation(itemData);
+                sub.OnOpenItemInformation(itemData);
             }
         }
 
@@ -37,13 +34,13 @@ namespace InventoryContents
             SubOpenItemInformations.Remove(subOpenItem);
         }
 
-        void Init(InventoryCore inventoryCore)
+        public void Init(UIEquipmentCores uIEquipmentCores)
         {
-            var itemOpen = inventoryCore.MainCores.GetCore<ItemInforCores>();
+            var itemOpen = uIEquipmentCores.MainCores.GetCore<ItemInforCores>();
             AddEventOpen(itemOpen.GetContentComponent<ItemInformationPresentation>());
             AddEventOpen(itemOpen.GetContentComponent<ItemEffectsPresentation>());
             var buttonAction = itemOpen.GetContentComponent<ButtonPresentation>();
-            AddEventOpen(new OpenItemInformationInInventory(buttonAction));
+            AddEventOpen(new OpenItemInformationInEquipment(buttonAction));
         }
     }
 }

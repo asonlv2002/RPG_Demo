@@ -8,14 +8,15 @@
         [SerializeField] InventoryCore _inventory;
         [SerializeField] ItemInforCores _itemInfor;
 
-        private void Awake()
+        private void Start()
         {
+            AddCore(_inventory);
+            AddCore(_itemInfor);
 
             _itemInfor.InitMainCore(this);
             _inventory.InitMainCore(this);
 
-            AddCore(_inventory);
-            AddCore(_itemInfor);
+
 
         }
     }

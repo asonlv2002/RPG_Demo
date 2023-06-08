@@ -299,7 +299,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 31ed814412bc7da4393c4449e1df56de, type: 2}
     _inventoryCore: {fileID: 5953335334954565258}
   _openInfor:
-    _itemInforCores: {fileID: 0}
+    _inventorCore: {fileID: 0}
 --- !u!1 &741047642619038780
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,10 +528,10 @@ MonoBehaviour:
   m_Content: {fileID: 741047642347349401}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
-  m_DecelerationRate: 0.135
+  m_DecelerationRate: 0.1
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 741047644147185280}
   m_HorizontalScrollbar: {fileID: 0}
