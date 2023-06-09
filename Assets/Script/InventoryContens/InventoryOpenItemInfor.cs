@@ -10,11 +10,11 @@ namespace InventoryContents
     internal class InventoryOpenItemInfor : InventoryComponent,IOpenItemInformation
     {
         [SerializeField] InventoryCore _inventorCore;
-        public List<ISubOpenItemInformation> SubOpenItemInformations { get; private set; }
+        public List<ISubOpenItemInformation> SubOpenItemInformations { get; private set; } = new List<ISubOpenItemInformation>();
         public override void OnAddComponent()
         {
-            SubOpenItemInformations = new List<ISubOpenItemInformation>();
             Init(_inventorCore);
+            Debug.Log(SubOpenItemInformations.Count);
         }
 
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)
@@ -24,8 +24,11 @@ namespace InventoryContents
 
         public void OnOpenInformation(ItemData itemData)
         {
-            foreach(var eventOpen in SubOpenItemInformations)
+            _inventorCore.MainCores.GetCore<ItemInforCores>().gameObject.SetActive(true);
+            Debug.Log(SubOpenItemInformations.Count);
+            foreach (var eventOpen in SubOpenItemInformations)
             {
+                Debug.Log(eventOpen);
                 eventOpen.OnOpenItemInformation(itemData);
             }
         }

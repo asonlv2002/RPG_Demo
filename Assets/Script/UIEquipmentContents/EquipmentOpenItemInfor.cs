@@ -14,6 +14,11 @@ namespace UIEquipmentContents
         public override void OnAddComponent()
         {
             SubOpenItemInformations = new List<ISubOpenItemInformation>();
+            ItemInforCores itemInfor = _uiEquipmentCores.MainCores.GetCore<ItemInforCores>();
+            AddEventOpen(itemInfor.GetContentComponent<ItemInformationPresentation>());
+            AddEventOpen(itemInfor.GetContentComponent<ItemEffectsPresentation>());
+            var buttonAction = itemInfor.GetContentComponent<ButtonPresentation>();
+            AddEventOpen(new OpenItemInformationInEquipment(buttonAction));
         }
 
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)
@@ -21,7 +26,6 @@ namespace UIEquipmentContents
             SubOpenItemInformations.Add(subOpenItem);
 
         }
-
         public void OnOpenInformation(ItemData itemData)
         {
             foreach (var sub in SubOpenItemInformations)

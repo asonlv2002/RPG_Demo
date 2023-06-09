@@ -8,6 +8,7 @@ namespace UIEquipmentContents
     class OpenCloseUIEquipment : UIEquipmentComponent, IOpenClose
     {
         [SerializeField] UIEquipmentCores UIEquipmentCores;
+        [field: SerializeField] public TransfomPresentation TransfomPresentation { get; private set; }
         public bool IsOpen => UIEquipmentCores.gameObject.activeSelf;
         public UnityAction OnOpenAction { get ; set ; }
         public UnityAction OnCloseAction { get ; set; }

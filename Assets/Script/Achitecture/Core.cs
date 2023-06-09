@@ -14,11 +14,10 @@
     }
     internal abstract class CoreContain<TypeCore> : Core where TypeCore : CoreComponent
     {
-        protected List<TypeCore> CoreComponent;
+        protected List<TypeCore> CoreComponent = new List<TypeCore>();
 
         protected virtual void Awake()
         {
-            CoreComponent = new List<TypeCore>();
         }
         public T GetContentComponent<T>() where T : TypeCore
         {

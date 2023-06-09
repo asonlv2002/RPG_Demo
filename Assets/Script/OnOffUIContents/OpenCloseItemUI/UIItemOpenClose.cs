@@ -26,6 +26,9 @@ namespace OnOffUIContents
             Debug.Log(Inventory);
             Inventory.OnOpenAction = Equipment.OnOpenAction  = OpenUI;
             Inventory.OnCloseAction = Equipment.OnCloseAction  = CloseUI;
+            //Inventory.CloseAction();
+            //Inventory.CloseAction();
+            //ItemInfor.CloseAction();
         }
 
         void OpenUI()

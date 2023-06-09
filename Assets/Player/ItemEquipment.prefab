@@ -774,6 +774,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openCloseUIEquipment:
     UIEquipmentCores: {fileID: 90962904445872682}
+    <TransfomPresentation>k__BackingField:
+      IndexOnOpen: 1
+      _closeStateContain: {fileID: 0}
+      _openStateContain: {fileID: 0}
+      _transformUI: {fileID: 5168665235425818380}
     _openEquipment: {fileID: 0}
     _closeEquipment: {fileID: 3509454999436234192}
   buttonEquipments:

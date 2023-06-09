@@ -295,6 +295,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openCloseInventory:
     InventoryCore: {fileID: 5953335334954565258}
+    <TransfomPresentation>k__BackingField:
+      IndexOnOpen: 0
+      _closeStateContain: {fileID: 0}
+      _openStateContain: {fileID: 0}
+      _transformUI: {fileID: 741047642569826331}
     _openInventory: {fileID: 0}
     _closeInventory: {fileID: 5693230064297154116}
   _itemInventoryStore:

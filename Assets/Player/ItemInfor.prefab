@@ -1773,6 +1773,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _openCloseItemInfor:
     ItemInforCores: {fileID: 5345090341349052669}
+    <TransfomPresentation>k__BackingField:
+      IndexOnOpen: 2
+      _closeStateContain: {fileID: 0}
+      _openStateContain: {fileID: 0}
+      _transformUI: {fileID: 2346573446171191045}
     _closeUI: {fileID: 1267662489619252850}
   _informationPresentation:
     _icon: {fileID: 2346573446027870421}

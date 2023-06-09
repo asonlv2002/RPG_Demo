@@ -10,9 +10,11 @@ namespace InventoryContents
     internal class OpenCloseInventory : InventoryComponent, IOpenClose
     {
         [SerializeField] InventoryCore InventoryCore;
+        [field: SerializeField] public TransfomPresentation TransfomPresentation { get; private set; }
         public bool IsOpen => InventoryCore.gameObject.activeSelf;
         public UnityAction OnOpenAction { get ; set ; }
         public UnityAction OnCloseAction { get ; set ; }
+ 
 
         [SerializeField] Button _openInventory;
         [SerializeField] Button _closeInventory;
@@ -36,9 +38,11 @@ namespace InventoryContents
         {
             InventoryCore.gameObject.SetActive(true);
             OnOpenAction?.Invoke();
+            TransfomPresentation.OnOpen();
         }
         public void CloseAction()
         {
+            TransfomPresentation.OnClose();
             InventoryCore.gameObject.SetActive(false);
             OnCloseAction?.Invoke();
 

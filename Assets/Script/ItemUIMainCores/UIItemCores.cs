@@ -18,10 +18,9 @@
             AddCore(_itemInfor);
             AddCore(_equipment);
             AddCore(_openClose);
-
-            _inventory.InitMainCore(this);
-            _equipment.InitMainCore(this);
             _itemInfor.InitMainCore(this);
+            _equipment.InitMainCore(this);
+            _inventory.InitMainCore(this);
             _openClose.InitMainCore(this);
 
         }

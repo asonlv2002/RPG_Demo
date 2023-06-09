@@ -8,6 +8,7 @@ namespace ItemInforContents
     internal class OpenCloseItemInfor : ItemInforComponent, IOpenClose
     {
         [SerializeField] ItemInforCores ItemInforCores;
+        [field: SerializeField] public TransfomPresentation TransfomPresentation { get; private set; }
         public bool IsOpen  => ItemInforCores.gameObject.activeSelf;
         public UnityAction OnOpenAction { get ; set ; }
         public UnityAction OnCloseAction { get ; set ; }

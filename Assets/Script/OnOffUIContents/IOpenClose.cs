@@ -4,6 +4,8 @@
     {
         bool IsOpen { get; }
 
+        TransfomPresentation TransfomPresentation { get; }
+
         public void OnOpen();
 
         public void OnClose();
