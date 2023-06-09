@@ -77,7 +77,7 @@ namespace InputContents
             isAttacking = _isAttacking;
         }
 
-        public override void Remove()
+        public override void OnRemoveComponent()
         {
             Input.Disable();
             Input = null;

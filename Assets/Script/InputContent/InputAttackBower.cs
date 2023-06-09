@@ -31,7 +31,7 @@ namespace InputContents
             IsHolding = false;
         }
 
-        public override void Remove()
+        public override void OnRemoveComponent()
         {
             bow.Attack.Disable();
             bow = null;

@@ -27,7 +27,7 @@
             Movement = move;
         }
 
-        public override void Remove()
+        public override void OnRemoveComponent()
         {
             AimShootGroup = null;
             AimShootLoad = null;

@@ -10,6 +10,11 @@
         [field : SerializeField] public UnequipAction Unequip { get; private set; }
         [field : SerializeField] public UseAction UseAction { get; private set; }
 
+        public override void OnAddComponent()
+        {
+            Init(ItemInforCores);
+        }
+
         public void Init(ItemInforCores itemInforCores)
         {
             ItemInforCores = itemInforCores;

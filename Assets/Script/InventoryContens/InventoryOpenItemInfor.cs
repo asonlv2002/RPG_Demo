@@ -10,14 +10,12 @@ namespace InventoryContents
     internal class InventoryOpenItemInfor : InventoryComponent,IOpenItemInformation
     {
         [SerializeField] InventoryCore _inventorCore;
-        public InventoryOpenItemInfor(InventoryCore inventoryCore)
+        public List<ISubOpenItemInformation> SubOpenItemInformations { get; private set; }
+        public override void OnAddComponent()
         {
             SubOpenItemInformations = new List<ISubOpenItemInformation>();
-            _inventorCore = inventoryCore;
             Init(_inventorCore);
         }
-
-        public List<ISubOpenItemInformation> SubOpenItemInformations { get; private set; }
 
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)
         {

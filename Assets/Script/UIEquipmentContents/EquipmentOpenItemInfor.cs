@@ -11,10 +11,9 @@ namespace UIEquipmentContents
         [SerializeField] UIEquipmentCores _uiEquipmentCores;
         public List<ISubOpenItemInformation> SubOpenItemInformations { get; private set; }
 
-        public EquipmentOpenItemInfor(UIEquipmentCores uIEquipmentCores)
+        public override void OnAddComponent()
         {
             SubOpenItemInformations = new List<ISubOpenItemInformation>();
-            _uiEquipmentCores = uIEquipmentCores;
         }
 
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)

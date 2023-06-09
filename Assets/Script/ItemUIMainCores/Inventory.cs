@@ -3,18 +3,20 @@
     using UnityEngine;
     using System.Collections.Generic;
     using Item.ItemGameData;
+    using Achitecture;
+
     internal class Inventory : InventoryCore
     {
+        [SerializeField] OpenCloseInventory _openCloseInventory;
         [SerializeField] ItemInventoryStore _itemInventoryStore;
         [SerializeField] InventoryOpenItemInfor _openInfor;
-        private void Start()
+
+        public override void InitMainCore(MainCores mainCores)
         {
-            _openInfor = new InventoryOpenItemInfor(this);
+            base.InitMainCore(mainCores);
+            AddContentComponent(_openCloseInventory);
             AddContentComponent(_openInfor);
             AddContentComponent(_itemInventoryStore);
-            _itemInventoryStore.Init();
-
-
         }
     }
 }

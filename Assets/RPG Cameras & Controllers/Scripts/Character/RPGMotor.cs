@@ -865,7 +865,7 @@ namespace JohnStairs.RCC.Character {
         protected virtual void OnTriggerExit(Collider other) {
             Water water = other.GetComponent<Water>();
             if (water) {
-                // Remove the water again since we left it
+                // OnRemoveComponent the water again since we left it
                 _touchedWaters.Remove(water);
             }
         }

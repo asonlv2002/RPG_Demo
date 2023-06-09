@@ -443,7 +443,7 @@ namespace JohnStairs.RCC.Character {
                 if (_fadeInCoroutines.TryGetValue(objectID, out IEnumerator runningCoroutine)) {
                     // Stop the already running coroutine
                     StopCoroutine(runningCoroutine);
-                    // Remove it from the fade in coroutines
+                    // OnRemoveComponent it from the fade in coroutines
                     _fadeInCoroutines.Remove(objectID);
                 }
                 // Add the new fade out coroutine to the list of fade out coroutines
@@ -461,7 +461,7 @@ namespace JohnStairs.RCC.Character {
                 if (_fadeOutCoroutines.TryGetValue(objectID, out IEnumerator runningCoroutine)) {
                     // Stop the already running coroutine
                     StopCoroutine(runningCoroutine);
-                    // Remove it from the fade out coroutines
+                    // OnRemoveComponent it from the fade out coroutines
                     _fadeOutCoroutines.Remove(objectID);
                 }
                 // Add the new fade in coroutine to the list of fade in coroutines

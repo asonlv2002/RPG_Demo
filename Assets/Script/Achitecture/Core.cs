@@ -31,6 +31,7 @@
         public void AddContentComponent(TypeCore component)
         {
             CoreComponent.Add(component);
+            component.OnAddComponent();
         }
 
         public void RemoveComponent<T>() where T : TypeCore
@@ -38,7 +39,7 @@
             var component = CoreComponent.Find(x => x.GetType() == typeof(T));
             if (component != null)
             {
-                component.Remove();
+                component.OnRemoveComponent();
                 CoreComponent.Remove(component);
                 
             }

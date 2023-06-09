@@ -14,6 +14,11 @@
         [SerializeField] ItemInventory itemInventoryPrefab;
         [SerializeField] Transform _inventoryContent;
 
+
+        public override void OnAddComponent()
+        {
+            Init();
+        }
         public void AddItemData(ItemData itemData)
         {
             _itemDatas.Add(itemData);
@@ -29,7 +34,7 @@
             }
         }
 
-        public void Init()
+        void Init()
         {
             foreach (var item in _itemInventories)
             {

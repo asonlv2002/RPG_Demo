@@ -2,7 +2,11 @@
 { 
     internal abstract class CoreComponent
     {
-        public virtual void Remove()
+        public virtual void OnAddComponent()
+        {
+
+        }
+        public virtual void OnRemoveComponent()
         {
 
         }
