@@ -3,12 +3,12 @@ using UIEquipmentContents;
 using InventoryContents;
 namespace ItemInforContents
 {
-    internal class ReadUnequipFormEquipment : ItemInforComponent, IConvertItemStationSub
+    internal class EquipmentUnequipListener : IConvertItemStationListener
     {
         ButtonEquipmentGroup _buttonEquipmentGroup;
         InventoryOpenItemInfor _inventoryOpenItemInfor;
         UIEquipmentCores _UIEquipment;
-        public ReadUnequipFormEquipment(ItemInforCores itemInforCores)
+        public EquipmentUnequipListener(ItemInforCores itemInforCores)
         {
             _UIEquipment = itemInforCores.MainCores.GetCore<UIEquipmentCores>();
         }

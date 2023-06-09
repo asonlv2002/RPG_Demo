@@ -3,12 +3,12 @@ using Item.ItemGameData;
 
 namespace ItemInforContents
 {
-    internal class ReadEquipItemInInventory : ItemInforComponent,IConvertItemStationSub
+    internal class InventoryEquipListener : IConvertItemStationListener
     {
         ItemInventoryStore _iventoryStore;
         private ItemInforCores _itemInforCores;
 
-        public ReadEquipItemInInventory(ItemInforCores itemInforCores)
+        public InventoryEquipListener(ItemInforCores itemInforCores)
         {
             _itemInforCores = itemInforCores;
         }

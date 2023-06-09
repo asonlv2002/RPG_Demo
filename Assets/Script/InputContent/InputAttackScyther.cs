@@ -82,7 +82,6 @@ namespace InputContents
             Input.Disable();
             Input = null;
             InputAttackScytherQueue.Clear();
-            InputAttackScytherQueue = null;
         }
 
     }

@@ -3,13 +3,13 @@ using UIEquipmentContents;
 
 namespace ItemInforContents
 {
-    internal class ReadEquipItemInEquipment : ItemInforComponent, IConvertItemStationSub
+    internal class UIEquipmentEquipListener : IConvertItemStationListener
     {
         ButtonEquipmentGroup _buttonEquipmentGroup;
         EquipmentOpenItemInfor _equipmentOpenItemInfor;
         UIEquipmentCores _UIEquipment;
 
-        public ReadEquipItemInEquipment(ItemInforCores itemInforCores)
+        public UIEquipmentEquipListener(ItemInforCores itemInforCores)
         {
             _UIEquipment = itemInforCores.MainCores.GetCore<UIEquipmentCores>();
         }

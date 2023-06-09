@@ -2,7 +2,7 @@
 
 namespace ItemInforContents
 {
-    internal interface IConvertItemStationSub
+    internal interface IConvertItemStationListener
     {
         void OnConverItemStation(ItemData itemData);
     }

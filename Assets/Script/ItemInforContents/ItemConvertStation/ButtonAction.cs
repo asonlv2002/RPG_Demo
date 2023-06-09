@@ -4,13 +4,12 @@
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
-    internal abstract class ButtonAction : MonoBehaviour, IConvertIttemStationObsever
+    internal abstract class ButtonAction : MonoBehaviour, IConvertIttemStationSigner
     {
         [SerializeField] protected Button _button;
         [SerializeField] protected ItemInforCores ItemInforCores;
         protected ItemData _itemData;
-        public List<IConvertItemStationSub> ConvertItemStationSubs { get; private set; }
-
+        public List<IConvertItemStationListener> ConvertItemStationSubs { get; private set; } = new List<IConvertItemStationListener>();
 
         public void SetItemData(ItemData itemData)
         {
@@ -20,11 +19,10 @@
         public virtual void Init(ItemInforCores itemInforCores)
         {
             ItemInforCores = itemInforCores;
-            ConvertItemStationSubs = new List<IConvertItemStationSub>();
             _button.onClick.AddListener(OnClickEffect);
         }
 
-        public void AddConvertItemStation(IConvertItemStationSub convertItem)
+        public void AddConvertItemStation(IConvertItemStationListener convertItem)
         {
             ConvertItemStationSubs.Add(convertItem);
         }
@@ -37,7 +35,7 @@
             }
         }
 
-        public void SubConvertItemStation(IConvertItemStationSub convertItem)
+        public void RemoveConvertItemStation(IConvertItemStationListener convertItem)
         {
             ConvertItemStationSubs.Remove(convertItem);
         }

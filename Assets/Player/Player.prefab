@@ -750,6 +750,7 @@ MonoBehaviour:
     CurrentStatValue: 100
   DEF:
     CurrentStatValue: 100
+  value: 1
 --- !u!1 &7130532494449113473
 GameObject:
   m_ObjectHideFlags: 0

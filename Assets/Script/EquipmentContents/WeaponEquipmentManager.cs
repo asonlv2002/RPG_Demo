@@ -7,7 +7,7 @@ namespace EquipmentContents
     using Item.ItemGameData;
 
     [System.Serializable]
-    internal class WeaponEquipmentManager :EquipmentComponent, IEquipmentManager
+    internal class WeaponEquipmentManager :EquipmentComponent
     {
         [SerializeField] PlayerEquipment equipemt;
         [field: SerializeField] public Transform RightHand { get; private set; }
@@ -18,10 +18,10 @@ namespace EquipmentContents
         IItem WeaponUnequip;
 
         WeaponData currentWeaponData;
-        public void AddWepon(IItem itemData)
+        public void AddWepon(ItemData itemData)
         {
-            if (currentWeaponData == itemData.ItemData as WeaponData) return;
-            currentWeaponData = itemData.ItemData as WeaponData;
+            if (currentWeaponData == itemData as WeaponData) return;
+            currentWeaponData = itemData as WeaponData;
             equipemt.channel.EquipWeapon(currentWeaponData);
             WeaponUnequip = new WeaponEquipmentFactory(this).WeaponFactory(currentWeaponData);
             Equip();

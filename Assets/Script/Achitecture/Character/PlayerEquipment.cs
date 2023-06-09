@@ -19,30 +19,31 @@ namespace EquipmentContents
             AddContentComponent(_weaponEquipment);
 
         }
-        private void OnTriggerEnter(Collider other)
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    //var equipment = other.gameObject;
+        //    //var equipmentData = equipment.GetComponent<IItem>();
+        //    //EquipEquipment(equipmentData);
+        //}
+
+        //void EquipEquipment(IItem equipment)
+        //{
+        //    if (equipment == null) return;
+        //    IEquipmentManager equipmentManager = EquipmentManagerProxy(equipment);
+        //    equipmentManager.AddWepon(equipment);
+        //}
+
+        public override void EquiEquipment(ItemData equipment)
         {
-            var equipment = other.gameObject;
-            var equipmentData = equipment.GetComponent<IItem>();
-            EquipEquipment(equipmentData);
+            //IEquipmentManager equipmentManager = EquipmentManagerProxy(equipment);
+            //equipmentManager.AddWepon(equipment);
+
+            _weaponEquipment.AddWepon(equipment);
         }
 
-        void EquipEquipment(IItem equipment)
+        public override void UnequipItem(ItemData equipment)
         {
-            if (equipment == null) return;
-            IEquipmentManager equipmentManager = EquipmentManagerProxy(equipment);
-            equipmentManager.AddWepon(equipment);
-        }
-
-        IEquipmentManager EquipmentManagerProxy(IItem itemData)
-        {
-            switch (itemData.ItemData)
-            {
-                case WeaponData:
-
-                    return _weaponEquipment;
-                default : 
-                    return null;
-            }
+            _weaponEquipment.RemoveWeapon();
         }
     }
 }

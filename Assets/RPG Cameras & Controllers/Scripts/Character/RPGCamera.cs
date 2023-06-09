@@ -451,9 +451,9 @@ namespace JohnStairs.RCC.Character {
         protected virtual void LateUpdate() {
             GetInputs();
 
-            if (ActivateCameraControl) {
-                HandleCursor();
-            }
+            //if (ActivateCameraControl) {
+            //    HandleCursor();
+            //}
 
             CheckForChangedSkybox();
 
