@@ -35,11 +35,13 @@ namespace InventoryContents
 
         public void OpenAction()
         {
+            _openInventory.gameObject.SetActive(false);
             OnOpenAction?.Invoke();
             TransfomPresentation.OnOpen();
         }
         public void CloseAction()
         {
+            _openInventory.gameObject.SetActive(true);
             TransfomPresentation.OnClose();
             OnCloseAction?.Invoke();
 

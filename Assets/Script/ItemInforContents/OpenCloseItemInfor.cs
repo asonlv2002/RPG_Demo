@@ -36,6 +36,7 @@ namespace ItemInforContents
 
         public void CloseAction()
         {
+            Debug.Log("2002");
             OnCloseAction?.Invoke();
             TransfomPresentation.OnClose();
         }

@@ -22,7 +22,7 @@
         public void AddItemData(ItemData itemData)
         {
             //_itemDatas.Add(itemData);
-            var itemInventory = _itemInventories.Count > 0 ? _itemInventories.Find(x => x.ItemData == itemData) : null;
+            var itemInventory = _itemInventories.Find(x => x.ItemData == itemData);
             if(itemInventory != null)
             {
                 itemInventory.AddCount(1);
@@ -45,9 +45,12 @@
         public void SubItemData(ItemData itemData)
         {
             var itemInventory = _itemInventories.Find(x => x.ItemData == itemData);
-            _itemInventories.Remove(itemInventory);
-            MonoBehaviour.Destroy(itemInventory.gameObject);
-            //itemInventory.SubCount(1);
+            itemInventory.SubCount(1);
+            if(itemInventory.Count==0)
+            {
+                MonoBehaviour.Destroy(itemInventory.gameObject);
+                _itemInventories.Remove(itemInventory);
+            }
 
         }
 

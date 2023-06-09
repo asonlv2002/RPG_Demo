@@ -33,12 +33,14 @@ namespace UIEquipmentContents
 
         public void OpenAction()
         {
+            _openEquipment.gameObject.SetActive(false);
             OnOpenAction.Invoke();
             TransfomPresentation.OnOpen();
         }
 
         public void CloseAction()
         {
+            _openEquipment.gameObject.SetActive(true);
             OnCloseAction.Invoke();
             TransfomPresentation.OnClose();
 

@@ -16,12 +16,15 @@ namespace ItemInforContents
         public void OnConverItemStation(ItemData itemData)
         {
             Generate();
-            if(currentItem != itemData)
-            {
-                if(currentItem != null) _iventoryStore.AddItemData(currentItem);
-                _iventoryStore.SubItemData(itemData);
-                currentItem = itemData;
-            }
+            if (currentItem!= null && currentItem != itemData) _iventoryStore.AddItemData(currentItem);
+            currentItem = itemData;
+            _iventoryStore.SubItemData(currentItem);
+            //if(currentItem != itemData)
+            //{
+            //    if(currentItem != null) 
+
+            //    currentItem = itemData;
+            //}
 
         }
 

@@ -15,6 +15,7 @@
         public ItemData ItemData => _itemData;
         InventoryOpenItemInfor _openInfor;
         int _count = 0;
+        public int Count => _count;
 
         public void SetItemData(ItemData itemData, InventoryCore inventoryCore)
         {
