@@ -24,11 +24,10 @@ namespace InventoryContents
 
         public void OnOpenInformation(ItemData itemData)
         {
-            _inventorCore.MainCores.GetCore<ItemInforCores>().gameObject.SetActive(true);
-            Debug.Log(SubOpenItemInformations.Count);
+            //_inventorCore.MainCores.GetCore<ItemInforCores>().GetContentComponent<OpenCloseItemInfor>().TransfomPresentation.OnOpen();
+            //Debug.Log(SubOpenItemInformations.Count);
             foreach (var eventOpen in SubOpenItemInformations)
             {
-                Debug.Log(eventOpen);
                 eventOpen.OnOpenItemInformation(itemData);
             }
         }
@@ -41,10 +40,10 @@ namespace InventoryContents
         void Init(InventoryCore inventoryCore)
         {
             var itemOpen = inventoryCore.MainCores.GetCore<ItemInforCores>();
+            AddEventOpen(new OpemItemInforOnClickItem(itemOpen.GetContentComponent<OpenCloseItemInfor>()));
             AddEventOpen(itemOpen.GetContentComponent<ItemInformationPresentation>());
             AddEventOpen(itemOpen.GetContentComponent<ItemEffectsPresentation>());
-            var buttonAction = itemOpen.GetContentComponent<ButtonPresentation>();
-            AddEventOpen(new OpenItemInformationInInventory(buttonAction));
+            AddEventOpen(new OpenItemInformationInInventory(itemOpen.GetContentComponent<ButtonPresentation>()));
         }
     }
 }

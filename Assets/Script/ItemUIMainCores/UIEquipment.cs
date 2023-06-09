@@ -12,9 +12,11 @@
             base.InitMainCore(mainCores);
             AddContentComponent(_openCloseUIEquipment);
             AddContentComponent(_openInfor);
-            //StartCoroutine(_openInfor.Init());
             AddContentComponent(buttonEquipments);
+
+
             this.gameObject.SetActive(false);
+            _openCloseUIEquipment.TransfomPresentation.OnClose();
         }
     }
 }

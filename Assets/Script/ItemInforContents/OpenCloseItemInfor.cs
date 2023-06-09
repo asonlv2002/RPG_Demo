@@ -31,13 +31,13 @@ namespace ItemInforContents
         public void OpenAction()
         {
             OnOpenAction?.Invoke();
-            ItemInforCores.gameObject.SetActive(true);
+            TransfomPresentation.OnOpen();
         }
 
         public void CloseAction()
         {
             OnCloseAction?.Invoke();
-            ItemInforCores.gameObject.SetActive(false);
+            TransfomPresentation.OnClose();
         }
     }
 }

@@ -14,11 +14,7 @@ namespace UIEquipmentContents
         public override void OnAddComponent()
         {
             SubOpenItemInformations = new List<ISubOpenItemInformation>();
-            ItemInforCores itemInfor = _uiEquipmentCores.MainCores.GetCore<ItemInforCores>();
-            AddEventOpen(itemInfor.GetContentComponent<ItemInformationPresentation>());
-            AddEventOpen(itemInfor.GetContentComponent<ItemEffectsPresentation>());
-            var buttonAction = itemInfor.GetContentComponent<ButtonPresentation>();
-            AddEventOpen(new OpenItemInformationInEquipment(buttonAction));
+            Init();
         }
 
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)
@@ -28,6 +24,7 @@ namespace UIEquipmentContents
         }
         public void OnOpenInformation(ItemData itemData)
         {
+            Debug.Log("Hello");
             foreach (var sub in SubOpenItemInformations)
             {
                 sub.OnOpenItemInformation(itemData);
@@ -39,19 +36,13 @@ namespace UIEquipmentContents
             SubOpenItemInformations.Remove(subOpenItem);
         }
 
-        public IEnumerator Init()
+        public void Init()
         {
-            ItemInforCores itemInfor = null;
-            yield return new WaitUntil(() => GetItemInfor(out itemInfor));
+            var itemInfor = _uiEquipmentCores.MainCores.GetCore<ItemInforCores>();
+            AddEventOpen(new OpemItemInforOnClickItem(itemInfor.GetContentComponent<OpenCloseItemInfor>()));
             AddEventOpen(itemInfor.GetContentComponent<ItemInformationPresentation>());
             AddEventOpen(itemInfor.GetContentComponent<ItemEffectsPresentation>());
-            var buttonAction = itemInfor.GetContentComponent<ButtonPresentation>();
-            AddEventOpen(new OpenItemInformationInEquipment(buttonAction));
-        }
-
-        bool GetItemInfor(out ItemInforCores itemInfor)
-        {
-            return (itemInfor = _uiEquipmentCores.MainCores.GetCore<ItemInforCores>()) != null;
+            AddEventOpen(new OpenItemInformationInEquipment(itemInfor.GetContentComponent<ButtonPresentation>()));
         }
     }
 }

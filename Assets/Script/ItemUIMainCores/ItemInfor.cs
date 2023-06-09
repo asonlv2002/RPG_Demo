@@ -21,6 +21,7 @@
             AddContentComponent(new UnequipListeners(this));
 
             this.gameObject.SetActive(false);
+            _openCloseItemInfor.TransfomPresentation.OnClose();
         }
     }
 }

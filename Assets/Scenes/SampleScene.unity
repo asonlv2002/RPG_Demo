@@ -1130,8 +1130,44 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1744506026}
     - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
-      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField.IndexOnOpen
-      value: 1
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField._easeOpen
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField._easeClose
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField._durationOpen
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField._durationClose
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField._openStateContain
+      value: 
+      objectReference: {fileID: 402165606}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField._closeStateContain
+      value: 
+      objectReference: {fileID: 523102086}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField.<EndAnchoredPositionClose>k__BackingField.x
+      value: 1260
+      objectReference: {fileID: 0}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField.<EndAnchoredPositionClose>k__BackingField.y
+      value: -800
+      objectReference: {fileID: 0}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField.<StartAnchoredPositionOpen>k__BackingField.x
+      value: 1260
+      objectReference: {fileID: 0}
+    - target: {fileID: 90962904445872682, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
+      propertyPath: _openCloseUIEquipment.<TransfomPresentation>k__BackingField.<StartAnchoredPositionOpen>k__BackingField.y
+      value: -800
       objectReference: {fileID: 0}
     - target: {fileID: 5168665235025309725, guid: 2311b5ce1bc232f45a9625064b1f4a76, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3065,7 +3101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 741047642347349401, guid: 0dd0332d5568cdc43bebda47ff9d0823, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000003885583
+      value: 0.0006215107
       objectReference: {fileID: 0}
     - target: {fileID: 741047642569826330, guid: 0dd0332d5568cdc43bebda47ff9d0823, type: 3}
       propertyPath: m_Name
@@ -3159,6 +3195,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 741047642569826331, guid: 0dd0332d5568cdc43bebda47ff9d0823, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5953335334954565258, guid: 0dd0332d5568cdc43bebda47ff9d0823, type: 3}
       propertyPath: _openInfor._itemInforCores
       value: 
@@ -3179,6 +3219,10 @@ PrefabInstance:
       propertyPath: _openCloseInventory.<TransfomPresentation>k__BackingField._closeStateContain
       value: 
       objectReference: {fileID: 523102086}
+    - target: {fileID: 5953335334954565258, guid: 0dd0332d5568cdc43bebda47ff9d0823, type: 3}
+      propertyPath: _openCloseInventory.<TransfomPresentation>k__BackingField.<EndAnchoredPositionClose>k__BackingField.y
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7079974616173516745, guid: 0dd0332d5568cdc43bebda47ff9d0823, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3332,6 +3376,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.0002545027
       objectReference: {fileID: 0}
+    - target: {fileID: 5345090341349052669, guid: c481694279b47144789cd7764e504cec, type: 3}
+      propertyPath: _openCloseItemInfor.<TransfomPresentation>k__BackingField._openStateContain
+      value: 
+      objectReference: {fileID: 402165606}
+    - target: {fileID: 5345090341349052669, guid: c481694279b47144789cd7764e504cec, type: 3}
+      propertyPath: _openCloseItemInfor.<TransfomPresentation>k__BackingField._closeStateContain
+      value: 
+      objectReference: {fileID: 523102086}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c481694279b47144789cd7764e504cec, type: 3}
 --- !u!1001 &5769999102855986522

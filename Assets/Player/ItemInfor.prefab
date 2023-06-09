@@ -1705,8 +1705,8 @@ RectTransform:
   m_GameObject: {fileID: 2346573446171191046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.975, y: 0.975, z: 0.975}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2346573446312961274}
   - {fileID: 2346573445356480034}
@@ -1774,10 +1774,17 @@ MonoBehaviour:
   _openCloseItemInfor:
     ItemInforCores: {fileID: 5345090341349052669}
     <TransfomPresentation>k__BackingField:
-      IndexOnOpen: 2
-      _closeStateContain: {fileID: 0}
-      _openStateContain: {fileID: 0}
       _transformUI: {fileID: 2346573446171191045}
+      SiblingIndex: 3
+      _openStateContain: {fileID: 0}
+      _durationOpen: 0.5
+      _easeOpen: 2
+      <StartAnchoredPositionOpen>k__BackingField: {x: 0, y: 1000}
+      <EndAnchoredPositionOpen>k__BackingField: {x: 0, y: 0}
+      _closeStateContain: {fileID: 0}
+      _durationClose: 0.5
+      _easeClose: 2
+      <EndAnchoredPositionClose>k__BackingField: {x: 0, y: 1000}
     _closeUI: {fileID: 1267662489619252850}
   _informationPresentation:
     _icon: {fileID: 2346573446027870421}
@@ -1904,7 +1911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0002545027}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2346573446348781759
@@ -1936,7 +1943,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 10
     m_Right: 10
-    m_Top: 10
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: -12

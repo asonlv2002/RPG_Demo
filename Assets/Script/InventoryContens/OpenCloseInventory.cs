@@ -3,7 +3,6 @@ using OnOffUIContents;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
 namespace InventoryContents
 {
     [System.Serializable]
@@ -36,14 +35,12 @@ namespace InventoryContents
 
         public void OpenAction()
         {
-            InventoryCore.gameObject.SetActive(true);
             OnOpenAction?.Invoke();
             TransfomPresentation.OnOpen();
         }
         public void CloseAction()
         {
             TransfomPresentation.OnClose();
-            InventoryCore.gameObject.SetActive(false);
             OnCloseAction?.Invoke();
 
         }

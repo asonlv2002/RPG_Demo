@@ -20,7 +20,6 @@
             _icon.gameObject.SetActive(true);
             _plusIcon.SetActive(false);
         }
-
         public void OnUnequip()
         {
             _itemData = null;

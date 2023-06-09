@@ -21,8 +21,8 @@
         }
         public void AddItemData(ItemData itemData)
         {
-            _itemDatas.Add(itemData);
-            var itemInventory = _itemInventories.Find(x => x.ItemData == itemData);
+            //_itemDatas.Add(itemData);
+            var itemInventory = _itemInventories.Count > 0 ? _itemInventories.Find(x => x.ItemData == itemData) : null;
             if(itemInventory != null)
             {
                 itemInventory.AddCount(1);
@@ -36,9 +36,9 @@
 
         void Init()
         {
-            foreach (var item in _itemInventories)
+            foreach (var item in _itemDatas)
             {
-                item.SetItemData(_itemDatas[0], _inventoryCore);
+                AddItemData(item);
             }
         }
 

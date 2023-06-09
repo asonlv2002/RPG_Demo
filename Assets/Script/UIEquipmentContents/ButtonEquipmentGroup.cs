@@ -7,8 +7,7 @@
         [SerializeField] UIEquipmentCores UIEquipmentCores;
         [field :SerializeField] public WeaponButton Weapon { get; private set; }
 
-
-        public void Init()
+        public override void OnAddComponent()
         {
             Weapon.SetCore(UIEquipmentCores);
         }

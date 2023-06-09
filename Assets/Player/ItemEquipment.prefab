@@ -775,10 +775,17 @@ MonoBehaviour:
   _openCloseUIEquipment:
     UIEquipmentCores: {fileID: 90962904445872682}
     <TransfomPresentation>k__BackingField:
-      IndexOnOpen: 1
-      _closeStateContain: {fileID: 0}
-      _openStateContain: {fileID: 0}
       _transformUI: {fileID: 5168665235425818380}
+      SiblingIndex: 1
+      _openStateContain: {fileID: 0}
+      _durationOpen: 0.5
+      _easeOpen: 2
+      <StartAnchoredPositionOpen>k__BackingField: {x: 1260, y: -800}
+      <EndAnchoredPositionOpen>k__BackingField: {x: 0, y: 0}
+      _closeStateContain: {fileID: 0}
+      _durationClose: 0.25
+      _easeClose: 2
+      <EndAnchoredPositionClose>k__BackingField: {x: 1260, y: -800}
     _openEquipment: {fileID: 0}
     _closeEquipment: {fileID: 3509454999436234192}
   buttonEquipments:
@@ -874,6 +881,7 @@ GameObject:
   - component: {fileID: 5168665235573049331}
   - component: {fileID: 4066447879327350591}
   - component: {fileID: 5452286782218826003}
+  - component: {fileID: 1447013338321570935}
   m_Layer: 5
   m_Name: Wepon
   m_TagString: Untagged
@@ -964,6 +972,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1447013338321570935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5168665235573049330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Mouse>/leftButton
 --- !u!1 &5168665235609628329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3387,7 +3408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.00011585875}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5168665236991228191

@@ -18,7 +18,7 @@
             AddContentComponent(_openInfor);
             AddContentComponent(_itemInventoryStore);
 
-            this.gameObject.SetActive(false);
+            _openCloseInventory.TransfomPresentation.OnClose();
         }
     }
 }
