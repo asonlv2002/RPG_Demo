@@ -1,21 +1,27 @@
-﻿using UnityEngine;
+﻿using Item.ItemGameData;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
+
 namespace QuickUseItemContents
 {
     class ItemVisual : MonoBehaviour, IDragHandler,IDropHandler,IBeginDragHandler,IEndDragHandler
     {
-        [SerializeField] RectTransform RectTransform;
+        RectTransform RectTransform;
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] Canvas canvas;
+        [SerializeField] Image _icon;
+        [SerializeField] TextMeshProUGUI _countText;
+
+        int _countItem;
+
         bool _wasSwitched;
+
+        public ItemData ItemData { get; private set; }
         [field : SerializeField] public QuickUseSlot CurrentSlot { get; private set; }
 
-        private void Awake()
-        {
-            RectTransform = this.transform as RectTransform;
-            SetSlot(CurrentSlot);
-        }
         public void SetSlot(QuickUseSlot currentSlot)
         {
             CurrentSlot = currentSlot;
@@ -74,6 +80,36 @@ namespace QuickUseItemContents
         void SetTranform(RectTransform slotTransfrom)
         {
             RectTransform.anchoredPosition = slotTransfrom.anchoredPosition;
+        }
+
+        public void AddCount(int value)
+        {
+            _countItem += value;
+            _countText.text = _countItem.ToString();
+        }
+
+        public void SubCount(int value)
+        {
+            _countItem -= value;
+            _countText.text = _countItem.ToString();
+        }
+
+        public void Init(ItemData itemData)
+        {
+            ItemData = itemData;
+            _icon.sprite = ItemData.Information.Sprite;
+            RectTransform = this.transform as RectTransform;
+            this.gameObject.SetActive(true);
+        }
+
+        public void UseItem()
+        {
+            SubCount(1);
+            if(_countItem ==0)
+            {
+                CurrentSlot.SetCurrentItem(null);
+                Destroy(gameObject);
+            }
         }
     }
 }

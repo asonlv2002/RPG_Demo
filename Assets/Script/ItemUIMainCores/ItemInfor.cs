@@ -11,7 +11,6 @@
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
-            Debug.Log(_openCloseItemInfor);
             AddContentComponent(_openCloseItemInfor);
             AddContentComponent(_informationPresentation);
             AddContentComponent(_effectsPresentation);
@@ -19,6 +18,7 @@
 
             AddContentComponent(new EquipListeners(this));
             AddContentComponent(new UnequipListeners(this));
+            AddContentComponent(new AddQuickUseListener(this));
 
             this.gameObject.SetActive(false);
             _openCloseItemInfor.TransfomPresentation.OnClose();

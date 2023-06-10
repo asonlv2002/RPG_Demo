@@ -11,15 +11,32 @@
 
         public void OnOpenItemInformation(ItemData itemData)
         {
-            SetActiveButton();
+            SetActiveButton(itemData);
             _buttonPresentation.OnOpenItemInformation(itemData);
-            _buttonPresentation.Equip.SetItemData(itemData);
         }
 
-        void SetActiveButton()
+        void SetActiveButton(ItemData itemData)
         {
-            _buttonPresentation.Equip.gameObject.SetActive(true);
-            _buttonPresentation.Unequip.gameObject.SetActive(false);
+            switch(itemData)
+            {
+                case EquipmentData:
+                    _buttonPresentation.UseAction.SetActive(false);
+                    _buttonPresentation.Equip.SetActive(true);
+                    _buttonPresentation.Unequip.SetActive(false);
+
+                    _buttonPresentation.Equip.SetItemData(itemData);
+                    break;
+                case ConsumbableData:
+                    _buttonPresentation.UseAction.SetActive(true);
+                    _buttonPresentation.AddQuickUseAction.SetActive(true);
+                    _buttonPresentation.Equip.SetActive(false);
+                    _buttonPresentation.Unequip.SetActive(false);
+
+                    _buttonPresentation.UseAction.SetItemData(itemData);
+                    _buttonPresentation.AddQuickUseAction.SetItemData(itemData);
+                    break;
+            }
+
         }
     }
 }

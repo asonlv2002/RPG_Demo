@@ -6,7 +6,7 @@ namespace ItemInforContents
     internal class InventoryEquipListener : IConvertItemStationListener
     {
         ItemInventoryStore _iventoryStore;
-        private ItemInforCores _itemInforCores;
+        ItemInforCores _itemInforCores;
         ItemData currentItem;
         public InventoryEquipListener(ItemInforCores itemInforCores)
         {
@@ -19,13 +19,6 @@ namespace ItemInforContents
             if (currentItem!= null && currentItem != itemData) _iventoryStore.AddItemData(currentItem);
             currentItem = itemData;
             _iventoryStore.SubItemData(currentItem);
-            //if(currentItem != itemData)
-            //{
-            //    if(currentItem != null) 
-
-            //    currentItem = itemData;
-            //}
-
         }
 
         void Generate()

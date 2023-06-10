@@ -14,7 +14,6 @@ namespace InventoryContents
         public override void OnAddComponent()
         {
             Init(_inventorCore);
-            Debug.Log(SubOpenItemInformations.Count);
         }
 
         public void AddEventOpen(ISubOpenItemInformation subOpenItem)

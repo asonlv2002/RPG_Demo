@@ -1,6 +1,7 @@
 ﻿namespace InventoryContents
 {
     using UnityEngine;
+    using UnityEngine.Events;
     using System.Collections.Generic;
     using Item.ItemGameData;
 
@@ -42,16 +43,16 @@
             }
         }
 
-        public void SubItemData(ItemData itemData)
+        public void SubItemData(ItemData itemData,UnityAction OnOverCount= null)
         {
             var itemInventory = _itemInventories.Find(x => x.ItemData == itemData);
             itemInventory.SubCount(1);
             if(itemInventory.Count==0)
             {
-                MonoBehaviour.Destroy(itemInventory.gameObject);
                 _itemInventories.Remove(itemInventory);
+                MonoBehaviour.Destroy(itemInventory.gameObject);
+                OnOverCount?.Invoke();
             }
-
         }
 
     }

@@ -313,6 +313,8 @@ MonoBehaviour:
     _itemDatas:
     - {fileID: 11400000, guid: 31ed814412bc7da4393c4449e1df56de, type: 2}
     - {fileID: 11400000, guid: aec0f5946b999144989216c3b2f1f956, type: 2}
+    - {fileID: 11400000, guid: 7023539b2b7dbac459e1b7be6c82ca5d, type: 2}
+    - {fileID: 11400000, guid: c12da4d618f7be144a47d475b8a56099, type: 2}
     _inventoryCore: {fileID: 5953335334954565258}
     itemInventoryPrefab: {fileID: 867776188639406291, guid: f68a5074977f6b64288169ab35022586, type: 3}
     _inventoryContent: {fileID: 741047642347349401}
