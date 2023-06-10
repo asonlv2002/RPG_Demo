@@ -23,8 +23,6 @@ namespace InventoryContents
 
         public void OnOpenInformation(ItemData itemData)
         {
-            //_inventorCore.MainCores.GetCore<ItemInforCores>().GetContentComponent<OpenCloseItemInfor>().TransfomPresentation.OnOpen();
-            //Debug.Log(SubOpenItemInformations.Count);
             foreach (var eventOpen in SubOpenItemInformations)
             {
                 eventOpen.OnOpenItemInformation(itemData);

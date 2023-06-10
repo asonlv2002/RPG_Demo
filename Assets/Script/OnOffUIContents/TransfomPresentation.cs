@@ -13,7 +13,8 @@
         [SerializeField] Ease _easeOpen;
         [field: SerializeField] public Vector2 StartAnchoredPositionOpen { get; private set; }
         [field: SerializeField] public Vector2 EndAnchoredPositionOpen { get; private set; }
-
+        [SerializeField] Vector2 _amchorMin = Vector2.one * 0.5f;
+        [SerializeField] Vector2 _amchorMax = Vector2.one * 0.5f;
 
         [Header("=== Close ===")]
         [SerializeField] RectTransform _closeStateContain;
@@ -23,7 +24,8 @@
 
         public void OnOpen()
         {
-            _transformUI.anchorMin = _transformUI.anchorMax = Vector2.one * 0.5f;
+            _transformUI.anchorMin = _amchorMin;
+            _transformUI.anchorMax = _amchorMax;
             _transformUI.anchoredPosition = StartAnchoredPositionOpen;
             _transformUI.gameObject.SetActive(true);
             _transformUI.DOAnchorPos(EndAnchoredPositionOpen, _durationOpen).SetEase(_easeOpen).OnComplete(() => {

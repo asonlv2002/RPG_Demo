@@ -287,7 +287,7 @@ MonoBehaviour:
   ActivateCameraControl: 1
   UseNewInputSystem: 1
   LogInputWarnings: 1
-  AlwaysRotateCamera: 1
+  AlwaysRotateCamera: 0
   HideCursor: 1
   CursorBehaviorOrbiting: 2
   LockRotationX: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
     <RayDistance>k__BackingField: 1.75
   _ChracterTranform:
     <PlayerTransform>k__BackingField: {fileID: 7071238952219145836}
-    _speedRotation: 90
+    _speedRotation: 180
 --- !u!1 &7071238952219145839
 GameObject:
   m_ObjectHideFlags: 0

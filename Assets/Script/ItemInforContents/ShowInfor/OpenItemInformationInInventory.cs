@@ -23,7 +23,7 @@
                     _buttonPresentation.UseAction.SetActive(false);
                     _buttonPresentation.Equip.SetActive(true);
                     _buttonPresentation.Unequip.SetActive(false);
-
+                    _buttonPresentation.AddQuickUseAction.SetActive(false);
                     _buttonPresentation.Equip.SetItemData(itemData);
                     break;
                 case ConsumbableData:

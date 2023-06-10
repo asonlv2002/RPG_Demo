@@ -3,6 +3,8 @@
     using UnityEngine;
     using UnityEngine.UI;
     using Item.ItemGameData;
+    using InventoryContents;
+
     internal abstract class ButtonEquipment : MonoBehaviour
     {
         [SerializeField] Button _button;
@@ -12,6 +14,7 @@
         ItemData _itemData;
         UIEquipmentCores _core;
         EquipmentOpenItemInfor _openInfor;
+        OpenCloseInventory _openCloseInventory;
         public void OnEquipItem(ItemData itemData)
         {
             if (itemData == _itemData) return;
@@ -44,7 +47,17 @@
             if(itemData)
             {
                 _openInfor.OnOpenInformation(itemData);
+            }else
+            {
+                GetOpenInventory();
+                _openCloseInventory.OpenAction();
             }
+        }
+
+        void GetOpenInventory()
+        {
+            if (_openCloseInventory != null) return;
+            _openCloseInventory = _core.MainCores.GetCore<InventoryCore>().GetContentComponent<OpenCloseInventory>();
         }
 
     }

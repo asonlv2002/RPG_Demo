@@ -16,6 +16,7 @@
         public void OnOpenItemInformation(ItemData itemData)
         {
             if (currentItemData != null && itemData == currentItemData) return;
+            ClearEffect();
             currentItemData = itemData;
             var effects = currentItemData.Effects;
             foreach (var effect in effects.ItemEffects)
@@ -27,6 +28,15 @@
                 effectDirection.SetText(effect.Description);
                 _effectDirections.Add(effectDirection);
             }
+        }
+
+        void ClearEffect()
+        {
+            foreach(var effect in _effectDirections)
+            {
+                MonoBehaviour.Destroy(effect.gameObject);
+            }
+            _effectDirections = new List<TextMeshProUGUI>();
         }
     }
 }
