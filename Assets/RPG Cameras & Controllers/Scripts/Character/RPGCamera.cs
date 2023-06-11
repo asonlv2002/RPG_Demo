@@ -631,7 +631,7 @@ namespace JohnStairs.RCC.Character {
                 return;
             }
 
-            // Get camera zoom input
+            // InitLate camera zoom input
             _desiredDistance = _desiredDistance - _inputZoomAmount * ZoomSensitivity;
             _desiredDistance = Mathf.Clamp(_desiredDistance, MinDistance, MaxDistance);
 

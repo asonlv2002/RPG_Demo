@@ -26,7 +26,7 @@ namespace JohnStairs.RCC.Character.MMO {
             }
 
             #region Process movement inputs
-            // Get the vertical movement direction/input
+            // InitLate the vertical movement direction/input
             float vertical = _inputMovement.y;
             // Check if both select buttons are pressed
             if (_inputMoveForwardHalf1 && _inputMoveForwardHalf2) {
@@ -36,7 +36,7 @@ namespace JohnStairs.RCC.Character.MMO {
 
             // Check the autorun input
             _rpgMotor.ToggleAutorun(_inputToggleAutorunning);
-            // Get all actions that start an active vertical movement
+            // InitLate all actions that start an active vertical movement
             bool forwardMovementStarted = _inputMovementStart && _inputMovement.y != 0
                                             || CombinedMoveForwardStart();
 
@@ -47,9 +47,9 @@ namespace JohnStairs.RCC.Character.MMO {
             _rpgMotorMMO.StopDiving(_inputMovementStop
                                     || CombinedMoveForwardStop());
 
-            // Get the horizontal movement direction/input
+            // InitLate the horizontal movement direction/input
             float rotation = _inputMovement.x;
-            // Get the horizontal strafe direction/input				
+            // InitLate the horizontal strafe direction/input				
             float strafe = _inputStrafe;
             // Strafe if the character should rotate but the rotation modifier is pressed
             if (_inputRotationModifier && _inputMovement.x != 0) {

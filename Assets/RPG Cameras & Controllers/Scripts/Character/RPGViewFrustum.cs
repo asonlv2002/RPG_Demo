@@ -547,7 +547,7 @@ namespace JohnStairs.RCC.Character {
 		protected virtual IEnumerator FadeObjectCoroutine(float target, float duration, GameObject o) {
             bool continueFading = true;
             int objectID = o.transform.GetInstanceID();
-            // Get all renderers of object o
+            // InitLate all renderers of object o
             Renderer[] objectRenderers = o.transform.GetComponentsInChildren<Renderer>();
 
             if (objectRenderers.Length > 0) {
@@ -627,7 +627,7 @@ namespace JohnStairs.RCC.Character {
                 closestPointToCharacter = collider.ClosestPointOnBounds(cameraToUse.transform.position);
             }
 
-            // Get the actual distance between the used camera and the character
+            // InitLate the actual distance between the used camera and the character
             float actualDistance = Vector3.Distance(closestPointToCharacter, cameraToUse.transform.position);
 
             // Compute the new alpha value depending on the fading start and end distance

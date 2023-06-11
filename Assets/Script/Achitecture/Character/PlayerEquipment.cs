@@ -9,35 +9,31 @@ namespace EquipmentContents
 
     internal class PlayerEquipment : EquipmentCore
     {
+
         [SerializeField] WeaponEquipmentManager _weaponEquipment; 
         [SerializeField] StoreEquipmentPosition equipmentPositions;
+        [SerializeField] TriggerItems _triggerItems;
         public EquipWeaponChannel channel;
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
             channel = new EquipWeaponChannel(MainCores);
             AddContentComponent(_weaponEquipment);
+            AddContentComponent(_triggerItems);
 
         }
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    //var equipment = other.gameObject;
-        //    //var equipmentData = equipment.GetComponent<IItem>();
-        //    //EquipEquipment(equipmentData);
-        //}
+        private void OnTriggerEnter(Collider other)
+        {
+            _triggerItems.EnterTriggerItem(other.gameObject);
+        }
 
-        //void EquipEquipment(IItem equipment)
-        //{
-        //    if (equipment == null) return;
-        //    IEquipmentManager equipmentManager = EquipmentManagerProxy(equipment);
-        //    equipmentManager.AddWepon(equipment);
-        //}
+        private void OnTriggerExit(Collider other)
+        {
+            _triggerItems.ExitTriggerItem(other.gameObject);
+        }
 
         public override void EquiEquipment(ItemData equipment)
         {
-            //IEquipmentManager equipmentManager = EquipmentManagerProxy(equipment);
-            //equipmentManager.AddWepon(equipment);
-
             _weaponEquipment.AddWepon(equipment);
         }
 

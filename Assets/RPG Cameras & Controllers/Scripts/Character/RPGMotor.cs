@@ -309,7 +309,7 @@ namespace JohnStairs.RCC.Character {
             }
 
             _swimmingStartHeight = transform.position.y + SwimmingStartHeight;
-            // Get the current water height
+            // InitLate the current water height
             _currentWaterHeight = GetCurrentWaterHeight();
             // Store if the character's global start swimming height is under the current water level
             _swimming = _swimmingStartHeight <= _currentWaterHeight;
@@ -375,7 +375,7 @@ namespace JohnStairs.RCC.Character {
                     continue;
                 }
 
-                // Get the point which is closest to the character, i.e. deepest inside the character collider
+                // InitLate the point which is closest to the character, i.e. deepest inside the character collider
                 Vector3 closestPoint = c.ClosestPoint(transform.position);
                 // Project the closest point to the same height as the character
                 closestPoint.y = transform.position.y;

@@ -1,4 +1,5 @@
-﻿using Item.ItemGameData;
+﻿using Item;
+using Item.ItemGameData;
 
 namespace EquipmentContents
 {

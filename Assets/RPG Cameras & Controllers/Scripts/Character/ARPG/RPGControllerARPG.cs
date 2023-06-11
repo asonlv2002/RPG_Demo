@@ -19,7 +19,7 @@ namespace JohnStairs.RCC.Character.ARPG {
             }
 
             #region Process movement inputs
-            // Get the vertical movement direction/input
+            // InitLate the vertical movement direction/input
             float vertical = _inputMovement.y;
             // Check if both select buttons are pressed
             if (_inputMoveForwardHalf1 && _inputMoveForwardHalf2) {
@@ -29,13 +29,13 @@ namespace JohnStairs.RCC.Character.ARPG {
 
             // Check the autorun input
             _rpgMotor.ToggleAutorun(_inputToggleAutorunning);
-            // Get all actions that can cancel an active autorun
+            // InitLate all actions that can cancel an active autorun
             bool stopAutorunning = _inputMovementStart && _inputMovement.y != 0
                                     || CombinedMoveForwardStart();
             // Signal the usage of actions cancelling the autorunning
             _rpgMotor.StopAutorun(stopAutorunning);
 
-            // Get the horizontal movement direction/input
+            // InitLate the horizontal movement direction/input
             float horizontal = _inputMovement.x;
 
             // Create and set the player's input direction inside the motor

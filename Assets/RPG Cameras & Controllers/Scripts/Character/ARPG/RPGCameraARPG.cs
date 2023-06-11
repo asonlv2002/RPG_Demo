@@ -34,7 +34,7 @@ namespace JohnStairs.RCC.Character.ARPG {
                 #endregion Rotation X input processing
 
                 #region Rotation Y input processing
-                // Get rotation Y axis input
+                // InitLate rotation Y axis input
                 if (!LockRotationY) {
                     _desiredRotationY += (InvertRotationY ? -1 : 1) * _inputRotationAmount.y * RotationYSensitivity;
                 }

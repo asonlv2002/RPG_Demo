@@ -302,7 +302,7 @@ namespace JohnStairs.RCC.Character.MMO {
             if (_rpgMotorMMO
                 && AlignCameraWhenMoving
                 && !_turningRoutineStarted) {
-                // Get the input direction set by the controller
+                // InitLate the input direction set by the controller
                 Vector3 inputDirection = _rpgMotorMMO.GetInputDirection();
 
                 if ((inputDirection.z != 0 || inputDirection.x != 0 || combatLock)
@@ -501,7 +501,7 @@ namespace JohnStairs.RCC.Character.MMO {
         }
 
         /// <summary>
-        /// Get the target rotation euler angles for a turning routine depending on the turning rotation which should be performed
+        /// InitLate the target rotation euler angles for a turning routine depending on the turning rotation which should be performed
         /// </summary>
         /// <param name="rotationAxes">Rotation axes which should be considered</param>
         /// <returns>The target rotation in euler angles</returns>
