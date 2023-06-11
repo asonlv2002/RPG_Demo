@@ -6,10 +6,6 @@
 
         TransfomPresentation TransfomPresentation { get; }
 
-        public void OnOpen();
-
-        public void OnClose();
-
         public void OpenAction();
 
         public void CloseAction();

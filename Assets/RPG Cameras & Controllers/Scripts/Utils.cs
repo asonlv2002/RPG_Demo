@@ -175,7 +175,7 @@ namespace JohnStairs.RCC {
         }
 
         /// <summary>
-        /// Generate a random integer in the interval [min, max]
+        /// InitLate a random integer in the interval [min, max]
         /// </summary>
         /// <param name="min">Inclusive lower bound</param>
         /// <param name="max">Inclusive upper bound</param>

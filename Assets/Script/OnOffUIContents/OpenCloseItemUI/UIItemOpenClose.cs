@@ -23,19 +23,15 @@ namespace OnOffUIContents
             ItemInfor = OpenCloseCore.MainCores.GetCore<ItemInforCores>().GetContentComponent<OpenCloseItemInfor>();
             Inventory.OnOpenAction = Equipment.OnOpenAction  = OpenUI;
             Inventory.OnCloseAction = Equipment.OnCloseAction  = CloseUI;
-            //Inventory.CloseAction();
-            //Inventory.CloseAction();
-            //ItemInfor.CloseAction();
         }
 
         void OpenUI()
         {
-            Debug.Log("Open");
+
         }
 
         void CloseUI()
         {
-            Debug.Log("Close");
             if (!Equipment.IsOpen && !Inventory.IsOpen) ItemInfor.CloseAction();
         }
     }

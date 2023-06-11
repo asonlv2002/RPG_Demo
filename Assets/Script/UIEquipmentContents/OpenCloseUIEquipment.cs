@@ -21,15 +21,6 @@ namespace UIEquipmentContents
             _openEquipment?.onClick.AddListener(OpenAction);
             _closeEquipment?.onClick.AddListener(CloseAction);
         }
-        public void OnClose()
-        {
-            
-        }
-
-        public void OnOpen()
-        {
-            
-        }
 
         public void OpenAction()
         {

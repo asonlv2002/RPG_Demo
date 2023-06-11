@@ -1,6 +1,6 @@
 ﻿namespace UIEquipmentContents
 {
-    internal class WeaponButton : ButtonEquipment
+    internal class WeaponButton : EquipmentSlot
     {
     }
 }

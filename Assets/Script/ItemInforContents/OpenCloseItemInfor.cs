@@ -20,13 +20,6 @@ namespace ItemInforContents
         {
             _closeUI.onClick.AddListener(CloseAction);
         }
-        public void OnClose()
-        {
-        }
-
-        public void OnOpen()
-        {
-        }
 
         public void OpenAction()
         {

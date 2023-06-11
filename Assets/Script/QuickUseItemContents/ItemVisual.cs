@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using EquipmentContents;
+using Achitecture;
 
 namespace QuickUseItemContents
 {
@@ -12,22 +14,28 @@ namespace QuickUseItemContents
         RectTransform RectTransform;
         [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] Canvas canvas;
+        [SerializeField] Button _onClick;
         [SerializeField] Image _icon;
         [SerializeField] TextMeshProUGUI _countText;
 
+        UseConsumableItem _useItem;
         int _countItem;
 
         bool _wasSwitched;
-
         public ItemData ItemData { get; private set; }
-        [field : SerializeField] public QuickUseSlot CurrentSlot { get; private set; }
+        public QuickUseSlot CurrentSlot { get; private set; }
 
-        public void SetSlot(QuickUseSlot currentSlot)
+        public void Init(ItemData itemData)
         {
-            CurrentSlot = currentSlot;
-            CurrentSlot.SetCurrentItem(this);
-            SetTranform(CurrentSlot.SlotTransform);
+            ItemData = itemData;
+            _icon.sprite = ItemData.Information.Sprite;
+            RectTransform = this.transform as RectTransform;
+            this.gameObject.SetActive(true);
+            _onClick.onClick.AddListener(UseItem);
+            InitLate();
         }
+
+
 
         #region Drag
         public void OnBeginDrag(PointerEventData eventData)
@@ -56,7 +64,7 @@ namespace QuickUseItemContents
         {
             if(_wasSwitched == false)
             {
-                SetSlot(CurrentSlot);
+                SetQuickUseSlot(CurrentSlot);
             }
 
             canvasGroup.blocksRaycasts = true;
@@ -70,16 +78,20 @@ namespace QuickUseItemContents
             itemVisual = checkItem;
             return itemVisual != null;
         }
+
+
+        public void SetQuickUseSlot(QuickUseSlot currentSlot)
+        {
+            CurrentSlot = currentSlot;
+            CurrentSlot.SetCurrentItem(this);
+            RectTransform.anchoredPosition = CurrentSlot.SlotTransform.anchoredPosition;
+        }
         void OnSwitItemVisual(ItemVisual itemVisual)
         {
             var slot = itemVisual.CurrentSlot;
-            itemVisual.SetSlot(this.CurrentSlot);
-            this.SetSlot(slot);
+            itemVisual.SetQuickUseSlot(this.CurrentSlot);
+            this.SetQuickUseSlot(slot);
             _wasSwitched = true;
-        }
-        void SetTranform(RectTransform slotTransfrom)
-        {
-            RectTransform.anchoredPosition = slotTransfrom.anchoredPosition;
         }
 
         public void AddCount(int value)
@@ -94,21 +106,23 @@ namespace QuickUseItemContents
             _countText.text = _countItem.ToString();
         }
 
-        public void Init(ItemData itemData)
+        void UseItem()
         {
-            ItemData = itemData;
-            _icon.sprite = ItemData.Information.Sprite;
-            RectTransform = this.transform as RectTransform;
-            this.gameObject.SetActive(true);
-        }
 
-        public void UseItem()
-        {
+            _useItem.UseItem(ItemData);
             SubCount(1);
             if(_countItem ==0)
             {
                 CurrentSlot.SetCurrentItem(null);
                 Destroy(gameObject);
+            }
+        }
+
+        void InitLate()
+        {
+            if(_useItem == null)
+            {
+                _useItem = CharacterSingletonIntance.Instance.MainCore.GetCore<EquipmentCore>().GetContentComponent<UseConsumableItem>();
             }
         }
     }

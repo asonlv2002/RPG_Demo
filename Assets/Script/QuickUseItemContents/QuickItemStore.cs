@@ -23,7 +23,7 @@ namespace QuickUseItemContents
             {
                 var itemVisual = MonoBehaviour.Instantiate(itemVisualPrefab,_containItemVisual);
                 itemVisual.Init(itemData);
-                itemVisual.SetSlot(_slotAble);
+                itemVisual.SetQuickUseSlot(_slotAble);
                 itemVisual.AddCount(1);
             }
         }

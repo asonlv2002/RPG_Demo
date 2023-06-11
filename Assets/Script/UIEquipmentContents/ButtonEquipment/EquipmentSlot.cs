@@ -5,7 +5,7 @@
     using Item.ItemGameData;
     using InventoryContents;
 
-    internal abstract class ButtonEquipment : MonoBehaviour
+    internal abstract class EquipmentSlot : MonoBehaviour
     {
         [SerializeField] Button _button;
         [SerializeField] Image _icon;

@@ -4,6 +4,7 @@
     using UnityEngine.UI;
     using UnityEngine.EventSystems;
     using Item.ItemGameData;
+    using InventoryContents;
 
     internal class QuickUseSlot : MonoBehaviour, IDropHandler
     {
@@ -16,7 +17,7 @@
         {
             SlotTransform = GetComponent<RectTransform>();
             OnClickUseItem = GetComponent<Button>();
-            OnClickUseItem.onClick.AddListener(UseItem);
+            OnClickUseItem.onClick.AddListener(AddItemFormInventory);
         }
         public void OnDrop(PointerEventData eventData)
         {
@@ -24,7 +25,7 @@
             if (checkItem)
             {
                 checkItem.CurrentSlot.SetCurrentItem(null);
-                checkItem.SetSlot(this);
+                checkItem.SetQuickUseSlot(this);
             }
 
         }
@@ -34,20 +35,12 @@
             CurrentItem = itemVisual;
         }
 
-        void AddCurrenItemData()
+        void AddItemFormInventory()
         {
+            var openInvenTory = _quickUseCores.MainCores.GetCore<InventoryCore>().GetContentComponent<OpenCloseInventory>();
+            if (openInvenTory.IsOpen) return;
+            openInvenTory.OpenAction();
 
-        }
-
-        void SubCurrenItemData()
-        {
-
-        }
-
-        void UseItem()
-        {
-            Debug.Log("2002");
-            Debug.Log(CurrentItem?.ItemData);
         }
     }
 }

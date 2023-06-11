@@ -213,8 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentItem>k__BackingField: {fileID: 0}
   <SlotTransform>k__BackingField: {fileID: 2703744288882695737}
-  OnClickUseItem: {fileID: 0}
-  _quickUseCores: {fileID: 0}
+  OnClickUseItem: {fileID: 2703744288882695736}
+  _quickUseCores: {fileID: 2703744289268189792}
 --- !u!1 &2703744289036578948
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,8 +504,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentItem>k__BackingField: {fileID: 0}
   <SlotTransform>k__BackingField: {fileID: 2703744289217143414}
-  OnClickUseItem: {fileID: 0}
-  _quickUseCores: {fileID: 0}
+  OnClickUseItem: {fileID: 2703744289217143413}
+  _quickUseCores: {fileID: 2703744289268189792}
 --- !u!1 &2703744289268189804
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,8 +838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentItem>k__BackingField: {fileID: 0}
   <SlotTransform>k__BackingField: {fileID: 2703744289464568570}
-  OnClickUseItem: {fileID: 0}
-  _quickUseCores: {fileID: 0}
+  OnClickUseItem: {fileID: 2703744289464568575}
+  _quickUseCores: {fileID: 2703744289268189792}
 --- !u!1 &2703744289468291043
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,8 +977,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentItem>k__BackingField: {fileID: 0}
   <SlotTransform>k__BackingField: {fileID: 2703744289468291042}
-  OnClickUseItem: {fileID: 0}
-  _quickUseCores: {fileID: 0}
+  OnClickUseItem: {fileID: 2703744289468291041}
+  _quickUseCores: {fileID: 2703744289268189792}
 --- !u!1 &2703744289944490806
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,8 +1268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CurrentItem>k__BackingField: {fileID: 0}
   <SlotTransform>k__BackingField: {fileID: 2703744290607268163}
-  OnClickUseItem: {fileID: 0}
-  _quickUseCores: {fileID: 0}
+  OnClickUseItem: {fileID: 2703744290607268162}
+  _quickUseCores: {fileID: 2703744289268189792}
 --- !u!1 &2703744290628172458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,9 +1402,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2703744290687366441}
   canvas: {fileID: 0}
+  _onClick: {fileID: 8466843377762632046}
   _icon: {fileID: 2703744290355859711}
   _countText: {fileID: 5764235119387144908}
-  <CurrentSlot>k__BackingField: {fileID: 2703744289464568572}
 --- !u!225 &2703744290687366441
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1460,19 +1460,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2703744290687366447}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2703744290687366440}
-        m_TargetAssemblyTypeName: QuickUseItemContents.ItemVisual, Assembly-CSharp
-        m_MethodName: UseItem
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2703744290694523526
 GameObject:
   m_ObjectHideFlags: 0

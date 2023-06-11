@@ -24,15 +24,6 @@ namespace InventoryContents
             _closeInventory?.onClick.AddListener(CloseAction);
         }
 
-        public void OnOpen()
-        {
-        }
-
-        public void OnClose()
-        {
-        }
-
-
         public void OpenAction()
         {
             _openInventory.gameObject.SetActive(false);
