@@ -408,7 +408,7 @@ namespace JohnStairs.RCC.Character {
                 UsedCamera = CameraUsage.SpawnOwnCamera;
             }
 
-            // Check if there is an assigned camera to use
+            // TriggerStat if there is an assigned camera to use
             if (UsedCamera == CameraUsage.SpawnOwnCamera) {
                 // Create one for usage in the following code
                 GameObject camObject = new GameObject(transform.name + transform.GetInstanceID() + " Camera");
@@ -421,7 +421,7 @@ namespace JohnStairs.RCC.Character {
             }
 
             _skybox = CameraToUse.GetComponent<Skybox>();
-            // Check if the used camera has a skybox attached
+            // TriggerStat if the used camera has a skybox attached
             if (_skybox == null) {
                 // No skybox attached => add a skybox and assign it to the _skybox variable
                 CameraToUse.gameObject.AddComponent<Skybox>();
@@ -635,7 +635,7 @@ namespace JohnStairs.RCC.Character {
             _desiredDistance = _desiredDistance - _inputZoomAmount * ZoomSensitivity;
             _desiredDistance = Mathf.Clamp(_desiredDistance, MinDistance, MaxDistance);
 
-            // Check if one of the switch buttons is pressed
+            // TriggerStat if one of the switch buttons is pressed
             if (_inputMinDistanceZoom) {
                 _desiredDistance = MinDistance;
             } else if (_inputMaxDistanceZoom) {
@@ -666,14 +666,14 @@ namespace JohnStairs.RCC.Character {
         /// <returns>Computed orbital position as close as possible to the desired position</returns>
         protected virtual Vector3 ComputeNewCameraPosition() {
             float closestPivotDistance = Mathf.Infinity;
-            // Check if the shape of the view frustum
+            // TriggerStat if the shape of the view frustum
             bool pyramidViewFrustum = _rpgViewFrustum.Shape == RPGViewFrustum.FrustumShape.Pyramid;
 
             #region Check pivot occlusion
             // Compute the desired pivot position
             _desiredPivotPosition = ComputePivotPosition(_rotationXSmooth);
 
-            // Check if the pivot was set up to be internal or external, i.e. within the character collider or not
+            // TriggerStat if the pivot was set up to be internal or external, i.e. within the character collider or not
             if (_internalPivot) {
                 // INTERNAL PIVOT
                 _pivotRetreat = _desiredPivotPosition;
@@ -709,7 +709,7 @@ namespace JohnStairs.RCC.Character {
                 }
             } else {
                 // EXTERNAL PIVOT 
-                // Check if there is occlusion between the pivot and the character, i.e. if the pivot should move closer to the character
+                // TriggerStat if there is occlusion between the pivot and the character, i.e. if the pivot should move closer to the character
                 _pivotRetreat = transform.position;
 
                 Vector3 colliderHead = GetColliderHeadPosition();
@@ -722,7 +722,7 @@ namespace JohnStairs.RCC.Character {
                     // Extra length will be handled inside the view frustum for the cuboid view frustum
                     extraLength = (_desiredPivotPosition - _pivotRetreat).normalized * CameraToUse.nearClipPlane;
                 }
-                // Check for occlusion between the pivot retreat and the desired pivot position
+                // TriggerStat for occlusion between the pivot retreat and the desired pivot position
                 closestPivotDistance = _rpgViewFrustum.CheckForOcclusion(_pivotRetreat, _desiredPivotPosition + extraLength, CameraToUse);
                 // Fade objects between both positions
                 _rpgViewFrustum.HandleObjectFading(_pivotRetreat, _desiredPivotPosition, CameraToUse);
@@ -812,17 +812,17 @@ namespace JohnStairs.RCC.Character {
         /// </summary>
         /// <returns>True if an pivot inside the assigned collider was found, otherwise false</returns>
         public virtual bool HasInternalPivot() {
-            // Check assignment since this method can also be called by an Editor script
+            // TriggerStat assignment since this method can also be called by an Editor script
             if (!_collider) {
                 _collider = GetComponent<Collider>();
 
-                // Check again
+                // TriggerStat again
                 if (!_collider) {
                     // No collider component found at all => assume an external pivot
                     return false;
                 }
             }
-            // Check if within the character collider or not
+            // TriggerStat if within the character collider or not
             return _collider.bounds.Contains(ComputePivotPosition(0));
         }
 
@@ -838,7 +838,7 @@ namespace JohnStairs.RCC.Character {
         /// Handles turning on/off underwater effects
         /// </summary>
         protected virtual void HandleUnderwaterEffects() {
-            // Check if the camera is underwater
+            // TriggerStat if the camera is underwater
             if (CheckIfUnderWater()) {
                 // Change the fog settings only once
                 if (!_underwater) {
@@ -975,7 +975,7 @@ namespace JohnStairs.RCC.Character {
         /// Checks for a change of the UsedSkybox via SetUsedSkybox()
         /// </summary>
         protected virtual void CheckForChangedSkybox() {
-            // Check if the UsedSkybox changed
+            // TriggerStat if the UsedSkybox changed
             if (_skyboxChanged) {
                 // Update the used camera's skybox
                 _skybox.material = UsedSkybox;

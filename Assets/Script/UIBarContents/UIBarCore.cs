@@ -9,8 +9,8 @@ namespace UIBarContents
         [SerializeField] Slider Slider;
         protected Stat StatBase;
         protected void SetMaxValue(int value)
-        {
-            Slider.maxValue += value;
+        { 
+            Slider.maxValue = value;
         }
 
         protected void SetCurrentValue(int value)

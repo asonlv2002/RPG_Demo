@@ -301,7 +301,7 @@ namespace JohnStairs.RCC.Character {
             _canRotate = _characterInfo?.CanRotate() ?? true;
 
             if (_movementDirection.y < 0 || _swimming) {
-                // Check for grounded only if we are drawn towards the ground
+                // TriggerStat for grounded only if we are drawn towards the ground
                 _grounded = Physics.CheckSphere(_colliderBottom.center + Vector3.down * GroundedTolerance, _colliderBottom.radius, ~IgnoredLayers, QueryTriggerInteraction.Ignore);
             } else {
                 // Upward movement, e.g. jumping => disable grounded check so that colliders from the side cannot interrupt the movement
@@ -437,7 +437,7 @@ namespace JohnStairs.RCC.Character {
                 Vector3 slidingDirection = new Vector3(hitNormal.x, -hitNormal.y, hitNormal.z);
                 // Normalize the sliding direction and make it orthogonal to the hit normal
                 Vector3.OrthoNormalize(ref hitNormal, ref slidingDirection);
-                // Check if the slope is too steep
+                // TriggerStat if the slope is too steep
                 if (Mathf.Round(slope) > _characterController.slopeLimit) {
                     slide = true;
                     // Add sliding force
@@ -451,7 +451,7 @@ namespace JohnStairs.RCC.Character {
             if (slide) {
                 // Update the buffer
                 _slidingBuffer -= Time.deltaTime;
-                // Check if the buffer is depleted
+                // TriggerStat if the buffer is depleted
                 if (_slidingBuffer < 0 /*&& moveDirection != Vector3.zero*/) {
                     _sliding = true;
                     // Set the movement direction to the combined sliding directions
@@ -484,7 +484,7 @@ namespace JohnStairs.RCC.Character {
         /// Prevents the character from swimming above the surface of the water it is currently swimming in
         /// </summary>
         protected virtual void PreventSwimmingAboveSurface() {
-            // Check if the planned move in Y direction would lead to the character being above the current water level
+            // TriggerStat if the planned move in Y direction would lead to the character being above the current water level
             if (_movementDirection.y * Time.deltaTime + _swimmingStartHeight > _currentWaterHeight) {
                 //  Prevent that the character can swim above the water level => cap the movement in Y direction
                 _movementDirection.y = Mathf.Min(0, _movementDirection.y);

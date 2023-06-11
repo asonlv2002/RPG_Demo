@@ -21,10 +21,5 @@ namespace StatContents
             AddContentComponent(DEF);
 
         }
-
-        private void Update()
-        {
-            MP.SubCurrentStateValue(value);
-        }
     }
 }

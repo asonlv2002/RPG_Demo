@@ -28,13 +28,13 @@ namespace JohnStairs.RCC.Character.MMO {
             #region Process movement inputs
             // InitLate the vertical movement direction/input
             float vertical = _inputMovement.y;
-            // Check if both select buttons are pressed
+            // TriggerStat if both select buttons are pressed
             if (_inputMoveForwardHalf1 && _inputMoveForwardHalf2) {
                 // Let the character move forward
                 vertical = 1.0f;
             }
 
-            // Check the autorun input
+            // TriggerStat the autorun input
             _rpgMotor.ToggleAutorun(_inputToggleAutorunning);
             // InitLate all actions that start an active vertical movement
             bool forwardMovementStarted = _inputMovementStart && _inputMovement.y != 0
@@ -75,7 +75,7 @@ namespace JohnStairs.RCC.Character.MMO {
             // Toggle walking inside the motor
             _rpgMotor.ToggleWalking(_inputToggleWalking);
 
-            // Check if the jump button is pressed down
+            // TriggerStat if the jump button is pressed down
             if (_inputJump) {
                 // Signal the motor to jump
                 _rpgMotor.Jump();

@@ -12,30 +12,35 @@
         public virtual void AddCurrentStatValue(int value)
         {
             CurrentStatValue += value;
-            ModifyValue();
+            OnModifyValue();
         }
 
         public virtual void SubCurrentStateValue(int value)
         {
             CurrentStatValue -= value;
             if (CurrentStatValue < MIN_STAT) CurrentStatValue = MIN_STAT;
-            ModifyValue();
+            OnModifyValue();
         }
 
-        void ModifyValue()
+        void OnModifyValue()
         {
             OnModifyCurrentValue?.Invoke(CurrentStatValue);
         }
 
-        public void AddEventModify(UnityAction<int> eventModify)
+        public void AddEventCurrenValueModify(UnityAction<int> eventModify)
         {
             OnModifyCurrentValue += eventModify;
         }
 
-        public void RemoveEventModify(UnityAction<int> eventModify)
+        public void RemoveEventCurrentValueModify(UnityAction<int> eventModify)
         {
             OnModifyCurrentValue -= eventModify;
         }
         public int GetCurrentStatValue() => CurrentStatValue;
+
+        public virtual void TriggerStat()
+        {
+            OnModifyValue();
+        }
     }
 }

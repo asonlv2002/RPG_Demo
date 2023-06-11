@@ -2,24 +2,25 @@
 using Item;
 using UnityEngine.Events;
 using UnityEngine;
+using Item.InEnviroment;
 
 namespace EquipmentContents
 {
     [System.Serializable]
     internal class TriggerItems : EquipmentComponent
     {
-        [SerializeField] public UnityAction<IItem> OnEnterTriggerItem;
-        [SerializeField] public UnityAction<IItem> OnExitTriggerItem;
+        [SerializeField] public UnityAction<ItemInEnviroment> OnEnterTriggerItem;
+        [SerializeField] public UnityAction<ItemInEnviroment> OnExitTriggerItem;
 
         public void EnterTriggerItem(GameObject objectTrigger)
         {
-            var equipmentData = objectTrigger.GetComponent<IItem>();
-            if (equipmentData != null) OnEnterTriggerItem.Invoke(equipmentData);
+            var item = objectTrigger.GetComponent<ItemInEnviroment>();
+            if (item != null) OnEnterTriggerItem.Invoke(item);
         }
         public void ExitTriggerItem(GameObject objectTrigger)
         {
-            var equipmentData = objectTrigger.GetComponent<IItem>();
-            if (equipmentData != null) OnExitTriggerItem.Invoke(equipmentData);
+            var item = objectTrigger.GetComponent<ItemInEnviroment>();
+            if (item != null) OnExitTriggerItem.Invoke(item);
         }
     }
 }

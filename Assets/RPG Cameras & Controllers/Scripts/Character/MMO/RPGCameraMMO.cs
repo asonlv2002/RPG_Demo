@@ -142,7 +142,7 @@ namespace JohnStairs.RCC.Character.MMO {
                 _alignCameraWhenMovingDisabled = false;
             }
 
-            // Check if the camera's Y rotation is contrained by terrain
+            // TriggerStat if the camera's Y rotation is contrained by terrain
             bool enableCameraLookUp = !(_rpgMotorMMO?.IsSwimming() ?? false)
                                         && _rpgViewFrustum.IsTouchingGround(CameraToUse, _cameraPivotPosition);
 
@@ -197,7 +197,7 @@ namespace JohnStairs.RCC.Character.MMO {
                     }
                 }
 
-                // Check if a look-up should be performed because _rotationY is constrained by terrain
+                // TriggerStat if a look-up should be performed because _rotationY is constrained by terrain
                 if (enableCameraLookUp) {
                     _rotationY = Mathf.Clamp(_desiredRotationY, Mathf.Max(rotationYMinLimit, RotationYMin), RotationYMax);
                     // Set the desired rotation Y rotation to compute the degrees of looking up with the camera
@@ -213,7 +213,7 @@ namespace JohnStairs.RCC.Character.MMO {
             #endregion Process rotation input axes
 
             #region Character alignment using a turning coroutine
-            // Check the character alignment mode
+            // TriggerStat the character alignment mode
             if (_rpgMotorMMO
                 && (_characterInfo?.CanRotate() ?? true)
                 && !combatLock) {
@@ -281,7 +281,7 @@ namespace JohnStairs.RCC.Character.MMO {
             }
             #endregion Character alignment using a turning coroutine
 
-            // Check if the camera should stay in place and not rotate with the character
+            // TriggerStat if the camera should stay in place and not rotate with the character
             float deltaX = _rpgMotorMMO?.GetYRotationDegrees() ?? 0;
             if (deltaX != 0
                 && !_inputAllowOrbitingWithCharRotation) {
@@ -322,7 +322,7 @@ namespace JohnStairs.RCC.Character.MMO {
 
             // Compute the new camera position            
             CameraToUse.transform.position = ComputeNewCameraPosition();
-            // Check if we are in third or first person and adjust the camera rotation behavior
+            // TriggerStat if we are in third or first person and adjust the camera rotation behavior
             if (_distanceSmooth > 0.1f) {
                 // In third person => orbit camera
                 CameraToUse.transform.LookAt(_cameraPivotPosition);

@@ -1,7 +1,7 @@
 ﻿
 namespace StatContents
 {
-    internal class StatCore : Achitecture.CoreContain<StatComponent>
+    internal abstract class StatCore : Achitecture.CoreContain<StatComponent>
     {
 
     }

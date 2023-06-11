@@ -13,10 +13,6 @@ namespace QuickUseItemContents
         [SerializeField] RectTransform _containItemVisual;
 
         QuickUseSlot _slotAble;
-        public override void OnAddComponent()
-        {
-            Debug.Log(quickUseSlots.Count);
-        }
 
         public void AddItemData(ItemData itemData)
         {

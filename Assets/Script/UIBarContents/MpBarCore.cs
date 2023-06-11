@@ -16,13 +16,9 @@
             StatCore stat = null;
             yield return new WaitUntil(() => CheckOutStatCore(out stat));
             yield return new WaitUntil(() => CheckOutStatBase(stat,out StatBase));
-            StatBase.AddEventModify(SetCurrentValue);
-        }
-
-
-        private void OnDestroy()
-        {
-            StatBase.RemoveEventModify(SetCurrentValue);
+            StatBase.AddEventCurrenValueModify(SetCurrentValue);
+            StatBase.AddEventMaxValueModify(SetMaxValue);
+            StatBase.TriggerStat();
         }
     }
 }

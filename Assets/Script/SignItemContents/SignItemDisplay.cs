@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using InventoryContents;
-using Item;
+using Item.InEnviroment;
 
 namespace SignItemContents
 {
@@ -14,9 +14,9 @@ namespace SignItemContents
         [SerializeField] Image _icon;
         [SerializeField] TextMeshProUGUI _name;
         [SerializeField] SignItemCores _signItemCores;
-        public IItem Item { get; private set; }
+        public ItemInEnviroment Item { get; private set; }
 
-        public void InitSignItem(IItem item)
+        public void InitSignItem(ItemInEnviroment item)
         {
             Item = item;
             _icon.sprite = Item.ItemData.Information.Sprite;
@@ -28,9 +28,7 @@ namespace SignItemContents
         {
             _signItemCores.MainCores.GetCore<InventoryCore>().GetContentComponent<ItemInventoryStore>().AddItemData(Item.ItemData);
             _signItemCores.GetContentComponent<SignItemStore>().RemoveSignItem(this);
-        }
-
-
-
+            MonoBehaviour.Destroy(Item.gameObject);
+        }    
     }
 }

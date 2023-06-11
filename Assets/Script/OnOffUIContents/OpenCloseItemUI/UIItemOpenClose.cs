@@ -36,8 +36,6 @@ namespace OnOffUIContents
         void CloseUI()
         {
             Debug.Log("Close");
-            Debug.Log(Equipment.IsOpen);
-            Debug.Log(Inventory.IsOpen);
             if (!Equipment.IsOpen && !Inventory.IsOpen) ItemInfor.CloseAction();
         }
     }

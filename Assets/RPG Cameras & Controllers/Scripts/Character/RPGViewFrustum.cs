@@ -439,7 +439,7 @@ namespace JohnStairs.RCC.Character {
                 // Create a new coroutine for fading out the object
                 IEnumerator coroutine = FadeObjectCoroutine(FadeOutAlpha, FadeOutDuration, o);
 
-                // Check if there is a running fade in coroutine for this object
+                // TriggerStat if there is a running fade in coroutine for this object
                 if (_fadeInCoroutines.TryGetValue(objectID, out IEnumerator runningCoroutine)) {
                     // Stop the already running coroutine
                     StopCoroutine(runningCoroutine);
@@ -457,7 +457,7 @@ namespace JohnStairs.RCC.Character {
                 // Create a new coroutine for fading in the object
                 IEnumerator coroutine = FadeObjectCoroutine(FadeInAlpha, FadeInDuration, o);
 
-                // Check if there is a running fade out coroutine for this object
+                // TriggerStat if there is a running fade out coroutine for this object
                 if (_fadeOutCoroutines.TryGetValue(objectID, out IEnumerator runningCoroutine)) {
                     // Stop the already running coroutine
                     StopCoroutine(runningCoroutine);
@@ -577,7 +577,7 @@ namespace JohnStairs.RCC.Character {
                         float alpha = -1.0f;
 
                         foreach (Material m in mats) {
-                            // Check for standard (built-in) render pipeline or Universal Render Pipeline color properties
+                            // TriggerStat for standard (built-in) render pipeline or Universal Render Pipeline color properties
                             if (m.HasProperty("_Color") || m.HasProperty("_BaseColor")) {
                                 if (alpha == -1.0f) {
                                     // Compute the alpha only once

@@ -79,7 +79,7 @@ namespace JohnStairs.RCC.Character.ARPG {
                 // Calculate the movement speed
                 float resultingSpeed = ApplyMovementSpeedMultipliers(RunSpeed);
 
-                // Check if the character should turn first towards the facing direction before moving
+                // TriggerStat if the character should turn first towards the facing direction before moving
                 if (CompleteTurnWhileStanding
                     && !inMotionAlready // to prevent stopping and turning while already in motion
                     && !IsLookingInDirection(_facingDirection)) {

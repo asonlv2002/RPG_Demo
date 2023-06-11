@@ -7,7 +7,7 @@ namespace JohnStairs.RCC.Character.ARPG {
         protected override void LateUpdate() {
             base.LateUpdate();            
 
-            // Check if the camera's Y rotation is contrained by terrain
+            // TriggerStat if the camera's Y rotation is contrained by terrain
             bool enableCameraLookUp = !(_rpgMotor?.IsSwimming() ?? false) 
                                         && _rpgViewFrustum.IsTouchingGround(CameraToUse, _cameraPivotPosition);
 
@@ -39,7 +39,7 @@ namespace JohnStairs.RCC.Character.ARPG {
                     _desiredRotationY += (InvertRotationY ? -1 : 1) * _inputRotationAmount.y * RotationYSensitivity;
                 }
 
-                // Check if a look-up should be performed because _rotationY is constrained by terrain
+                // TriggerStat if a look-up should be performed because _rotationY is constrained by terrain
                 if (enableCameraLookUp) {
                     _rotationY = Mathf.Clamp(_desiredRotationY, Mathf.Max(rotationYMinLimit, RotationYMin), RotationYMax);
                     // Set the desired rotation Y rotation to compute the degrees of looking up with the camera
@@ -76,7 +76,7 @@ namespace JohnStairs.RCC.Character.ARPG {
             // Compute the new camera position            
             CameraToUse.transform.position = ComputeNewCameraPosition();
             
-            // Check if we are in third or first person and adjust the camera rotation behavior
+            // TriggerStat if we are in third or first person and adjust the camera rotation behavior
             if (_distanceSmooth > 0.1f) {
                 // In third person => orbit camera
                 CameraToUse.transform.LookAt(_cameraPivotPosition);

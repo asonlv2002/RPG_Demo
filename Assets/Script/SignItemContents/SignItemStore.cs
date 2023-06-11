@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using EquipmentContents;
 using Achitecture;
 using System.Collections;
-using Item;
+using Item.InEnviroment;
 
 namespace SignItemContents
 {
@@ -20,7 +20,7 @@ namespace SignItemContents
         {
             _signItemCores.StartCoroutine(InitLate());
         }
-        void OnEnterTriggerItem(IItem item)
+        void OnEnterTriggerItem(ItemInEnviroment item)
         {
             if(SignItems.Count == 0) _signItemCores.gameObject.SetActive(true);
             var signItem = MonoBehaviour.Instantiate(_signItemPrefab, _contain);
@@ -43,7 +43,7 @@ namespace SignItemContents
             SignItems.Add(signItem);
         }
 
-        void OnExitTriggerItem(IItem item)
+        void OnExitTriggerItem(ItemInEnviroment item)
         {
             var signItem = SignItems.Find(x => x.Item == item);
             if(signItem)
