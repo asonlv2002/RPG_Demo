@@ -22,10 +22,7 @@ namespace SignItemContents
         }
         void OnEnterTriggerItem(IItem item)
         {
-            if(SignItems.Count == 0)
-            {
-                _signItemCores.gameObject.SetActive(true);
-            }
+            if(SignItems.Count == 0) _signItemCores.gameObject.SetActive(true);
             var signItem = MonoBehaviour.Instantiate(_signItemPrefab, _contain);
             signItem.InitSignItem(item);
             AddSignItem(signItem);
@@ -58,14 +55,14 @@ namespace SignItemContents
         IEnumerator InitLate()
         {
             yield return new WaitUntil(() =>GetItemTrigger(CharacterSingletonIntance.Instance.MainCore.GetCore<EquipmentCore>(),out _triggerItems));
-            _triggerItems.OnExitTriggerItem += OnEnterTriggerItem;
+            _triggerItems.OnEnterTriggerItem += OnEnterTriggerItem;
             _triggerItems.OnExitTriggerItem += OnExitTriggerItem;
         }
 
         public override void OnRemoveComponent()
         {
-            _triggerItems.OnExitTriggerItem += OnEnterTriggerItem;
-            _triggerItems.OnExitTriggerItem += OnEnterTriggerItem;
+            _triggerItems.OnExitTriggerItem -= OnEnterTriggerItem;
+            _triggerItems.OnExitTriggerItem -= OnEnterTriggerItem;
         }
 
         bool GetItemTrigger(EquipmentCore equipmentCore, out TriggerItems triggerItems)

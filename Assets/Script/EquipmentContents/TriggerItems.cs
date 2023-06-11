@@ -5,15 +5,16 @@ using UnityEngine;
 
 namespace EquipmentContents
 {
+    [System.Serializable]
     internal class TriggerItems : EquipmentComponent
     {
-        public UnityAction<IItem> OnEnterTrigerItem;
-        public UnityAction<IItem> OnExitTriggerItem;
+        [SerializeField] public UnityAction<IItem> OnEnterTriggerItem;
+        [SerializeField] public UnityAction<IItem> OnExitTriggerItem;
 
         public void EnterTriggerItem(GameObject objectTrigger)
         {
             var equipmentData = objectTrigger.GetComponent<IItem>();
-            if (equipmentData != null) OnEnterTrigerItem.Invoke(equipmentData);
+            if (equipmentData != null) OnEnterTriggerItem.Invoke(equipmentData);
         }
         public void ExitTriggerItem(GameObject objectTrigger)
         {
