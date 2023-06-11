@@ -16,9 +16,9 @@ MonoBehaviour:
     <Name>k__BackingField: Poition
     _description: Poition
     <IDItem>k__BackingField: 080402
-    <Sprite>k__BackingField: {fileID: 21300000, guid: ca6f1abc22e4f6b49bed4ef4032c7191, type: 3}
+    <Sprite>k__BackingField: {fileID: 77039097, guid: 89abcce23369e844ba089fc1d6f9d106, type: 3}
   <Model>k__BackingField:
-    <Prefab>k__BackingField: {fileID: 0}
+    <Prefab>k__BackingField: {fileID: 1000012970591572, guid: d845e0b0cc09cea41a50f30d79913b32, type: 3}
     <Mesh>k__BackingField: {fileID: 0}
     <PositionEquip>k__BackingField: {x: 0, y: 0, z: 0}
     <RotationEquip>k__BackingField: {x: 0, y: 0, z: 0}

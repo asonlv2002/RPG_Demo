@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52b5689c9bc9dfc4497e9b4484a75776, type: 3}
-  m_Name: SuperPoition
+  m_Name: Potion Mp
   m_EditorClassIdentifier: 
   <Information>k__BackingField:
-    <Name>k__BackingField: Super Poition
-    _description: Super Poition
-    <IDItem>k__BackingField: 080402
-    <Sprite>k__BackingField: {fileID: -2115876465, guid: 89abcce23369e844ba089fc1d6f9d106, type: 3}
+    <Name>k__BackingField: Mp
+    _description: Mp
+    <IDItem>k__BackingField: 1000
+    <Sprite>k__BackingField: {fileID: 2064538331, guid: 89abcce23369e844ba089fc1d6f9d106, type: 3}
   <Model>k__BackingField:
-    <Prefab>k__BackingField: {fileID: 0}
+    <Prefab>k__BackingField: {fileID: 1000013317980782, guid: 81397a4ca1908e14ebf6a181ff6ef5dc, type: 3}
     <Mesh>k__BackingField: {fileID: 0}
     <PositionEquip>k__BackingField: {x: 0, y: 0, z: 0}
     <RotationEquip>k__BackingField: {x: 0, y: 0, z: 0}
   <Effects>k__BackingField:
     <ItemEffects>k__BackingField:
-    - {fileID: 11400000, guid: 56d3736d48817c546934628c0507399b, type: 2}
+    - {fileID: 11400000, guid: 2c97963a6a8879548a201b3c58ea8cf1, type: 2}

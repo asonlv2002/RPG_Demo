@@ -16,7 +16,7 @@ MonoBehaviour:
     <Name>k__BackingField: Bow
     _description: Bow
     <IDItem>k__BackingField: 101202
-    <Sprite>k__BackingField: {fileID: 21300000, guid: 92d2b7b7641f92f47b7eea0246d85c93, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: dbc8e8d6185bab34b809102019d234f6, type: 3}
   <Model>k__BackingField:
     <Prefab>k__BackingField: {fileID: 5548049123074737487, guid: 7658491a6a5199d4eb7ff35bd65be8f5, type: 3}
     <Mesh>k__BackingField: {fileID: 4300000, guid: 2a823087411ef0740ae596199a0a3faa, type: 2}
