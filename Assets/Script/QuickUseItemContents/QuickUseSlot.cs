@@ -38,7 +38,6 @@
         void AddItemFormInventory()
         {
             var openInvenTory = _quickUseCores.MainCores.GetCore<InventoryCore>().GetContentComponent<OpenCloseInventory>();
-            if (openInvenTory.IsOpen) return;
             openInvenTory.OpenAction();
 
         }

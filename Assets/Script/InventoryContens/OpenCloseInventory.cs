@@ -26,6 +26,7 @@ namespace InventoryContents
 
         public void OpenAction()
         {
+            if (IsOpen) return;
             _openInventory.gameObject.SetActive(false);
             OnOpenAction?.Invoke();
             TransfomPresentation.OnOpen();
