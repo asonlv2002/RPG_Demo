@@ -6,9 +6,19 @@ namespace ItemInforContents
 {
     internal class CharacterEquipListener : IConvertItemStationListener
     {
+        EquipEquipmentControl _equipEquipment;
         public void OnConverItemStation(ItemData itemData)
         {
-            CharacterSingletonIntance.Instance.MainCore.GetCore<EquipmentCore>().EquiEquipment(itemData);
+            LateInit();
+            _equipEquipment.EquipEquipment(itemData);
+        }
+
+        void LateInit()
+        {
+            if(_equipEquipment == null)
+            {
+                _equipEquipment = CharacterSingletonIntance.Instance.MainCore.GetCore<EquipmentCore>().GetContentComponent<EquipEquipmentControl>();
+            }
         }
     }
 }

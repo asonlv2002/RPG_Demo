@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d7069f1f1426d45900ff2561557152, type: 3}
   m_Name: Gain 1000 Hp
   m_EditorClassIdentifier: 
-  _description: '+ 1000 Hp
+  _description: '+ 100 Hp
 
 '
-  HP: 1000
+  HP: 100

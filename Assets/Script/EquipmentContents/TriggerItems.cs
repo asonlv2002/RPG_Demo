@@ -9,8 +9,8 @@ namespace EquipmentContents
     [System.Serializable]
     internal class TriggerItems : EquipmentComponent
     {
-        [SerializeField] public UnityAction<ItemInEnviroment> OnEnterTriggerItem;
-        [SerializeField] public UnityAction<ItemInEnviroment> OnExitTriggerItem;
+        public UnityAction<ItemInEnviroment> OnEnterTriggerItem;
+        public UnityAction<ItemInEnviroment> OnExitTriggerItem;
 
         public void EnterTriggerItem(GameObject objectTrigger)
         {

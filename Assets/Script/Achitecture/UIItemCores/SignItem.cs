@@ -11,6 +11,8 @@
             base.InitMainCore(mainCores);
             AddContentComponent(openCloseSignItems);
             AddContentComponent(_signItemSore);
+
+            gameObject.SetActive(false);
         }
     }
 }

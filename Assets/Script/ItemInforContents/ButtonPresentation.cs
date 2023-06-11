@@ -22,7 +22,6 @@
             Unequip.Init(itemInforCores);
             UseAction.Init(itemInforCores);
             AddQuickUseAction.Init(itemInforCores);
-
         }
 
         public void OnOpenItemInformation(ItemData itemData)

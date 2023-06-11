@@ -11,16 +11,15 @@ namespace EquipmentContents
     {
 
         [SerializeField] WeaponEquipmentManager _weaponEquipment; 
-        [SerializeField] StoreEquipmentPosition equipmentPositions;
+        [SerializeField] PositionEquipStore _positionEquipment;
+
         [SerializeField] TriggerItems _triggerItems;
-        public EquipWeaponChannel channel;
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
-            channel = new EquipWeaponChannel(MainCores);
-            AddContentComponent(_weaponEquipment);
             AddContentComponent(_triggerItems);
-
+            AddContentComponent(new UseConsumableItem(this));
+            InitEquipment();
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -32,14 +31,11 @@ namespace EquipmentContents
             _triggerItems.ExitTriggerItem(other.gameObject);
         }
 
-        public override void EquiEquipment(ItemData equipment)
+        void InitEquipment()
         {
-            _weaponEquipment.AddWepon(equipment);
-        }
-
-        public override void UnequipItem(ItemData equipment)
-        {
-            _weaponEquipment.RemoveWeapon();
+            AddContentComponent(_positionEquipment);
+            AddContentComponent(_weaponEquipment);
+            AddContentComponent(new EquipEquipmentControl(this));
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using Item.ItemGameData;
-using System.Collections.Generic;
 using Achitecture;
 using InputContents;
 using AnimatorContent;
 using StateContents;
 namespace EquipmentContents
 {
-    internal class EquipWeaponChannel 
+    internal class ComponentOnEquipWeaponSetter 
     {
         MainCores _mainCores;
         EquipWeaponFactory _factory;
@@ -16,7 +15,7 @@ namespace EquipmentContents
         StateCore _stateCore;
         EquipmentCore _equipmentCore;
         
-        public EquipWeaponChannel(MainCores mainCores)
+        public ComponentOnEquipWeaponSetter(MainCores mainCores)
         {
             _mainCores = mainCores;
             _animatorCore = _mainCores.GetCore<AnimatorCore>();

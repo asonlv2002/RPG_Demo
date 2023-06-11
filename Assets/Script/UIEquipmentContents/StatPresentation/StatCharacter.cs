@@ -13,6 +13,8 @@
         [SerializeField] UIEquipmentCores _UIEquipmentCores;
         [SerializeField] BaseStatPresentation Hp;
         [SerializeField] BaseStatPresentation Mp;
+        [SerializeField] BaseStatPresentation Atk;
+        [SerializeField] BaseStatPresentation Def;
         StatCore _startCore;
         public override void OnAddComponent()
         {
@@ -27,7 +29,6 @@
             statControl.AddEventCurrenValueModify(statPresentation.SetCurrentValue);
             StatHasMaxValue statHasMaxvalue = statControl is StatHasMaxValue ? statControl as StatHasMaxValue : null;
             statHasMaxvalue?.AddEventMaxValueModify(statPresentation.SetMaxValue);
-
             statControl.TriggerStat();
         }
 
@@ -36,6 +37,8 @@
             await Task.Run(() => Wait());
             InitStat<HPStat>(_startCore, Hp);
             InitStat<MPStat>(_startCore, Mp);
+            InitStat<ATKStat>(_startCore, Atk);
+            InitStat<DEFStat>(_startCore, Def);
         }
 
         async void Wait()

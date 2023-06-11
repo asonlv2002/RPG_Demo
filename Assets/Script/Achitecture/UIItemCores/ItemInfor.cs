@@ -16,9 +16,12 @@
             AddContentComponent(_effectsPresentation);
             AddContentComponent(_buttonOnInfor);
 
+
+            AddContentComponent(new UseListener(this));
             AddContentComponent(new EquipListeners(this));
             AddContentComponent(new UnequipListeners(this));
             AddContentComponent(new AddQuickUseListener(this));
+ 
 
             this.gameObject.SetActive(false);
             _openCloseItemInfor.TransfomPresentation.OnClose();

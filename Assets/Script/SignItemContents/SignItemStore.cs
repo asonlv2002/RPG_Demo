@@ -1,10 +1,10 @@
-﻿using Item.ItemGameData;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using EquipmentContents;
 using Achitecture;
 using System.Collections;
 using Item.InEnviroment;
+using System.Threading.Tasks;
 
 namespace SignItemContents
 {
@@ -18,7 +18,7 @@ namespace SignItemContents
         TriggerItems _triggerItems;
         public override void OnAddComponent()
         {
-            _signItemCores.StartCoroutine(InitLate());
+            InitLate();
         }
         void OnEnterTriggerItem(ItemInEnviroment item)
         {
@@ -52,25 +52,37 @@ namespace SignItemContents
             }
         }
 
-        IEnumerator InitLate()
-        {
-            yield return new WaitUntil(() =>GetItemTrigger(CharacterSingletonIntance.Instance.MainCore.GetCore<EquipmentCore>(),out _triggerItems));
-            _triggerItems.OnEnterTriggerItem += OnEnterTriggerItem;
-            _triggerItems.OnExitTriggerItem += OnExitTriggerItem;
-        }
-
         public override void OnRemoveComponent()
         {
             _triggerItems.OnExitTriggerItem -= OnEnterTriggerItem;
             _triggerItems.OnExitTriggerItem -= OnEnterTriggerItem;
         }
 
-        bool GetItemTrigger(EquipmentCore equipmentCore, out TriggerItems triggerItems)
-        {
-            triggerItems = null;
-            if (!equipmentCore) return false;
 
-            return (triggerItems = equipmentCore.GetContentComponent<TriggerItems>()) != null;
+        async void InitLate()
+        {
+            EquipmentCore equipmentCore = null;
+            while (equipmentCore == null)
+            {
+                equipmentCore = CharacterSingletonIntance.Instance.MainCore.GetCore<EquipmentCore>();
+                await Task.Delay(1);
+            }
+            _triggerItems = equipmentCore.GetContentComponent<TriggerItems>();
+            _triggerItems.OnEnterTriggerItem += OnEnterTriggerItem;
+            _triggerItems.OnExitTriggerItem += OnExitTriggerItem;
         }
+
+        //async void Wait(EquipmentCore equipmentCore)
+        //{
+        //    while (equipmentCore == null)
+        //    {
+        //        equipmentCore = CharacterSingletonIntance.Instance.MainCore.GetCore<EquipmentCore>();
+        //        Debug.Log(2);
+        //        await Task.Delay(1);
+        //    }
+        //    _triggerItems = equipmentCore.GetContentComponent<TriggerItems>();
+        //    _triggerItems.OnEnterTriggerItem += OnEnterTriggerItem;
+        //    _triggerItems.OnExitTriggerItem += OnExitTriggerItem;
+        //}
     }
 }

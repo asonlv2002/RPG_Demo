@@ -6,7 +6,12 @@
     {
         [SerializeField][TextArea] string _description;
         public string Description => _description;
-        public void ActiveEffect()
+        public virtual void EnableEffect(MainCores targetEffect)
+        {
+
+        }
+
+        public virtual void DisableEffect(MainCores targetEffect)
         {
 
         }

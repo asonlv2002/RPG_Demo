@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8fc5c6396af6b409fc66d502ad213b, type: 3}
   m_Name: Gain 100 Attack
   m_EditorClassIdentifier: 
-  _description: '+ 100 ATK
-
-    + 200 DEF'
+  _description: + 100 ATK
   Attack: 100

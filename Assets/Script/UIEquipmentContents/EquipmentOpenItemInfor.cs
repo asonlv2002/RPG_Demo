@@ -24,7 +24,6 @@ namespace UIEquipmentContents
         }
         public void OnOpenInformation(ItemData itemData)
         {
-            Debug.Log("Hello");
             foreach (var sub in SubOpenItemInformations)
             {
                 sub.OnOpenItemInformation(itemData);

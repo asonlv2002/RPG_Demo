@@ -6,10 +6,11 @@ namespace EquipmentContents
     using Item.ItemGameData;
     internal class WeaponEquipmentFactory
     {
-        WeaponEquipmentManager _context;
-        public WeaponEquipmentFactory(WeaponEquipmentManager weaponEquipment)
+        private PositionEquipStore _position;
+
+        public WeaponEquipmentFactory(PositionEquipStore position)
         {
-            _context = weaponEquipment;
+            _position = position;
         }
 
         public IItem WeaponFactory(WeaponData weaponData)
@@ -17,9 +18,9 @@ namespace EquipmentContents
             switch (weaponData)
             {
                 case ScytheData:
-                    return new ScytheEquipControll(_context.RightHand, weaponData);
+                    return new ScytheEquipControll(_position.RightHand, weaponData);
                 case BowData:
-                    return new BowEquipControll(_context.LeftHand, weaponData);
+                    return new BowEquipControll(_position.LeftHand, weaponData);
                 default: 
                     return null;
             }

@@ -9,21 +9,26 @@ namespace EquipmentContents
     [System.Serializable]
     internal class WeaponEquipmentManager :EquipmentComponent
     {
-        [SerializeField] PlayerEquipment equipemt;
-        [field: SerializeField] public Transform RightHand { get; private set; }
-        [field: SerializeField] public Transform LeftHand { get; private set; }
-        [field: SerializeField] public Transform Back { get; private set; }
-
+        [SerializeField] EquipmentCore _equipmentCore;
+        PositionEquipStore _positionEquipStore;
+        ComponentOnEquipWeaponSetter _componentSetter;
+        WeaponEquipmentFactory _weaponEquipFactory;
         IItem WeaponEquip;
         IItem WeaponUnequip;
 
         WeaponData currentWeaponData;
+        public override void OnAddComponent()
+        {
+            _positionEquipStore = _equipmentCore.GetContentComponent<PositionEquipStore>();
+            _componentSetter = new ComponentOnEquipWeaponSetter(_equipmentCore.MainCores);
+            _weaponEquipFactory = new WeaponEquipmentFactory(_positionEquipStore);
+        }
         public void AddWepon(ItemData itemData)
         {
             if (currentWeaponData == itemData as WeaponData) return;
             currentWeaponData = itemData as WeaponData;
-            equipemt.channel.EquipWeapon(currentWeaponData);
-            WeaponUnequip = new WeaponEquipmentFactory(this).WeaponFactory(currentWeaponData);
+            _componentSetter.EquipWeapon(currentWeaponData);
+            WeaponUnequip = _weaponEquipFactory.WeaponFactory(currentWeaponData);
             Equip();
         }
 
@@ -37,19 +42,14 @@ namespace EquipmentContents
 
         public void UnEquip()
         {
-            equipemt.channel.RemoveWeapon();
-            (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(null);
-            WeaponUnequip = null;
+            WeaponUnequip = WeaponEquip;
             WeaponEquip = null;
-            currentWeaponData = null;   
-            //WeaponUnequip = WeaponEquip;
-            //WeaponEquip = null;
-            //(WeaponUnequip as IItemCreateModel).ItemRenderModel.SetTransForm(Back);
+            (WeaponUnequip as IItemCreateModel).ItemRenderModel.SetTransForm(_positionEquipStore.Back);
         }
 
         public void RemoveWeapon()
         {
-            equipemt.channel.RemoveWeapon();
+            _componentSetter.RemoveWeapon();
             (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(null);
             WeaponUnequip = null;
             WeaponEquip = null;

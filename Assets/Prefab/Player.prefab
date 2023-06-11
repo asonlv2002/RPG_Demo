@@ -47,13 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponEquipment:
-    equipemt: {fileID: 1291106231639487442}
+    _equipmentCore: {fileID: 1291106231639487442}
     <RightHand>k__BackingField: {fileID: 4602699961766297157}
     <LeftHand>k__BackingField: {fileID: 2901305791837427615}
     <Back>k__BackingField: {fileID: 1217167959300335459}
-  equipmentPositions:
-    _handLeft: {fileID: 0}
-    _handRight: {fileID: 4602699961766297157}
+  _positionEquipment:
+    <RightHand>k__BackingField: {fileID: 4602699961766297157}
+    <LeftHand>k__BackingField: {fileID: 2901305791837427615}
+    <Back>k__BackingField: {fileID: 1217167959300335459}
 --- !u!65 &6937373947587880381
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -737,11 +738,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP:
-    CurrentStatValue: 200
+    CurrentStatValue: 100
     MaxStatValue: 200
     MIN_OF_MAX_VALUE: 1
   MP:
-    CurrentStatValue: 200
+    CurrentStatValue: 100
     MaxStatValue: 200
     MIN_OF_MAX_VALUE: 1
   SPEED:
