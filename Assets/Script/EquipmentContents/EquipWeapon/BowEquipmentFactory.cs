@@ -36,7 +36,7 @@ namespace EquipmentContents
             var bowStateSore = new BowStateStore(_state);
             _state.AddContentComponent(bowStateSore);
             var movementStore = _state.GetContentComponent<MovementStateStore>();
-            movementStore.AddAttackGroup(bowStateSore.AimShootGroup);
+            movementStore.AddAttackGroup(bowStateSore.BowAttackGroup);
             bowStateSore.AddMovement(movementStore.Movement);
             _state.EnterNextState(movementStore.Movement);
         }

@@ -1,10 +1,10 @@
 ﻿namespace StateContents
 {
     using UnityEngine;
-    internal class BowAimShootHolding : BowAttack
+    internal class BowAimHolding : BowAttack
     {
         InputMovementAdapter _inputMovement;
-        public BowAimShootHolding(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
+        public BowAimHolding(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
         {
             ActionParameter = Animator.StringToHash("isShootHold");
             _inputMovement = StateContent.GetContentComponent<InputMovementAdapter>();
@@ -23,7 +23,7 @@
             Debug.Log("Holding");
             if (!InputAttack.IsHolding)
             {
-                if (EnterFriendState(BowStore.AimShootReslease)) return;
+                if (EnterFriendState(BowStore.BowAimReslease)) return;
 
             }
             base.UpdateState();

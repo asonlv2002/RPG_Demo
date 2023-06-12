@@ -885,4 +885,6 @@ MonoBehaviour:
   _animatorAttackControllers:
     <Scythe>k__BackingField: {fileID: 9100000, guid: 794fde1e3c7e0ce47b815d467adda733, type: 2}
     <Bow>k__BackingField: {fileID: 9100000, guid: 1c17bee902a4c984ebebf9f6a6f25f43, type: 2}
+  _animatorEnterAnimation:
+    animatorCore: {fileID: 3447673468840574943}
   body: {fileID: 7071238952219145836}

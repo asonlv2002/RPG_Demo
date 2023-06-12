@@ -18,6 +18,7 @@ namespace StateContents
             AddContentComponent(new MovementAnimatorControllerAdapter(animator));
             AddContentComponent(new AttackControllerAdapter(animator));
             AddContentComponent(new ActionRender(animator));
+            AddContentComponent(new AnimatorAdapter(animator));
             AddContentComponent(new StatusEquipAdapter(equipmen));
 
             AddContentComponent(new MovementStateStore(this));

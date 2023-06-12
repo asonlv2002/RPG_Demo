@@ -21,6 +21,11 @@
                 if (EnterFriendState(ScytheStore.AttackOnAir)) return;
             }
         }
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            Physiscal.FloatOnGround(Body.FLoatDirection);
+        }
 
         public override bool ConditionInitChildState()
         {

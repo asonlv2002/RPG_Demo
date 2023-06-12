@@ -8,30 +8,24 @@ namespace InputContents
     internal class InputAttackScyther: InputComponent
     {
         private InputAttackScythe Input;
-        private List<AttackScytheInput> InputAttackScytherQueue;
-        private float deltaTimedDeleteInput = 0.1f;
-        private float runTime;
-        bool isAttacking;
+        private List<AttackScytheInput> _attackScytheInput;
+
+        RemoveInputControler removeInputControler;
         public InputAttackScyther()
         {
             Input = new InputAttackScythe();
-            InputAttackScytherQueue = new List<AttackScytheInput>();
+            _attackScytheInput = new List<AttackScytheInput>();
+            InitilazationInput();
+            removeInputControler = new RemoveInputControler(ReadInputToState, 0.1f);
+        }
+        public override void OnAddComponent()
+        {
             InitilazationInput();
         }
         protected void InitilazationInput()
         {
             Input.Attack.Enable();
-            Input.Attack.Shift.started += ReadAttackShift;
             Input.Attack.LeftMouse.started += ReadMouseLeft;
-        }
-
-        //void NewInput(InputAction.CallbackContext callbackContext)
-        //{
-        //    //AddInput(AttackScytheInput.InputQ);
-        //}
-
-        void ReadAttackShift(InputAction.CallbackContext callbackContext)
-        {
         }
 
         void ReadMouseLeft(InputAction.CallbackContext callbackContext)
@@ -40,48 +34,28 @@ namespace InputContents
         }
         public void ReadInputToState()
         {
-            InputAttackScytherQueue.RemoveAt(0);
+            _attackScytheInput.RemoveAt(0);
         }
         void AddInput(AttackScytheInput input)
         {
             Debug.Log(input);
-            InputAttackScytherQueue.Add(input);
-            RunTimeReduce();
+            _attackScytheInput.Add(input);
+            removeInputControler.RunTimeReduce();
         }
         public bool BeginInput(AttackScytheInput input)
         {
-            if (InputAttackScytherQueue.Count == 0) return false;
-            return input == InputAttackScytherQueue[0];
+            if (_attackScytheInput.Count == 0) return false;
+            return input == _attackScytheInput[0];
         }
-
-        async void RunTimeReduce()
-        {
-            runTime = deltaTimedDeleteInput;
-
-            while (isAttacking == false)
-            {
-                await Task.Delay(10);
-                runTime -= Time.deltaTime;
-                if (runTime <= 0)
-                {
-                    Debug.Log("Delete");
-                    ReadInputToState();
-                    return;
-                }
-
-            }    
-        }
-
         public void EndTask(bool _isAttacking)
         {
-            isAttacking = _isAttacking;
+            removeInputControler.EndTask(_isAttacking);
         }
-
         public override void OnRemoveComponent()
         {
             Input.Disable();
             Input = null;
-            InputAttackScytherQueue.Clear();
+            _attackScytheInput.Clear();
         }
 
     }

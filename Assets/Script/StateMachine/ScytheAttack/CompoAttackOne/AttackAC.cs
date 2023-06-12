@@ -15,14 +15,14 @@
             IsExit = false;
             base.EnterState();
             InputAttack.ReadInputToState();
-            TimePassed = Time.time + 1.333f;
+            TimePassed = Time.time;
             Debug.Log("EnterAC");
 
         }
         public override void UpdateState()
         {
             base.UpdateState();
-            if (TimePassed < Time.time && !IsExit)
+            if (TimePassed + animator.LenghtAction() < Time.time && !IsExit)
             {
                 IsExit = true;
                 if(EnterFriendState(ScytheStore.AttackAA)) return;

@@ -1,10 +1,10 @@
 ﻿namespace StateContents
 {
     using UnityEngine;
-    internal class BowAimShootRelease : BowAttack
+    internal class BowAimRelease : BowAttack
     {
         float TimePassed;
-        public BowAimShootRelease(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
+        public BowAimRelease(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
         {
             ActionParameter = Animator.StringToHash("isShootRelease");
         }
@@ -23,7 +23,7 @@
             if (Time.time > TimePassed)
             {
                 IsExit = true;
-                if (EnterFriendState(BowStore.AimShootLoad)) return;
+                if (EnterFriendState(BowStore.BowAimLoad)) return;
             }
             base.UpdateState();
         }

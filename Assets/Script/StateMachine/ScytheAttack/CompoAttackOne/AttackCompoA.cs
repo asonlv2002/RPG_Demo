@@ -28,10 +28,6 @@
             base.UpdateState();
 
         }
-        public override void ExitState()
-        {
-            base.ExitState();
-        }
         public override void InitilationChildrenState()
         {
             if (EnterChildState(ScytheStore.AttackAA)) return;

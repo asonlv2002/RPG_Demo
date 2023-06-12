@@ -8,18 +8,30 @@
 
         protected override void CreateStateContain()
         {
-            AimShootGroup = new BowAttackAimShootGroup(_stateContent, this);
+            BowAttackGroup = new BowAttackGroup(_stateContent, this);
+            BowAimGroup = new BowAimGroup(_stateContent, this);
 
-            AimShootLoad = new BowAimShootLoad(_stateContent, this);
-            AimShootHolding = new BowAimShootHolding(_stateContent, this);
-            AimShootReslease = new BowAimShootRelease(_stateContent, this);
+            BowAimLoad = new BowAimLoad(_stateContent, this);
+            BowAimHolding = new BowAimHolding(_stateContent, this);
+            BowAimReslease = new BowAimRelease(_stateContent, this);
+
+            BowFireGroup = new BowFireGroup(_stateContent, this);
+            BowFireOne = new BowFireOne(_stateContent, this);
+            BowFireTwo = new BowFireTwo(_stateContent, this);
+            BowFireThree = new BowFireThree(_stateContent, this);
 
         }
 
-        public BaseState AimShootGroup { get; private set; }
-        public BaseState AimShootLoad { get; private set; }
-        public BaseState AimShootHolding { get; private set; }
-        public BaseState AimShootReslease { get; private set; }
+        public BaseState BowAttackGroup { get; private set; }
+        public BaseState BowAimGroup { get; private set; }
+        public BaseState BowAimLoad { get; private set; }
+        public BaseState BowAimHolding { get; private set; }
+        public BaseState BowAimReslease { get; private set; }
+
+        public BaseState BowFireGroup { get; private set; }
+        public BaseState BowFireOne { get; private set; }
+        public BaseState BowFireTwo { get; private set; }
+        public BaseState BowFireThree { get; private set; }
         public BaseState Movement { get; private set; }
 
         public void AddMovement(BaseState move)
@@ -29,11 +41,11 @@
 
         public override void OnRemoveComponent()
         {
-            AimShootGroup = null;
-            AimShootLoad = null;
-            AimShootReslease = null;
-            AimShootHolding = null;
-            AimShootLoad = null;
+            BowAimGroup = null;
+            BowAimLoad = null;
+            BowAimReslease = null;
+            BowAimHolding = null;
+            BowAimLoad = null;
             Movement = null;
         }
     }

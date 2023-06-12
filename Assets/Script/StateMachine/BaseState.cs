@@ -14,14 +14,14 @@ namespace StateContents
         protected BodyAdapter Body;
 
         protected int ActionParameter;
-        protected Animator animator;
+        protected AnimatorAdapter animator;
 
         public int IndexPriorityFriend { get; protected set; }
 
         public BaseState(StateCore stateContent)
         {
             StateContent = stateContent;
-            animator = StateContent.GetContentComponent<ActionRender>().Animator;
+            animator = StateContent.GetContentComponent<AnimatorAdapter>();
             Physiscal = StateContent.GetContentComponent<PhysicAdapter>();
             Body = StateContent.GetContentComponent<BodyAdapter>();
 

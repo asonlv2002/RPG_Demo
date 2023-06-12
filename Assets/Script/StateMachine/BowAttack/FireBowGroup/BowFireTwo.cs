@@ -1,47 +1,50 @@
-﻿namespace StateContents
+﻿using InputContents;
+using UnityEngine;
+
+namespace StateContents
 {
-    using InputContents;
-    using UnityEngine;
-    internal class AttackAA : ScytheAttack
+    internal class BowFireTwo : BowAttack
     {
-        public AttackAA(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
+        float TimePassed;
+        public BowFireTwo(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
         {
-            ActionParameter = Animator.StringToHash("isAA");
+            ActionParameter = UnityEngine.Animator.StringToHash("isFireTwo");
         }
         public override void EnterState()
         {
-
             IsExit = false;
             base.EnterState();
             animator.SetBool(ActionParameter, true);
             InputAttack.ReadInputToState();
             TimePassed = Time.time;
-            Debug.Log("EnterAA");
+            Debug.Log("Enter BowFireTwo");
         }
+
         public override void UpdateState()
         {
             base.UpdateState();
-            if(Time.time > TimePassed+ animator.LenghtAction())
+            if (TimePassed + animator.LenghtAction() < Time.time)
             {
                 IsExit = true;
-                if (EnterFriendState(ScytheStore.AttackAB)) return;
+                if (EnterFriendState(BowStore.BowFireThree)) return;
             }
         }
+
         public override void ExitState()
         {
             animator.SetBool(ActionParameter, false);
-            Debug.Log("ExitAA");
+            Debug.Log("Exit BowFireTwo");
             base.ExitState();
         }
 
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackBowInput.Fire) && Body.IsOnGround;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
+            return ConditionEnterState();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace StateContents
         {
             
             AnimatorMovementController.EnterAnimatorMovement();
-            animator.applyRootMotion = false;
+            animator.SetRootMotion(false);
             base.EnterState();
         }
 

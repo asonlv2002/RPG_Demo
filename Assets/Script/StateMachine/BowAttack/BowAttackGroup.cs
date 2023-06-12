@@ -1,14 +1,15 @@
 ﻿namespace StateContents
 {
-    internal class ScytheAttackGroup : ScytheAttack
+    internal class BowAttackGroup : BowAttack
     {
         AttackControllerAdapter AnimatorController;
         StatusEquipAdapter _weaponEquipStatus;
-        public ScytheAttackGroup(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
+        public BowAttackGroup(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
         {
             AnimatorController = stateContent.GetContentComponent<AttackControllerAdapter>();
             _weaponEquipStatus = stateContent.GetContentComponent<StatusEquipAdapter>();
         }
+
         public override void EnterState()
         {
             AnimatorController.EnterAttackController();
@@ -20,31 +21,35 @@
         public override void UpdateState()
         {
             base.UpdateState();
-            if (ScytheStore.AttackOnGround.IsExit && ScytheStore.AttackOnAir.IsExit)
+            if (BowStore.BowFireGroup.IsExit && BowStore.BowAimGroup.IsExit)
             {
-                if (EnterFriendState(ScytheStore.Movement)) return;
+                if (EnterFriendState(BowStore.Movement)) return;
             }
         }
+
         public override void ExitState()
         {
             InputAttack.EndReduceTime(false);
             animator.SetRootMotion(false);
             base.ExitState();
         }
+
         public override bool ConditionInitChildState()
         {
             return true;
         }
+
         public override bool ConditionEnterState()
         {
             if (!_weaponEquipStatus.IsUsingWeapon) return false;
-            var childCondition = ScytheStore.AttackOnGround.ConditionInitChildState() || ScytheStore.AttackOnAir.ConditionInitChildState();
+            var childCondition = BowStore.BowFireGroup.ConditionEnterState() || BowStore.BowAimGroup.ConditionEnterState();
             return childCondition;
         }
+
         public override void InitilationChildrenState()
         {
-            if (EnterChildState(ScytheStore.AttackOnGround)) return;
-            else if (EnterChildState(ScytheStore.AttackOnAir)) return;
+            if (EnterChildState(BowStore.BowAimGroup)) return;
+            else if (EnterChildState(BowStore.BowFireGroup)) return;
         }
     }
 }

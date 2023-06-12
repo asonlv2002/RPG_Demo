@@ -35,6 +35,15 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""0a4ad1d9-0219-4974-a7cb-4f48d829b06a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
                     ""action"": ""Hold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b58a896c-e956-4dd0-ae2f-a42003152460"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
         // Attack
         m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
         m_Attack_Hold = m_Attack.FindAction("Hold", throwIfNotFound: true);
+        m_Attack_Fire = m_Attack.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -117,11 +138,13 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Attack;
     private IAttackActions m_AttackActionsCallbackInterface;
     private readonly InputAction m_Attack_Hold;
+    private readonly InputAction m_Attack_Fire;
     public struct AttackActions
     {
         private @InputAttackBow m_Wrapper;
         public AttackActions(@InputAttackBow wrapper) { m_Wrapper = wrapper; }
         public InputAction @Hold => m_Wrapper.m_Attack_Hold;
+        public InputAction @Fire => m_Wrapper.m_Attack_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Attack; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -134,6 +157,9 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
                 @Hold.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnHold;
                 @Hold.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnHold;
                 @Hold.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnHold;
+                @Fire.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnFire;
+                @Fire.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnFire;
+                @Fire.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnFire;
             }
             m_Wrapper.m_AttackActionsCallbackInterface = instance;
             if (instance != null)
@@ -141,6 +167,9 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
                 @Hold.started += instance.OnHold;
                 @Hold.performed += instance.OnHold;
                 @Hold.canceled += instance.OnHold;
+                @Fire.started += instance.OnFire;
+                @Fire.performed += instance.OnFire;
+                @Fire.canceled += instance.OnFire;
             }
         }
     }
@@ -148,5 +177,6 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
     public interface IAttackActions
     {
         void OnHold(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }

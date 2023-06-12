@@ -8,12 +8,14 @@ namespace AnimatorContent
    
         [field: SerializeField] private MovementAnimatorController _animatorMovementControllers;
         [field: SerializeField] private AnimatorAttackContains _animatorAttackControllers;
+        [field: SerializeField] private AnimatorEnterAnimation _animatorEnterAnimation;
         [SerializeField] protected Transform body;
         protected override void Awake()
         {
             base.Awake();
             AddContentComponent(_animatorMovementControllers);
             AddContentComponent(_animatorAttackControllers);
+            AddContentComponent(_animatorEnterAnimation);
         }
         public override void InitMainCore(MainCores mainCores)
         {
