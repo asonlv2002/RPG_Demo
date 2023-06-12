@@ -11,12 +11,14 @@
 
         public virtual void AddCurrentStatValue(int value)
         {
+            if (value <= 0) return;
             CurrentStatValue += value;
             OnModifyValue();
         }
 
         public virtual void SubCurrentStateValue(int value)
         {
+            if (value <= 0) return;
             CurrentStatValue -= value;
             if (CurrentStatValue < MIN_STAT) CurrentStatValue = MIN_STAT;
             OnModifyValue();
