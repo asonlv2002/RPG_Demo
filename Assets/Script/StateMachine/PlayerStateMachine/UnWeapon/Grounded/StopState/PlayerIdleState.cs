@@ -2,9 +2,11 @@
 {
     internal class PlayerIdleState : MovementState
     {
+        int AnimationRotateHash;
         public PlayerIdleState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             ActionParameter = UnityEngine.Animator.StringToHash("isIdle");
+            AnimationRotateHash = UnityEngine.Animator.StringToHash("Rotate");
         }
         public override void EnterState()
         {
@@ -21,6 +23,7 @@
 
         public override void UpdateState()
         {
+            LoadAnimationRotate();
             base.UpdateState();
             if (EnterFriendState(MovementStore.Move)) return;
             if(MovementStore.UnEquip.ConditionEnterState())
@@ -45,6 +48,11 @@
         public override bool ConditionInitChildState()
         {
             return !InputMovement.IsRunPressed;
+        }
+
+        void LoadAnimationRotate()
+        {
+            animator.SetFloat(AnimationRotateHash, InputMovement.DirectionRotate);
         }
     }
 }

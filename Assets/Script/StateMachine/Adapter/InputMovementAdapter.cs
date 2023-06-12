@@ -12,7 +12,7 @@ namespace StateContents
             InputMovement = inputContent.GetContentComponent<InputMovement>();
         }
 
-        public bool IsRunPressed => InputMovement.IsRunPressed;
+        public bool IsRunPressed => InputMovement.DirectionMovement !=0;
 
         public bool IsJumpPressed => InputMovement.IsJumpPressed;
 
