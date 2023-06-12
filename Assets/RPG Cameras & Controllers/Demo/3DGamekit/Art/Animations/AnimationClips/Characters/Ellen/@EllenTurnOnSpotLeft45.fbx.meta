@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: effcf99bf27527d4bb60e6ea50c792e9
 ModelImporter:
-  serializedVersion: 19301
+  serializedVersion: 21300
   internalIDToNameTable:
   - first:
       1: 100000
@@ -719,6 +719,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -754,13 +755,13 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
+      keepOriginalPositionXZ: 1
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -782,21 +783,27 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -1278,8 +1285,7 @@ ModelImporter:
     - name: Ellen_Chest
       parentName: Ellen_Spine
       position: {x: -0.0990385, y: -3.3259708e-18, z: 0.009736111}
-      rotation: {x: 0.0000000024922546, y: -0.0000018775463, z: 0.000000027419192,
-        w: 1}
+      rotation: {x: 0.0000000024922546, y: -0.0000018775463, z: 0.000000027419192, w: 1}
       scale: {x: 1, y: 1, z: 1.0000001}
     - name: Ellen_UpperChest
       parentName: Ellen_Chest
@@ -1749,8 +1755,7 @@ ModelImporter:
     - name: Ellen_Left_LowerLeg
       parentName: Ellen_Left_UpperLeg
       position: {x: -0.38615477, y: 0.000000043533287, z: 0}
-      rotation: {x: -0.0000000049165463, y: -0.0000010989598, z: -0.00000044419585,
-        w: 1}
+      rotation: {x: -0.0000000049165463, y: -0.0000010989598, z: -0.00000044419585, w: 1}
       scale: {x: 1.0000052, y: 0.9999978, z: 0.99999744}
     - name: Ellen_Left_Foot
       parentName: Ellen_Left_LowerLeg
@@ -1804,12 +1809,13 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a5674d01884853d4e8f2386a171e14d9,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a5674d01884853d4e8f2386a171e14d9, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
