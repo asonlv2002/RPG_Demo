@@ -48,9 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponEquipment:
     _equipmentCore: {fileID: 1291106231639487442}
-    <RightHand>k__BackingField: {fileID: 4602699961766297157}
-    <LeftHand>k__BackingField: {fileID: 2901305791837427615}
-    <Back>k__BackingField: {fileID: 1217167959300335459}
   _positionEquipment:
     <RightHand>k__BackingField: {fileID: 4602699961766297157}
     <LeftHand>k__BackingField: {fileID: 2901305791837427615}
@@ -746,7 +743,7 @@ MonoBehaviour:
     MaxStatValue: 200
     MIN_OF_MAX_VALUE: 1
   SPEED:
-    CurrentStatValue: 5
+    CurrentStatValue: 10
   ATK:
     CurrentStatValue: 100
   DEF:
