@@ -16,12 +16,12 @@
             base.EnterState();
             animator.SetBool(ActionParameter, true);
             IsExit = false;
-            TimePassed = Time.time + 1.1f;
+            TimePassed = Time.time;
         }
         public override void UpdateState()
         {
             base.UpdateState();
-            if(TimePassed < Time.time)
+            if(TimePassed+animator.LenghtAction() < Time.time)
             {
                 if (EnterFriendState(MovementStore.Idle)) return;
             }

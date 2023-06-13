@@ -28,6 +28,7 @@ namespace EquipmentContents
         public void UnequipEquipment(ItemData itemData)
         {
             DisableEffect(itemData);
+            _weponEquipment.RemoveWeapon();
         }
 
         void EnableEffectItem(ItemData itemData)

@@ -13,10 +13,12 @@ namespace ItemInforContents
 
         public void OnOpenItemInformation(ItemData itemData)
         {
-            _buttonPresentation.Equip.gameObject.SetActive(false);
-            _buttonPresentation.Unequip.gameObject.SetActive(true);
+            _buttonPresentation.Equip.SetActive(false);
+            _buttonPresentation.Unequip.SetActive(true);
             _buttonPresentation.Unequip.SetItemData(itemData);
             _buttonPresentation.OnOpenItemInformation(itemData);
+            _buttonPresentation.UseAction.SetActive(false);
+            _buttonPresentation.AddQuickUseAction.SetActive(false);
         }
     }
 }
