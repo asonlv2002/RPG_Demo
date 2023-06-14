@@ -45,5 +45,10 @@ namespace StateContents
         {
             inAir.StopOnAir(value);
         }
+
+        public void Fly(float vector)
+        {
+            inAir.Fly(vector);
+        }
     }
 }

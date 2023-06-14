@@ -15,7 +15,7 @@
         public override void UpdateState()
         {
             base.UpdateState();
-            if(ScytheStore.AttackCompoA.IsExit && ScytheStore.AttackE.IsExit)
+            if(ScytheStore.AttackCompoA.IsExit && ScytheStore.AttackEnegyGroup.IsExit)
             {
                 IsExit = true;
                 if (EnterFriendState(ScytheStore.AttackOnAir)) return;
@@ -33,12 +33,12 @@
         }
         public override bool ConditionEnterState()
         {
-            return ScytheStore.AttackCompoA.ConditionInitChildState();
+            return ScytheStore.AttackCompoA.ConditionInitChildState() || ScytheStore.AttackEnegyGroup.ConditionInitChildState();
         }
         public override void InitilationChildrenState()
         {
             if (EnterChildState(ScytheStore.AttackCompoA)) return;
-            else if(EnterChildState(ScytheStore.AttackE)) return;
+            else if(EnterChildState(ScytheStore.AttackEnegyGroup)) return;
         }
     }
 }

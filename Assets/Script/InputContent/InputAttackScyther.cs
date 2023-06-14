@@ -11,6 +11,8 @@ namespace InputContents
         private List<AttackScytheInput> _attackScytheInput;
 
         RemoveInputControler removeInputControler;
+
+        public bool IsAttackEnegy { get; private set; }
         public InputAttackScyther()
         {
             Input = new InputAttackScythe();
@@ -26,6 +28,8 @@ namespace InputContents
         {
             Input.Attack.Enable();
             Input.Attack.Attack_Q.started += ReadInputQ;
+            Input.Attack.EnegyAttack.started += ReadAttackEnegyStart;
+            Input.Attack.EnegyAttack.canceled += ReadAttackEnegyEnd;
         }
 
         void ReadInputQ(InputAction.CallbackContext callbackContext)
@@ -56,6 +60,15 @@ namespace InputContents
             Input.Disable();
             Input = null;
             _attackScytheInput.Clear();
+        }
+
+        void ReadAttackEnegyStart(InputAction.CallbackContext callbackContext)
+        {
+            IsAttackEnegy = true;
+        }
+        void ReadAttackEnegyEnd(InputAction.CallbackContext callbackContext)
+        {
+            IsAttackEnegy = false;
         }
 
     }

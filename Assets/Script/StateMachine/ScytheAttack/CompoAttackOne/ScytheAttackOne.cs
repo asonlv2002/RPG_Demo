@@ -2,36 +2,35 @@
 {
     using InputContents;
     using UnityEngine;
-    internal class AttackAB : ScytheAttack
+    internal class ScytheAttackOne : ScytheAttack
     {
-        public AttackAB(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
+        public ScytheAttackOne(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
-            ActionParameter = Animator.StringToHash("isAB");
+            ActionParameter = Animator.StringToHash("isAA");
         }
-
         public override void EnterState()
         {
+
             IsExit = false;
             base.EnterState();
-            animator.SetBool(ActionParameter,true);
+            animator.SetBool(ActionParameter, true);
             InputAttack.ReadInputToState();
             TimePassed = Time.time;
-            Debug.Log("EnterAB");
+            Debug.Log("EnterAA");
         }
         public override void UpdateState()
         {
-
             base.UpdateState();
-            if (TimePassed+animator.LenghtAction() < Time.time)
+            if(Time.time > TimePassed+ animator.LenghtAction())
             {
                 IsExit = true;
-                if (EnterFriendState(ScytheStore.AttackAC)) return;
+                if (EnterFriendState(ScytheStore.AttackAB)) return;
             }
         }
         public override void ExitState()
         {
             animator.SetBool(ActionParameter, false);
-            Debug.Log("ExitAB");
+            Debug.Log("ExitAA");
             base.ExitState();
         }
 

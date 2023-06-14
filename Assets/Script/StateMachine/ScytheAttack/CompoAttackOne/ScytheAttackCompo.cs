@@ -1,10 +1,11 @@
 ﻿namespace StateContents
 {
     using UnityEngine;
-    internal class AttackCompoA : ScytheAttack
+    internal class ScytheAttackCompo : ScytheAttack
     {
-        public AttackCompoA(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
+        public ScytheAttackCompo(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
+            IsExit = true;
         }
         public override bool ConditionEnterState()
         {
@@ -27,6 +28,11 @@
             IsExit = ScytheStore.AttackAA.IsExit && ScytheStore.AttackAB.IsExit && ScytheStore.AttackAC.IsExit;
             base.UpdateState();
 
+        }
+        public override void ExitState()
+        {
+            IsExit = true;
+            base.ExitState();
         }
         public override void InitilationChildrenState()
         {

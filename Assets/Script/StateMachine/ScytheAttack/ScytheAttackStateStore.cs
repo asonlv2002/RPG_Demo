@@ -15,12 +15,16 @@
             AttackQ = new ScytheAttackQ(_stateContent,this);
             AttackE = new ScytheAttackE(_stateContent,this);
 
-            AttackCompoA = new AttackCompoA(_stateContent, this);
+            AttackCompoA = new ScytheAttackCompo(_stateContent, this);
 
-            AttackAA = new AttackAA(_stateContent, this);
-            AttackAB = new AttackAB(_stateContent, this);
-            AttackAC = new AttackAC(_stateContent, this);
+            AttackAA = new ScytheAttackOne(_stateContent, this);
+            AttackAB = new ScytheAttackTwo(_stateContent, this);
+            AttackAC = new ScytheAttackThree(_stateContent, this);
 
+            AttackEnegyGroup = new ScytheAttackEnenyGroup(_stateContent, this);
+            AttackEnegyStart = new ScytheAttackEnenyStart(_stateContent, this);
+            AttackEnegyMid = new ScytheAttackEnegyMid(_stateContent, this);
+            AttackEnegyEnd = new ScytheAttackEnegyEnd(_stateContent, this);
 
         }
 
@@ -40,6 +44,10 @@
         public BaseState AttackAC { get; private set; }
 
         public BaseState Movement { get; private set; }
+        public BaseState AttackEnegyGroup { get; private set; }
+        public BaseState AttackEnegyStart { get; private set; }
+        public BaseState AttackEnegyMid { get; private set; }
+        public BaseState AttackEnegyEnd { get; private set; }
 
 
         public void AddMovement(BaseState move)

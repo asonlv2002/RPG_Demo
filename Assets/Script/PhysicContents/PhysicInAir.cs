@@ -28,5 +28,10 @@ namespace PhysicContents
         {
             PhysicCore.PhysiscHandler.isKinematic = value;
         }
+
+        public void Fly(float vector)
+        {
+            PhysicCore.Y_VelocityApplie = vector;
+        }
     }
 }

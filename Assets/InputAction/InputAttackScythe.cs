@@ -37,7 +37,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack_E"",
+                    ""name"": ""EnegyAttack"",
                     ""type"": ""Button"",
                     ""id"": ""41c9bd13-17af-4a0f-ad8b-b1f10cc23425"",
                     ""expectedControlType"": ""Button"",
@@ -79,11 +79,11 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""25a2d06b-0e40-4f91-bcfe-1f28350d84e9"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack_E"",
+                    ""action"": ""EnegyAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -117,7 +117,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
         // Attack
         m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
         m_Attack_Attack_Q = m_Attack.FindAction("Attack_Q", throwIfNotFound: true);
-        m_Attack_Attack_E = m_Attack.FindAction("Attack_E", throwIfNotFound: true);
+        m_Attack_EnegyAttack = m_Attack.FindAction("EnegyAttack", throwIfNotFound: true);
         m_Attack_Shift = m_Attack.FindAction("Shift", throwIfNotFound: true);
         m_Attack_LeftMouse = m_Attack.FindAction("LeftMouse", throwIfNotFound: true);
     }
@@ -180,7 +180,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Attack;
     private IAttackActions m_AttackActionsCallbackInterface;
     private readonly InputAction m_Attack_Attack_Q;
-    private readonly InputAction m_Attack_Attack_E;
+    private readonly InputAction m_Attack_EnegyAttack;
     private readonly InputAction m_Attack_Shift;
     private readonly InputAction m_Attack_LeftMouse;
     public struct AttackActions
@@ -188,7 +188,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
         private @InputAttackScythe m_Wrapper;
         public AttackActions(@InputAttackScythe wrapper) { m_Wrapper = wrapper; }
         public InputAction @Attack_Q => m_Wrapper.m_Attack_Attack_Q;
-        public InputAction @Attack_E => m_Wrapper.m_Attack_Attack_E;
+        public InputAction @EnegyAttack => m_Wrapper.m_Attack_EnegyAttack;
         public InputAction @Shift => m_Wrapper.m_Attack_Shift;
         public InputAction @LeftMouse => m_Wrapper.m_Attack_LeftMouse;
         public InputActionMap Get() { return m_Wrapper.m_Attack; }
@@ -203,9 +203,9 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                 @Attack_Q.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnAttack_Q;
                 @Attack_Q.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnAttack_Q;
                 @Attack_Q.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnAttack_Q;
-                @Attack_E.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnAttack_E;
-                @Attack_E.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnAttack_E;
-                @Attack_E.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnAttack_E;
+                @EnegyAttack.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnEnegyAttack;
+                @EnegyAttack.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnEnegyAttack;
+                @EnegyAttack.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnEnegyAttack;
                 @Shift.started -= m_Wrapper.m_AttackActionsCallbackInterface.OnShift;
                 @Shift.performed -= m_Wrapper.m_AttackActionsCallbackInterface.OnShift;
                 @Shift.canceled -= m_Wrapper.m_AttackActionsCallbackInterface.OnShift;
@@ -219,9 +219,9 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
                 @Attack_Q.started += instance.OnAttack_Q;
                 @Attack_Q.performed += instance.OnAttack_Q;
                 @Attack_Q.canceled += instance.OnAttack_Q;
-                @Attack_E.started += instance.OnAttack_E;
-                @Attack_E.performed += instance.OnAttack_E;
-                @Attack_E.canceled += instance.OnAttack_E;
+                @EnegyAttack.started += instance.OnEnegyAttack;
+                @EnegyAttack.performed += instance.OnEnegyAttack;
+                @EnegyAttack.canceled += instance.OnEnegyAttack;
                 @Shift.started += instance.OnShift;
                 @Shift.performed += instance.OnShift;
                 @Shift.canceled += instance.OnShift;
@@ -235,7 +235,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
     public interface IAttackActions
     {
         void OnAttack_Q(InputAction.CallbackContext context);
-        void OnAttack_E(InputAction.CallbackContext context);
+        void OnEnegyAttack(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
         void OnLeftMouse(InputAction.CallbackContext context);
     }

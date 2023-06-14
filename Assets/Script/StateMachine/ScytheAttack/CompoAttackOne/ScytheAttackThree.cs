@@ -2,9 +2,9 @@
 {
     using InputContents;
     using UnityEngine;
-    internal class AttackAC : ScytheAttack
+    internal class ScytheAttackThree : ScytheAttack
     {
-        public AttackAC(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
+        public ScytheAttackThree(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
             ActionParameter = Animator.StringToHash("isAC");
         }

@@ -25,5 +25,7 @@ namespace StateContents
             Input.EndTask(isAttacking);
         }
 
+        public bool IsAttackEnegy => Input.IsAttackEnegy;
+
     }
 }

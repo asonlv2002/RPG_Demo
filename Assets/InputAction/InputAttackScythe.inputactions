@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack_E",
+                    "name": "EnegyAttack",
                     "type": "Button",
                     "id": "41c9bd13-17af-4a0f-ad8b-b1f10cc23425",
                     "expectedControlType": "Button",
@@ -57,11 +57,11 @@
                 {
                     "name": "",
                     "id": "25a2d06b-0e40-4f91-bcfe-1f28350d84e9",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack_E",
+                    "action": "EnegyAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

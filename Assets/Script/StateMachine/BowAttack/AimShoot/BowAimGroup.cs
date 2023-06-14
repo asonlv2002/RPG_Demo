@@ -14,7 +14,6 @@ namespace StateContents
         public override void UpdateState()
         {
             base.UpdateState();
-            IsExit = false;
             IsExit = !InputAttack.IsHolding && BowStore.BowAimReslease.IsExit;
             if (IsExit)
             {

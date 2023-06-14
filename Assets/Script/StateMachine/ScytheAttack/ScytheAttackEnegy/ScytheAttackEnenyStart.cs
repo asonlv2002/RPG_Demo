@@ -1,13 +1,12 @@
-﻿
+﻿using UnityEngine;
+
 namespace StateContents
 {
-    using UnityEngine;
-    internal class BowAimLoad : BowAttack
+    internal class ScytheAttackEnenyStart : ScytheAttack
     {
-        float TimePassed;
-        public BowAimLoad(StateCore stateContent, BowStateStore bowStateStore) : base(stateContent, bowStateStore)
+        public ScytheAttackEnenyStart(StateCore stateContent, ScytheAttackStateStore Store) : base(stateContent, Store)
         {
-            ActionParameter = Animator.StringToHash("isShootLoad");
+            ActionParameter = Animator.StringToHash("isEnegyStart");
         }
 
         public override void EnterState()
@@ -21,14 +20,24 @@ namespace StateContents
 
         public override void UpdateState()
         {
-            if (Time.time > TimePassed+animator.LenghtAction())
+            if (Time.time > TimePassed + animator.LenghtAction())
             {
                 IsExit = true;
-                if (EnterFriendState(BowStore.BowAimHolding)) return;
+                if (EnterFriendState(ScytheStore.AttackEnegyMid)) return;
             }
-            if (EnterFriendState(BowStore.BowAimReslease)) return;
+            if (!InputAttack.IsAttackEnegy)
+            {
+                IsExit = true;
+            }
             base.UpdateState();
         }
+
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            Physiscal.Fly(2f);
+        }
+
         public override void ExitState()
         {
             IsExit = true;
@@ -38,9 +47,7 @@ namespace StateContents
         }
         public override bool ConditionInitChildState()
         {
-            return Body.IsOnGround && InputAttack.IsHolding;
+            return Body.IsOnGround && InputAttack.IsAttackEnegy;
         }
     }
 }
-
-
