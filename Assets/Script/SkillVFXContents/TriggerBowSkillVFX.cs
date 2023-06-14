@@ -3,12 +3,7 @@
     using UnityEngine;
     internal class TriggerBowSkillVFX : MonoBehaviour
     {
-        [SerializeField] BowSkill BowSkill;
-
-        //void ArrowFire()
-        //{
-        //    BowSkill.ArrowFire();
-        //}
+        [SerializeField] BowPurpleSkill BowSkill;
 
         void PurpleArrow()
         {

@@ -19,7 +19,6 @@
 
         public override void UpdateState()
         {
-            Debug.Log("Release");
             if (Time.time > TimePassed)
             {
                 IsExit = true;

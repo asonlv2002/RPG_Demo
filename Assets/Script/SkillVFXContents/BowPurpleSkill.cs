@@ -2,45 +2,24 @@
 {
     using System.Collections;
     using UnityEngine;
-    internal class BowSkill : SkillVFX
+    internal class BowPurpleSkill : SkillVFX
     {
-        [SerializeField] Vector3 posSpawn;
-        [SerializeField] Vector3 angle;
-        [SerializeField] GameObject Skill;
         [SerializeField] Transform playerTransForm;
-        [Header(" ===Aim Shoot===")]
         [SerializeField] Transform FirePoint;
-        [SerializeField] GameObject Enegy;
-        [SerializeField] GameObject Trails;
-        [SerializeField] GameObject ShokcWave;
-        [SerializeField] GameObject ProjectTile;
         [SerializeField] Transform target;
         [Header(" ===Purple Arrow ===")]
         [SerializeField] GameObject PurpleEnery;
         [SerializeField] GameObject ArrowPurple;
         [SerializeField] GameObject PurpleArrowAttack;
-
-        public void ArrowFire()
+        private void Start()
         {
-            var skill = Instantiate(Skill, playerTransForm);
-            skill.transform.forward = playerTransForm.forward;
-            skill.transform.position = posSpawn + playerTransForm.position;
-            skill.transform.localEulerAngles = angle;
-            skill.transform.SetParent(null);
-            Destroy(skill, 2);
+            PurpleEnery.SetActive(false);
+            ArrowPurple.SetActive(false);
         }
-
-        public void AimShoot()
-        {
-            StartCoroutine(RotateToTarget(1, target.position));
-            Enegy.GetComponent<ParticleSystem>().Play();
-            Trails.GetComponent<ParticleSystem>().Play();
-            ShokcWave.GetComponent<ParticleSystem>().Play();
-            StartCoroutine(Attack());
-        }
-
         public void PurpleArrow()
         {
+            PurpleEnery.SetActive(true);
+            ArrowPurple.SetActive(true);
             StartCoroutine(RotateToTarget(1, target.position));
             PurpleEnery.GetComponent<ParticleSystem>().Play();
             ArrowPurple.GetComponent<ParticleSystem>().Play();
@@ -65,16 +44,11 @@
             }
         }
 
-        IEnumerator Attack()
-        {
-            yield return new WaitForSeconds(1.45f);
-            GameObject projectile = Instantiate(ProjectTile, FirePoint.position, FirePoint.rotation);
-            projectile.GetComponent<TargetProjectile>().UpdateTarget(target, Vector3.zero);
-        }
-
         IEnumerator AttackPurpleArrow()
         {
+
             yield return new WaitForSeconds(1.2f);
+            PurpleArrowAttack.SetActive(true);
             PurpleArrowAttack.transform.parent = null;
             PurpleArrowAttack.transform.position = target.position;
             PurpleArrowAttack.GetComponent<ParticleSystem>().Play();

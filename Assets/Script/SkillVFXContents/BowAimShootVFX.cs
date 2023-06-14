@@ -5,29 +5,31 @@ namespace SkillVFXContents
     internal class BowAimShootVFX : MonoBehaviour
     {
         [SerializeField] Transform FirePoint;
+        [SerializeField] Transform target;
         [SerializeField] ParticleSystem Enegy;
         [SerializeField] ParticleSystem Trails;
         [SerializeField] ParticleSystem ShokcWave;
         [SerializeField] GameObject ProjectTile;
-        [SerializeField] Transform target;
+
 
         LoopParticaleSystem _loopTrails;
         LoopParticaleSystem _loopEnegy;
 
         private void Awake()
         {
-            Debug.Log(Enegy.GetComponent<LoopParticaleSystem>());
             _loopEnegy = Enegy.transform.GetComponent<LoopParticaleSystem>();
             _loopTrails = Trails.transform.GetComponent<LoopParticaleSystem>();
         }
         void AbsorbEnergy()
         {
+            _loopTrails.gameObject.SetActive(true);
+            _loopEnegy.gameObject.SetActive(true);
             _loopTrails.PlayInLoop();
             _loopEnegy.PlayInLoop();
             ShokcWave.Play();
         }
 
-        void Shoot()
+        void StrongShoot()
         {
             _loopTrails.SetEndLoop(true);
             _loopEnegy.SetEndLoop(true);

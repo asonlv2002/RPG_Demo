@@ -21,7 +21,6 @@ namespace StateContents
 
         public override void UpdateState()
         {
-            Debug.Log("Load");
             if (Time.time > TimePassed)
             {
                 IsExit = true;

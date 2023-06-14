@@ -20,7 +20,6 @@
 
         public override void UpdateState()
         {
-            Debug.Log("Holding");
             if (!InputAttack.IsHolding)
             {
                 if (EnterFriendState(BowStore.BowAimReslease)) return;

@@ -19,6 +19,11 @@
             base.UpdateState();
 
         }
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            Physiscal.FloatOnGround(Body.FLoatDirection);
+        }
         public override bool ConditionEnterState()
         {
             return BowStore.BowFireOne.ConditionInitChildState();

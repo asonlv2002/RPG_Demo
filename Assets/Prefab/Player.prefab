@@ -550,63 +550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccce057c80bad445a28d1ffb182462c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4329210023668356551
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3237658508003788743}
-  - component: {fileID: 8815305017922496008}
-  m_Layer: 0
-  m_Name: SkillVFX
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3237658508003788743
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4329210023668356551}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7071238952219145836}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8815305017922496008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4329210023668356551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97638704283c65c4593f5018c824019f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posSpawn: {x: 0, y: 1.25, z: 0}
-  angle: {x: 0, y: 0, z: 0}
-  Skill: {fileID: 1959579542829978, guid: 2534740678d61794bad4a74598a7f658, type: 3}
-  playerTransForm: {fileID: 7071238952219145836}
-  FirePoint: {fileID: 3166397228783299025}
-  Enegy: {fileID: 3004161481701359361}
-  Trails: {fileID: 1467840988340024028}
-  ShokcWave: {fileID: 1937617635787580, guid: 9c51cba4d70ecbe4f8ac4d297aa15857, type: 3}
-  ProjectTile: {fileID: 1531506572663662, guid: d3fba866398a814458686d100e8f07fc, type: 3}
-  target: {fileID: 0}
-  PurpleEnery: {fileID: 2221307153208997354}
-  ArrowPurple: {fileID: 4588982982932678582}
-  PurpleArrowAttack: {fileID: 3572998367922891603}
 --- !u!1 &7054057006086409681
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +752,6 @@ Transform:
   - {fileID: 455530951640735840}
   - {fileID: 4952863883754314058}
   - {fileID: 505877365224417165}
-  - {fileID: 3237658508003788743}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1875,19 +1817,6 @@ MonoBehaviour:
   _animatorEnterAnimation:
     animatorCore: {fileID: 3447673468840574943}
   body: {fileID: 7071238952219145836}
---- !u!114 &4950209221893802906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811130879818363193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ebcb096d0311245ac1e87cbced22c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BowSkill: {fileID: 8815305017922496008}
 --- !u!114 &6082501067155917335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1901,11 +1830,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 3166397228783299025}
+  target: {fileID: 0}
   Enegy: {fileID: 3131656525408854409}
   Trails: {fileID: 1649648045349788722}
   ShokcWave: {fileID: 198425197444539892, guid: 9c51cba4d70ecbe4f8ac4d297aa15857, type: 3}
   ProjectTile: {fileID: 1531506572663662, guid: d3fba866398a814458686d100e8f07fc, type: 3}
-  target: {fileID: 0}
 --- !u!114 &6623669735833555123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1921,3 +1850,21 @@ MonoBehaviour:
   _fireArrow: {fileID: 3055313549370131290}
   _enery: {fileID: 962989285734974205}
   _firePoint: {fileID: 3166397228783299025}
+--- !u!114 &8478079423025802811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811130879818363193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97638704283c65c4593f5018c824019f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransForm: {fileID: 7071238952219145836}
+  FirePoint: {fileID: 3166397228783299025}
+  target: {fileID: 0}
+  PurpleEnery: {fileID: 2221307153208997354}
+  ArrowPurple: {fileID: 4588982982932678582}
+  PurpleArrowAttack: {fileID: 3572998367922891603}
