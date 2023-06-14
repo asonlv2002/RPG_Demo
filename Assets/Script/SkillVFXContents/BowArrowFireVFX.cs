@@ -7,6 +7,7 @@ namespace SkillVFXContents
         [SerializeField] ParticleSystem _fireArrow;
         [SerializeField] ParticleSystem _enery;
         [SerializeField] Transform _firePoint;
+        [SerializeField] Transform _target;
 
 
         private void Start()
@@ -18,7 +19,6 @@ namespace SkillVFXContents
         void ArrowFire()
         {
             _enery.gameObject.SetActive(true);
-            _fireArrow.gameObject.SetActive(true);
             _enery.Play();
             Shoot();
         }
@@ -26,12 +26,13 @@ namespace SkillVFXContents
         [System.Obsolete]
         void Shoot()
         {
-
             _fireArrow.Play();
-            _fireArrow.transform.forward = _firePoint.forward;
+            var forward = _target.position - _firePoint.position;
+            _fireArrow.transform.forward = forward.normalized;
             var offset = Vector3.one * -0.25f;
             _fireArrow.transform.position = _firePoint.position+ offset;
             _fireArrow.transform.localEulerAngles = Vector3.zero;
+            _fireArrow.gameObject.SetActive(true);
         }
     }
 

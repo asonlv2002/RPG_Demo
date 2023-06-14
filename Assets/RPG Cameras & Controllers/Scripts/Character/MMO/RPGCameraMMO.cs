@@ -501,10 +501,10 @@ namespace JohnStairs.RCC.Character.MMO {
         }
 
         /// <summary>
-        /// InitLate the target rotation euler angles for a turning routine depending on the turning rotation which should be performed
+        /// InitLate the _target rotation euler angles for a turning routine depending on the turning rotation which should be performed
         /// </summary>
         /// <param name="rotationAxes">Rotation axes which should be considered</param>
-        /// <returns>The target rotation in euler angles</returns>
+        /// <returns>The _target rotation in euler angles</returns>
         protected virtual Vector3 GetCharacterTargetRotation(TurningRotation rotationAxes) {
             float targetXrotation = 0;
             float targetYrotation = 0;

@@ -27,9 +27,9 @@ namespace JohnStairs.RCC.Character {
 		bool CanSprint();
 
 		/// <summary>
-		/// Checks if the character locked onto a target, e.g. for combat
+		/// Checks if the character locked onto a _target, e.g. for combat
 		/// </summary>
-		/// <returns>True if the character locked onto a target, otherwise false</returns>
+		/// <returns>True if the character locked onto a _target, otherwise false</returns>
 		bool LockOnTarget();
 		
 		/// <summary>
@@ -40,17 +40,17 @@ namespace JohnStairs.RCC.Character {
 		float GetMovementSpeedInfluence(float basisValue);
 
 		/// <summary>
-		/// Gets the target's position in world coordinates.
+		/// Gets the _target's position in world coordinates.
 		/// Only used for ARPG if LockOnTarget() returns true 
 		/// </summary>
 		/// <returns>Target position in world coordinates</returns>
 		Vector3 GetTargetPosition();
 
 		/// <summary>
-		/// Gets the rotation towards the target's current position
+		/// Gets the rotation towards the _target's current position
 		/// Only used for MMO if LockOnTarget() returns true
 		/// </summary>
-		/// <returns>Rotation towards the current target</returns>
+		/// <returns>Rotation towards the current _target</returns>
 		Quaternion GetRotationTowardsTarget();
 	}
 }

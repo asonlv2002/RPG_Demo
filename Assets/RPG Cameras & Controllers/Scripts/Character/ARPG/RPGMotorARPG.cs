@@ -167,7 +167,7 @@ namespace JohnStairs.RCC.Character.ARPG {
                 Vector3 upReference = _enable3dMovement && (_surface || _dive) ? Vector3.Cross(_facingDirection, transform.right) : Vector3.up;
 
                 Quaternion targetRotation = Quaternion.LookRotation(_facingDirection, upReference);
-                // Smoothly rotate to the target rotation
+                // Smoothly rotate to the _target rotation
                 float delta = Quaternion.Angle(transform.rotation, targetRotation);
                 if (delta >= 180.0f) {
                     // Decrease delta under 180 so that SmoothDampAngle decreases
@@ -274,7 +274,7 @@ namespace JohnStairs.RCC.Character.ARPG {
         }
 
         /// <summary>
-        /// Teleports the character to the Transform target. If withYrotation is set to true, the character's 
+        /// Teleports the character to the Transform _target. If withYrotation is set to true, the character's 
         /// Y axis rotation is additionally aligned with the Y axis rotation of the given Transform
         /// </summary>
         /// <param name="target">Transform to teleport to</param>

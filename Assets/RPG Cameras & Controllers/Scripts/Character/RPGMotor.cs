@@ -352,7 +352,7 @@ namespace JohnStairs.RCC.Character {
         /// <param name="rotation">Delta rotation to be applied</param>
         public virtual void Rotate(Quaternion rotation) {
             if (IsCombatLockActive()) {
-                // Do not rotate if the character is locked on target
+                // Do not rotate if the character is locked on _target
                 return;
             }
             // Rotate the character
@@ -742,7 +742,7 @@ namespace JohnStairs.RCC.Character {
         public virtual void TeleportTo(Vector3 targetPosition) {
             if (!Time.inFixedTimeStep) {
                 Debug.LogWarning("Method TeleportTo was called outside of FixedUpdate! This can lead to unexpected side effects (double-click here for more information)");
-                // Not called from within FixedUpdate => disable the character controller component so that it does not overwrite the target position
+                // Not called from within FixedUpdate => disable the character controller component so that it does not overwrite the _target position
                 // The disadvantage is that collision detection callbacks are called again (OnTriggerEnter) or never (OnTriggerExit)
                 _characterController.enabled = false;
             }
@@ -780,7 +780,7 @@ namespace JohnStairs.RCC.Character {
         }
 
         /// <summary>
-        /// Rotates the character towards a target rotation
+        /// Rotates the character towards a _target rotation
         /// </summary>
         /// <param name="lookAtRotation">Look rotation</param>
         public abstract void RotateTowards(Quaternion lookAtRotation);
