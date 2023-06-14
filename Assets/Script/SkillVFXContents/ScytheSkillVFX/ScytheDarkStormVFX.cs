@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace ScytheSkillVFX
+namespace SkillVFXContents
 {
     internal class ScytheDarkStormVFX : MonoBehaviour
     {

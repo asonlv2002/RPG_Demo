@@ -1,19 +1,26 @@
 ﻿using UnityEngine;
 
-namespace ScytheSkillVFX
+namespace SkillVFXContents
 {
     internal class ScytheEnegyVFX : MonoBehaviour
     {
         [SerializeField] ParticleSystem EnegyAttack;
-        [SerializeField] Transform _target;
+        [SerializeField] ParticleSystem DarkZone;
+        [SerializeField] RotateToTarget _rotate;
+        [SerializeField] Transform _character;
         [SerializeField] float high;
 
         void SummonEnegy()
         {
+            StartCoroutine(_rotate.Rotate());
             EnegyAttack.Play();
-            var position = _target.position;
+            EnegyAttack.transform.parent = null;
+            var position = _rotate.Target.position;
+            Debug.Log(position);
             position.y = high;
             EnegyAttack.transform.position = position;
+
+
             EnegyAttack.gameObject.SetActive(true);
         }
 
@@ -21,6 +28,23 @@ namespace ScytheSkillVFX
         {
             EnegyAttack.Stop();
             EnegyAttack.gameObject.SetActive(false);
+        }
+
+        void OpenDarkZone()
+        {
+            DarkZone.Play();
+            //DarkZone.transform.parent = null;
+            var position = _character.position;
+            position.y = 0f;
+            DarkZone.transform.position = position;
+            DarkZone.gameObject.SetActive(true);
+        }
+
+        void CloseDarkZone()
+        {
+            DarkZone.Stop();
+            DarkZone.gameObject.SetActive(false);
+  
         }
     }
 }

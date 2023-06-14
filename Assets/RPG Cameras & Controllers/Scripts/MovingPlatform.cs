@@ -10,7 +10,7 @@ namespace JohnStairs.RCC {
         /// </summary>
         public Transform StartingPoint;
         /// <summary>
-        /// Target position
+        /// Rotate position
         /// </summary>
         public Transform TurningPoint;
         /// <summary>
@@ -27,7 +27,7 @@ namespace JohnStairs.RCC {
         /// </summary>
         protected Transform _start;
         /// <summary>
-        /// Current _target position to move to and align with
+        /// Current Rotate position to move to and align with
         /// </summary>
         protected Transform _target;
         /// <summary>

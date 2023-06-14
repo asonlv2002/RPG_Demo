@@ -324,7 +324,7 @@ namespace JohnStairs.RCC.Character {
         /// <summary>
         /// Sets the animator parameters according to internal variable values
         /// </summary>
-        /// <param name="animator">Target animator where the parameters will be set</param>
+        /// <param name="animator">Rotate animator where the parameters will be set</param>
         public virtual void SetAnimatorParameters(Animator animator) {
             animator.SetBool("Grounded", _grounded);
             animator.SetBool("Walking", _walking);
@@ -352,7 +352,7 @@ namespace JohnStairs.RCC.Character {
         /// <param name="rotation">Delta rotation to be applied</param>
         public virtual void Rotate(Quaternion rotation) {
             if (IsCombatLockActive()) {
-                // Do not rotate if the character is locked on _target
+                // Do not rotate if the character is locked on Rotate
                 return;
             }
             // Rotate the character
@@ -742,7 +742,7 @@ namespace JohnStairs.RCC.Character {
         public virtual void TeleportTo(Vector3 targetPosition) {
             if (!Time.inFixedTimeStep) {
                 Debug.LogWarning("Method TeleportTo was called outside of FixedUpdate! This can lead to unexpected side effects (double-click here for more information)");
-                // Not called from within FixedUpdate => disable the character controller component so that it does not overwrite the _target position
+                // Not called from within FixedUpdate => disable the character controller component so that it does not overwrite the Rotate position
                 // The disadvantage is that collision detection callbacks are called again (OnTriggerEnter) or never (OnTriggerExit)
                 _characterController.enabled = false;
             }
@@ -759,7 +759,7 @@ namespace JohnStairs.RCC.Character {
         /// <summary>
         /// Teleports the character to the given Transform
         /// </summary>
-        /// <param name="target">Target Transform</param>
+        /// <param name="target">Rotate Transform</param>
         /// <param name="withYrotation">If true, the character's Y axis rotation is additionally aligned with the Y axis rotation of the given Transform</param>
         public abstract void TeleportTo(Transform target, bool withYrotation = false);
 
@@ -780,7 +780,7 @@ namespace JohnStairs.RCC.Character {
         }
 
         /// <summary>
-        /// Rotates the character towards a _target rotation
+        /// Rotates the character towards a Rotate rotation
         /// </summary>
         /// <param name="lookAtRotation">Look rotation</param>
         public abstract void RotateTowards(Quaternion lookAtRotation);

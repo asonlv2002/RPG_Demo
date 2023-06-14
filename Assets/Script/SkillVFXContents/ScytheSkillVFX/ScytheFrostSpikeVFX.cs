@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
-namespace ScytheSkillVFX
+namespace SkillVFXContents
 {
     internal class ScytheFrostSpikeVFX : MonoBehaviour
     {
         [SerializeField] ParticleSystem _frostSpike;
-        [SerializeField] Transform _target;
+        [SerializeField] RotateToTarget _rotate;
 
         void SummonFrostSpike()
         {
-            var  positionTarget = _target.position;
+            StartCoroutine(_rotate.Rotate());
+            var  positionTarget = _rotate.Target.position;
             positionTarget.y = 1;
             _frostSpike.transform.position = positionTarget;
             _frostSpike.gameObject.SetActive(true);

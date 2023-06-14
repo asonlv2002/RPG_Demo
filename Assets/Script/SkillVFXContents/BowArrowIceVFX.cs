@@ -7,7 +7,7 @@ namespace SkillVFXContents
         [SerializeField] ParticleSystem ArrowSplash;
         [SerializeField] ParticleSystem ArrowIceAttack;
         [SerializeField] ParticleSystem Enegy;
-        [SerializeField] Transform _target;
+        [SerializeField] RotateToTarget Rotate;
         private void Awake()
         {
             ArrowSplash.gameObject.SetActive(false);
@@ -18,6 +18,7 @@ namespace SkillVFXContents
         [System.Obsolete]
         void ArrowIceShoot()
         {
+            StartCoroutine(Rotate.Rotate());
             ArrowSplash.gameObject.SetActive(true);
             Enegy.gameObject.SetActive(true);
             ArrowSplash.Play();
@@ -29,7 +30,7 @@ namespace SkillVFXContents
         {
 
             ArrowIceAttack.transform.parent = null;
-            ArrowIceAttack.transform.position = new Vector3(_target.position.x,1,_target.position.z);
+            ArrowIceAttack.transform.position = new Vector3(Rotate.Target.position.x,1,Rotate.Target.position.z);
             ArrowIceAttack.gameObject.SetActive(true);
             ArrowIceAttack.Play();
         }

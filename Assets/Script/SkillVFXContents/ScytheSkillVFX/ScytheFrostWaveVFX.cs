@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ScytheSkillVFX
+namespace SkillVFXContents
 {
     internal class ScytheFrostWaveVFX : MonoBehaviour
     {

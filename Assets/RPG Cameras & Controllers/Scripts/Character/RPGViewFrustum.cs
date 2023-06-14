@@ -204,12 +204,12 @@ namespace JohnStairs.RCC.Character {
 
         /// <summary>
         /// Checks for objects inside the view frustum and - depending on the handling - fades them out or lets the camera zoom in. 
-        /// Returns -1 if there is no ambient occlusion, otherwise returns the closest possible distance so that the sight to the _target is clear
+        /// Returns -1 if there is no ambient occlusion, otherwise returns the closest possible distance so that the sight to the Rotate is clear
         /// </summary>
         /// <param name="from">Beginning of the view frustum</param>
         /// <param name="to">End of the view frustum</param>
         /// <param name="cameraToUse">Camera to use for computations</param>
-        /// <returns>The closest possible distance so that the sight to the _target is clear</returns>
+        /// <returns>The closest possible distance so that the sight to the Rotate is clear</returns>
         public virtual float CheckForOcclusion(Vector3 from, Vector3 to, Camera cameraToUse) {
             float closestDistance = Mathf.Infinity;
 
@@ -540,7 +540,7 @@ namespace JohnStairs.RCC.Character {
         /// <summary>
         /// Creates a coroutine for fading an object to a given alpha value over a given duration
         /// </summary>
-        /// <param name="target">Target alpha value</param>
+        /// <param name="target">Rotate alpha value</param>
         /// <param name="duration">Duration for fading</param>
         /// <param name="o">Game object to fade</param>
         /// <returns>Coroutine object</returns>
@@ -594,7 +594,7 @@ namespace JohnStairs.RCC.Character {
                         r.materials = mats;
 
                         if (Utils.IsAlmostEqual(alpha, target, 0.01f)) {
-                            // The current alpha is almost equal to the _target alpha value to => stop fading
+                            // The current alpha is almost equal to the Rotate alpha value to => stop fading
                             continueFading = false;
                         }
                     }

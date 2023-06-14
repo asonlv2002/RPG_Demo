@@ -9,7 +9,7 @@ namespace SkillVFXContents
         [SerializeField] ParticleSystem Trails;
         [SerializeField] ParticleSystem ShokcWave;
         [SerializeField] GameObject ProjectTile;
-        [SerializeField] Transform _target;
+        [SerializeField] RotateToTarget _rotate;
 
 
         LoopParticaleSystem _loopTrails;
@@ -22,6 +22,7 @@ namespace SkillVFXContents
         }
         void AbsorbEnergy()
         {
+            StartCoroutine(_rotate.Rotate());
             _loopTrails.gameObject.SetActive(true);
             _loopEnegy.gameObject.SetActive(true);
             _loopTrails.PlayInLoop();
@@ -34,7 +35,7 @@ namespace SkillVFXContents
             _loopTrails.SetEndLoop(true);
             _loopEnegy.SetEndLoop(true);
             GameObject projectile = Instantiate(ProjectTile, FirePoint.position, FirePoint.rotation);
-            projectile.GetComponent<TargetProjectile>().UpdateTarget(_target, Vector3.zero);
+            projectile.GetComponent<TargetProjectile>().UpdateTarget(_rotate.Target, Vector3.zero);
         }
     }
 }

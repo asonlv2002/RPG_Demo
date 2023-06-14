@@ -6,7 +6,7 @@
     {
         [SerializeField] Transform playerTransForm;
         [SerializeField] Transform FirePoint;
-        [SerializeField] Transform target;
+        [SerializeField] RotateToTarget Target;
         [Header(" ===Purple Arrow ===")]
         [SerializeField] GameObject PurpleEnery;
         [SerializeField] GameObject ArrowPurple;
@@ -16,41 +16,20 @@
             PurpleEnery.SetActive(false);
             ArrowPurple.SetActive(false);
         }
-        public void PurpleArrow()
+        void PurpleArrow()
         {
             PurpleEnery.SetActive(true);
             ArrowPurple.SetActive(true);
-            StartCoroutine(RotateToTarget(1, target.position));
+            StartCoroutine(Target.Rotate());
             PurpleEnery.GetComponent<ParticleSystem>().Play();
             ArrowPurple.GetComponent<ParticleSystem>().Play();
-            StartCoroutine(AttackPurpleArrow());
+            Invoke(nameof(AttackPurpleArrow), 1.2f);
         }
-
-        public IEnumerator RotateToTarget(float rotatingTime, Vector3 targetPoint)
+        void AttackPurpleArrow()
         {
-            float delay = rotatingTime;
-            var lookPos = targetPoint - playerTransForm.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            while (true)
-            {
-                playerTransForm.rotation = Quaternion.Lerp(playerTransForm.rotation, rotation, Time.deltaTime * 20);
-                delay -= Time.deltaTime;
-                if (delay <= 0 || playerTransForm.rotation == rotation)
-                {
-                    yield break;
-                }
-                yield return null;
-            }
-        }
-
-        IEnumerator AttackPurpleArrow()
-        {
-
-            yield return new WaitForSeconds(1.2f);
             PurpleArrowAttack.SetActive(true);
             PurpleArrowAttack.transform.parent = null;
-            PurpleArrowAttack.transform.position = target.position;
+            PurpleArrowAttack.transform.position = Target.Target.position;
             PurpleArrowAttack.GetComponent<ParticleSystem>().Play();
         }
     }
