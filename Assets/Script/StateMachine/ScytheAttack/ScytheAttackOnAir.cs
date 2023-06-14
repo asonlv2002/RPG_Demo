@@ -46,7 +46,7 @@ namespace StateContents
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.InputAttackQ) && !Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.InputAttackQ) && !Body.IsTerrestrial;
         }
         public override bool ConditionEnterState()
         {

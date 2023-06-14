@@ -12,7 +12,14 @@ namespace SkillVFXContents
         }
         public void OnParticleCollision(GameObject other)
         {
-            Debug.Log(other.tag);
+            if(other.tag == "EnemyDamge")
+            {
+                Debug.Log(other.tag);
+                DamagePopupGenerator.Instance.Generator(other.transform.position, "1000", Color.red);
+            }
+
+            
+            
         }
     }
 }

@@ -23,7 +23,7 @@ namespace StateContents
             if (!InputAttack.IsAttackEnegy)
             {
                 IsExit = true;
-                //if (EnterFriendState(ScytheStore.AttackEnegyStart)) return;
+                if (EnterFriendState(ScytheStore.AttackEnegyEnd)) return;
             }
             base.UpdateState();
         }

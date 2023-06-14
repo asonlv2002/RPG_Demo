@@ -31,7 +31,6 @@ namespace StateContents
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            Physiscal.Fly(-1.5f);
         }
 
         public override void ExitState()
