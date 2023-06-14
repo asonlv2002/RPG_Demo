@@ -33,7 +33,7 @@
         }
         public override bool ConditionEnterState()
         {
-            return ScytheStore.AttackCompoA.ConditionInitChildState() || ScytheStore.AttackE.ConditionEnterState();
+            return ScytheStore.AttackCompoA.ConditionInitChildState();
         }
         public override void InitilationChildrenState()
         {

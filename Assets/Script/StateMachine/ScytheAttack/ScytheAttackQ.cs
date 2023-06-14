@@ -19,7 +19,7 @@
         }
         public override void UpdateState()
         {
-            if (TimeEnd < Time.time && InputAttack.CheckInut(AttackScytheInput.MouseLeftClick))
+            if (TimeEnd < Time.time && InputAttack.CheckInut(AttackScytheInput.InputAttackQ))
             {
                 { IsExit = false; }
                 base.EnterState();
@@ -41,12 +41,12 @@
 
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.InputAttackQ) && Body.IsOnGround;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.InputAttackQ) && Body.IsOnGround;
         }
     }
 }

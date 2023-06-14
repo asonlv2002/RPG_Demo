@@ -36,12 +36,12 @@
 
         public override bool ConditionEnterState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.InputAttackQ) && Body.IsOnGround;
         }
 
         public override bool ConditionInitChildState()
         {
-            return InputAttack.CheckInut(AttackScytheInput.MouseLeftClick) && Body.IsOnGround;
+            return InputAttack.CheckInut(AttackScytheInput.InputAttackQ) && Body.IsOnGround;
         }
     }
 }
