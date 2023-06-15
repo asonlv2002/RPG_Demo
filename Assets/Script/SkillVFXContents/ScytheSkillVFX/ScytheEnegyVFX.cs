@@ -16,7 +16,6 @@ namespace SkillVFXContents
             EnegyAttack.Play();
             EnegyAttack.transform.parent = null;
             var position = _rotate.Target.position;
-            Debug.Log(position);
             position.y = high;
             EnegyAttack.transform.position = position;
 
@@ -33,9 +32,9 @@ namespace SkillVFXContents
         void OpenDarkZone()
         {
             DarkZone.Play();
-            //DarkZone.transform.parent = null;
+            DarkZone.transform.parent = null;
             var position = _character.position;
-            position.y = 0f;
+            position.y = 2f;
             DarkZone.transform.position = position;
             DarkZone.gameObject.SetActive(true);
         }
