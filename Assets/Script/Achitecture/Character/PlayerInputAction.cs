@@ -5,7 +5,7 @@ namespace InputContents
     using System.Collections.Generic;
     using EquipmentContents;
 
-    internal class PlayerInputAction : InputCore, IEquipWeaponSubscriber
+    internal class PlayerInputAction : InputCore
     {
         [SerializeField] InputMovement _inputMovement;
 
@@ -15,11 +15,5 @@ namespace InputContents
             _inputMovement = new InputMovement(new PlayerInput());
             AddContentComponent(_inputMovement);
         }
-        public void OnEquipWeapon()
-        {
-        }
-
-
-
     }
 }

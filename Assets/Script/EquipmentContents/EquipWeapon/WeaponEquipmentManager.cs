@@ -49,6 +49,7 @@ namespace EquipmentContents
 
         public void RemoveWeapon()
         {
+            if (!currentWeaponData) return;
             _componentSetter.RemoveWeapon();
             (WeaponEquip as IItemCreateModel).ItemRenderModel.SetTransForm(null);
             WeaponUnequip = null;

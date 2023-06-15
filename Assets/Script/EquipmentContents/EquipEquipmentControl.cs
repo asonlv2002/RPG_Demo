@@ -18,6 +18,7 @@ namespace EquipmentContents
             switch(itemData)
             {
                 case WeaponData:
+                    _weponEquipment.RemoveWeapon();
                     _weponEquipment.AddWepon(itemData);
                     break;
             }
