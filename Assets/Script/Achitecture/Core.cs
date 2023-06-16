@@ -21,7 +21,11 @@
         }
         public T GetContentComponent<T>() where T : TypeCore
         {
-            return CoreComponent[typeof(T).ToString()] as T;
+            if(CoreComponent.TryGetValue(typeof(T).ToString(),out var component))
+            {
+                return component as T;
+            }
+            return null;
             //foreach (var component in CoreComponent)
             //{
             //    if (component is T) return component as T;
