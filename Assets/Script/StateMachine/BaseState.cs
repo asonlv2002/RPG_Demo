@@ -10,20 +10,14 @@ namespace StateContents
 
         protected StateCore StateContent;
         public bool IsExit = true;
-        protected PhysicAdapter Physiscal;
-        protected BodyAdapter Body;
 
         protected int ActionParameter;
         protected AnimatorAdapter animator;
-
-        public int IndexPriorityFriend { get; protected set; }
 
         public BaseState(StateCore stateContent)
         {
             StateContent = stateContent;
             animator = StateContent.GetContentComponent<AnimatorAdapter>();
-            Physiscal = StateContent.GetContentComponent<PhysicAdapter>();
-            Body = StateContent.GetContentComponent<BodyAdapter>();
 
         }
         public virtual void EnterState()
