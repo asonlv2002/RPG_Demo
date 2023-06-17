@@ -106,7 +106,7 @@ namespace JohnStairs.RCC {
             // Delta rotation from last to current/new rotation
             Quaternion delta = transform.rotation * Quaternion.Inverse(lastRotation);
 
-            // Move (and rotate) all passengers
+            // RunToTarget (and rotate) all passengers
             foreach (KeyValuePair<RPGMotor, Vector3> entry in _localPassengerPositions) {
                 RPGMotor rpgMotor = entry.Key;
                 rpgMotor.TeleportTo(transform.TransformPoint(entry.Value));

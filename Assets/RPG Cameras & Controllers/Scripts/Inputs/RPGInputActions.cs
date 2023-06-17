@@ -129,7 +129,7 @@ namespace JohnStairs.RCC.Inputs
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Move Forward Half 1"",
+                    ""name"": ""RunToTarget Forward Half 1"",
                     ""type"": ""Button"",
                     ""id"": ""bb0020c9-3394-4b02-8c07-e458595d422d"",
                     ""expectedControlType"": ""Button"",
@@ -138,7 +138,7 @@ namespace JohnStairs.RCC.Inputs
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Move Forward Half 2"",
+                    ""name"": ""RunToTarget Forward Half 2"",
                     ""type"": ""Button"",
                     ""id"": ""b8fc21fa-69d3-45b7-8e8d-3a9815568584"",
                     ""expectedControlType"": ""Button"",
@@ -533,7 +533,7 @@ namespace JohnStairs.RCC.Inputs
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move Forward Half 1"",
+                    ""action"": ""RunToTarget Forward Half 1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -544,7 +544,7 @@ namespace JohnStairs.RCC.Inputs
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move Forward Half 2"",
+                    ""action"": ""RunToTarget Forward Half 2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -720,8 +720,8 @@ namespace JohnStairs.RCC.Inputs
             m_Character_Dive = m_Character.FindAction("Dive", throwIfNotFound: true);
             m_Character_Surface = m_Character.FindAction("Surface", throwIfNotFound: true);
             m_Character_RotationModifier = m_Character.FindAction("Rotation Modifier", throwIfNotFound: true);
-            m_Character_MoveForwardHalf1 = m_Character.FindAction("Move Forward Half 1", throwIfNotFound: true);
-            m_Character_MoveForwardHalf2 = m_Character.FindAction("Move Forward Half 2", throwIfNotFound: true);
+            m_Character_MoveForwardHalf1 = m_Character.FindAction("RunToTarget Forward Half 1", throwIfNotFound: true);
+            m_Character_MoveForwardHalf2 = m_Character.FindAction("RunToTarget Forward Half 2", throwIfNotFound: true);
             m_Character_RPGCamera = m_Character.FindAction("RPGCamera", throwIfNotFound: true);
             m_Character_AllowOrbiting = m_Character.FindAction("Allow Orbiting", throwIfNotFound: true);
             m_Character_AllowOrbitingwithCharacterRotation = m_Character.FindAction("Allow Orbiting with Character Rotation", throwIfNotFound: true);

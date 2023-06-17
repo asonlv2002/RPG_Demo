@@ -156,7 +156,7 @@ namespace JohnStairs.RCC.Character.ARPG {
 
             ApplyGravity();
 
-            // Move the character
+            // RunToTarget the character
             Move(_movementDirection * Time.deltaTime);
 
             #region Rotate the character

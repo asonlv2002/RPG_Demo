@@ -166,7 +166,7 @@ namespace JohnStairs.RCC.Character.MMO {
 
             ApplyGravity();
 
-            // Move the character
+            // RunToTarget the character
             Move(_movementDirection * Time.deltaTime);
 
             #region Rotate the character

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityVector3
 {
     [TaskCategory("Unity/Vector3")]
-    [TaskDescription("Move from the current position to the target position.")]
+    [TaskDescription("RunToTarget from the current position to the target position.")]
     public class MoveTowards : Action
     {
         [Tooltip("The current position")]

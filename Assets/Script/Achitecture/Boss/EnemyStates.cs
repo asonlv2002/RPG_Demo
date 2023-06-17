@@ -9,7 +9,7 @@ namespace StateContents
             base.InitMainCore(mainCores);
             var stateStore = new EnemyStateStore(this);
             AddContentComponent(stateStore);
-            EnterNextState(stateStore.Move);
+            EnterNextState(stateStore.Idle);
         }
 
         private void Update()

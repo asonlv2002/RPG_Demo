@@ -536,17 +536,17 @@ namespace JohnStairs.RCC.Character {
                 float yDeltaNeeded = direction.y;
                 float yBefore = transform.position.y;
 
-                // Move the character
+                // RunToTarget the character
                 _characterController.Move(direction);
 
                 float yDeltaResult = transform.position.y - yBefore;
                 if (yDeltaResult > yDeltaNeeded) {
-                    // Do not allow inaccuracy by Character Controller's Move method in this case!
+                    // Do not allow inaccuracy by Character Controller's RunToTarget method in this case!
                     // Otherwise, it would be possible to swim over the water level
                     Translate(Vector3.down * (yDeltaResult - yDeltaNeeded));
                 }
             } else {
-                // Move the character
+                // RunToTarget the character
                 _characterController.Move(direction);
             }
 
@@ -840,7 +840,7 @@ namespace JohnStairs.RCC.Character {
         }
 
         /// <summary>
-        /// "OnControllerColliderHit is called when the controller hits a collider while performing a Move" - Unity Documentation
+        /// "OnControllerColliderHit is called when the controller hits a collider while performing a RunToTarget" - Unity Documentation
         /// </summary>
         public virtual void OnControllerColliderHit(ControllerColliderHit hit) {
             // Do nothing

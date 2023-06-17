@@ -8,7 +8,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform
     {
         [Tooltip("The GameObject that the task operates on. If null the task GameObject is used.")]
         public SharedGameObject targetGameObject;
-        [Tooltip("Move direction and distance")]
+        [Tooltip("RunToTarget direction and distance")]
         public SharedVector3 translation;
         [Tooltip("Specifies which axis the rotation is relative to")]
         public Space relativeTo = Space.Self;
