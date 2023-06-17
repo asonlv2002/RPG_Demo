@@ -946,8 +946,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198751475278251796, guid: 8460c6a624e47a5429ea494bcb6a9a0f, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198751475278251796, guid: 8460c6a624e47a5429ea494bcb6a9a0f, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198751475278251796, guid: 8460c6a624e47a5429ea494bcb6a9a0f, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8460c6a624e47a5429ea494bcb6a9a0f, type: 3}
+--- !u!1 &408902052468022549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1850372507194706, guid: 8460c6a624e47a5429ea494bcb6a9a0f, type: 3}
+  m_PrefabInstance: {fileID: 408179017967372359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7259931981581431085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408902052468022549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22ab724d0d746245a87f653e1cb61ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 0}
+  timeDelay: 1
+  Damge: 85
 --- !u!4 &413091428608866067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4992677473681236, guid: 8460c6a624e47a5429ea494bcb6a9a0f, type: 3}
@@ -1547,6 +1579,10 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3676490971256775529, guid: 2534740678d61794bad4a74598a7f658, type: 3}
+      propertyPath: Damge
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2534740678d61794bad4a74598a7f658, type: 3}
 --- !u!4 &2930155975997443150 stripped
@@ -1765,6 +1801,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1590871686444004, guid: 79c4351b20273454690cfc1f0c35f12a, type: 3}
   m_PrefabInstance: {fileID: 3571479807673292983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7369398621338891931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3572998367922891603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22ab724d0d746245a87f653e1cb61ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 0}
+  timeDelay: 0.1
+  Damge: 30
 --- !u!1001 &3624271689154498872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1961,6 +2012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 0}
   timeDelay: 1
+  Damge: 100
 --- !u!4 &7123729602543927515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6215028639819466600, guid: 29f037d6ae5bd8b448bb96632b20483e, type: 3}
@@ -2392,6 +2444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 0}
   timeDelay: 1
+  Damge: 125
 --- !u!198 &2219082380462750587 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6129264861242532013, guid: a0b6d20c6b813234483422999689c218, type: 3}
@@ -2521,6 +2574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 0}
   timeDelay: 1
+  Damge: 100
 --- !u!4 &8419544756634617895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2607925399655093252, guid: 124010e702c50db49ad437959725d2d1, type: 3}
@@ -2683,6 +2737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 0}
   timeDelay: 1
+  Damge: 175
 --- !u!4 &4365868306733424285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7305212203462256074, guid: 74b680b76801c6540a21b331b720da95, type: 3}

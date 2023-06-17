@@ -17,7 +17,6 @@
         }
         public void OnDamgeTrigger(GameObject cause)
         {
-            Debug.Log(cause.tag);
             if(cause.tag == "EnemyDamge")
             {
                 int damage = 200 - _defStat.GetCurrentStatValue();

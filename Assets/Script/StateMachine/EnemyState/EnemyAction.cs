@@ -12,7 +12,6 @@ namespace StateContents
             StateStore = stateStore;
             animator = new AnimatorAdapter(stateContent.MainCores.GetCore<AnimatorCore>());
             ColliderCondition = new ColliderCondition(stateContent.MainCores.GetCore<ColliderCore>());
-            UnityEngine.Debug.Log(ColliderCondition);
         }
     }
 }

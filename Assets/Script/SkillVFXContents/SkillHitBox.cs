@@ -4,11 +4,13 @@ namespace SkillVFXContents
     using UnityEngine;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using DamgeContents;
     internal class SkillHitBox : MonoBehaviour
     {
         [SerializeField] ParticleSystem _particleSystem;
         List<GameObject> target;
         [SerializeField] float timeDelay = 1;
+        [SerializeField] int Damge;
 
         private void Awake()
         {
@@ -21,7 +23,7 @@ namespace SkillVFXContents
                 if(target.IndexOf(other) == -1)
                 {
                     target.Add(other);
-                    DamagePopupGenerator.Instance.Generator(other.transform.position, "1000", Color.red);
+                    ReadDamge(other);
                     var task = new Task(()=> RemoveTarget(other));
                     task.RunSynchronously();
                 }
@@ -34,6 +36,15 @@ namespace SkillVFXContents
             await Task.Delay(time);
             target.Remove(gameObject);
 
+        }
+
+        void ReadDamge(GameObject target)
+        {
+            var damageCore = target.GetComponent<DamgeCores>();
+            if (!damageCore) return;
+            var readDamge = damageCore.GetContentComponent<DamgeCaculator>();
+            readDamge.TakenDamge(Damge);
+            DamagePopupGenerator.Instance.Generator(target.transform.position, Damge.ToString(), Color.red);
         }
     }
 }
