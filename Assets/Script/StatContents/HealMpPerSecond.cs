@@ -18,7 +18,7 @@ namespace StatContents
             while (true)
             {
                 yield return new WaitForSeconds(1);
-                _statCore.GetContentComponent<MPStat>().AddCurrentStatValue(CurrentStatValue);
+                _statCore.GetContentComponent<MPStat>().AddCurrentStatValue(GetCurrentStatValue());
             }
         }
         public override void OnRemoveComponent()

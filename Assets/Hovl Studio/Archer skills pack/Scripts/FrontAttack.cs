@@ -70,7 +70,7 @@ public class FrontAttack : MonoBehaviour
         yield return new WaitForSeconds(delay);
         foreach (var animS in anim)
         {
-            animS.SetTrigger("Attack");
+            animS.SetTrigger("HealPerSecond");
         }
         yield break;
     }

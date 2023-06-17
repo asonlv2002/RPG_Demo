@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4c476c0d06fde4c95387388a9dfdb2, type: 3}
-  m_Name: Gain 100 DEF
+  m_Script: {fileID: 11500000, guid: d9ecd976c05589644b2ef6bb8b5a9bc5, type: 3}
+  m_Name: Gain 100 Mp
   m_EditorClassIdentifier: 
-  _description: + 100 DEF
-  DEF: 100
+  _description: + 100 Mp
+  Mp: 100

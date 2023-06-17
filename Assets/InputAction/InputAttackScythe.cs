@@ -24,7 +24,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
     ""name"": ""InputAttackScythe"",
     ""maps"": [
         {
-            ""name"": ""Attack"",
+            ""name"": ""HealPerSecond"",
             ""id"": ""eefc796d-7fda-4a35-9496-a8893affe5f3"",
             ""actions"": [
                 {
@@ -114,8 +114,8 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Attack
-        m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
+        // HealPerSecond
+        m_Attack = asset.FindActionMap("HealPerSecond", throwIfNotFound: true);
         m_Attack_Attack_Q = m_Attack.FindAction("Attack_Q", throwIfNotFound: true);
         m_Attack_EnegyAttack = m_Attack.FindAction("EnegyAttack", throwIfNotFound: true);
         m_Attack_Shift = m_Attack.FindAction("Shift", throwIfNotFound: true);
@@ -176,7 +176,7 @@ public partial class @InputAttackScythe : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Attack
+    // HealPerSecond
     private readonly InputActionMap m_Attack;
     private IAttackActions m_AttackActionsCallbackInterface;
     private readonly InputAction m_Attack_Attack_Q;

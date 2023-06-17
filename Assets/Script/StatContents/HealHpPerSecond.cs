@@ -19,7 +19,7 @@
             while (true)
             {
                 yield return new WaitForSeconds(1);
-                _statCore.GetContentComponent<HPStat>().AddCurrentStatValue(CurrentStatValue);
+                _statCore.GetContentComponent<HPStat>().AddCurrentStatValue(GetCurrentStatValue());
             }
         }
         public override void OnRemoveComponent()

@@ -24,7 +24,7 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
     ""name"": ""InputAttackBow"",
     ""maps"": [
         {
-            ""name"": ""Attack"",
+            ""name"": ""HealPerSecond"",
             ""id"": ""981780f7-5080-4139-8ab0-96e3c4195415"",
             ""actions"": [
                 {
@@ -74,8 +74,8 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Attack
-        m_Attack = asset.FindActionMap("Attack", throwIfNotFound: true);
+        // HealPerSecond
+        m_Attack = asset.FindActionMap("HealPerSecond", throwIfNotFound: true);
         m_Attack_Hold = m_Attack.FindAction("Hold", throwIfNotFound: true);
         m_Attack_Fire = m_Attack.FindAction("Fire", throwIfNotFound: true);
     }
@@ -134,7 +134,7 @@ public partial class @InputAttackBow : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Attack
+    // HealPerSecond
     private readonly InputActionMap m_Attack;
     private IAttackActions m_AttackActionsCallbackInterface;
     private readonly InputAction m_Attack_Hold;

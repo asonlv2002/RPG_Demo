@@ -22,9 +22,8 @@ namespace SkillVFXContents
             InitLate();
             if (_mpStat.GetCurrentStatValue() < 20) return;
             _mpStat.SubCurrentStateValue(20);
-            StartCoroutine(_rotateToTarget.Rotate());
             _frostWave.transform.localPosition = _offsetPosition;
-            _frostWave.transform.parent = null;
+            _frostWave.transform.parent = null; 
             _frostWave.gameObject.SetActive(true);
             _frostWave.Play();
             Invoke(nameof(EndFrostWave), 1f);

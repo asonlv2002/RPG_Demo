@@ -23,4 +23,8 @@ MonoBehaviour:
     <PositionEquip>k__BackingField: {x: 0.6, y: 0, z: 0.45}
     <RotationEquip>k__BackingField: {x: 0, y: -111, z: 7}
   <Effects>k__BackingField:
-    <ItemEffects>k__BackingField: []
+    <ItemEffects>k__BackingField:
+    - {fileID: 11400000, guid: 2c97963a6a8879548a201b3c58ea8cf1, type: 2}
+    - {fileID: 11400000, guid: 56d3736d48817c546934628c0507399b, type: 2}
+    - {fileID: 11400000, guid: e0cc837720b1d1b4fb9de6014a76536a, type: 2}
+    - {fileID: 11400000, guid: f5b7f223c53a8fa478f561eadf14785a, type: 2}
