@@ -12,6 +12,7 @@ namespace SkillVFXContents
 
         void SummonEnegy()
         {
+            if (!_rotate.CheckDistacneToTarget(15f)) return;
             StartCoroutine(_rotate.Rotate());
             EnegyAttack.Play();
             EnegyAttack.transform.parent = null;

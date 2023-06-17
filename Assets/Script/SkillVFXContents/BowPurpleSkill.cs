@@ -18,6 +18,7 @@
         }
         void PurpleArrow()
         {
+            if (!Target.CheckDistacneToTarget(10f)) return;
             PurpleEnery.SetActive(true);
             ArrowPurple.SetActive(true);
             StartCoroutine(Target.Rotate());

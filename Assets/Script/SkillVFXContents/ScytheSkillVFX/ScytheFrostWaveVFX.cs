@@ -7,9 +7,15 @@ namespace SkillVFXContents
         [SerializeField] ParticleSystem _frostWave;
         [SerializeField] Transform _characterSummon;
         [SerializeField] Vector3 _offsetPosition;
+        RotateToTarget _rotateToTarget;
+        private void Awake()
+        {
+            _rotateToTarget = GetComponent<RotateToTarget>();
+        }
         [System.Obsolete]
         void SummonFrostWave()
         {
+            StartCoroutine(_rotateToTarget.Rotate());
             _frostWave.transform.localPosition = _offsetPosition;
             _frostWave.transform.parent = null;
             _frostWave.gameObject.SetActive(true);

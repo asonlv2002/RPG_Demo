@@ -18,6 +18,7 @@ namespace SkillVFXContents
         [System.Obsolete]
         void ArrowIceShoot()
         {
+            if (!Rotate.CheckDistacneToTarget(10f)) return;
             StartCoroutine(Rotate.Rotate());
             ArrowSplash.gameObject.SetActive(true);
             Enegy.gameObject.SetActive(true);

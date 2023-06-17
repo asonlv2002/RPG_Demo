@@ -22,6 +22,7 @@ namespace SkillVFXContents
         }
         void AbsorbEnergy()
         {
+            if (!_rotate.CheckDistacneToTarget(15f)) return;
             StartCoroutine(_rotate.Rotate());
             _loopTrails.gameObject.SetActive(true);
             _loopEnegy.gameObject.SetActive(true);
@@ -32,9 +33,11 @@ namespace SkillVFXContents
 
         void StrongShoot()
         {
+            if (!_rotate.CheckDistacneToTarget(15f)) return;
             _loopTrails.SetEndLoop(true);
             _loopEnegy.SetEndLoop(true);
             GameObject projectile = Instantiate(ProjectTile, FirePoint.position, FirePoint.rotation);
+            projectile.SetActive(true);
             projectile.GetComponent<TargetProjectile>().UpdateTarget(_rotate.Target, Vector3.zero);
         }
     }

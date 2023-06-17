@@ -10,6 +10,7 @@ namespace SkillVFXContents
         [SerializeField] Vector3 offSet;
         void SummonDarkBoom()
         {
+            if (!_rotate.CheckDistacneToTarget(10f)) return;
             StartCoroutine(_rotate.Rotate());
             var projectile = MonoBehaviour.Instantiate(DarkBomb.gameObject, FirePoint.position+ offSet, FirePoint.rotation);
             projectile.SetActive(true);

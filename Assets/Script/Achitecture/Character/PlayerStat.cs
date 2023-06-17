@@ -10,6 +10,8 @@ namespace StatContents
         [SerializeField] SPEEDStat SPEED;
         [SerializeField] ATKStat ATK;
         [SerializeField] DEFStat DEF;
+        [SerializeField] HealHpPerSecond HealHpPerSecond;
+        [SerializeField] HealMpPerSecond HealMpPerSecond;
         [SerializeField] int value;
         public override void InitMainCore(MainCores mainCores)
         {
@@ -19,6 +21,8 @@ namespace StatContents
             AddContentComponent(SPEED);
             AddContentComponent(ATK);
             AddContentComponent(DEF);
+            AddContentComponent(HealHpPerSecond);
+            AddContentComponent(HealMpPerSecond);
 
         }
     }
