@@ -11,6 +11,7 @@
         public BaseState Move {get; private set;}
 
         public BaseState Run {get; private set;}
+        public BaseState RunBack { get; private set; }
 
         public BaseState Sprint {get; private set;}
 
@@ -40,6 +41,7 @@
 
             Move = new PlayerMoveState(_stateContent, this);
             Run = new PlayerRunState(_stateContent, this);
+            RunBack = new PlayerRunBack(_stateContent, this);
             Sprint = new PlayerSpintState(_stateContent, this);
 
             Idle = new PlayerIdleState(_stateContent, this);

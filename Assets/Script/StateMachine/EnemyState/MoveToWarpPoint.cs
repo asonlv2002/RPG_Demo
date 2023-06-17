@@ -24,8 +24,12 @@
         public override void UpdateState()
         {
             base.UpdateState();
-            if (EnterFriendState(StateStore.Idle)) return;
-            if (EnterFriendState(StateStore.Attack)) return;
+            if(ColliderCondition.ConditionExitMoveToWarpPoint())
+            {
+                if (EnterFriendState(StateStore.Idle)) return;
+                if (EnterFriendState(StateStore.RunToTarget)) return;
+            }
+
         }
         public override bool ConditionEnterState()
         {

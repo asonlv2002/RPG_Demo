@@ -21,36 +21,39 @@ namespace StateContents
         {
             get
             {
-                var chekcDistanceToTagret = Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) <= 20f;
-                var checkDistanceToWarpPoint = Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) <= 20f;
+                var chekcDistanceToTagret = (int)Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) <= 20.1f;
+                var checkDistanceToWarpPoint = (int)Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) <= 20.1f;
                 return chekcDistanceToTagret && checkDistanceToWarpPoint ? _targetAttack.Target : null;
             }
         }
 
         public bool ConditionIdle()
         {
-            Debug.Log(Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position));
-            return TargetAttack == null && Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) <= 0.1f;
+            return TargetAttack == null && (int)Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) <= 0.1f;
         }
 
         public bool ConditionRunToTarget()
         {
-            return TargetAttack != null && Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) >= 5f;
+            return TargetAttack != null && (int)Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) >= 5.1f;
         }
 
         public bool ConditionAttack()
         {
-            return TargetAttack != null && Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) < 5f;
+            return TargetAttack != null && (int)Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) < 5f;
         }
 
         public bool ConditionMoveToWarpPoint()
         {
-            return TargetAttack == null && Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) >= 0.1f;
+            return TargetAttack == null;/* || Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) >= 0.1f && Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) <= 10f;*/
         }
         public Transform CharacterTranform => _transForm.PlayerTransform;
 
         public Transform WarpPoint => _pointWarp.Point;
 
+        public bool ConditionExitMoveToWarpPoint()
+        {
+            return (int)Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) <= 15f;
+        }
 
     }
 }

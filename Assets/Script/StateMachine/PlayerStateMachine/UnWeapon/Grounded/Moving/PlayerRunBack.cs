@@ -1,17 +1,18 @@
-﻿namespace StateContents
+﻿using StatContents;
+
+namespace StateContents
 {
-    using StatContents;
-    using UnityEngine;
-    internal class PlayerRunState : MovementState
+
+    internal class PlayerRunBack : MovementState
     {
         SPEEDStat Speed;
 
-        public PlayerRunState(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
+        public PlayerRunBack(StateCore stateContent, MovementStateStore stateTransition) : base(stateContent, stateTransition)
         {
             var statCore = StateContent.MainCores.GetCore<StatCore>();
             Speed = statCore.GetContentComponent<SPEEDStat>();
 
-            ActionParameter = UnityEngine.Animator.StringToHash("isRun");
+            ActionParameter = UnityEngine.Animator.StringToHash("isRunBack");
         }
 
         public override void EnterState()
@@ -24,7 +25,7 @@
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
-            var forward = Body.Forward() * InputMovement.DirectionMove * Speed.GetCurrentStatValue();
+            var forward = Body.Forward() * InputMovement.DirectionMove * Speed.GetCurrentStatValue()*0.5f;
             Physiscal.Movement(forward);
         }
 
@@ -32,8 +33,7 @@
         {
 
             base.UpdateState();
-            if (EnterFriendState(MovementStore.Sprint)) return;
-            else if (EnterFriendState(MovementStore.RunBack)) return;
+            if (EnterFriendState(MovementStore.Run)) return;
         }
 
         public override void ExitState()
@@ -44,13 +44,13 @@
 
         public override bool ConditionEnterState()
         {
-            return InputMovement.DirectionMove > 0;
+            UnityEngine.Debug.Log(InputMovement.DirectionMove);
+            return InputMovement.DirectionMove < 0;
         }
 
         public override bool ConditionInitChildState()
         {
             return ConditionEnterState();
         }
-
     }
 }

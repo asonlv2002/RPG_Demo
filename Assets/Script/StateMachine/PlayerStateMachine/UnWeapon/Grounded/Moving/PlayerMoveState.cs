@@ -28,7 +28,7 @@ namespace StateContents
 
         public override bool ConditionEnterState()
         {
-            return MovementStore.Run.ConditionEnterState();
+            return MovementStore.Run.ConditionEnterState() || MovementStore.RunBack.ConditionEnterState();
         }
 
         public override bool ConditionInitChildState()
@@ -39,6 +39,7 @@ namespace StateContents
         public override void InitilationChildrenState()
         {
             if (EnterChildState(MovementStore.Run)) return;
+            else if (EnterChildState(MovementStore.RunBack)) return;
         }
     }
 }
