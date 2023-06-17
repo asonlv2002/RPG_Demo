@@ -21,7 +21,7 @@ namespace StateContents
         {
             get
             {
-                var chekcDistanceToTagret = Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) <= 10f;
+                var chekcDistanceToTagret = Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) <= 20f;
                 Debug.Log(Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position));
                 var checkDistanceToWarpPoint = Vector3.Distance(_transForm.PlayerTransform.position, _pointWarp.Point.position) <= 20f;
                 return chekcDistanceToTagret && checkDistanceToWarpPoint ? _targetAttack.Target : null;
@@ -36,12 +36,12 @@ namespace StateContents
 
         public bool ConditionRunToTarget()
         {
-            return TargetAttack != null && Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) >= 5.1f;
+            return TargetAttack != null && Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) >= 7f;
         }
 
         public bool ConditionAttack()
         {
-            return TargetAttack != null && Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) <= 5f;
+            return TargetAttack != null && Vector3.Distance(_transForm.PlayerTransform.position, _targetAttack.Target.position) < 7f;
         }
 
         public bool ConditionMoveToWarpPoint()

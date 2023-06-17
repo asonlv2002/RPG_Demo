@@ -16,7 +16,8 @@ namespace StateContents
         {
             SelectAttact();
             animator.SetBool(ActionParameter, true);
-            base.EnterState();
+            base.EnterState(); 
+            ColliderCondition.CharacterTranform.forward = Vector3.Normalize(ColliderCondition.TargetAttack.position - ColliderCondition.CharacterTranform.position);
             timeAttack = Time.time;
             Debug.Log("Hello");
         }
