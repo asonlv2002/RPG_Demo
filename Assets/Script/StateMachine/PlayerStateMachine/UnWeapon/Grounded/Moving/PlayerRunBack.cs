@@ -44,7 +44,6 @@ namespace StateContents
 
         public override bool ConditionEnterState()
         {
-            UnityEngine.Debug.Log(InputMovement.DirectionMove);
             return InputMovement.DirectionMove < 0;
         }
 

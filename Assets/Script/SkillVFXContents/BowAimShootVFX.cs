@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using AnimatorContent;
+using StatContents;
+using UnityEngine;
 
 namespace SkillVFXContents
 {
@@ -14,15 +16,20 @@ namespace SkillVFXContents
 
         LoopParticaleSystem _loopTrails;
         LoopParticaleSystem _loopEnegy;
+        MPStat _mpStat;
 
-        private void Awake()
+        private void Start()
         {
             _loopEnegy = Enegy.transform.GetComponent<LoopParticaleSystem>();
             _loopTrails = Trails.transform.GetComponent<LoopParticaleSystem>();
         }
         void AbsorbEnergy()
         {
+            InitLate();
+
             if (!_rotate.CheckDistacneToTarget(15f)) return;
+            if (_mpStat.GetCurrentStatValue() <20) return;
+            _mpStat.SubCurrentStateValue(20);
             StartCoroutine(_rotate.Rotate());
             _loopTrails.gameObject.SetActive(true);
             _loopEnegy.gameObject.SetActive(true);
@@ -39,6 +46,14 @@ namespace SkillVFXContents
             GameObject projectile = Instantiate(ProjectTile, FirePoint.position, FirePoint.rotation);
             projectile.SetActive(true);
             projectile.GetComponent<TargetProjectile>().UpdateTarget(_rotate.Target, Vector3.zero);
+        }
+
+        void InitLate()
+        {
+            if (_mpStat == null)
+            {
+                _mpStat = GetComponent<AnimatorCore>().MainCores.GetCore<StatCore>().GetContentComponent<MPStat>();
+            }
         }
     }
 }

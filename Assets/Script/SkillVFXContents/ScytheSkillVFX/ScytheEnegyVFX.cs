@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using AnimatorContent;
+using StatContents;
+using UnityEngine;
 
 namespace SkillVFXContents
 {
@@ -9,10 +11,18 @@ namespace SkillVFXContents
         [SerializeField] RotateToTarget _rotate;
         [SerializeField] Transform _character;
         [SerializeField] float high;
+        private MPStat _mpStat;
 
+        private void Start()
+        {
+           
+        }
         void SummonEnegy()
         {
+            InitLate();
             if (!_rotate.CheckDistacneToTarget(15f)) return;
+            if (_mpStat.GetCurrentStatValue() < 20) return;
+            _mpStat.SubCurrentStateValue(20);
             StartCoroutine(_rotate.Rotate());
             EnegyAttack.Play();
             EnegyAttack.transform.parent = null;
@@ -45,6 +55,14 @@ namespace SkillVFXContents
             DarkZone.Stop();
             DarkZone.gameObject.SetActive(false);
   
+        }
+
+        void InitLate()
+        {
+            if(_mpStat == null)
+            {
+                _mpStat = GetComponent<AnimatorCore>().MainCores.GetCore<StatCore>().GetContentComponent<MPStat>();
+            }
         }
     }
 }

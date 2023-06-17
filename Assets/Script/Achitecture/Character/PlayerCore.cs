@@ -36,8 +36,8 @@ namespace Achitecture
             InputAction.InitMainCore(this);
             Physic.InitMainCore(this);
             Body.InitMainCore(this);
-            Animator.InitMainCore(this);
             Stat.InitMainCore(this);
+            Animator.InitMainCore(this);
             StateMachine.InitMainCore(this);
             DamgeTaken.InitMainCore(this);
         }

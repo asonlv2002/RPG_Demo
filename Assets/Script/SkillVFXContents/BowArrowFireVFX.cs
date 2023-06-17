@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using AnimatorContent;
+using StatContents;
+using UnityEngine;
 
 namespace SkillVFXContents
 {
@@ -8,7 +10,7 @@ namespace SkillVFXContents
         [SerializeField] ParticleSystem _enery;
         [SerializeField] Transform _firePoint;
         [SerializeField] RotateToTarget _rotate;
-
+        private MPStat _mpStat;
 
         private void Start()
         {
@@ -27,6 +29,9 @@ namespace SkillVFXContents
         [System.Obsolete]
         void Shoot()
         {
+            InitLate();
+            if (_mpStat.GetCurrentStatValue() <20) return;
+            _mpStat.SubCurrentStateValue(20);
             _fireArrow.Play();
             var forward = _rotate.Target.position - _firePoint.position;
             _fireArrow.transform.forward = forward.normalized;
@@ -34,6 +39,13 @@ namespace SkillVFXContents
             _fireArrow.transform.position = _firePoint.position+ offset;
             _fireArrow.transform.localEulerAngles = Vector3.zero;
             _fireArrow.gameObject.SetActive(true);
+        }
+        void InitLate()
+        {
+            if (_mpStat == null)
+            {
+                _mpStat = GetComponent<AnimatorCore>().MainCores.GetCore<StatCore>().GetContentComponent<MPStat>();
+            }
         }
     }
 
