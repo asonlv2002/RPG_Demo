@@ -57,9 +57,9 @@
 
         private void OnDestroy()
         {
-            foreach(var component in CoreComponent)
+            foreach(var component in CoreComponent.Values)
             {
-                CoreComponent[component.GetType().ToString()].OnRemoveComponent();
+                component.OnRemoveComponent();
             }
             CoreComponent.Clear();
         }
