@@ -14,5 +14,10 @@
             var defStat = targetEffect.GetCore<StatCore>().GetContentComponent<DEFStat>();
             defStat.AddCurrentStatValue(DEF);
         }
+        public override void DisableEffect(MainCores targetEffect)
+        {
+            var defStat = targetEffect.GetCore<StatCore>().GetContentComponent<DEFStat>();
+            defStat.SubCurrentStateValue(DEF);
+        }
     }
 }
