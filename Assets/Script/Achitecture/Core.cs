@@ -54,5 +54,14 @@
             //}
 
         }
+
+        private void OnDestroy()
+        {
+            foreach(var component in CoreComponent)
+            {
+                CoreComponent[component.GetType().ToString()].OnRemoveComponent();
+            }
+            CoreComponent.Clear();
+        }
     }
 }

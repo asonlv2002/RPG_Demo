@@ -1,6 +1,7 @@
 ﻿using AnimatorContent;
 using StatContents;
 using UnityEngine;
+using System.Collections;
 
 namespace SkillVFXContents
 {
@@ -12,17 +13,12 @@ namespace SkillVFXContents
         [SerializeField] Transform _character;
         [SerializeField] float high;
         private MPStat _mpStat;
-
-        private void Start()
-        {
-           
-        }
         void SummonEnegy()
         {
             InitLate();
             if (!_rotate.CheckDistacneToTarget(15f)) return;
             if (_mpStat.GetCurrentStatValue() < 20) return;
-            _mpStat.SubCurrentStateValue(20);
+            StartCoroutine(UseMP());
             StartCoroutine(_rotate.Rotate());
             EnegyAttack.Play();
             EnegyAttack.transform.parent = null;
@@ -36,6 +32,7 @@ namespace SkillVFXContents
 
         void EndEnegy()
         {
+            StopCoroutine(UseMP());
             EnegyAttack.Stop();
             EnegyAttack.gameObject.SetActive(false);
         }
@@ -62,6 +59,20 @@ namespace SkillVFXContents
             if(_mpStat == null)
             {
                 _mpStat = GetComponent<AnimatorCore>().MainCores.GetCore<StatCore>().GetContentComponent<MPStat>();
+            }
+        }
+
+        IEnumerator UseMP()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(1);
+                _mpStat.SubCurrentStateValue(20);
+                if (_mpStat.GetCurrentStatValue() < 20)
+                {
+                    EndEnegy();
+                    yield break;
+                }
             }
         }
     }

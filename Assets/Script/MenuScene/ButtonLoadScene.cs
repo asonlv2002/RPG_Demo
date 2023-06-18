@@ -18,6 +18,7 @@ namespace MenuScene
             _onclick = GetComponent<Button>();
             _onclick.onClick.AddListener(() =>
             {
+                Time.timeScale = 1f;
                 LoadSceneManager.Instance.SetTimeLoad(_timeLoad);
                 LoadSceneManager.Instance.SetTimeConver(_timeConvert);
                 LoadSceneManager.Instance.EnterLoad(_nameScene);

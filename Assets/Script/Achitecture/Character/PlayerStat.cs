@@ -12,7 +12,7 @@ namespace StatContents
         [SerializeField] DEFStat DEF;
         [SerializeField] HealHpPerSecond HealHpPerSecond;
         [SerializeField] HealMpPerSecond HealMpPerSecond;
-        [SerializeField] int value;
+        [SerializeField] GameObject GameOver;
         public override void InitMainCore(MainCores mainCores)
         {
             base.InitMainCore(mainCores);
@@ -23,7 +23,17 @@ namespace StatContents
             AddContentComponent(DEF);
             AddContentComponent(HealHpPerSecond);
             AddContentComponent(HealMpPerSecond);
+            HP.OnZeroHp += () =>
+            {
+                GameOver.gameObject.SetActive(true);
+                Invoke("SetTimescale", 1f);
+            };
 
+        }
+
+        void SetTimescale()
+        {
+            Time.timeScale = 0f;
         }
     }
 }

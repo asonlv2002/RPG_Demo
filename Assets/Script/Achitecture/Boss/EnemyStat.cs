@@ -15,8 +15,18 @@ namespace StatContents
             _hpStat.AddEventCurrenValueModify(HpBar.SetCurrentValue);
             _hpStat.AddEventMaxValueModify(HpBar.SetMaxValue);
             _hpStat.TriggerStat();
-            _hpStat.OnZeroHp += ()=> _victory.gameObject.SetActive(true);
+
             AddContentComponent(_hpStat);
+            _hpStat.OnZeroHp += () =>
+            {
+                _victory.gameObject.SetActive(true);
+                Invoke("SetTimescale", 1f);
+                Destroy(MainCores.gameObject, 0.5f);
+            };
+        }
+        void SetTimescale()
+        {
+            Time.timeScale = 0f;
         }
     }
 }

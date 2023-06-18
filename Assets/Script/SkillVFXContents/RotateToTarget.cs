@@ -28,7 +28,7 @@ namespace SkillVFXContents
 
         public bool CheckDistacneToTarget(float maxDistance)
         {
-            Debug.Log(Vector3.Distance(Character.position, Target.position));
+            if (Target == null) return false;
             return Vector3.Distance(Character.position, Target.position) < maxDistance;
         }
     }
